@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from  'prop-types'
-import {auth} from ' ../store'
+import { auth } from '../store'
 
 const AuthForm = ({ name, displayName, handleSubmit, error }) => {
   return (
@@ -10,7 +10,7 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
         <div>
           <label htmlFor="email" >
             <small>Email</small>
-            </label>
+          </label>
           <input name="email" type="text" />
         </div>
         <div>

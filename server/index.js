@@ -3,6 +3,7 @@ const express = require('express')
 const morgan = require('morgan')
 const session = require('express-session')
 const passport = require('passport')
+const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const db = require('./db')
 const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
@@ -58,15 +59,15 @@ const createApp = () => {
   app.use(express.static(path.join(__dirname, '..', 'public')))
 
   //any requests with an extension (.js, .css, etc) send 404
-  app.use((req, res, next) => {
-    if (path.extname(req.path).length) {
-      const err = new Error('Not found')
-      err.status = 404
-      next(err)
-    } else {
-      next()
-    }
-  })
+  // app.use((req, res, next) => {
+  //   if (path.extname(req.path).length) {
+  //     const err = new Error('Not found')
+  //     err.status = 404
+  //     next(err)
+  //   } else {
+  //     next()
+  //   }
+  // })
 
   //serve index.html
   app.use('*', (req, res) => {
