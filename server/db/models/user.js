@@ -33,17 +33,17 @@ module.exports = User
 
 // INSTANCE METHODS
 
-User.prototype.correctPassword = (candidatePwd) => {
+User.prototype.correctPassword = function(candidatePwd) {
   return User.encryptPassword(candidatePwd, this.salt()) === this.password()
 }
 
 // CLASS METHODS
 
-User.generateSalt = () => {
+User.generateSalt = function() {
   return crypto.randomBytes(16).toString('base64')
 }
 
-User.encryptPassword = (plainText, salt) => {
+User.encryptPassword = function(plainText, salt) {
   return crypto
     .createHash('RSA-SHA256')
     .update(plainText)
@@ -56,7 +56,7 @@ User.encryptPassword = (plainText, salt) => {
 const setSaltAndPassword = (user) => {
   if (user.changed('password')) {
     user.salt = User.generateSalt()
-    user.password = User.encryptPassword(user.password(), user.salt)
+    user.password = User.encryptPassword(user.password(), user.salt())
   }
 }
 
