@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "connect-session-sequelize": "^5.2.2",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "history": "^4.7.2",
