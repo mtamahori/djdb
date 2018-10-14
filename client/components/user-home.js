@@ -1,0 +1,25 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+
+export const UserHome = ({ email }) => {
+  return (
+    <div>
+    <h3>Welcome, {email}</h3>
+    </div>
+  )
+}
+
+const mapState = state => {
+  return {
+    email: state.user.email
+  }
+}
+
+const mapDispatch = null;
+
+export default connect(mapState)(UserHome)
+
+UserHome.propTypes = {
+  email: PropTypes.string
+}
