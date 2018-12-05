@@ -19,7 +19,7 @@ const Gig = db.define('gig', {
     allowNull: false
   },
   compensation: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.STRING,
     allowNull: false
   }
 });
