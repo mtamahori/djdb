@@ -14,7 +14,7 @@ const REMOVE_USER = 'REMOVE_USER'
 // ACTION CREATORS
 
 const getUser = user => ({ type: GET_USER, user })
-const removeUser = user => ({ type: REMOVE_USER })
+const removeUser = () => ({ type: REMOVE_USER })
 
 // THUNK CREATORS
 //// read up on async/await!!!!

@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { Landing, Login, Signup, UserHome } from './components'
-import { me } from './store'
+import { Landing, Login, Signup, UserHome, BookerList } from './components'
+import { me, fetchBookers } from './store'
 
 class Routes extends Component {
   componentDidMount() {
@@ -20,6 +20,7 @@ class Routes extends Component {
           {isLoggedIn && (
             <Switch>
             <Route path="/home" component={UserHome} />
+            <Route path="/bookers" component={BookerList} />
             </Switch>
           )}
           <Route component={Landing} />
@@ -41,6 +42,7 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me())
+      dispatch(fetchBookers())
     }
   }
 }

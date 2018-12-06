@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const { User, Booker, Deejay, Gig, Message, Review } = require('../server/db/models')
+const { User, Booker, Deejay, Gig } = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -34,8 +34,6 @@ async function seed() {
     Gig.create({name: 'METER', date: '12/07/18', time: '21:00-01:00', location: 'Meter Room', compensation: 40, deejayId: 3, bookerId: 2}),
     Gig.create({name: 'H.A.S.', date: '12/08/18', time: '15:00-20:00', location: 'Humboldt Park', compensation: 50, deejayId: 4, bookerId: 1})
   ])
-
-  // erotic wobble, meter, HAS
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${bookers.length} bookers`)
