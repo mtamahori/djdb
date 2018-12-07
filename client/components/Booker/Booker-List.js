@@ -58,12 +58,13 @@ class BookerList extends Component {
 
   handleSubmitCreateBooker(event) {
     event.preventDefault();
+    const { createBooker } = this.props;
     const booker = {
       name: event.target.name.value,
       email: event.target.email.value,
       phone: event.target.phone.value
     };
-    this.props.createBooker(booker);
+    createBooker(booker);
     event.target.name.value = '';
     event.target.email.value = '';
     event.target.phone.value = '';
