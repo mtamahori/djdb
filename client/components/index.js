@@ -6,3 +6,7 @@ export { Login, Signup } from './Auth-Form'
 export { default as BookerList } from './Booker/Booker-List'
 export { default as BookerListItem } from './Booker/Booker-List-Item'
 export { default as BookerDetail } from './Booker/Booker-Detail'
+
+export { default as DeejayList } from './Deejay/Deejay-List'
+export { default as DeejayListItem } from './Deejay/Deejay-List-Item'
+export { default as DeejayDetail } from './Deejay/Deejay-Detail'

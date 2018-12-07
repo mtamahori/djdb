@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { Landing, Login, Signup, UserHome, BookerList, BookerDetail } from './components'
-import { me, fetchBookers } from './store'
+import { me, fetchBookers, fetchDeejays } from './store'
 
 class Routes extends Component {
   componentDidMount() {
@@ -44,6 +44,7 @@ const mapDispatch = dispatch => {
     loadInitialData() {
       dispatch(me())
       dispatch(fetchBookers())
+      dispatch(fetchDeejays())
     }
   }
 }
