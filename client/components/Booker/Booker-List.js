@@ -15,18 +15,18 @@ class BookerList extends Component {
   render() {
     return (
       <div>
-        <div>{this.renderAddBooker()}</div>
+        <div>{this.renderCreateBooker()}</div>
         <div>{this.renderBookerList()}</div>
       </div>
     );
   }
 
-  renderAddBooker() {
+  renderCreateBooker() {
     return (
       <div>
         <form onSubmit={this.handleSubmitCreateBooker}>
           <div>
-            <h3>Add Booker</h3>
+            <h3>Create Booker Profile</h3>
             <h4>
               <input name="name" type="text" required placeholder="Name" />
             </h4>
@@ -48,9 +48,11 @@ class BookerList extends Component {
     return (
       <div>
         <h3>Booker List</h3>
-        {bookers.map(booker => (
-          <BookerListItem booker={booker} key={booker.id} />
-        ))}
+        {
+          bookers.map(booker => (
+            <BookerListItem booker={booker} key={booker.id} />
+          ))
+        }
       </div>
     );
   }
@@ -58,12 +60,12 @@ class BookerList extends Component {
   handleSubmitCreateBooker(event) {
     event.preventDefault();
     const { createBooker } = this.props;
-    const booker = {
+    const newBooker = {
       name: event.target.name.value,
       email: event.target.email.value,
       phone: event.target.phone.value
     };
-    createBooker(booker);
+    createBooker(newBooker);
     event.target.name.value = '';
     event.target.email.value = '';
     event.target.phone.value = '';
