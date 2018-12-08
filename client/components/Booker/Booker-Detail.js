@@ -19,13 +19,13 @@ class BookerDetail extends Component {
   }
 
   renderCurrentBooker() {
-    const { bookers } = this.props;
+    const { bookers, currentBooker } = this.props;
     return (
       <div>
         <h3>Booker Detail</h3>
         {
           bookers
-            .filter(booker => booker.id === this.props.currentBooker.id)
+            .filter(booker => booker.id === currentBooker.id)
             .map(booker => (
               <div key={booker.id}>
                 <h4>{booker.name}</h4>
