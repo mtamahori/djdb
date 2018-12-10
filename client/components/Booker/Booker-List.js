@@ -9,7 +9,7 @@ class BookerList extends Component {
   constructor(props) {
     super(props);
 
-    this.handleSubmitCreateBooker = this.handleSubmitCreateBooker.bind(this);
+    this.handleCreateBooker = this.handleCreateBooker.bind(this);
   }
 
   render() {
@@ -24,7 +24,7 @@ class BookerList extends Component {
   renderCreateBooker() {
     return (
       <div>
-        <form onSubmit={this.handleSubmitCreateBooker}>
+        <form onSubmit={this.handleCreateBooker}>
           <div>
             <h3>Create Booker Profile</h3>
             <h4>
@@ -57,7 +57,7 @@ class BookerList extends Component {
     );
   }
 
-  handleSubmitCreateBooker(event) {
+  handleCreateBooker(event) {
     event.preventDefault();
     const { createBooker } = this.props;
     const newBooker = {
@@ -77,7 +77,4 @@ class BookerList extends Component {
 const mapState = ({ bookers }) => ({ bookers });
 const mapDispatch = { createBooker };
 
-export default connect(
-  mapState,
-  mapDispatch
-)(BookerList);
+export default connect(mapState,mapDispatch)(BookerList);

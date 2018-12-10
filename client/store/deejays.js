@@ -60,6 +60,7 @@ export const deleteDeejay = (deejay) => dispatch => {
 // REDUCER
 
 export default function(state = defaultDeejays, action) {
+
   switch (action.type) {
 
     case INIT_DEEJAYS:

@@ -62,6 +62,7 @@ export const deleteBooker = booker => dispatch => {
 export default function(state = defaultBookers, action) {
 
   switch (action.type) {
+
     case INIT_BOOKERS:
       return action.bookers
 

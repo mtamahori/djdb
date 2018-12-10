@@ -19,8 +19,8 @@ class DeejayListItem extends Component {
         <NavLink activeClassName="active" to={`/deejays/${deejay.id}`} >
           <h4>{deejay.name}</h4>
         </NavLink>
-        <h4>{deejay.email}</h4>
-        <h4>{deejay.phone}</h4>
+        <h5>{deejay.email}</h5>
+        <h5>{deejay.phone}</h5>
         <button onClick={this.handleDeleteDeejay} type="button" >
           Delete Deejay
         </button>

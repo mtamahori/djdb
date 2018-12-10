@@ -2,8 +2,19 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { Landing, Login, Signup, UserHome, BookerList, BookerDetail, DeejayList, DeejayDetail } from './components'
-import { me, fetchBookers, fetchDeejays } from './store'
+import { me, fetchBookers, fetchDeejays, fetchGigs } from './store'
+import {
+  Landing,
+  Login,
+  Signup,
+  UserHome,
+  BookerList,
+  BookerDetail,
+  DeejayList,
+  DeejayDetail,
+  GigList,
+  GigDetail
+} from './components'
 
 class Routes extends Component {
   componentDidMount() {
@@ -24,6 +35,8 @@ class Routes extends Component {
             <Route path="/bookers/:id" component={BookerDetail} />
             <Route exact path="/deejays" component={DeejayList} />
             <Route path="/deejays/:id" component={DeejayDetail} />
+            <Route exact path="/gigs" component={GigList} />
+            <Route path="/gigs/:id" component={GigDetail} />
             </Switch>
           )}
           <Route component={Landing} />
@@ -47,6 +60,7 @@ const mapDispatch = dispatch => {
       dispatch(me())
       dispatch(fetchBookers())
       dispatch(fetchDeejays())
+      dispatch(fetchGigs())
     }
   }
 }

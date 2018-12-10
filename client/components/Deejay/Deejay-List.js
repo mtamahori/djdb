@@ -48,9 +48,11 @@ class DeejayList extends Component {
     return (
       <div>
         <h3>Deejay List</h3>
-        {deejays.map(deejay => (
+        {
+          deejays.map(deejay => (
           <DeejayListItem deejay={deejay} key={deejay.id} />
-        ))}
+          ))
+        }
       </div>
     );
   }
@@ -75,7 +77,4 @@ class DeejayList extends Component {
 const mapState = ({ deejays }) => ({ deejays });
 const mapDispatch = { createDeejay };
 
-export default connect(
-  mapState,
-  mapDispatch
-)(DeejayList);
+export default connect(mapState, mapDispatch)(DeejayList);
