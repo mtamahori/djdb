@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateBooker } from "../../store";
+import { List } from 'semantic-ui-react';
 
 class BookerDetail extends Component {
   constructor(props) {
@@ -18,24 +19,45 @@ class BookerDetail extends Component {
     );
   }
 
+  // renderCurrentBooker() {
+  //   const { bookers, currentBooker } = this.props;
+  //   return (
+  //     <div>
+  //       <h3>Booker Detail</h3>
+  //       {
+  //         bookers
+  //           .filter(booker => booker.id === currentBooker.id)
+  //           .map(booker => (
+  //             <div key={booker.id}>
+  //               <h4>{booker.name}</h4>
+  //               <h4>{booker.email}</h4>
+  //               <h4>{booker.phone}</h4>
+  //             </div>
+  //           ))
+  //       }
+  //     </div>
+  //   );
+  // }
+
   renderCurrentBooker() {
-    const { bookers, currentBooker } = this.props;
+    const { bookers, currentBooker } = this.props
     return (
       <div>
-        <h3>Booker Detail</h3>
+        <h3>Booker Details</h3>
         {
           bookers
             .filter(booker => booker.id === currentBooker.id)
             .map(booker => (
-              <div key={booker.id}>
-                <h4>{booker.name}</h4>
-                <h4>{booker.email}</h4>
-                <h4>{booker.phone}</h4>
-              </div>
+              <List key={booker.id}>
+              <List.Item icon='users' content={booker.name} />
+              <List.Item icon='marker' content='Chicago, IL' />
+              <List.Item icon='mail' content={booker.email} />
+              <List.Item icon='phone' content={booker.phone} />
+            </List>
             ))
         }
       </div>
-    );
+    )
   }
 
   renderUpdateBooker() {

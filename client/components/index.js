@@ -1,5 +1,6 @@
 export { default as Landing } from './Landing'
 export { default as Navbar } from  './Navbar'
+export { default as Footer } from './Footer'
 export { default as UserHome } from './User-Home'
 export { Login, Signup } from './Auth-Form'
 
