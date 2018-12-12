@@ -7,8 +7,8 @@ const Landing = () => {
     <div>
     <h1>SETBOX LANDING</h1>
     <Icon.Group size='huge'>
-      <Icon aria-hidden='false' loading size='big' name='circle notch' />
-      <Icon aria-hidden='false' name='music' />
+      <Icon loading size='big' name='circle notch' />
+      <Icon name='music' />
     </Icon.Group>
     </div>
   )
