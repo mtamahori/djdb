@@ -4,6 +4,8 @@ Login/Signup: (Google OAUTH, email login/signup)
 
 NavBar: (changes depending on current route)
 
+*Sidebar: (haven't really thought about this yet)
+
 Footer: (constant, minimal)
 
 User Home

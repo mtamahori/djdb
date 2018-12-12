@@ -1,6 +1,29 @@
-API's to integrate after MVP:
+1.0
 
-  Google (OAUTH)
+Profiles
+Gigs
+Calendar
+
+
+2.0
+
+Social Media Links
+Embedded Players
+Messages
+Reviews
+
+
+3.0
+
+Payment system
+
+
+
+
+///////////////////////////////
+
+
+API's to integrate after MVP:
 
   Facebook
   Instagram

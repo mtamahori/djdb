@@ -19,26 +19,6 @@ class BookerDetail extends Component {
     );
   }
 
-  // renderCurrentBooker() {
-  //   const { bookers, currentBooker } = this.props;
-  //   return (
-  //     <div>
-  //       <h3>Booker Detail</h3>
-  //       {
-  //         bookers
-  //           .filter(booker => booker.id === currentBooker.id)
-  //           .map(booker => (
-  //             <div key={booker.id}>
-  //               <h4>{booker.name}</h4>
-  //               <h4>{booker.email}</h4>
-  //               <h4>{booker.phone}</h4>
-  //             </div>
-  //           ))
-  //       }
-  //     </div>
-  //   );
-  // }
-
   renderCurrentBooker() {
     const { bookers, currentBooker } = this.props
     return (

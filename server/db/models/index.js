@@ -28,6 +28,9 @@ Gig.belongsTo(Booker);
 Message.belongsTo(Booker);
 Review.belongsTo(Booker);
 
+Gig.hasMany(Message);
+Gig.hasMany(Review);
+
 
 // Central export for model definitions
 
