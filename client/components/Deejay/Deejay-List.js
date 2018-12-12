@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createDeejay } from "../../store";
-import DeejayListItem from "./Deejay-List-Item";
+import DeejayItem from "./Deejay-Item";
 
 // COMPONENT
 
@@ -50,7 +50,7 @@ class DeejayList extends Component {
         <h3>Deejay List</h3>
         {
           deejays.map(deejay => (
-          <DeejayListItem deejay={deejay} key={deejay.id} />
+          <DeejayItem deejay={deejay} key={deejay.id} />
           ))
         }
       </div>

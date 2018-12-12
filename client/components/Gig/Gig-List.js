@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createGig } from '../../store'
-import GigListItem from './Gig-List-Item'
+import GigItem from './Gig-Item'
 
 // COMPONENT
 
@@ -56,7 +56,7 @@ class GigList extends Component {
         <h3>Gig List</h3>
         {
           gigs.map(gig => (
-            <GigListItem gig={gig} key={gig.id} />
+            <GigItem gig={gig} key={gig.id} />
           ))
         }
       </div>

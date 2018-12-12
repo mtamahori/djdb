@@ -5,7 +5,7 @@ import { deleteGig } from '../../store'
 
 // COMPONENT
 
-class GigListItem extends Component {
+class GigItem extends Component {
   constructor(props) {
     super(props)
 
@@ -43,4 +43,4 @@ const mapState = null;
 const mapDispatch = ({ deleteGig })
 
 
-export default connect(mapState, mapDispatch)(GigListItem)
+export default connect(mapState, mapDispatch)(GigItem)

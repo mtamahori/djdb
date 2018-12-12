@@ -5,7 +5,7 @@ import { deleteDeejay } from '../../store'
 
 // COMPONENT
 
-class DeejayListItem extends Component {
+class DeejayItem extends Component {
   constructor(props) {
     super(props)
 
@@ -41,4 +41,4 @@ class DeejayListItem extends Component {
 const mapState = null;
 const mapDispatch = ({ deleteDeejay })
 
-export default connect(mapState, mapDispatch)(DeejayListItem)
+export default connect(mapState, mapDispatch)(DeejayItem)

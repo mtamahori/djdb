@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { deleteBooker } from "../../store";
 
-class BookerListItem extends Component {
+class BookerItem extends Component {
   constructor(props) {
     super(props);
 
@@ -39,4 +39,4 @@ const mapDispatch = { deleteBooker };
 export default connect(
   mapState,
   mapDispatch
-)(BookerListItem);
+)(BookerItem);

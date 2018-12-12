@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createBooker } from "../../store";
-import BookerListItem from "./Booker-List-Item";
+import BookerItem from "./Booker-Item";
 
 // COMPONENT
 
@@ -50,7 +50,7 @@ class BookerList extends Component {
         <h3>Booker List</h3>
         {
           bookers.map(booker => (
-            <BookerListItem booker={booker} key={booker.id} />
+            <BookerItem booker={booker} key={booker.id} />
           ))
         }
       </div>

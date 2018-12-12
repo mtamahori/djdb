@@ -1,0 +1,12 @@
+API's to integrate after MVP:
+
+  Google (OAUTH)
+
+  Facebook
+  Instagram
+  Soundcloud
+  Mixcloud
+  Bandcamp
+  Spotify
+
+  Paypal (payment)
