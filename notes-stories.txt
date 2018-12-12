@@ -1,11 +1,83 @@
-AS A USER
+AS A VISITOR, I CAN
+
+  -View the landing page
+  -Sign up using an email / password
+
+AS A USER, I CAN
+
+  -Log in using my email password
+  -Log in using Google OAUTH
+
+  -View my user profile
+  -Edit my login info
+
+  -Create a BOOKER PROFILE
+  -Create a DEEJAY PROFILE
+
+  -Navigate to BOOKER HOME
+  -Navigate to DEEJAY HOME
+
+AS A BOOKER, I CAN
+
+  -View my profile info
+  -Edit my profile info
+  -View my reviews
+
+  -Navigate to my CALENDAR
+  -View my calendar
+  -Toggle between month and week view
+  -Filter gigs by upcoming, open, past
+
+  -Navigate to CREATE NEW OPEN GIG
+  -Submit new open gig info
+
+  -Navigate to BROWSE OPEN GIGS
+  -View all open gigs + in detail
+  -Filter open gigs by deejay, name, date, time, location, compensation, style tags
+
+  -Navigate to OPEN GIG LIST
+  -View my open gigs + in detail
+  -Edit my open gigs
+
+  -Navigate to UPCOMING GIG LIST
+  -View my upcoming gigs + in detail
+  -Edit my upcoming gigs
+  -Navigate to MESSAGE DEEJAY
+  -Message the deejay
+
+  -Navigate to PAST GIG LIST
+  -View my past gigs + in detail
+  -Leave reviews for deejays
 
 
+AS A DEEJAY, I CAN
 
-AS A BOOKER
+  -View my profile info
+  -Edit my profile info
+  -View my reviews
 
+  -Navigate to my CALENDAR
+  -View my calendar
+  -Toggle between month and week view
+  -Filter gigs by upcoming, open, past
 
+  -Navigate to CREATE NEW OPEN GIG
+  -Submit new open gig info
 
-AS A DEEJAY
+  -Navigate to BROWSE OPEN GIGS
+  -View all open gigs + in detail
+  -Filter open gigs by booker, name, date, time, location, compensation, style tags
 
+  -Navigate to OPEN GIG LIST
+  -View my open gigs + in detail
+  -Edit my open gigs
 
+  -Navigate to UPCOMING GIG LIST
+  -View my upcoming gigs + in detail
+  -Edit my upcoming gigs
+  -Navigate to MESSAGE BOOKER
+  -Message the booker
+
+  -Navigate to PAST GIG LIST
+  -View my past gigs + in detail
+  -Leave reviews for bookers
