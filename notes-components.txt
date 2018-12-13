@@ -22,7 +22,7 @@ User Home
 
     BOOKER HOME
 
-        BOOKER PROFILE
+        BOOKER PROFILE // CREATE IF NULL
 
             Booker Profile Info
                 Name/Email/Phone
@@ -173,7 +173,7 @@ User Home
 
     DEEJAY HOME
 
-        DEEJAY PROFILE
+        DEEJAY PROFILE //  CREATE IF NULL
 
             Deejay Profile Info
                 Name/Email/Phone
