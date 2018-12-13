@@ -1,6 +1,5 @@
 import axios from 'axios'
 import history from '../history'
-import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from 'constants';
 
 // INITIAL STATE
 

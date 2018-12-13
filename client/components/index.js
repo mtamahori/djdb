@@ -4,8 +4,9 @@ export { default as Footer } from './Footer'
 export { default as UserHome } from './User-Home'
 export { Login, Signup } from './Auth-Form'
 
+export { default as BookerMain } from './Booker/Booker-Main'
 export { default as BookerList } from './Booker/Booker-List'
-export { default as BookerListItem } from './Booker/Booker-Item'
+export { default as BookerItem } from './Booker/Booker-Item'
 export { default as BookerDetail } from './Booker/Booker-Detail'
 
 export { default as DeejayList } from './Deejay/Deejay-List'
