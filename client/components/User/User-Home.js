@@ -17,6 +17,9 @@ class UserHome extends Component {
         <h3>Welcome, {email}</h3>
       </div>
         <div className="user-home-button-container">
+          <NavLink activeClassName="active" to="/user">
+            <Button size="massive">User Profile</Button>
+          </NavLink>
           <NavLink activeClassName="active" to="/bookers">
             <Button size="massive">Bookers</Button>
           </NavLink>

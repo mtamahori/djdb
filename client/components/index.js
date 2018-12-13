@@ -1,7 +1,8 @@
 export { default as Landing } from './Landing'
 export { default as Navbar } from  './Navbar'
 export { default as Footer } from './Footer'
-export { default as UserHome } from './User-Home'
+export { default as UserHome } from './User/User-Home'
+export { default as UserProfile } from './User/User-Profile'
 export { Login, Signup } from './Auth-Form'
 
 export { default as BookerMain } from './Booker/Booker-Main'

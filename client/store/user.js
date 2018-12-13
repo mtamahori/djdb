@@ -8,11 +8,13 @@ const defaultUser = {}
 // ACTION TYPES
 
 const GET_USER = 'GET_USER'
+const EDIT_USER = 'EDIT_USER'
 const REMOVE_USER = 'REMOVE_USER'
 
 // ACTION CREATORS
 
 const getUser = user => ({ type: GET_USER, user })
+const editUser = user => ({ type: EDIT_USER, user })
 const removeUser = () => ({ type: REMOVE_USER })
 
 // THUNK CREATORS
@@ -25,6 +27,13 @@ export const me = () => async dispatch => {
   } catch (err) {
     console.error(err)
   }
+}
+
+export const updateUser = (user) => dispatch => {
+  axios
+    .put(`/api/users/${user.id}`, user)
+    .then(res => dispatch(editUser(res.data)))
+    .catch(err => console.error('Updating user info unsuccessful', err))
 }
 
 export const auth = (email, password, method) => async dispatch => {
@@ -59,6 +68,9 @@ export default function(state = defaultUser, action) {
   switch (action.type) {
 
     case GET_USER:
+      return action.user
+
+    case EDIT_USER:
       return action.user
 
     case REMOVE_USER:

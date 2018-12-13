@@ -8,6 +8,7 @@ import {
   Login,
   Signup,
   UserHome,
+  UserProfile,
   BookerMain,
   BookerList,
   BookerDetail,
@@ -35,6 +36,7 @@ class Routes extends Component {
           {isLoggedIn && (
             <Switch>
             <Route exact path="/home" component={UserHome} />
+            <Route exact path="/user" component={UserProfile} />
             <Route exact path="/bookers" component={BookerMain} />
             <Route exact path="/bookers/new" component={NewBookerForm} />
             <Route exact path="/bookers/list" component={BookerList} />
