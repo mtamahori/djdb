@@ -33,8 +33,9 @@ class NewBookerForm extends Component {
 
   handleCreateBooker(event) {
     event.preventDefault();
-    const { createBooker } = this.props;
+    const { user, createBooker } = this.props;
     const newBooker = {
+      userId: user.id,
       name: event.target.name.value,
       email: event.target.email.value,
       phone: event.target.phone.value
@@ -46,7 +47,7 @@ class NewBookerForm extends Component {
   }
 }
 
-const mapState = null;
+const mapState = ({ user }) => ({ user });
 const mapDispatch = { createBooker };
 
 export default connect(mapState, mapDispatch)(NewBookerForm);

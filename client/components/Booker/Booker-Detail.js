@@ -19,22 +19,40 @@ class BookerDetail extends Component {
     );
   }
 
+  // renderCurrentBooker() {
+  //   const { bookers, currentBooker } = this.props;
+  //   console.log('PROP BOOKERS', currentBooker)
+  //   return (
+  //     <div>
+  //       <h3>Booker Details</h3>
+  //       {
+  //         bookers
+  //           .filter(booker => booker.id === currentBooker.id)
+  //           .map(booker => (
+  //             <List key={booker.id}>
+  //             <List.Item icon='users' content={booker.name} />
+  //             <List.Item icon='marker' content='Chicago, IL' />
+  //             <List.Item icon='mail' content={booker.email} />
+  //             <List.Item icon='phone' content={booker.phone} />
+  //           </List>
+  //           ))
+  //       }
+  //     </div>
+  //   )
+  // }
+
   renderCurrentBooker() {
-    const { bookers, currentBooker } = this.props
+    const { currentBooker } = this.props;
     return (
       <div>
         <h3>Booker Details</h3>
         {
-          bookers
-            .filter(booker => booker.id === currentBooker.id)
-            .map(booker => (
-              <List key={booker.id}>
-              <List.Item icon='users' content={booker.name} />
+            <List key={currentBooker.id}>
+              <List.Item icon='users' content={currentBooker.name} />
               <List.Item icon='marker' content='Chicago, IL' />
-              <List.Item icon='mail' content={booker.email} />
-              <List.Item icon='phone' content={booker.phone} />
+              <List.Item icon='mail' content={currentBooker.email} />
+              <List.Item icon='phone' content={currentBooker.phone} />
             </List>
-            ))
         }
       </div>
     )
@@ -77,11 +95,11 @@ class BookerDetail extends Component {
     event.target.phone.value = '';
   }
 }
-const mapState = ({ bookers }, ownProps) => {
-  const bookerParamId = Number(ownProps.match.params.id)
+const mapState = ({ user, bookers }) => {
   return {
+    user,
     bookers,
-    currentBooker: bookers.filter(booker => booker.id === bookerParamId)[0]
+    currentBooker: bookers.filter(booker => booker.userId === user.id)[0]
   }
 };
 const mapDispatch = { updateBooker };
