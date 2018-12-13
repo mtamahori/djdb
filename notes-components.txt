@@ -173,7 +173,7 @@ User Home
 
     DEEJAY HOME
 
-        DEEJAY PROFILE //  CREATE IF NULL
+        DEEJAY PROFILE // CREATE IF NULL
 
             Deejay Profile Info
                 Name/Email/Phone

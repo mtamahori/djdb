@@ -1,11 +1,11 @@
 AS A VISITOR, I CAN
 
-  -View the landing page
-  -Sign up using an email / password
+  X-View the landing page
+  X-Sign up using an email / password
 
 AS A USER, I CAN
 
-  -Log in using my email password
+  X-Log in using my email password
   -Log in using Google OAUTH
 
   -View my user profile
