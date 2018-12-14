@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { updateBooker } from "../../store";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { updateBooker } from '../../store';
 import { List } from 'semantic-ui-react';
 
 class BookerDetail extends Component {
@@ -18,28 +18,6 @@ class BookerDetail extends Component {
       </div>
     );
   }
-
-  // renderCurrentBooker() {
-  //   const { bookers, currentBooker } = this.props;
-  //   console.log('PROP BOOKERS', currentBooker)
-  //   return (
-  //     <div>
-  //       <h3>Booker Details</h3>
-  //       {
-  //         bookers
-  //           .filter(booker => booker.id === currentBooker.id)
-  //           .map(booker => (
-  //             <List key={booker.id}>
-  //             <List.Item icon='users' content={booker.name} />
-  //             <List.Item icon='marker' content='Chicago, IL' />
-  //             <List.Item icon='mail' content={booker.email} />
-  //             <List.Item icon='phone' content={booker.phone} />
-  //           </List>
-  //           ))
-  //       }
-  //     </div>
-  //   )
-  // }
 
   renderCurrentBooker() {
     const { currentBooker } = this.props;

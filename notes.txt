@@ -1,3 +1,16 @@
+GENERAL:
+
+need to redirect to '/bookers' from '/bookers/new' after submit
+also need to create some condition for not allowing a user to hit the 'bookers/new' route if they have a booker profile.
+
+
+
+//////////
+
+
+
+
+
 1.0
 
 Profiles

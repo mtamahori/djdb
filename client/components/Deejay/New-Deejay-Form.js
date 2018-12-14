@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createDeejay } from '../../store'
+import user from '../../store/user';
 
 class NewDeejayForm extends Component {
   constructor(props) {
@@ -33,8 +34,9 @@ class NewDeejayForm extends Component {
 
   handleCreateDeejay(event) {
     event.preventDefault();
-    const { createDeejay } = this.props;
+    const { user, createDeejay } = this.props;
     const newDeejay = {
+      userId: user.id,
       name: event.target.name.value,
       email: event.target.email.value,
       phone: event.target.phone.value
@@ -46,7 +48,7 @@ class NewDeejayForm extends Component {
   }
 }
 
-const mapState = null;
+const mapState = ({ user }) => ({ user });
 const mapDispatch = { createDeejay };
 
 export default connect(mapState, mapDispatch)(NewDeejayForm)
