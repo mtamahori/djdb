@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createDeejay } from '../../store'
-import user from '../../store/user';
+import history from '../../history'
 
 class NewDeejayForm extends Component {
   constructor(props) {
@@ -45,6 +45,7 @@ class NewDeejayForm extends Component {
     event.target.name.value = '';
     event.target.email.value = '';
     event.target.phone.value = '';
+    history.push('/deejays')
   }
 }
 

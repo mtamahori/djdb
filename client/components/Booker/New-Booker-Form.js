@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createBooker } from '../../store'
+import history from '../../history'
 
 class NewBookerForm extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class NewBookerForm extends Component {
             <h4>
               <input name="phone" type="text" required placeholder="Phone #" />
             </h4>
-            <input type="submit" value="submit" />
+              <input type="submit" value="submit" />
           </div>
         </form>
       </div>
@@ -44,6 +45,7 @@ class NewBookerForm extends Component {
     event.target.name.value = '';
     event.target.email.value = '';
     event.target.phone.value = '';
+    history.push('/bookers')
   }
 }
 
