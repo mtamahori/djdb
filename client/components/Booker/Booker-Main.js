@@ -21,7 +21,14 @@ class BookerMain extends Component {
             <Button size="massive">Create Booker Profile</Button>
           </NavLink>
           :
-          <BookerDetail key={currentBooker.id} />
+          <div>
+          <Button size="massive">Calendar</Button>
+          <Button size="massive">New Booking</Button>
+          <Button size="massive">Open Bookings</Button>
+          <Button size="massive">Past Bookings</Button>
+          <Button size="massive">Browse Deejays</Button>
+            <BookerDetail key={currentBooker.id} />
+          </div>
         }
       </div>
     )

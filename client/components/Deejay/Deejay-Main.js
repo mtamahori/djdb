@@ -21,7 +21,14 @@ class DeejayMain extends Component {
             <Button size="massive">Create Deejay Profile</Button>
           </NavLink>
           :
-          <DeejayDetail key={currentDeejay.id} />
+          <div>
+            <Button size="massive">Calendar</Button>
+            <Button size="massive">New Booking</Button>
+            <Button size="massive">Open Bookings</Button>
+            <Button size="massive">Past Bookings</Button>
+            <Button size="massive">Browse Bookings</Button>
+            <DeejayDetail key={currentDeejay.id} />
+          </div>
         }
       </div>
     )
