@@ -1,3 +1,23 @@
+GENERAL:
+
+// OPEN 12/13/18
+need to redirect to '/bookers' from '/bookers/new' after submit (use history.push?)
+// DONE 12/14/18
+
+// OPEN 12/13/18
+also need to create some condition for not allowing a user to hit the 'bookers/new' route if they have a booker profile.
+
+  (protect against the front-end route by checking state for a user's booker/deejay id)
+  (protect backend by making a constraint on the models; allow only one deejay/booker id per user) - use hasOne()
+//
+
+
+
+
+
+
+///////////////////////////////////////////////////////////
+
 1.0
 
 Profiles

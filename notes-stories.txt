@@ -8,14 +8,14 @@ AS A USER, I CAN
   X-Log in using my email password
   -Log in using Google OAUTH
 
-  -View my user profile
-  -Edit my login info
+  X-View my user profile
+  X-Edit my login info
 
-  -Create a BOOKER PROFILE
+  X-Create a BOOKER PROFILE
   -Create a DEEJAY PROFILE
 
-  -Navigate to BOOKER HOME
-  -Navigate to DEEJAY HOME
+  X-Navigate to BOOKER HOME
+  X-Navigate to DEEJAY HOME
 
 AS A BOOKER, I CAN
 

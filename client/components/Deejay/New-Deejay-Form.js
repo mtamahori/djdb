@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createDeejay } from '../../store'
+import history from '../../history'
 
 class NewDeejayForm extends Component {
   constructor(props) {
@@ -33,8 +34,9 @@ class NewDeejayForm extends Component {
 
   handleCreateDeejay(event) {
     event.preventDefault();
-    const { createDeejay } = this.props;
+    const { user, createDeejay } = this.props;
     const newDeejay = {
+      userId: user.id,
       name: event.target.name.value,
       email: event.target.email.value,
       phone: event.target.phone.value
@@ -43,10 +45,11 @@ class NewDeejayForm extends Component {
     event.target.name.value = '';
     event.target.email.value = '';
     event.target.phone.value = '';
+    history.push('/deejays')
   }
 }
 
-const mapState = null;
+const mapState = ({ user }) => ({ user });
 const mapDispatch = { createDeejay };
 
 export default connect(mapState, mapDispatch)(NewDeejayForm)

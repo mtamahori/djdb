@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateDeejay } from '../../store'
+import { List } from 'semantic-ui-react'
 
 // COMPONENT
 
@@ -21,19 +22,17 @@ class DeejayDetail extends Component {
   }
 
   renderCurrentDeejay() {
-    const { deejays, currentDeejay } = this.props
+    const { currentDeejay } = this.props
     return (
       <div>
+      <h3>Deejay Details</h3>
         {
-          deejays
-            .filter(deejay => deejay.id === currentDeejay.id)
-            .map(deejay => (
-              <div key={deejay.id} >
-                <h4>{deejay.name}</h4>
-                <h4>{deejay.email}</h4>
-                <h4>{deejay.phone}</h4>
-              </div>
-            ))
+          <List key={currentDeejay.id} >
+            <List.Item icon='users' content={currentDeejay.name} />
+            <List.Item icon='marker' content='Chicago, IL' />
+            <List.Item icon='mail' content={currentDeejay.email} />
+            <List.Item icon='phone' content={currentDeejay.phone} />
+          </List>
         }
       </div>
     )
@@ -78,11 +77,11 @@ class DeejayDetail extends Component {
 
 // CONTAINER
 
-const mapState = ({ deejays }, ownProps ) => {
-  const deejayParamId = Number(ownProps.match.params.id)
+const mapState = ({ user, deejays }) => {
   return {
+    user,
     deejays,
-    currentDeejay: deejays.filter(deejay => deejay.id === deejayParamId)[0]
+    currentDeejay: deejays.filter(deejay => deejay.userId === user.id)[0]
   }
 };
 const mapDispatch = { updateDeejay }
