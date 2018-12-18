@@ -73,13 +73,7 @@ class BookerDetail extends Component {
     event.target.phone.value = '';
   }
 }
-const mapState = ({ user, bookers }) => {
-  return {
-    user,
-    bookers,
-    currentBooker: bookers.filter(booker => booker.userId === user.id)[0]
-  }
-};
+const mapState = ({ user, bookers }) => ({ user, bookers })
 const mapDispatch = { updateBooker };
 
 export default connect(mapState,mapDispatch)(BookerDetail);

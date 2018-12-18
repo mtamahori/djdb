@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import BookerDetail from './Booker-Detail'
+import GigMain from '../Gig/Gig-Main'
 
 class BookerMain extends Component {
   constructor(props) {
@@ -22,12 +23,9 @@ class BookerMain extends Component {
           </NavLink>
           :
           <div>
+          <BookerDetail currentBooker={currentBooker} />
           <Button size="massive">Calendar</Button>
-          <Button size="massive">New Booking</Button>
-          <Button size="massive">Open Bookings</Button>
-          <Button size="massive">Past Bookings</Button>
-          <Button size="massive">Browse Deejays</Button>
-            <BookerDetail key={currentBooker.id} />
+          <GigMain currentBooker={currentBooker} />
           </div>
         }
       </div>
@@ -35,9 +33,10 @@ class BookerMain extends Component {
   }
 }
 
-const mapState = ({ user, bookers }) => {
+const mapState = ({ user, bookers, gigs }) => {
   return {
     user,
+    gigs,
     bookers,
     currentBooker: bookers.filter(booker => booker.userId === user.id)[0]
   }

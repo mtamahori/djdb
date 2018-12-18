@@ -24,11 +24,10 @@ import {
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData()
-    console.log('LOAD', this.props)
   }
 
   render() {
-    const { isLoggedIn, isBooker } = this.props
+    const { isLoggedIn, isBooker, isDeejay } = this.props
 
     return (
       <Switch>
@@ -39,13 +38,15 @@ class Routes extends Component {
             <Route exact path="/home" component={UserHome} />
             <Route exact path="/user" component={UserProfile} />
             <Route exact path="/bookers" component={BookerMain} />
-            {isBooker && (
-            <Route exact path="/bookers/new" component={NewBookerForm} />
+            {!isBooker && (
+              <Route exact path="/bookers/new" component={NewBookerForm} />
             )}
             <Route exact path="/bookers/list" component={BookerList} />
             <Route exact path="/bookers/:id" component={BookerDetail} />
             <Route exact path="/deejays" component={DeejayMain} />
-            <Route exact path="/deejays/new" component={NewDeejayForm} />
+            {!isDeejay && (
+              <Route exact path="/deejays/new" component={NewDeejayForm} />
+            )}
             <Route exact path="/deejays/list" component={DeejayList} />
             <Route exact path="/deejays/:id" component={DeejayDetail} />
             <Route exact path="/gigs" component={GigList} />
@@ -61,7 +62,8 @@ class Routes extends Component {
 const mapState = state => {
   return {
     isLoggedIn: !!state.user.id,
-    isBooker: !!state.bookers.filter(booker => booker.userId === state.user.id)[0]
+    isBooker: !!state.bookers.filter(booker => booker.userId === state.user.id)[0],
+    isDeejay: !!state.deejays.filter(deejay => deejay.userId === state.user.id)[0]
   }
 }
 

@@ -19,8 +19,8 @@ AS A USER, I CAN
 
 AS A BOOKER, I CAN
 
-  -View my profile info
-  -Edit my profile info
+  X-View my profile info
+  X-Edit my profile info
   -View my reviews
 
   -Navigate to my CALENDAR
@@ -52,8 +52,8 @@ AS A BOOKER, I CAN
 
 AS A DEEJAY, I CAN
 
-  -View my profile info
-  -Edit my profile info
+  X-View my profile info
+  X-Edit my profile info
   -View my reviews
 
   -Navigate to my CALENDAR
