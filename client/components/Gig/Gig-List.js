@@ -1,19 +1,10 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 import GigItem from './Gig-Item'
 
-// COMPONENT
-
-class GigList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const { gigs } = this.props;
+const GigList = (props) => {
+  const { gigs } = props;
     return (
       <div>
-        <h3>Gig List</h3>
         {
           gigs.map(gig => (
             <GigItem gig={gig} key={gig.id} />
@@ -21,12 +12,6 @@ class GigList extends Component {
         }
       </div>
     )
-  }
 }
 
-// CONTAINER
-
-const mapState = ({ gigs }) => ({ gigs })
-const mapDispatch = null;
-
-export default connect(mapState, mapDispatch)(GigList)
+export default GigList;

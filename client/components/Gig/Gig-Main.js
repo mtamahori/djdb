@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
+import GigList from './Gig-List'
 import NewGigForm from './New-Gig-Form'
-import OpenGigList from './Open-Gig-List'
-import PastGigList from './Past-Gig-List'
-import UpcomingGigList from './Upcoming-Gig-List'
-
-import BrowseGigList from './Browse-Gig-List'
 
 class GigMain extends Component {
   constructor(props) {
@@ -22,8 +18,6 @@ class GigMain extends Component {
   }
 
   render() {
-    const { currentBooker } = this.props;
-    console.log('STATE', this.state)
     return (
       <div>
         <Button
@@ -114,7 +108,7 @@ class GigMain extends Component {
     const openGigs = gigs.filter(gig => (gig.bookerId === currentBooker.id) && (gig.deejayId === null))
     return (
       <div>
-        <OpenGigList gigs={openGigs} />
+        <GigList gigs={openGigs} />
       </div>
     )
   }
@@ -144,7 +138,7 @@ class GigMain extends Component {
     const openGigs = gigs.filter(gig => gig.bookerId === null)
     return (
       <div>
-        <BrowseGigList gigs={openGigs} />
+        <GigList gigs={openGigs} />
       </div>
     )
   }
