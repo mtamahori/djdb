@@ -16,6 +16,10 @@ const Deejay = db.define('deejay', {
   phone: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  userId: {
+    type: Sequelize.INTEGER,
+    unique: true
   }
 });
 

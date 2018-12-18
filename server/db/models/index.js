@@ -8,7 +8,10 @@ const Review = require('./review')
 
 // Associations
 
-Deejay.belongsTo(User);
+User.hasOne(Deejay);
+User.hasOne(Booker);
+
+// Deejay.belongsTo(User);
 
 Deejay.hasMany(Gig);
 Deejay.hasMany(Message);
@@ -18,7 +21,7 @@ Gig.belongsTo(Deejay);
 Message.belongsTo(Deejay);
 Review.belongsTo(Deejay);
 
-Booker.belongsTo(User);
+// Booker.belongsTo(User);
 
 Booker.hasMany(Gig);
 Booker.hasMany(Message);

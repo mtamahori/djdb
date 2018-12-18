@@ -24,13 +24,17 @@ Profiles
 Gigs
 Calendar
 
+2.0
+
 Messages
 Reviews
 
-2.0
+3.0
 
 Embedded Players
 Social Media Links
+
+4.0
 Payment system
 
 

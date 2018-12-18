@@ -24,10 +24,11 @@ import {
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData()
+    console.log('LOAD', this.props)
   }
 
   render() {
-    const { isLoggedIn } = this.props
+    const { isLoggedIn, isBooker } = this.props
 
     return (
       <Switch>
@@ -38,7 +39,9 @@ class Routes extends Component {
             <Route exact path="/home" component={UserHome} />
             <Route exact path="/user" component={UserProfile} />
             <Route exact path="/bookers" component={BookerMain} />
+            {isBooker && (
             <Route exact path="/bookers/new" component={NewBookerForm} />
+            )}
             <Route exact path="/bookers/list" component={BookerList} />
             <Route exact path="/bookers/:id" component={BookerDetail} />
             <Route exact path="/deejays" component={DeejayMain} />
@@ -57,7 +60,8 @@ class Routes extends Component {
 
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    isBooker: !!state.bookers.filter(booker => booker.userId === state.user.id)[0]
   }
 }
 
@@ -79,5 +83,6 @@ export default withRouter(connect(mapState, mapDispatch)(Routes))
 
 Routes.propTypes = {
   loadInitialData: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  isLoggedIn: PropTypes.bool.isRequired,
+  isBooker: PropTypes.bool.isRequired
 }
