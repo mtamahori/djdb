@@ -12,7 +12,7 @@ AS A USER, I CAN
   X-Edit my login info
 
   X-Create a BOOKER PROFILE
-  -Create a DEEJAY PROFILE
+  X-Create a DEEJAY PROFILE
 
   X-Navigate to BOOKER HOME
   X-Navigate to DEEJAY HOME
