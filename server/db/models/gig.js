@@ -16,7 +16,7 @@ const Gig = db.define('gig', {
   },
   location: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: true
   },
   compensation: {
     type: Sequelize.STRING,
