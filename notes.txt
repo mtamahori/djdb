@@ -11,31 +11,38 @@ also need to create some condition for not allowing a user to hit the 'bookers/n
   (protect backend by making a constraint on the models; allow only one deejay/booker id per user)
 // DONE 12/17/18
 
+// OPEN 12/19/18
+SEARCH FILTER: currently WIP. see Gig-Main for early version of filter being implemented under Browse Gigs
+
+
+BIG TASKS:
+
+Profiles / Gigs
+Calendar / Filters
+Messages / Reviews
+STYLING STYLING STYLING
 
 
 
 ///////////////////////////////////////////////////////////
 
-1.0
+MAIN COMPONENTS
 
 Profiles
-Gigs
+
+Gig Lists
+
 Calendar
 
-2.0
-
 Messages
+
 Reviews
 
-// Finalize Styling
+Finalize Styling
 
-3.0
-
+OAUTH
 Embedded Players
 Social Media Links
-
-4.0
-
 Payment system
 
 
@@ -52,4 +59,5 @@ API's to integrate after MVP:
   Bandcamp
   Spotify
 
+  Google (login)
   Paypal (payment)

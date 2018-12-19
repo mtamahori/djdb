@@ -4,6 +4,8 @@ import { Button } from 'semantic-ui-react'
 import GigList from './Gig-List'
 import NewGigForm from './New-Gig-Form'
 
+import FilterGigs from './Filter-Gigs'
+
 class GigMain extends Component {
   constructor(props) {
     super(props);
@@ -138,7 +140,7 @@ class GigMain extends Component {
     const openGigs = gigs.filter(gig => gig.bookerId === null)
     return (
       <div>
-        <GigList gigs={openGigs} />
+        <FilterGigs gigs={openGigs} />
       </div>
     )
   }
