@@ -49,7 +49,6 @@ class Routes extends Component {
             )}
             <Route exact path="/deejays/list" component={DeejayList} />
             <Route exact path="/deejays/:id" component={DeejayDetail} />
-            <Route exact path="/gigs" component={GigList} />
             <Route exact path="/gigs/:id" component={GigDetail} />
             </Switch>
           )}

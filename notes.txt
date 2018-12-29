@@ -1,8 +1,12 @@
 GENERAL:
 
-// OPEN 12/13/18
-need to redirect to '/bookers' from '/bookers/new' after submit (use history.push?)
-// DONE 12/14/18
+// OPEN 12/19/18
+SEARCH FILTER: currently WIP. see Gig-Main for early version of filter being implemented under Browse Gigs
+
+need to clean up component hierarchy of FILTER / GIG LIST / etc.
+could also just remove the GIGLIST from NAVBAR - only gonna need gig list if already in BOOKER or DEEJAY mode
+
+
 
 // OPEN 12/13/18
 also need to create some condition for not allowing a user to hit the 'bookers/new' route if they have a booker profile.
@@ -11,16 +15,9 @@ also need to create some condition for not allowing a user to hit the 'bookers/n
   (protect backend by making a constraint on the models; allow only one deejay/booker id per user)
 // DONE 12/17/18
 
-// OPEN 12/19/18
-SEARCH FILTER: currently WIP. see Gig-Main for early version of filter being implemented under Browse Gigs
-
-
-BIG TASKS:
-
-Profiles / Gigs
-Calendar / Filters
-Messages / Reviews
-STYLING STYLING STYLING
+// OPEN 12/13/18
+need to redirect to '/bookers' from '/bookers/new' after submit (use history.push?)
+// DONE 12/14/18
 
 
 
@@ -52,7 +49,7 @@ Payment system
 
 API's to integrate after MVP:
 
-  Facebook
+  Facebook (event creation?)
   Instagram
   Soundcloud
   Mixcloud
@@ -61,3 +58,15 @@ API's to integrate after MVP:
 
   Google (login)
   Paypal (payment)
+
+
+/////////
+
+If completed, things I can be proud of:
+
+Fullstack NodeJS/Express/React/Redux application
+Design, styling, UI/UX
+Calendar
+Chat functionality with websockets
+API integrations
+Testing (not TDD, but there are tests)
