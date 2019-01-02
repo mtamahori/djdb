@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'redux'
 
-const CalendarWeek = (props) => {
+const CalendarDay = (props) => {
   return (
-    <h4>WEEK</h4>
+    <h4>DAY</h4>
   )
 }
 
-module.exports = CalendarWeek
+module.exports = CalendarDay

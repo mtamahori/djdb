@@ -28,7 +28,7 @@ class BookerMain extends Component {
           <div>
 
             <BookerDetail currentBooker={currentBooker} />
-            <CalendarMain />
+            <CalendarMain currentBooker={currentBooker} />
             <GigMain currentBooker={currentBooker} />
 
           </div>

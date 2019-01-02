@@ -9,10 +9,15 @@ class CalendarMain extends Component {
   render() {
     return (
       <div>
-        <h3>CALENDAR COMING SOON</h3>
-        <h3>CALENDAR</h3>
-        <h3>CALENDAR</h3>
-        <h3>CALENDAR</h3>
+        <div>{this.renderFullCalendar()}</div>
+      </div>
+    )
+  }
+
+  renderFullCalendar() {
+    return (
+      <div>
+        <h3>FULL CALENDAR COMING SOON</h3>
       </div>
     )
   }

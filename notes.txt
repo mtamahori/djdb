@@ -65,6 +65,7 @@ API's to integrate after MVP:
 If completed, things I can be proud of:
 
 Fullstack NodeJS/Express/React/Redux application
+Postgres/Sequelize
 Design, styling, UI/UX
 Calendar
 Chat functionality with websockets
