@@ -1,6 +1,15 @@
 GENERAL:
 
-// OPEN 12/19/18
+// OPEN 1/4/19
+Losing track of which feature has priority right now. Styling right now is at ZERO, so that could definitely be improved. But I need the main functionality to be working first — namely, all the information flow between bookers and deejays needs to be tight before moving on to things like messages and reviews.
+
+Maybe start by getting the deejay components to function like the booker components, as a way to dive back in (since it's been two weeks since I've actually put work into this)
+
+Also consider using REACT CONTEXT to keep track of BOOKER/DEEJAY state? .......
+
+Also maybe consider moving these notes to something organized like Trello or Asana ? ...
+
+// OPEN 12/19/18 ---- TBD
 SEARCH FILTER: currently WIP. see Gig-Main for early version of filter being implemented under Browse Gigs
 
 need to clean up component hierarchy of FILTER / GIG LIST / etc.

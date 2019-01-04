@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import DeejayDetail from './Deejay-Detail'
+import CalendarMain from '../Calendar/Calendar-Main'
+import GigMain from '../Gig/Gig-Main'
 
 class DeejayMain extends Component {
   constructor(props) {
@@ -22,12 +24,14 @@ class DeejayMain extends Component {
           </NavLink>
           :
           <div>
-            <Button size="massive">Calendar</Button>
-            <Button size="massive">New Booking</Button>
-            <Button size="massive">Open Bookings</Button>
-            <Button size="massive">Past Bookings</Button>
-            <Button size="massive">Browse Bookings</Button>
-            <DeejayDetail key={currentDeejay.id} />
+
+            <DeejayDetail currentDeejay={currentDeejay} />
+            <CalendarMain currentDeejay={currentDeejay} />
+
+          {/*<GigMain currentDeejay={currentDeejay} />
+
+              GigMain needs to be able to render its gigs based on the user's current status as a booker or deejay. Basically need a field on global state that indicates whether you are in either mode. Relying on the press of a button would be bad; rather, whenver a user hits a route that is either booker or deejay,then the state field is set. Read up more on CONTEXT and PORTALS and consider using those as ways to handle this piece of state, which is pretty essential to the central functionality of the app.*/}
+
           </div>
         }
       </div>
