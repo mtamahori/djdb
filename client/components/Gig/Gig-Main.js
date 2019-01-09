@@ -6,6 +6,8 @@ import NewGigForm from './New-Gig-Form'
 
 import FilterGigs from './Filter-Gigs'
 
+// PROPS PASSED: currentBooker, currentDeejay
+
 class GigMain extends Component {
   constructor(props) {
     super(props);

@@ -29,13 +29,6 @@ export const fetchDeejays = () => dispatch => {
     .catch(err => console.error('Fetching deejays unsuccessful', err))
 }
 
-export const fetchDeejay = (deejay) => dispatch => {
-  axios
-    .get(`/api/deejays/${deejay.id}`)
-    .then(res => dispatch(getDeejay(res.data)))
-    .catch(err => console.error('Fetching deejay unsuccessful', err))
-}
-
 export const createDeejay = (deejay) => dispatch => {
   axios
     .post('/api/deejays', deejay)

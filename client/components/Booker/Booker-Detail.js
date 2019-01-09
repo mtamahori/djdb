@@ -73,7 +73,8 @@ class BookerDetail extends Component {
     event.target.phone.value = '';
   }
 }
+
 const mapState = ({ user, bookers }) => ({ user, bookers })
-const mapDispatch = { updateBooker };
+const mapDispatch = { updateBooker }
 
 export default connect(mapState,mapDispatch)(BookerDetail);

@@ -1,5 +1,20 @@
 GENERAL:
 
+
+Create UI reducer to control views for BOOKER or DEEJAY. Save route changes in store.
+
+// OR //
+
+Create user action types/creators/reducer that handles DEEJAY or BOOKER mode
+
+
+On route changes (looking for anything /booker or /deejay), dispatch an action to update the user state accordingly. This will use one of React's componentDidMount lifecycle method
+
+
+
+
+
+
 // OPEN 1/4/19
 Losing track of which feature has priority right now. Styling right now is at ZERO, so that could definitely be improved. But I need the main functionality to be working first — namely, all the information flow between bookers and deejays needs to be tight before moving on to things like messages and reviews.
 

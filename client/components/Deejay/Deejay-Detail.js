@@ -75,15 +75,7 @@ class DeejayDetail extends Component {
   }
 }
 
-// CONTAINER
-
-const mapState = ({ user, deejays }) => {
-  return {
-    user,
-    deejays,
-    currentDeejay: deejays.filter(deejay => deejay.userId === user.id)[0]
-  }
-};
+const mapState = ({ user, deejays }) => ({ user, deejays })
 const mapDispatch = { updateDeejay }
 
 export default connect(mapState, mapDispatch)(DeejayDetail)
