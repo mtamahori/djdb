@@ -17,7 +17,6 @@ import {
   DeejayList,
   DeejayDetail,
   NewDeejayForm,
-  GigList,
   GigDetail
 } from './components'
 
@@ -37,22 +36,25 @@ class Routes extends Component {
             <Switch>
             <Route exact path="/home" component={UserHome} />
             <Route exact path="/user" component={UserProfile} />
+
             <Route exact path="/bookers" component={BookerMain} />
             {!isBooker && (
               <Route exact path="/bookers/new" component={NewBookerForm} />
             )}
             <Route exact path="/bookers/list" component={BookerList} />
             <Route exact path="/bookers/:id" component={BookerDetail} />
+
             <Route exact path="/deejays" component={DeejayMain} />
             {!isDeejay && (
               <Route exact path="/deejays/new" component={NewDeejayForm} />
             )}
             <Route exact path="/deejays/list" component={DeejayList} />
             <Route exact path="/deejays/:id" component={DeejayDetail} />
+
             <Route exact path="/gigs/:id" component={GigDetail} />
             </Switch>
           )}
-          <Route component={Landing} />
+          <Route exact path="/" component={Landing} />
       </Switch>
     )
   }

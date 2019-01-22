@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
+import { withRouter } from 'react-router-dom'
 import GigList from './Gig-List'
 import NewGigForm from './New-Gig-Form'
-
 import FilterGigs from './Filter-Gigs'
 
 // PROPS PASSED: currentBooker, currentDeejay
@@ -20,6 +20,20 @@ class GigMain extends Component {
       viewBrowse: false
     }
   }
+
+  //  componentDidMount() {
+  //   const { currentBooker, currentDeejay } = this.props;
+  //   let currentRoute = this.props.location.pathname;
+
+  //   if (currentRoute.includes('/bookers')) {
+  //     console.log('BOOKERMODE', currentBooker)
+  //     setBooker(currentBooker)
+  //   }
+  //   else if (currentRoute.includes('/deejays')) {
+  //     console.log('DEEJAYMODE', currentDeejay)
+  //     setDeejay(currentDeejay)
+  //   }
+  // }
 
   render() {
     return (
@@ -87,7 +101,7 @@ class GigMain extends Component {
             this.setState({ viewBrowse: false })
           }}
           size="massive">
-          Browse Deejays
+          Browse
         </Button>
         {
           this.state.viewBrowse && (
@@ -99,20 +113,35 @@ class GigMain extends Component {
   }
 
   renderNewGigForm() {
-    const { currentBooker } = this.props;
+    const { currentBooker, currentDeejay } = this.props;
     return (
       <div>
-        <NewGigForm currentBooker={currentBooker} key={currentBooker.id} />
+        {
+          currentBooker &&
+          <NewGigForm currentBooker={currentBooker} key={currentBooker.id} />
+        }
+        {
+          currentDeejay &&
+          <NewGigForm currentDeejay={currentDeejay} key={currentDeejay.id} />
+        }
       </div>
     )
   }
 
   renderOpenGigList() {
-    const { currentBooker, gigs } = this.props;
-    const openGigs = gigs.filter(gig => (gig.bookerId === currentBooker.id) && (gig.deejayId === null))
+    const { currentBooker, currentDeejay, gigs } = this.props;
+    let openGigs;
+
+    if (currentBooker) {
+      openGigs = gigs.filter(gig => (gig.bookerId === currentBooker.id) && (gig.deejayId === null))
+    }
+    else if (currentDeejay) {
+      openGigs = gigs.filter(gig => (gig.deejayId === currentDeejay.id) && (gig.bookerId === null))
+    }
+
     return (
       <div>
-        <GigList gigs={openGigs} />
+        <FilterGigs gigs={openGigs} />
       </div>
     )
   }
@@ -138,8 +167,17 @@ class GigMain extends Component {
   }
 
   renderBrowse() {
-    const { currentBooker, gigs } = this.props;
-    const openGigs = gigs.filter(gig => gig.bookerId === null)
+    const { currentBooker, currentDeejay, gigs } = this.props;
+    let openGigs;
+
+    if (currentBooker) {
+      openGigs = gigs.filter(gig => gig.bookerId === null)
+    }
+
+    if (currentDeejay) {
+      openGigs = gigs.filter(gig => gig.deejayId === null)
+    }
+
     return (
       <div>
         <FilterGigs gigs={openGigs} />
@@ -151,4 +189,4 @@ class GigMain extends Component {
 const mapState = ({ gigs }) => ({ gigs });
 const mapDispatch = null;
 
-export default connect(mapState, mapDispatch)(GigMain)
+export default withRouter(connect(mapState, mapDispatch)(GigMain))

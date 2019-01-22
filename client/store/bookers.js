@@ -7,7 +7,6 @@ const defaultBookers = [];
 // ACTION TYPES
 
 const INIT_BOOKERS = 'INIT_BOOKERS'
-const GET_BOOKER = 'GET_BOOKER'
 const ADD_BOOKER = 'ADD_BOOKER'
 const EDIT_BOOKER = 'EDIT_BOOKER'
 const REMOVE_BOOKER = 'REMOVE_BOOKER'
@@ -15,7 +14,6 @@ const REMOVE_BOOKER = 'REMOVE_BOOKER'
 // ACTION CREATORS
 
 const initBookers =  (bookers) => ({ type: INIT_BOOKERS, bookers })
-const getBooker = (booker) => ({ type: GET_BOOKER, booker })
 const addBooker = (booker) => ({ type: ADD_BOOKER, booker })
 const editBooker = (booker) => ({ type: EDIT_BOOKER, booker })
 const removeBooker = (booker) => ({ type: REMOVE_BOOKER, booker })
@@ -27,13 +25,6 @@ export const fetchBookers = () => dispatch => {
     .get('/api/bookers')
     .then(res => dispatch(initBookers(res.data)))
     .catch(err => console.error('Fetching bookers unsuccessful', err))
-}
-
-export const fetchBooker = booker => dispatch => {
-  axios
-    .get(`/api/bookers/${booker.id}`)
-    .then(res => dispatch(getBooker(res.data)))
-    .catch(err => console.error('Fetching booker unsuccessful', err))
 }
 
 export const createBooker = booker => dispatch => {
@@ -65,9 +56,6 @@ export default function(state = defaultBookers, action) {
 
     case INIT_BOOKERS:
       return action.bookers
-
-    case GET_BOOKER:
-      return action.booker
 
     case ADD_BOOKER:
       return [...state, action.booker]

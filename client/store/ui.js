@@ -4,8 +4,8 @@ import history from 'history'
 // INITIAL STATE
 
 const defaultUI = {
-  modeDeejay: false,
-  modeBooker: false,
+  deejayMode: false,
+  bookerMode: false,
   currentMode: {}
 }
 
@@ -21,19 +21,19 @@ const setBooker = booker => ({ type: SET_BOOKER, booker })
 
 // THUNK CREATORS
 
-export const fetchDeejay = (deejay) => dispatch => {
-  axios
-    .get(`/api/deejays/${deejay.id}`)
-    .then(res => dispatch(setDeejay(res.data)))
-    .catch(err => console.error('Fetching deejay unsuccessful', err))
-}
+// export const fetchDeejay = (deejay) => dispatch => {
+//   axios
+//     .get(`/api/deejays/${deejay.id}`)
+//     .then(res => dispatch(setDeejay(res.data)))
+//     .catch(err => console.error('Fetching deejay unsuccessful', err))
+// }
 
-export const fetchBooker = booker => dispatch => {
-  axios
-    .get(`/api/bookers/${booker.id}`)
-    .then(res => dispatch(setBooker(res.data)))
-    .catch(err => console.error('Fetching booker unsuccessful', err))
-}
+// export const fetchBooker = booker => dispatch => {
+//   axios
+//     .get(`/api/bookers/${booker.id}`)
+//     .then(res => dispatch(setBooker(res.data)))
+//     .catch(err => console.error('Fetching booker unsuccessful', err))
+// }
 
 // REDUCER
 
@@ -43,15 +43,15 @@ export default function(state = defaultUI, action) {
 
     case SET_BOOKER:
       return Object.assign({}, state, {
-        modeBooker: true,
-        modeDeejay: false,
+        bookerMode: true,
+        deejayMode: false,
         currentMode: action.booker
       })
 
     case SET_DEEJAY:
       return Object.assign({}, state, {
-        modeBooker: false,
-        modeDeejay: true,
+        bookerMode: false,
+        deejayMode: true,
         currentMode: action.deejay
       })
 

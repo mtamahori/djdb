@@ -27,10 +27,7 @@ class DeejayMain extends Component {
 
             <DeejayDetail currentDeejay={currentDeejay} />
             <CalendarMain currentDeejay={currentDeejay} />
-
-          {/*<GigMain currentDeejay={currentDeejay} />
-
-              GigMain needs to be able to render its gigs based on the user's current status as a booker or deejay. Basically need a field on global state that indicates whether you are in either mode. Relying on the press of a button would be bad; rather, whenver a user hits a route that is either booker or deejay,then the state field is set. Read up more on CONTEXT and PORTALS and consider using those as ways to handle this piece of state, which is pretty essential to the central functionality of the app.*/}
+            <GigMain currentDeejay={currentDeejay} />
 
           </div>
         }

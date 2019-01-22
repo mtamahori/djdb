@@ -7,7 +7,6 @@ const defaultDeejays = [];
 // ACTION TYPES
 
 const INIT_DEEJAYS = 'INIT_DEEJAYS'
-const GET_DEEJAY = 'GET_DEEJAY'
 const ADD_DEEJAY = 'ADD_DEEJAY'
 const EDIT_DEEJAY = 'EDIT_DEEJAY'
 const REMOVE_DEEJAY = 'REMOVE_DEEJAY'
@@ -15,7 +14,6 @@ const REMOVE_DEEJAY = 'REMOVE_DEEJAY'
 // ACTION CREATORS
 
 const initDeejays = (deejays) => ({ type: INIT_DEEJAYS, deejays })
-const getDeejay = (deejay) => ({ type: GET_DEEJAY, deejay })
 const addDeejay = (deejay) => ({ type: ADD_DEEJAY, deejay })
 const editDeejay = (deejay) => ({ type: EDIT_DEEJAY, deejay })
 const removeDeejay = (deejay) => ({ type: REMOVE_DEEJAY, deejay })
@@ -58,9 +56,6 @@ export default function(state = defaultDeejays, action) {
 
     case INIT_DEEJAYS:
       return action.deejays
-
-    case GET_DEEJAY:
-      return action.deejay
 
     case ADD_DEEJAY:
       return [...state, action.deejay]
