@@ -1,25 +1,50 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import dateFns from 'date-fns'
 
 class CalendarMain extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      currentMonth: new Date(),
+      selectedDate: new Date
+    }
   }
+
 
   render() {
     return (
-      <div>
-        <div>{this.renderFullCalendar()}</div>
+      <div className="calendar-main">
+        <div>{this.renderHeader()}</div>
+        <div>{this.renderDays()}</div>
+        <div>{this.renderCells()}</div>
       </div>
     )
   }
 
-  renderFullCalendar() {
-    return (
-      <div>
-        <h3>FULL CALENDAR COMING SOON</h3>
-      </div>
-    )
+  renderHeader() {
+
+  }
+
+  renderDays() {
+
+  }
+
+  renderCells() {
+
+  }
+
+  onDateClick = (day) => {
+
+  }
+
+  nextMonth = () => {
+
+  }
+
+  prevMonth = () => {
+
   }
 }
 
