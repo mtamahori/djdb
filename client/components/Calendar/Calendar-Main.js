@@ -8,20 +8,15 @@ class CalendarMain extends Component {
     super(props)
 
     this.state = {
-      currentMonth: new Date(),
+      curentMonth: new Date(),
       selectedDate: new Date()
     }
-
-    //bindings
-    // this.onDateClick = this.onDateClick.bind(this);
-    // this.nextMonth = this.nextMonth.bind(this);
-    // this.prevMonth = this.prevMonth.bind(this);
   }
 
 
   render() {
     return (
-      <div className="calendar-main">
+      <div className="calendar">
         <div>{this.renderHeader()}</div>
         <div>{this.renderDays()}</div>
         <div>{this.renderCells()}</div>
@@ -131,3 +126,4 @@ const mapState = null;
 const mapDispatch = null;
 
 export default connect(mapState, mapDispatch)(CalendarMain);
+

@@ -1,0 +1,47 @@
+General:
+
+Consider leaving out reviews, because you know why you hate that shit
+Also leave out payment, because it isn't necessary for MVP
+What you need for MVP is a damn good interface, the ability to search for the right venuse/bookers/deejays/events, and set up COMMUNICATION between the right parties. The rest will follow. No need to clutter your application with unnecessary features.
+
+
+
+//////////////////////////////////////// TIME AND DATE
+
+Calendar - study CSS and make the styling more your own
+    Feature: click on a date, and the relevant gig lists will render. Gotta think about how to format this. You can view stuff that pertains to you, stuff that pertains to that date, ...
+
+RegEX / Datefns:
+    need to be able to verify date input information per gig
+    need to match and filter past and future gigs
+
+//////////////////////////////////////// MINOR ADDITIONS / EDITS
+
+Tech rider with icons / equipment available for use/rent etc
+
+//////////////////////////////////////// STYLE
+
+General Color Scheme
+
+Landing page animation
+
+Proper UI for each page (buttons laid out where they should be, etc)
+
+
+/////////////////////////////////////// FULL STACK FEATURES
+
+Messages
+
+/////////////////////////////////////// EXTERNAL INTEGRATIONS
+
+Soundcloud
+Mixcloud
+Bandcamp
+Spotify
+Facebook
+Instagram
+
+Google OAUTH
+
+
+
