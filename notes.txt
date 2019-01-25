@@ -14,7 +14,7 @@ Then integrate into Calendar
     (This requires some state management changes in order to allow the calendar component to render the correct type of gig according to filter select. Use color codes as well.)
 Then implement BROWSE (UI/UX TBD).
 Then implement a way to apply/accept gig.
-This should reach MVP; bookers and deejays will be able to create gigs, browse gigs, apply for gigs, accept gigs.
+    (This should reach MVP; bookers and deejays will be able to create gigs, browse gigs, apply for gigs, accept gigs.)
 
 Then STYLING
 Then MESSAGING
@@ -22,6 +22,12 @@ Then minor features:
     External integrations
     Tech rider select (to replace/add on to "notes" section for each gig)
     Landing page animation
+
+PROJECTED TIME: 2 months
+Then, continue tinkering, but shift focus to freelance(?), building personal website, algorithm practice, and job search.
+PROJECTED TIME: 2 months
+Then, summer. Network and apply June - August, with reduced hours at Yokocho (Weds+Thurs only) and increased focus on music.
+Job by autumn.
 
 
 //////////////////////////////////////// TIME AND DATE
