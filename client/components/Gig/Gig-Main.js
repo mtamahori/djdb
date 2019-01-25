@@ -135,6 +135,7 @@ class GigMain extends Component {
     if (currentBooker) {
       openGigs = gigs.filter(gig => (gig.bookerId === currentBooker.id) && (gig.deejayId === null))
     }
+
     else if (currentDeejay) {
       openGigs = gigs.filter(gig => (gig.deejayId === currentDeejay.id) && (gig.bookerId === null))
     }
@@ -174,7 +175,7 @@ class GigMain extends Component {
       openGigs = gigs.filter(gig => gig.bookerId === null)
     }
 
-    if (currentDeejay) {
+    else if (currentDeejay) {
       openGigs = gigs.filter(gig => gig.deejayId === null)
     }
 

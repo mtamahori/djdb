@@ -4,6 +4,24 @@ Consider leaving out reviews, because you know why you hate that shit
 Also leave out payment, because it isn't necessary for MVP
 What you need for MVP is a damn good interface, the ability to search for the right venuse/bookers/deejays/events, and set up COMMUNICATION between the right parties. The rest will follow. No need to clutter your application with unnecessary features.
 
+Think about how to use the calendar component for multiple use cases. One way could be instead of using buttons with dropdown menus for each type of gig, could just render the calendar and COLOR CODE each type. You click a button and it filters to only show gigs of that type. Click a cell on the calendar and it takes you to a "Day" component with a list of gigs for that day. This is most useful for bookers who might be booking multiple deejays for a given night (different riders, time slots, communications, etc).
+
+/////// STEPS ////////
+
+Once inputs are validated,
+Work on the Filter component/feature
+Then integrate into Calendar
+    (This requires some state management changes in order to allow the calendar component to render the correct type of gig according to filter select. Use color codes as well.)
+Then implement BROWSE (UI/UX TBD).
+Then implement a way to apply/accept gig.
+This should reach MVP; bookers and deejays will be able to create gigs, browse gigs, apply for gigs, accept gigs.
+
+Then STYLING
+Then MESSAGING
+Then minor features:
+    External integrations
+    Tech rider select (to replace/add on to "notes" section for each gig)
+    Landing page animation
 
 
 //////////////////////////////////////// TIME AND DATE
@@ -29,6 +47,8 @@ Proper UI for each page (buttons laid out where they should be, etc)
 
 
 /////////////////////////////////////// FULL STACK FEATURES
+
+Reviews (simple api refresher)
 
 Messages
 
