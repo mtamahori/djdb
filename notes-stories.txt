@@ -21,11 +21,9 @@ AS A BOOKER, I CAN
 
   X-View my profile info
   X-Edit my profile info
-  -View my reviews
 
   -Navigate to my CALENDAR
   -View my calendar
-  -Toggle between month and week view
   -Filter gigs by upcoming, open, past
 
   -Navigate to CREATE NEW OPEN GIG
@@ -47,14 +45,12 @@ AS A BOOKER, I CAN
 
   -Navigate to PAST GIG LIST
   -View my past gigs + in detail
-  -Leave reviews for deejays
 
 
 AS A DEEJAY, I CAN
 
   X-View my profile info
   X-Edit my profile info
-  -View my reviews
 
   -Navigate to my CALENDAR
   -View my calendar
@@ -80,4 +76,3 @@ AS A DEEJAY, I CAN
 
   -Navigate to PAST GIG LIST
   -View my past gigs + in detail
-  -Leave reviews for bookers

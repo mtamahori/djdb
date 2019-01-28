@@ -2,7 +2,7 @@
 
 const db = require('../server/db')
 const Promise = require('bluebird');
-const { User, Booker, Deejay, Gig, Message, Review } = require('../server/db/models')
+const { User, Booker, Deejay, Gig, Message } = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})

@@ -48,19 +48,19 @@ class GigDetail extends Component {
           <div>
             <h3>Update Gig Details</h3>
             <h4>
-              <input name="name" type="text" required placeholder="Name" />
+              <input name="name" type="text" placeholder="Name" />
             </h4>
             <h4>
-              <input name="date" type="text" required placeholder="Date" />
+              <input name="date" type="text" placeholder="Date" />
             </h4>
             <h4>
-              <input name="time" type="text" required placeholder="Time" />
+              <input name="time" type="text" placeholder="Time" />
             </h4>
             <h4>
-              <input name="location" type="text" required placeholder="Location" />
+              <input name="location" type="text" placeholder="Location" />
             </h4>
             <h4>
-              <input name="compensation" type="text" required placeholder="Compensation" />
+              <input name="compensation" type="text" placeholder="Compensation" />
             </h4>
             <input type="submit" value="submit" />
           </div>
@@ -72,20 +72,31 @@ class GigDetail extends Component {
   handleUpdateGig(event) {
     event.preventDefault();
     const { updateGig, currentGig } = this.props;
-    const gig = {
-      id: currentGig.id,
-      name: event.target.name.value,
-      date: event.target.date.value,
-      time: event.target.time.value,
-      location: event.target.location.value,
-      compensation: event.target.compensation.value
+
+    if (
+      event.target.name.value === '' &&
+      event.target.date.value === '' &&
+      event.target.time.value === '' &&
+      event.target.location.value === '' &&
+      event.target.compensation.value === ''
+    ) {
+      alert("Please fill out at least one field")
+    } else {
+      const gig = {
+        id: currentGig.id,
+        name: event.target.name.value || currentGig.name,
+        date: event.target.date.value || currentGig.date,
+        time: event.target.time.value || currentGig.time,
+        location: event.target.location.value || currentGig.location,
+        compensation: event.target.compensation.value || currentGig.compensation
+      }
+      updateGig(gig);
+      event.target.name.value = '';
+      event.target.date.value = '';
+      event.target.time.value = '';
+      event.target.location.value = '';
+      event.target.compensation.value = '';
     }
-    updateGig(gig);
-    event.target.name.value = '';
-    event.target.date.value = '';
-    event.target.time.value = '';
-    event.target.location.value = '';
-    event.target.compensation.value = '';
   }
 
 }

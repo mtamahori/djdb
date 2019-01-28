@@ -39,15 +39,31 @@ class NewGigForm extends Component {
 
   handleCreateGig(event) {
     event.preventDefault();
-    const { createGig, currentBooker } = this.props
-    const newGig = {
-      bookerId: currentBooker.id,
-      name: event.target.name.value,
-      date: event.target.date.value,
-      time: event.target.time.value,
-      location: event.target.location.value,
-      compensation: event.target.compensation.value
+    const { createGig, currentBooker, currentDeejay } = this.props
+    let newGig;
+
+    if (currentBooker) {
+      newGig = {
+        bookerId: currentBooker.id,
+        name: event.target.name.value,
+        date: event.target.date.value,
+        time: event.target.time.value,
+        location: event.target.location.value,
+        compensation: event.target.compensation.value
+      }
     }
+
+    else if (currentDeejay) {
+      newGig = {
+        deejayId: currentDeejay.id,
+        name: event.target.name.value,
+        date: event.target.date.value,
+        time: event.target.time.value,
+        location: event.target.location.value,
+        compensation: event.target.compensation.value
+      }
+    }
+
     createGig(newGig);
     event.target.name.value = '';
     event.target.date.value = '';

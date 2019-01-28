@@ -27,21 +27,21 @@ export const fetchDeejays = () => dispatch => {
     .catch(err => console.error('Fetching deejays unsuccessful', err))
 }
 
-export const createDeejay = (deejay) => dispatch => {
+export const createDeejay = deejay => dispatch => {
   axios
     .post('/api/deejays', deejay)
     .then(res => dispatch(addDeejay(res.data)))
     .catch(err => console.error('Creating deejay unsuccessful', err))
 }
 
-export const updateDeejay = (deejay) => dispatch => {
+export const updateDeejay = deejay => dispatch => {
   axios
     .put(`/api/deejays/${deejay.id}`, deejay)
     .then(res => dispatch(editDeejay(res.data)))
     .catch(err => console.error('Updating deejay unsuccessful', err))
 }
 
-export const deleteDeejay = (deejay) => dispatch => {
+export const deleteDeejay = deejay => dispatch => {
   dispatch(removeDeejay(deejay))
   axios
     .delete(`/api/deejays/${deejay.id}`)

@@ -7,9 +7,9 @@ import { List } from 'semantic-ui-react'
 
 class DeejayDetail extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.handleUpdateDeejay = this.handleUpdateDeejay.bind(this)
+    this.handleUpdateDeejay = this.handleUpdateDeejay.bind(this);
   }
 
   render() {
@@ -18,7 +18,7 @@ class DeejayDetail extends Component {
         <div>{this.renderCurrentDeejay()}</div>
         <div>{this.renderUpdateDeejay()}</div>
       </div>
-    )
+    );
   }
 
   renderCurrentDeejay() {
@@ -45,13 +45,13 @@ class DeejayDetail extends Component {
           <div>
             <h3>Update Deejay Details</h3>
             <h4>
-              <input name="name" type="text" required placeholder="Name" />
+              <input name="name" type="text" placeholder="Name" />
             </h4>
             <h4>
-              <input name="email" type="text" required placeholder="Email" />
+              <input name="email" type="text" placeholder="Email" />
             </h4>
             <h4>
-              <input name="phone" type="text" required placeholder="Phone #" />
+              <input name="phone" type="text" placeholder="Phone #" />
             </h4>
             <input type="submit" value="submit" />
           </div>
@@ -61,17 +61,27 @@ class DeejayDetail extends Component {
   }
 
   handleUpdateDeejay(event) {
+    event.preventDefault();
     const { updateDeejay, currentDeejay } = this.props;
-    const deejay = {
-      id: currentDeejay.id,
-      name: event.target.name.value,
-      email: event.target.email.value,
-      phone: event.target.phone.value
+
+    if (
+      event.target.name.value === '' &&
+      event.target.email.value === '' &&
+      event.target.phone.value === ''
+    ) {
+      alert("Please fill out at least one field");
+    } else {
+      const deejay = {
+        id: currentDeejay.id,
+        name: event.target.name.value || currentDeejay.name,
+        email: event.target.email.value || currentDeejay.email,
+        phone: event.target.phone.value || currentDeejay.phone
+      }
+      updateDeejay(deejay);
+      event.target.name.value = '';
+      event.target.email.value = '';
+      event.target.phone.value = '';
     }
-    updateDeejay(deejay);
-    event.target.name.value = '';
-    event.target.email.value = '';
-    event.target.phone.value = '';
   }
 }
 

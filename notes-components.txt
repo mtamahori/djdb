@@ -32,15 +32,6 @@ User Home
             Update Field
                 Update Submit
 
-            Review List
-
-                Review Item
-
-                    Review Detail
-                        Author
-                        Content
-                        Timestamp
-
 
         CALENDAR
 
@@ -79,7 +70,7 @@ User Home
                                 Notes
 
 
-        OPEN GIG LIST
+        MY OPEN GIG LIST
 
             Open Gig Item
 
@@ -94,7 +85,7 @@ User Home
                             Update Submit
 
 
-        UPCOMING GIG LIST
+        MY UPCOMING GIG LIST
 
             Upcoming Gig Item
 
@@ -129,7 +120,7 @@ User Home
                                 Timestamp
 
 
-        PAST GIG LIST
+        MY PAST GIG LIST
 
             Past Gig Item
 
@@ -146,11 +137,6 @@ User Home
                         [Links]
                         Tech Rider
                         Notes
-
-                    Review Detail
-                        Author
-                        Content
-                        Timestamp
 
                     MESSAGE INBOX
 
@@ -182,15 +168,6 @@ User Home
 
             Update Field
                 Update Submit
-
-            Review List
-
-                Review Item
-
-                    Review Detail
-                        Author
-                        Content
-                        Timestamp
 
 
         CALENDAR
@@ -232,7 +209,7 @@ User Home
                                 Notes
 
 
-        OPEN GIG LIST
+        MY OPEN GIG LIST
 
             Open Gig Item
 
@@ -245,7 +222,7 @@ User Home
                         Notes
 
 
-        UPCOMING GIG LIST
+        MY UPCOMING GIG LIST
 
             Upcoming Gig Item
 
@@ -282,7 +259,7 @@ User Home
                                     Timestamp
 
 
-        PAST GIG LIST
+        MY PAST GIG LIST
 
             Past Gig Item
 
@@ -299,11 +276,6 @@ User Home
                         [Style Tags]
                         [Links]
                         Notes
-
-                    Review Detail
-                        Author
-                        Content
-                        Timestamp
 
                     MESSAGE INBOX
 

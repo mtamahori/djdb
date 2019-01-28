@@ -112,20 +112,35 @@ class GigMain extends Component {
     )
   }
 
+  // renderNewGigForm() {
+  //   const { currentBooker, currentDeejay } = this.props;
+  //   return (
+  //     {
+  //       if (currentBooker) {
+  //         <NewGigForm currentBooker={currentBooker} key={currentBooker.id} />
+  //       }
+
+  //       else if (currentDeejay) {
+  //         <NewGigForm currentDeejay={currentDeejay} key={currentDeejay.id} />
+  //       }
+  //     }
+  //   )
+  // }
+
   renderNewGigForm() {
     const { currentBooker, currentDeejay } = this.props;
-    return (
-      <div>
-        {
-          currentBooker &&
-          <NewGigForm currentBooker={currentBooker} key={currentBooker.id} />
-        }
-        {
-          currentDeejay &&
-          <NewGigForm currentDeejay={currentDeejay} key={currentDeejay.id} />
-        }
-      </div>
-    )
+
+    if (currentBooker) {
+      return (
+        <NewGigForm currentBooker={currentBooker} key={currentBooker.id} />
+      )
+    }
+
+    else if (currentDeejay) {
+      return (
+        <NewGigForm currentDeejay={currentDeejay} key={currentDeejay.id} />
+      )
+    }
   }
 
   renderOpenGigList() {

@@ -16,11 +16,23 @@ const Gig = db.define('gig', {
   },
   location: {
     type: Sequelize.STRING,
-    allowNull: true
+    allowNull: false
   },
   compensation: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  notes: {
+    type: Sequelize.TEXT,
+    allowNull: true
+  },
+  bookerId: {
+    type: Sequelize.INTEGER,
+    allowNull: true
+  },
+  deejayId: {
+    type: Sequelize.INTEGER,
+    allowNull: true
   }
 });
 
