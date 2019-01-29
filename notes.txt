@@ -8,19 +8,19 @@ Think about how to use the calendar component for multiple use cases. One way co
 
 /////// STEPS ////////
 
-Once inputs are validated,
-Work on the Filter component/feature
-Then integrate into Calendar
+>>>>>Once inputs are validated,
+Work on the FILTER component/feature (open, past, upcoming)
+Then integrate into CALENDAR
     (This requires some state management changes in order to allow the calendar component to render the correct type of gig according to filter select. Use color codes as well.)
-Then implement BROWSE (UI/UX TBD).
-Then implement a way to apply/accept gig.
+
+Then BROWSE (UI/UX TBD).
+Then APPLY/ACCEPT GIG.
     (This should reach MVP; bookers and deejays will be able to create gigs, browse gigs, apply for gigs, accept gigs.)
+
 Then MESSAGING
 Then STYLING
-Then minor features:
-    External integrations
-    Tech rider select (to replace/add on to "notes" section for each gig)
-    Landing page animation
+Then EXTERNAL INTEGRATIONS
+Then LANDING PAGE ANIMATION
 
 ^ PROJECTED TIME: 2 months
 ^ Then, continue tinkering/testing, but shift focus to freelance(?), building personal website, algorithm practice, and job search.
