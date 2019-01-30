@@ -67,7 +67,7 @@ class BookerDetail extends Component {
     event.preventDefault();
     const { updateBooker, currentBooker } = this.props;
 
-    let phoneInput = event.target.phone1.value + event.target.phone2.value + event.target.phone3.value
+    let phoneInput = event.target.phone1.value + event.target.phone2.value + event.target.phone3.value;
 
     if (
       event.target.name.value === '' &&

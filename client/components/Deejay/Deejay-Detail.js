@@ -45,13 +45,18 @@ class DeejayDetail extends Component {
           <div>
             <h3>Update Deejay Details</h3>
             <h4>
-              <input name="name" type="text" placeholder="Name" />
+              Name <br />
+              <input name="name" type="text" placeholder="" />
             </h4>
             <h4>
-              <input name="email" type="text" placeholder="Email" />
+              Email <br />
+              <input name="email" type="text" placeholder="" />
             </h4>
             <h4>
-              <input name="phone" type="text" placeholder="Phone #" />
+              Phone # <br />
+              <input name="phone1" type="text" maxLength="3" placeholder="" />
+              <input name="phone2" type="text" maxLength="3" placeholder="" />
+              <input name="phone3" type="text" maxLength="4" placeholder="" />
             </h4>
             <input type="submit" value="submit" />
           </div>
@@ -64,10 +69,12 @@ class DeejayDetail extends Component {
     event.preventDefault();
     const { updateDeejay, currentDeejay } = this.props;
 
+    let phoneInput = event.target.phone1.value + event.target.phone2.value + event.target.phone3.value;
+
     if (
       event.target.name.value === '' &&
       event.target.email.value === '' &&
-      event.target.phone.value === ''
+      phoneInput === ''
     ) {
       alert("Please fill out at least one field");
     } else {
@@ -75,12 +82,14 @@ class DeejayDetail extends Component {
         id: currentDeejay.id,
         name: event.target.name.value || currentDeejay.name,
         email: event.target.email.value || currentDeejay.email,
-        phone: event.target.phone.value || currentDeejay.phone
+        phone: phoneInput || currentDeejay.phone
       }
       updateDeejay(deejay);
       event.target.name.value = '';
       event.target.email.value = '';
-      event.target.phone.value = '';
+      event.target.phone1.value = '';
+      event.target.phone2.value = '';
+      event.target.phone3.value = '';
     }
   }
 }
