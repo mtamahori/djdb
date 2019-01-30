@@ -6,67 +6,71 @@ What you need for MVP is a damn good interface, the ability to search for the ri
 
 Think about how to use the calendar component for multiple use cases. One way could be instead of using buttons with dropdown menus for each type of gig, could just render the calendar and COLOR CODE each type. You click a button and it filters to only show gigs of that type. Click a cell on the calendar and it takes you to a "Day" component with a list of gigs for that day. This is most useful for bookers who might be booking multiple deejays for a given night (different riders, time slots, communications, etc).
 
-/////// STEPS ////////
+/////// CURRENT STEPS ////////
 
->>>>>Once inputs are validated,
-Work on the FILTER component/feature (open, past, upcoming)
-Then integrate into CALENDAR
-    (This requires some state management changes in order to allow the calendar component to render the correct type of gig according to filter select. Use color codes as well.)
+INPUT + VALIDATION
+    Sequelize model constraints
+    Reg Ex study
+    change phone input fields to three input fields, each only taking 3-4-3 digits
+    change date input field to drop-downs with pre-determined options (mm-dd-yyyy)
 
-Then BROWSE (UI/UX TBD).
-Then APPLY/ACCEPT GIG.
-    (This should reach MVP; bookers and deejays will be able to create gigs, browse gigs, apply for gigs, accept gigs.)
+FILTER + SEARCH
+    use RegEx/datefns to determine past/future status, add flag to Sequelize model
+    filter gigs into lists based on past, upcoming, open
+    search any gig list to match text input (all fields - name, location, booker/deejay, etc)
+    search any gig list to match date range, input via two sets of dropdowns
 
-Then MESSAGING
-Then STYLING
-Then EXTERNAL INTEGRATIONS
-Then LANDING PAGE ANIMATION
+BROWSE OPEN GIGS (UI/UX TBD).
+    default renders a list of all open gigs in chronological order
+    option to select date/date range via calendar
+    option to search based on all fields (name, location, booker/deejay, etc)
+    calendar should render only these dates
 
-^ PROJECTED TIME: 2 months
-^ Then, continue tinkering/testing, but shift focus to freelance(?), building personal website, algorithm practice, and job search.
-PROJECTED TIME: 2 months
-Then, summer. Network and apply June - August, with reduced hours at Yokocho (2-3 nights only) and increased focus on music.
-Job by autumn.
+CALENDAR - (the calendar is the centerpiece of the deejay/booker home. will take some time)
+    ((*hierarchy of filter/browse/calendar ??))
+    greyed out "+ new gig" button on each cell
+    greyed out "view gigs" button on each cell
+    hover over each cell and select appropriate button
+    +
 
+APPLY/ACCEPT GIG
+    simple "request" button on each open gig
+    clicking "request" button sets a "pending" flag on that gig
+    create a "requests" list that renders on deejay/booker homepage - a gig list specifically for invites
+    accepting/declining a gig will add the correct deejayId/bookerId to that gig
+    ~maybe have a separate tab for "history" - i.e. all past gigs, both declined, pending, and accepted
 
-//////////////////////////////////////// TIME AND DATE
+STYLING
+    color Scheme
+    button types
+    layout
 
-Calendar - study CSS and make the styling more your own
-    Feature: click on a date, and the relevant gig lists will render. Gotta think about how to format this. You can view stuff that pertains to you, stuff that pertains to that date, ...
+SEED FILE
+    multiple instances of all types of each model
 
-RegEX / Datefns:
-    need to be able to verify date input information per gig
-    need to match and filter past and future gigs
+ERROR MESSAGES
+    for bad inputs
 
-//////////////////////////////////////// MINOR ADDITIONS / EDITS
+/////////////////////////////////////// ^ MVP - 2mo
 
-Tech rider with icons / equipment available for use/rent etc
+MESSAGING
+    one chatbox per gig
+    keep the layout dead simple
 
-//////////////////////////////////////// STYLE
+EXTERNAL INTEGRATIONS
+    Soundcloud
+    Mixcloud
+    Spotify
+    Bandcamp
+    Facebook
+    Instagram
 
-General Color Scheme
+LANDING PAGE / FOOTER
+    animation
+    logos
 
-Landing page animation
+TESTING
+    back end tests
+    front end tests
 
-Proper UI for each page (buttons laid out where they should be, etc)
-
-
-/////////////////////////////////////// FULL STACK FEATURES
-
-Reviews (simple api refresher)
-
-Messages
-
-/////////////////////////////////////// EXTERNAL INTEGRATIONS
-
-Soundcloud
-Mixcloud
-Bandcamp
-Spotify
-Facebook
-Instagram
-
-Google OAUTH
-
-
-
+////////////////////////////////////// ^ Tinker + Test - 2mo
