@@ -13,6 +13,7 @@ INPUT + VALIDATION
     Reg Ex study
     change phone input fields to three input fields, each only taking 3-4-3 digits
     change date input field to drop-downs with pre-determined options (mm-dd-yyyy)
+    change time input field to drop-downs with pre-determined options (mm-dd-yyyy)
 
 FILTER + SEARCH
     use RegEx/datefns to determine past/future status, add flag to Sequelize model

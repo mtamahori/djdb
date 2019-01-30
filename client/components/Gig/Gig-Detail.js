@@ -47,20 +47,99 @@ class GigDetail extends Component {
         <form onSubmit={this.handleUpdateGig} >
           <div>
             <h3>Update Gig Details</h3>
-            <h4>
-              <input name="name" type="text" placeholder="Name" />
+            <h4> Name <br />
+              <input name="name" type="text" placeholder="" />
             </h4>
-            <h4>
-              <input name="date" type="text" placeholder="Date" />
+            <h4> Date <br />
+              <select name="date1" type="text" placeholder=""  >
+                <option value="">--</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+              <select name="date2" type="text" placeholder=""  >
+                <option value="">--</option>
+                <option value="01">1</option>
+                <option value="02">2</option>
+                <option value="03">3</option>
+                <option value="04">4</option>
+                <option value="05">5</option>
+                <option value="06">6</option>
+                <option value="07">7</option>
+                <option value="08">8</option>
+                <option value="09">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+              </select>
+              <select name="date3" type="text" placeholder=""  >
+                <option value="">----</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+              </select>
             </h4>
-            <h4>
-              <input name="time" type="text" placeholder="Time" />
+            <h4> Time <br />
+              <select name="time1" type="text" placeholder=""  >
+                  <option value="">--</option>
+                  <option value="01">01</option>
+                  <option value="02">02</option>
+                  <option value="03">03</option>
+                  <option value="04">04</option>
+                  <option value="05">05</option>
+                  <option value="06">06</option>
+                  <option value="07">07</option>
+                  <option value="08">08</option>
+                  <option value="09">09</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+              </select>
+              <select name="time2" type="text" placeholder=""  >
+                  <option value="">--</option>
+                  <option value="00">00</option>
+                  <option value="15">15</option>
+                  <option value="30">30</option>
+                  <option value="45">45</option>
+              </select>
+              <select name="time3" type="text" placeholder=""  >
+                  <option value="">--</option>
+                  <option value="am">am</option>
+                  <option value="pm">pm</option>
+              </select>
             </h4>
-            <h4>
-              <input name="location" type="text" placeholder="Location" />
+            <h4> Location <br />
+              <input name="location" type="text" placeholder="" />
             </h4>
-            <h4>
-              <input name="compensation" type="text" placeholder="Compensation" />
+            <h4> Compenstion <br />
+              <input name="compensation" type="text" placeholder="" />
             </h4>
             <input type="submit" value="submit" />
           </div>
@@ -73,10 +152,13 @@ class GigDetail extends Component {
     event.preventDefault();
     const { updateGig, currentGig } = this.props;
 
+    let dateInput = event.target.date1.value + event.target.date2.value + event.target.date3.value;
+    let timeInput = event.target.time1.value + event.target.time2.value + event.target.time3.value
+
     if (
       event.target.name.value === '' &&
-      event.target.date.value === '' &&
-      event.target.time.value === '' &&
+      dateInput === '' &&
+      timeInput === '' &&
       event.target.location.value === '' &&
       event.target.compensation.value === ''
     ) {
@@ -85,15 +167,19 @@ class GigDetail extends Component {
       const gig = {
         id: currentGig.id,
         name: event.target.name.value || currentGig.name,
-        date: event.target.date.value || currentGig.date,
-        time: event.target.time.value || currentGig.time,
+        date: dateInput || currentGig.date,
+        time: timeInput || currentGig.time,
         location: event.target.location.value || currentGig.location,
         compensation: event.target.compensation.value || currentGig.compensation
       }
       updateGig(gig);
       event.target.name.value = '';
-      event.target.date.value = '';
-      event.target.time.value = '';
+      event.target.date1.value = '';
+      event.target.date2.value = '';
+      event.target.date3.value = '';
+      event.target.time1.value = '';
+      event.target.time2.value = '';
+      event.target.time3.value = '';
       event.target.location.value = '';
       event.target.compensation.value = '';
     }
