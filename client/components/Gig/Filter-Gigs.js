@@ -16,10 +16,9 @@ class FilterGigs extends Component {
   render() {
     const { gigs } = this.props
 
-    const renderGigsByName = gigs.filter(gig => gig.name.match(this.state.inputValue))
-    // const renderGigsByDate = gigs.filter(gig => gig.date.match(this.state.inputValue))
-    // const renderGigsByTime = gigs.filter(gig => gig.time.match(this.state.inputValue))
-    // const renderGigs = [renderGigsByName.concat(renderGigsByDate).concat(renderGigsByTime)]
+    const renderGigsByName = gigs.filter(gig => (gig.name.match(this.state.inputValue)))
+    const renderGigsByLocation = gigs.filter(gig => (gig.location.match(this.state.inputValue)))
+    // renderGigsByCompensation
 
     return (
       <div>

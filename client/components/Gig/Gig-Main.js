@@ -163,6 +163,17 @@ class GigMain extends Component {
   }
 
   renderPastGigList() {
+    const { currentBooker, currentDeejay, gigs } = this.props;
+    let pastGigs;
+
+    // if (currentBooker) {
+    //   pastGigs = gigs.filter(gig => (gig.bookerId === currentBooker.id) && )
+    // }
+
+    // else if (currentDeejay) {
+
+    // }
+
     return (
       <div>
         <h3>PAST GIGS</h3>
@@ -173,6 +184,17 @@ class GigMain extends Component {
   }
 
   renderUpcomingGigList() {
+    const { currentBooker, currentDeejay, gigs } = this.props;
+    let upcomingGigs;
+
+    // if (currentBooker) {
+
+    // }
+
+    // else if (currentDeejay) {
+
+    // }
+
     return (
       <div>
         <h3>UPCOMING GIGS</h3>

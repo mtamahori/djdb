@@ -8,18 +8,24 @@ Think about how to use the calendar component for multiple use cases. One way co
 
 /////// CURRENT STEPS ////////
 
-INPUT + VALIDATION
+= INPUT + VALIDATION
     Sequelize model constraints
     Reg Ex study
     change phone input fields to three input fields, each only taking 3-4-3 digits
     change date input field to drop-downs with pre-determined options (mm-dd-yyyy)
-    change time input field to drop-downs with pre-determined options (mm-dd-yyyy)
+    change time input field to drop-downs with pre-determined options (hh-mm-//)
 
 FILTER + SEARCH
-    use RegEx/datefns to determine past/future status, add flag to Sequelize model
+    use datefns to determine past/future status, add flag to Sequelize model
     filter gigs into lists based on past, upcoming, open
-    search any gig list to match text input (all fields - name, location, booker/deejay, etc)
-    search any gig list to match date range, input via two sets of dropdowns
+    search any gig list to match text input (name, location, booker/deejay)
+    search any gig list to match date range (input via two sets of dropdowns)
+    search any gig list to match compensation minimum (input via textbox)
+
+UI UX UI UX UI UX UI UX UI UX UI UX
+    color Scheme
+    button types
+    layout
 
 BROWSE OPEN GIGS (UI/UX TBD).
     default renders a list of all open gigs in chronological order
@@ -41,10 +47,9 @@ APPLY/ACCEPT GIG
     accepting/declining a gig will add the correct deejayId/bookerId to that gig
     ~maybe have a separate tab for "history" - i.e. all past gigs, both declined, pending, and accepted
 
-STYLING
-    color Scheme
-    button types
-    layout
+MESSAGING
+    one chatbox per gig
+    keep the layout dead simple
 
 SEED FILE
     multiple instances of all types of each model
@@ -52,11 +57,8 @@ SEED FILE
 ERROR MESSAGES
     for bad inputs
 
-/////////////////////////////////////// ^ MVP - 2mo
 
-MESSAGING
-    one chatbox per gig
-    keep the layout dead simple
+/////////////////////////////////////// ^ MVP - 2mo
 
 EXTERNAL INTEGRATIONS
     Soundcloud
