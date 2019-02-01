@@ -153,9 +153,20 @@ class GigMain extends Component {
       })
     }
 
-    // else if (currentDeejay) {
+    else if (currentDeejay) {
 
-    // }
+      pastGigs = gigs.filter(gig => {
+        let gigDateArr = gig.date.split('/')
+        let gigYear = gigDateArr[0]
+        let gigMonth = gigDateArr[1]
+        let gigDate = gigDateArr[2]
+        return (
+          gig.deejayId === currentDeejay.id
+          &&
+          dateFns.isBefore(new Date(gigYear, gigMonth, gigDate), Date.now())
+        )
+      })
+    }
 
     return (
       <div>
@@ -178,14 +189,29 @@ class GigMain extends Component {
         return (
           gig.bookerId === currentBooker.id
           &&
+          gig.deejayId !== null
+          &&
           dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
         )
       })
     }
 
-    // else if (currentDeejay) {
+    else if (currentDeejay) {
 
-    // }
+      upcomingGigs = gigs.filter(gig => {
+        let gigDateArr = gig.date.split('/')
+        let gigYear = gigDateArr[0]
+        let gigMonth = gigDateArr[1]
+        let gigDate = gigDateArr[2]
+        return (
+          gig.deejayId === currentDeejay.id
+          &&
+          gig.bookerId !== null
+          &&
+          dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
+        )
+      })
+    }
 
     return (
       <div>
