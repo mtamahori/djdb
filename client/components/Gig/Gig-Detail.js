@@ -29,9 +29,10 @@ class GigDetail extends Component {
           gigs
             .filter(gig => gig.id === currentGig.id)
             .map(gig => {
-              const gigYear = currentGig.date.split('/')[0]
-              const gigMonth = currentGig.date.split('/')[1]
-              const gigDate = currentGig.date.split('/')[2]
+              const gigDateArr = currentGig.date.split('/')
+              const gigYear = gigDateArr[0]
+              const gigMonth = gigDateArr[1]
+              const gigDate = gigDateArr[2]
 
               const formattedDate = dateFns.format(
                 new Date(gigYear, gigMonth, gigDate),
@@ -120,15 +121,15 @@ class GigDetail extends Component {
             <h4> Time <br />
               <select name="time1" type="text" placeholder=""  >
                   <option value="">--</option>
-                  <option value="01">01</option>
-                  <option value="02">02</option>
-                  <option value="03">03</option>
-                  <option value="04">04</option>
-                  <option value="05">05</option>
-                  <option value="06">06</option>
-                  <option value="07">07</option>
-                  <option value="08">08</option>
-                  <option value="09">09</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
                   <option value="10">10</option>
                   <option value="11">11</option>
                   <option value="12">12</option>

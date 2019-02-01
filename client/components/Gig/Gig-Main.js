@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
+import dateFns from 'date-fns'
 import GigList from './Gig-List'
 import NewGigForm from './New-Gig-Form'
 import FilterGigs from './Filter-Gigs'
@@ -20,20 +21,6 @@ class GigMain extends Component {
       viewBrowse: false
     }
   }
-
-  //  componentDidMount() {
-  //   const { currentBooker, currentDeejay } = this.props;
-  //   let currentRoute = this.props.location.pathname;
-
-  //   if (currentRoute.includes('/bookers')) {
-  //     console.log('BOOKERMODE', currentBooker)
-  //     setBooker(currentBooker)
-  //   }
-  //   else if (currentRoute.includes('/deejays')) {
-  //     console.log('DEEJAYMODE', currentDeejay)
-  //     setDeejay(currentDeejay)
-  //   }
-  // }
 
   render() {
     return (
@@ -112,21 +99,6 @@ class GigMain extends Component {
     )
   }
 
-  // renderNewGigForm() {
-  //   const { currentBooker, currentDeejay } = this.props;
-  //   return (
-  //     {
-  //       if (currentBooker) {
-  //         <NewGigForm currentBooker={currentBooker} key={currentBooker.id} />
-  //       }
-
-  //       else if (currentDeejay) {
-  //         <NewGigForm currentDeejay={currentDeejay} key={currentDeejay.id} />
-  //       }
-  //     }
-  //   )
-  // }
-
   renderNewGigForm() {
     const { currentBooker, currentDeejay } = this.props;
 
@@ -166,9 +138,20 @@ class GigMain extends Component {
     const { currentBooker, currentDeejay, gigs } = this.props;
     let pastGigs;
 
-    // if (currentBooker) {
-    //   pastGigs = gigs.filter(gig => (gig.bookerId === currentBooker.id) && )
-    // }
+    if (currentBooker) {
+
+      pastGigs = gigs.filter(gig => {
+        let gigDateArr = gig.date.split('/')
+        let gigYear = gigDateArr[0]
+        let gigMonth = gigDateArr[1]
+        let gigDate = gigDateArr[2]
+        return (
+          gig.bookerId === currentBooker.id
+          &&
+          dateFns.isBefore(new Date(gigYear, gigMonth, gigDate), Date.now())
+        )
+      })
+    }
 
     // else if (currentDeejay) {
 
@@ -176,9 +159,7 @@ class GigMain extends Component {
 
     return (
       <div>
-        <h3>PAST GIGS</h3>
-        <h3>PAST GIGS</h3>
-        <h3>PAST GIGS</h3>
+        <GigList gigs={pastGigs} />
       </div>
     )
   }
@@ -187,9 +168,20 @@ class GigMain extends Component {
     const { currentBooker, currentDeejay, gigs } = this.props;
     let upcomingGigs;
 
-    // if (currentBooker) {
+    if (currentBooker) {
 
-    // }
+      upcomingGigs = gigs.filter(gig => {
+        let gigDateArr = gig.date.split('/')
+        let gigYear = gigDateArr[0]
+        let gigMonth = gigDateArr[1]
+        let gigDate = gigDateArr[2]
+        return (
+          gig.bookerId === currentBooker.id
+          &&
+          dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
+        )
+      })
+    }
 
     // else if (currentDeejay) {
 
@@ -197,9 +189,7 @@ class GigMain extends Component {
 
     return (
       <div>
-        <h3>UPCOMING GIGS</h3>
-        <h3>UPCOMING GIGS</h3>
-        <h3>UPCOMING GIGS</h3>
+       <GigList gigs={upcomingGigs} />
       </div>
     )
   }
