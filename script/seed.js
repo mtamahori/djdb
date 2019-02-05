@@ -43,23 +43,24 @@ async function seed() {
   })
 
   const gigs = await Promise.each([
-    {name: 'Bar Night', date: '12/05/18', time: '22:00-01:00', location: 'UChicago', compensation: '20', deejayId: 1, bookerId: 4},
-    {name: 'Erotic Wobble', date: '12/06/18', time: '21:00-02:00', location: 'Hyde Park', compensation: '30', deejayId: 2, bookerId: 3},
-    {name: 'METER', date: '12/07/18', time: '21:00-01:00', location: 'Meter Room', compensation: '40', deejayId: 3, bookerId: 2},
-    {name: 'Humboldt Arboreal Society', date: '12/08/18', time: '15:00-20:00', location: 'Humboldt Park', compensation: 'fun', deejayId: 4, bookerId: 1},
-    {name: 'Punch House', date: '1/01/19', time: '22:00-2:00', location: 'Punch House', compensation: '150', deejayId: 1, bookerId: 4},
-    {name: 'Smartbar', date: '1/03/19', time: '22:00-4:00', location: 'Smartbar', compensation: '150', deejayId: 1, bookerId: 5},
+    {name: 'Bar Night', date: '2018/11/18', time: '10:00pm - 01:00am', location: 'UChicago', compensation: '20', deejayId: 1, bookerId: 3},
+    {name: 'Erotic Wobble', date: '2018/0/18', time: '9:00pm - 02:00am', location: 'Hyde Park', compensation: '30', deejayId: 2, bookerId: 1},
+    {name: 'METER', date: '2017/10/18', time: '9:00pm - 01:00am', location: 'Meter Room', compensation: '40', deejayId: 2, bookerId: 1},
+    {name: 'Humboldt Arboreal Society', date: '2019/5/6', time: '3:00pm - 8:00pm', location: 'Humboldt Park', compensation: 'fun', deejayId: 1, bookerId: 1},
+    {name: 'Punch House', date: '2019/1/19', time: '10:00pm - 2:00am', location: 'Punch House', compensation: '150', deejayId: 1, bookerId: 4},
+    {name: 'Smartbar', date: '2019/3/20', time: '10:00pm - 4:00am', location: 'Smartbar', compensation: '150', deejayId: 1, bookerId: 5},
 
-    {name: 'Max tryna spin', date: 'whenever', time: 'all night', location: '', compensation: '100', deejayId: 1},
-    {name: 'Meri tryna spin', date: 'whenever', time: 'all night', location: '', compensation: '100', deejayId: 2},
-    {name: 'Miles tryna spin', date: 'whenever', time: 'all night', location: '', compensation: '100', deejayId: 3},
-    {name: 'Maeve tryna spin', date: 'whenever', time: 'all night', location: '', compensation: '100', deejayId: 4},
+    {name: 'Max bar tunes', date: '2019/2/1', time: '9:00pm - 2:00am', location: 'TBD', compensation: '100', deejayId: 1},
+    {name: 'Max party', date: '2019/2/2', time: '9:00pm - 2:00am', location: 'TBD', compensation: '100', deejayId: 1},
+    {name: 'Miles big mix', date: '2019/2/3', time: '9:00pm - 2:00am', location: 'TBD', compensation: '100', deejayId: 3},
+    {name: 'Meri big mix', date: '2019/2/4', time: '9:00pm - 2:00am', location: 'TBD', compensation: '100', deejayId: 2},
 
-    {name: 'Open Humboldt', date: 'whenever', time: 'all day', location: 'Humboldt Park', compensation: 'fun', bookerId: 1},
-    {name: 'Open Danny\'s', date: '1/04/19', time: '22:00-2:00', location: 'Danny\'s', compensation: '150', bookerId: 2},
-    {name: 'Open Whistler', date: '1/02/19', time: '22:00-2:00', location: 'The Whistler', compensation: '150', bookerId: 3},
-    {name: 'Open Constellation', date: '1/03/19', time: '22:00-2:00', location: 'Constellation', compensation: '150', bookerId: 4},
-    {name: 'Open Smartbar', date: 'whenever', time: 'all night', location: 'smartbar', compensation: '250', bookerId: 5}
+    {name: 'Open Humboldt', date: '2019/7/10', time: '12:00pm - 8:00pm', location: 'Humboldt Park', compensation: 'fun', bookerId: 1},
+    {name: 'Open House Party', date: '2019/6/10', time: '12:00pm - 10:00pm', location: 'Albany Park', compensation: 'fun', bookerId: 1},
+    {name: 'Open Danny\'s', date: '2019/2/20', time: '10:00pm - 2:00am', location: 'Danny\'s', compensation: '150', bookerId: 2},
+    {name: 'Open Whistler', date: '2019/1/15', time: '10:00pm - 2:00am', location: 'The Whistler', compensation: '150', bookerId: 3},
+    {name: 'Open Constellation', date: '2019/8/19', time: '10:00pm - 2:00am', location: 'Constellation', compensation: '150', bookerId: 4},
+    {name: 'Open Smartbar', date: '2019/4/2', time: '10:00pm - 5:00am', location: 'smartbar', compensation: '250', bookerId: 5}
   ], (gig) => {
     return Gig.create(gig);
   })

@@ -22,11 +22,6 @@ FILTER + SEARCH
     search any gig list to match date range (input via two sets of dropdowns)
     search any gig list to match compensation minimum (input via textbox)
 
-UI UX UI UX UI UX UI UX UI UX UI UX
-    color Scheme
-    button types
-    layout
-
 BROWSE OPEN GIGS (UI/UX TBD).
     default renders a list of all open gigs in chronological order
     option to select date/date range via calendar
@@ -39,6 +34,11 @@ CALENDAR - (the calendar is the centerpiece of the deejay/booker home. will take
     greyed out "view gigs" button on each cell
     hover over each cell and select appropriate button
     +
+
+UI UX UI UX UI UX UI UX UI UX UI UX
+    color Scheme
+    button types
+    layout
 
 APPLY/ACCEPT GIG
     simple "request" button on each open gig
@@ -58,7 +58,7 @@ ERROR MESSAGES
     for bad inputs
 
 
-/////////////////////////////////////// ^ MVP - 2mo
+/////////////////////////////////////// ^ MVP - 2mo (til end of March)
 
 EXTERNAL INTEGRATIONS
     Soundcloud
@@ -76,4 +76,4 @@ TESTING
     back end tests
     front end tests
 
-////////////////////////////////////// ^ Tinker + Test - 2mo
+////////////////////////////////////// ^ Tinker + Test - 2mo (til end of May)

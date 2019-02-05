@@ -74,8 +74,8 @@ class NewGigForm extends Component {
                 <option value="2020">2020</option>
               </select>
             </h4>
-            <h4> Time <br />
-              <select name="time1" type="text" placeholder=""  >
+            <h4> Start Time <br />
+              <select name="startTime1" type="text" placeholder=""  >
                   <option value="">--</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -90,14 +90,43 @@ class NewGigForm extends Component {
                   <option value="11">11</option>
                   <option value="12">12</option>
               </select>
-              <select name="time2" type="text" placeholder=""  >
+              <select name="startTime2" type="text" placeholder=""  >
                   <option value="">--</option>
                   <option value="00">00</option>
                   <option value="15">15</option>
                   <option value="30">30</option>
                   <option value="45">45</option>
               </select>
-              <select name="time3" type="text" placeholder=""  >
+              <select name="startTime3" type="text" placeholder=""  >
+                  <option value="">--</option>
+                  <option value="am">am</option>
+                  <option value="pm">pm</option>
+              </select>
+            </h4>
+            <h4> End Time <br />
+              <select name="endTime1" type="text" placeholder=""  >
+                  <option value="">--</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+              </select>
+              <select name="endTime2" type="text" placeholder=""  >
+                  <option value="">--</option>
+                  <option value="00">00</option>
+                  <option value="15">15</option>
+                  <option value="30">30</option>
+                  <option value="45">45</option>
+              </select>
+              <select name="endTime3" type="text" placeholder=""  >
                   <option value="">--</option>
                   <option value="am">am</option>
                   <option value="pm">pm</option>
@@ -121,14 +150,15 @@ class NewGigForm extends Component {
     const { createGig, currentBooker, currentDeejay } = this.props
     let newGig;
     let dateInput = event.target.date3.value + '/' + event.target.date1.value + '/' + event.target.date2.value;
-    let timeInput = event.target.time1.value + ':' + event.target.time2.value + event.target.time3.value;
+    let startTime = event.target.startTime1.value + ':' + event.target.startTime2.value + event.target.startTime3.value;
+    let endTime = event.target.endTime1.value + ':' + event.target.endTime2.value + event.target.endTime3.value;
 
     if (currentBooker) {
       newGig = {
         bookerId: currentBooker.id,
         name: event.target.name.value,
         date: dateInput,
-        time: timeInput,
+        time: startTime + ' - ' + endTime,
         location: event.target.location.value,
         compensation: event.target.compensation.value
       }
@@ -139,7 +169,7 @@ class NewGigForm extends Component {
         deejayId: currentDeejay.id,
         name: event.target.name.value,
         date: dateInput,
-        time: timeInput,
+        time: startTime + '-' + endTime,
         location: event.target.location.value,
         compensation: event.target.compensation.value
       }
@@ -150,9 +180,12 @@ class NewGigForm extends Component {
     event.target.date1.value = '';
     event.target.date2.value = '';
     event.target.date3.value = '';
-    event.target.time1.value = '';
-    event.target.time2.value = '';
-    event.target.time3.value = '';
+    event.target.startTime1.value = '';
+    event.target.startTime2.value = '';
+    event.target.startTime3.value = '';
+    event.target.endTime1.value = '';
+    event.target.endTime2.value = '';
+    event.target.endTime3.value = '';
     event.target.location.value = '';
     event.target.compensation.value = '';
   }
