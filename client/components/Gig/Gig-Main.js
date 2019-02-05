@@ -6,6 +6,7 @@ import dateFns from 'date-fns'
 import GigList from './Gig-List'
 import NewGigForm from './New-Gig-Form'
 import FilterGigs from './Filter-Gigs'
+import DeejayList from '../Deejay/Deejay-List'
 
 // PROPS PASSED: currentBooker, currentDeejay
 
@@ -23,6 +24,8 @@ class GigMain extends Component {
   }
 
   render() {
+    const { currentBooker, currentDeejay } = this.props;
+
     return (
       <div>
         <Button
@@ -81,6 +84,8 @@ class GigMain extends Component {
             this.renderUpcomingGigList()
           )
         }
+        {
+          currentDeejay &&
         <Button
           onClick={() => {
             this.state.viewBrowse === false ?
@@ -90,6 +95,7 @@ class GigMain extends Component {
           size="massive">
           Browse
         </Button>
+        }
         {
           this.state.viewBrowse && (
             this.renderBrowse()
@@ -129,7 +135,7 @@ class GigMain extends Component {
 
     return (
       <div>
-        <FilterGigs gigs={openGigs} />
+        <GigList gigs={openGigs} />
       </div>
     )
   }
@@ -222,21 +228,22 @@ class GigMain extends Component {
 
   renderBrowse() {
     const { currentBooker, currentDeejay, gigs } = this.props;
-    let openGigs;
 
     if (currentBooker) {
-      openGigs = gigs.filter(gig => gig.bookerId === null)
+      return (
+        <DeejayList />
+      )
     }
 
-    else if (currentDeejay) {
-      openGigs = gigs.filter(gig => gig.deejayId === null)
+    if (currentDeejay) {
+      let openGigs = gigs.filter(gig => gig.deejayId === null)
+      return (
+        <div>
+          <FilterGigs gigs={openGigs} />
+        </div>
+      )
     }
 
-    return (
-      <div>
-        <FilterGigs gigs={openGigs} />
-      </div>
-    )
   }
 }
 

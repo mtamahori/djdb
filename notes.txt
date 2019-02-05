@@ -15,30 +15,12 @@ Think about how to use the calendar component for multiple use cases. One way co
     change date input field to drop-downs with pre-determined options (mm-dd-yyyy)
     change time input field to drop-downs with pre-determined options (hh-mm-//)
 
-FILTER + SEARCH
+= FILTER + SEARCH
     use datefns to determine past/future status, add flag to Sequelize model
     filter gigs into lists based on past, upcoming, open
     search any gig list to match text input (name, location, booker/deejay)
     search any gig list to match date range (input via two sets of dropdowns)
     search any gig list to match compensation minimum (input via textbox)
-
-BROWSE OPEN GIGS (UI/UX TBD).
-    default renders a list of all open gigs in chronological order
-    option to select date/date range via calendar
-    option to search based on all fields (name, location, booker/deejay, etc)
-    calendar should render only these dates
-
-CALENDAR - (the calendar is the centerpiece of the deejay/booker home. will take some time)
-    ((*hierarchy of filter/browse/calendar ??))
-    greyed out "+ new gig" button on each cell
-    greyed out "view gigs" button on each cell
-    hover over each cell and select appropriate button
-    +
-
-UI UX UI UX UI UX UI UX UI UX UI UX
-    color Scheme
-    button types
-    layout
 
 APPLY/ACCEPT GIG
     simple "request" button on each open gig
@@ -47,18 +29,36 @@ APPLY/ACCEPT GIG
     accepting/declining a gig will add the correct deejayId/bookerId to that gig
     ~maybe have a separate tab for "history" - i.e. all past gigs, both declined, pending, and accepted
 
+UI UX UI UX UI UX UI UX UI UX UI UX
+    color Scheme
+    button types
+    layout
+
+CALENDAR - (the calendar is the centerpiece of the deejay/booker home. will take some time)
+    ((*hierarchy of filter/browse/calendar ??))
+    greyed out "+ new gig" button on each cell
+    greyed out "view gigs" button on each cell
+    hover over each cell and select appropriate button
+    +
+
+BROWSE OPEN GIGS (UI/UX TBD).
+    default renders a list of all open gigs in chronological order
+    option to select date/date range via calendar
+    option to search based on all fields (name, location, booker/deejay, etc)
+    calendar should render only these dates
+
 MESSAGING
     one chatbox per gig
     keep the layout dead simple
 
-SEED FILE
-    multiple instances of all types of each model
+
+/////////////////////////////////////// ^ MVP - 2mo (til end of March)
+
+SEED file
+    of fake user base and gigs
 
 ERROR MESSAGES
     for bad inputs
-
-
-/////////////////////////////////////// ^ MVP - 2mo (til end of March)
 
 EXTERNAL INTEGRATIONS
     Soundcloud

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createGig } from '../../store'
+import history from '../../history'
 
 class NewGigForm extends Component {
   constructor(props) {
@@ -188,6 +189,8 @@ class NewGigForm extends Component {
     event.target.endTime3.value = '';
     event.target.location.value = '';
     event.target.compensation.value = '';
+
+    history.push(`/gigs/${newGig.id}`)
   }
 
 }

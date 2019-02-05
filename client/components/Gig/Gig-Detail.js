@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { updateGig } from '../../store'
+import { deleteGig, updateGig } from '../../store'
+import history from '../../history'
 import dateFns from 'date-fns'
 
 // COMPONENT
@@ -9,6 +10,7 @@ class GigDetail extends Component {
   constructor(props) {
     super(props);
 
+    this.handleDeleteGig = this.handleDeleteGig.bind(this)
     this.handleUpdateGig = this.handleUpdateGig.bind(this)
   }
 
@@ -45,6 +47,9 @@ class GigDetail extends Component {
                 <h4>{gig.time}</h4>
                 <h4>{gig.location}</h4>
                 <h4>{gig.compensation}</h4>
+                <button onClick={this.handleDeleteGig} type="button" >
+                Delete Gig
+                </button>
               </div>
               )}
             )
@@ -189,6 +194,13 @@ class GigDetail extends Component {
     )
   }
 
+  handleDeleteGig(event) {
+    event.stopPropagation();
+    const { deleteGig, currentGig } = this.props;
+    deleteGig(currentGig);
+    history.push('/home')
+  }
+
   handleUpdateGig(event) {
     event.preventDefault();
     const { updateGig, currentGig } = this.props;
@@ -242,6 +254,6 @@ const mapState = ({ gigs }, ownProps) => {
     currentGig: gigs.filter(gig => gig.id === gigParamId)[0]
   }
 }
-const mapDispatch = ({ updateGig })
+const mapDispatch = ({ deleteGig, updateGig })
 
 export default connect(mapState, mapDispatch)(GigDetail)

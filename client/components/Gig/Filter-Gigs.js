@@ -14,11 +14,22 @@ class FilterGigs extends Component {
   }
 
   render() {
+    return (
+      <div>
+        {this.renderTextMatch()}
+      </div>
+    )
+  }
+
+  renderTextMatch() {
     const { gigs } = this.props
 
-    const renderGigsByName = gigs.filter(gig => (gig.name.match(this.state.inputValue)))
-    const renderGigsByLocation = gigs.filter(gig => (gig.location.match(this.state.inputValue)))
-    // renderGigsByCompensation
+    const renderGigsByMatch = gigs.filter(gig => {
+      return (
+        gig.name.match(this.state.inputValue) ||
+        gig.location.match(this.state.inputValue)
+      )
+    })
 
     return (
       <div>
@@ -26,7 +37,7 @@ class FilterGigs extends Component {
           <input name="filter" type="text" placeholder="Search" />
         </form>
           {
-            renderGigsByName.map(gig => (
+            renderGigsByMatch.map(gig => (
               <GigItem gig={gig} key={gig.id} />
             ))
           }
