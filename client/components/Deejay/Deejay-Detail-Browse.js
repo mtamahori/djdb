@@ -9,21 +9,27 @@ class DeejayDetailBrowse extends Component {
 
   render() {
     const { currentDeejayBrowse } = this.props
-    return (
-      <div>
-      <h3>Deejay Details</h3>
-        {
-          <List key={currentDeejayBrowse.id} >
-            <List.Item icon='users' content={currentDeejayBrowse.name} />
-            <List.Item icon='marker' content='Chicago, IL' />
-            <List.Item icon='mail' content={currentDeejayBrowse.email} />
-            <List.Item icon='phone' content={currentDeejayBrowse.phone} />
-          </List>
-        }
-      </div>
-    )
-  }
 
+    if (!currentDeejayBrowse) {
+      return <div>Loading!</div>
+    }
+
+    else if (currentDeejayBrowse) {
+      return (
+        <div>
+        <h3>Deejay Details</h3>
+          {
+            <List key={currentDeejayBrowse.id} >
+              <List.Item icon='users' content={currentDeejayBrowse.name} />
+              <List.Item icon='marker' content='Chicago, IL' />
+              <List.Item icon='mail' content={currentDeejayBrowse.email} />
+              <List.Item icon='phone' content={currentDeejayBrowse.phone} />
+            </List>
+          }
+        </div>
+      )
+    }
+  }
 }
 
 const mapState = ({ user, deejays }, ownProps) => {

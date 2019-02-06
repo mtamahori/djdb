@@ -24,22 +24,30 @@ class DeejayDetail extends Component {
 
   renderCurrentDeejay() {
     const { currentDeejay } = this.props
-    return (
-      <div>
-      <h3>Deejay Details</h3>
-        {
-          <List key={currentDeejay.id} >
-            <List.Item icon='users' content={currentDeejay.name} />
-            <List.Item icon='marker' content='Chicago, IL' />
-            <List.Item icon='mail' content={currentDeejay.email} />
-            <List.Item icon='phone' content={currentDeejay.phone} />
-            <button onClick={this.handleDeleteDeejay} type="button" >
-              Delete Deejay
-            </button>
-          </List>
-        }
-      </div>
-    )
+
+    if (!currentDeejay) {
+      return <div>Loading!</div>
+    }
+
+    else if (currentDeejay) {
+      return (
+        <div>
+        <h3>Deejay Details</h3>
+          {
+            <List key={currentDeejay.id} >
+              <List.Item icon='users' content={currentDeejay.name} />
+              <List.Item icon='marker' content='Chicago, IL' />
+              <List.Item icon='mail' content={currentDeejay.email} />
+              <List.Item icon='phone' content={currentDeejay.phone} />
+              <button onClick={this.handleDeleteDeejay} type="button" >
+                Delete Deejay
+              </button>
+            </List>
+          }
+        </div>
+      )
+    }
+
   }
 
   renderUpdateDeejay() {
