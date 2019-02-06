@@ -7,14 +7,20 @@ import { NavLink } from 'react-router-dom'
 class DeejayItem extends Component {
   constructor(props) {
     super(props)
-
   }
 
   render() {
-    const { deejay } = this.props
+    const { deejay, currentGig } = this.props
     return (
       <div>
-        <NavLink activeClassName="active" to={`/deejays/${deejay.id}`} >
+        <NavLink
+        activeClassName="active"
+        to={{
+          pathname: `/deejays/${deejay.id}`,
+          state: {
+            currentGig: currentGig
+          }
+        }}>
           <h4>{deejay.name}</h4>
         </NavLink>
         <h5>{deejay.email}</h5>

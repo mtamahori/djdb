@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { updateGig } from '../../store'
 import { List, Button } from 'semantic-ui-react'
 
 class DeejayDetailBrowse extends Component {
@@ -30,7 +31,8 @@ class DeejayDetailBrowse extends Component {
           }
           <Button
             size='massive'
-            onClick={this.handleBookingInvite()}>
+            onClick={(event) => this.handleBookingInvite(event)}
+            >
             Send Booking Request
           </Button>
         </div>
@@ -40,7 +42,12 @@ class DeejayDetailBrowse extends Component {
 
   handleBookingInvite(event) {
     event.preventDefault();
-    const gig = {}
+    const { currentDeejayBrowse } = this.props
+    const { currentGig } = this.props.location.state
+    // const gig = {
+
+    // }
+    // updateGig(gig);
   }
 }
 
@@ -52,7 +59,7 @@ const mapState = ({ user, deejays }, ownProps) => {
     currentDeejayBrowse: deejays.filter(deejay => deejay.id === deejayParamId)[0]
   }
 }
-const mapDispatch = null;
+const mapDispatch = { updateGig };
 
 export default connect(mapState, mapDispatch)(DeejayDetailBrowse)
 

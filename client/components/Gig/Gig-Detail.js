@@ -71,9 +71,10 @@ class GigDetail extends Component {
   }
 
   renderDeejayList() {
+    const { currentGig } = this.props;
     return (
       <div>
-        <DeejayList />
+        <DeejayList currentGig={currentGig} />
       </div>
     )
   }

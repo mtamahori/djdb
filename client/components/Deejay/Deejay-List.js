@@ -18,13 +18,13 @@ class DeejayList extends Component {
   }
 
   renderDeejayList() {
-    const { deejays } = this.props;
+    const { deejays, currentGig } = this.props;
     return (
       <div>
         <h3>Deejay List</h3>
         {
           deejays.map(deejay => (
-          <DeejayItem deejay={deejay} key={deejay.id} />
+          <DeejayItem deejay={deejay} key={deejay.id} currentGig={currentGig} />
           ))
         }
       </div>
