@@ -15,6 +15,7 @@ export { default as DeejayMain } from './Deejay/Deejay-Main'
 export { default as DeejayList } from './Deejay/Deejay-List'
 export { default as DeejayItem } from './Deejay/Deejay-Item'
 export { default as DeejayDetail } from './Deejay/Deejay-Detail'
+export { default as DeejayDetailBrowse } from './Deejay/Deejay-Detail-Browse'
 export { default as NewDeejayForm } from './Deejay/New-Deejay-Form'
 
 export { default as GigList } from './Gig/Gig-List'

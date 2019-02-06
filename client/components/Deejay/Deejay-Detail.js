@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { updateDeejay } from '../../store'
+import { deleteDeejay, updateDeejay } from '../../store'
 import { List } from 'semantic-ui-react'
 
 // COMPONENT
@@ -9,17 +9,18 @@ class DeejayDetail extends Component {
   constructor(props) {
     super(props);
 
+    this.handleDeleteDeejay = this.handleDeleteDeejay.bind(this)
     this.handleUpdateDeejay = this.handleUpdateDeejay.bind(this);
   }
 
   render() {
-    return (
-      <div>
-        <div>{this.renderCurrentDeejay()}</div>
-        <div>{this.renderUpdateDeejay()}</div>
-      </div>
-    );
-  }
+      return (
+        <div>
+          <div>{this.renderCurrentDeejay()}</div>
+          <div>{this.renderUpdateDeejay()}</div>
+        </div>
+      )
+    }
 
   renderCurrentDeejay() {
     const { currentDeejay } = this.props
@@ -32,6 +33,9 @@ class DeejayDetail extends Component {
             <List.Item icon='marker' content='Chicago, IL' />
             <List.Item icon='mail' content={currentDeejay.email} />
             <List.Item icon='phone' content={currentDeejay.phone} />
+            <button onClick={this.handleDeleteDeejay} type="button" >
+              Delete Deejay
+            </button>
           </List>
         }
       </div>
@@ -65,6 +69,12 @@ class DeejayDetail extends Component {
     )
   }
 
+  handleDeleteDeejay(event) {
+    event.stopPropagation();
+    const { deleteDeejay, deejay } = this.props;
+    deleteDeejay(deejay);
+  }
+
   handleUpdateDeejay(event) {
     event.preventDefault();
     const { updateDeejay, currentDeejay } = this.props;
@@ -95,6 +105,6 @@ class DeejayDetail extends Component {
 }
 
 const mapState = ({ user, deejays }) => ({ user, deejays })
-const mapDispatch = { updateDeejay }
+const mapDispatch = { deleteDeejay, updateDeejay }
 
 export default connect(mapState, mapDispatch)(DeejayDetail)

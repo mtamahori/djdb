@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { deleteGig, updateGig } from '../../store'
+import DeejayList from '../Deejay/Deejay-List'
 import history from '../../history'
 import dateFns from 'date-fns'
 
@@ -15,12 +16,23 @@ class GigDetail extends Component {
   }
 
   render() {
-    return (
+    const { currentGig } = this.props;
+
+    if (!currentGig) {
+      return <div>Loading!</div>
+    }
+
+    else if (currentGig) {
+      return (
       <div>
         <div>{this.renderCurrentGig()}</div>
+        {
+          !currentGig.deejayId &&
+          <div>{this.renderBookGig()}</div>
+        }
         <div>{this.renderUpdateGig()}</div>
       </div>
-    )
+    )}
   }
 
   renderCurrentGig() {
@@ -54,6 +66,14 @@ class GigDetail extends Component {
               )}
             )
         }
+      </div>
+    )
+  }
+
+  renderBookGig() {
+    return (
+      <div>
+        <DeejayList />
       </div>
     )
   }
@@ -199,6 +219,10 @@ class GigDetail extends Component {
     const { deleteGig, currentGig } = this.props;
     deleteGig(currentGig);
     history.push('/home')
+  }
+
+  handleBookGig(event) {
+    event.preventDefault();
   }
 
   handleUpdateGig(event) {

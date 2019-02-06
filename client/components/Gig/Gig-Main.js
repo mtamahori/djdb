@@ -127,17 +127,21 @@ class GigMain extends Component {
 
     if (currentBooker) {
       openGigs = gigs.filter(gig => (gig.bookerId === currentBooker.id) && (gig.deejayId === null))
+      return (
+        <div>
+          <GigList currentBooker={currentBooker} gigs={openGigs} />
+        </div>
+      )
     }
 
     else if (currentDeejay) {
       openGigs = gigs.filter(gig => (gig.deejayId === currentDeejay.id) && (gig.bookerId === null))
+      return (
+        <div>
+          <GigList currentDeejay={currentDeejay} gigs={openGigs} />
+        </div>
+      )
     }
-
-    return (
-      <div>
-        <GigList gigs={openGigs} />
-      </div>
-    )
   }
 
   renderPastGigList() {
@@ -151,12 +155,18 @@ class GigMain extends Component {
         let gigYear = gigDateArr[0]
         let gigMonth = gigDateArr[1]
         let gigDate = gigDateArr[2]
+
         return (
           gig.bookerId === currentBooker.id
           &&
           dateFns.isBefore(new Date(gigYear, gigMonth, gigDate), Date.now())
         )
       })
+      return (
+        <div>
+          <GigList currentBooker={currentBooker} gigs={pastGigs} />
+        </div>
+      )
     }
 
     else if (currentDeejay) {
@@ -166,19 +176,19 @@ class GigMain extends Component {
         let gigYear = gigDateArr[0]
         let gigMonth = gigDateArr[1]
         let gigDate = gigDateArr[2]
+
         return (
           gig.deejayId === currentDeejay.id
           &&
           dateFns.isBefore(new Date(gigYear, gigMonth, gigDate), Date.now())
         )
       })
+      return (
+        <div>
+          <GigList currentDeejay={currentDeejay } gigs={pastGigs} />
+        </div>
+      )
     }
-
-    return (
-      <div>
-        <GigList gigs={pastGigs} />
-      </div>
-    )
   }
 
   renderUpcomingGigList() {
@@ -200,6 +210,11 @@ class GigMain extends Component {
           dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
         )
       })
+      return (
+        <div>
+         <GigList currentBooker={currentBooker} gigs={upcomingGigs} />
+        </div>
+      )
     }
 
     else if (currentDeejay) {
@@ -217,13 +232,12 @@ class GigMain extends Component {
           dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
         )
       })
+      return (
+        <div>
+         <GigList currentDeejay={currentDeejay} gigs={upcomingGigs} />
+        </div>
+      )
     }
-
-    return (
-      <div>
-       <GigList gigs={upcomingGigs} />
-      </div>
-    )
   }
 
   renderBrowse() {
@@ -239,7 +253,7 @@ class GigMain extends Component {
       let openGigs = gigs.filter(gig => gig.deejayId === null)
       return (
         <div>
-          <FilterGigs gigs={openGigs} />
+          <FilterGigs currentDeejay={currentDeejay} gigs={openGigs} />
         </div>
       )
     }

@@ -16,6 +16,7 @@ import {
   DeejayMain,
   DeejayList,
   DeejayDetail,
+  DeejayDetailBrowse,
   NewDeejayForm,
   GigDetail
 } from './components'
@@ -49,7 +50,7 @@ class Routes extends Component {
               <Route exact path="/deejays/new" component={NewDeejayForm} />
             )}
             <Route exact path="/deejays/list" component={DeejayList} />
-            <Route exact path="/deejays/:id" component={DeejayDetail} />
+            <Route exact path="/deejays/:id" component={DeejayDetailBrowse} />
 
             <Route exact path="/gigs/:id" component={GigDetail} />
             </Switch>
