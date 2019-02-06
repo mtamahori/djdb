@@ -28,7 +28,7 @@ class GigDetail extends Component {
         <div>{this.renderCurrentGig()}</div>
         {
           !currentGig.deejayId &&
-          <div>{this.renderBookGig()}</div>
+          <div>{this.renderDeejayList()}</div>
         }
         <div>{this.renderUpdateGig()}</div>
       </div>
@@ -70,7 +70,7 @@ class GigDetail extends Component {
     )
   }
 
-  renderBookGig() {
+  renderDeejayList() {
     return (
       <div>
         <DeejayList />

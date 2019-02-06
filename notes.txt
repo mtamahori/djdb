@@ -8,17 +8,17 @@ Think about how to use the calendar component for multiple use cases. One way co
 
 /////// CURRENT STEPS ////////
 
-= INPUT + VALIDATION
-    Sequelize model constraints
-    Reg Ex study
-    change phone input fields to three input fields, each only taking 3-4-3 digits
-    change date input field to drop-downs with pre-determined options (mm-dd-yyyy)
-    change time input field to drop-downs with pre-determined options (hh-mm-//)
+INPUT + VALIDATION
+    = Sequelize model constraints
+    = Reg Ex study
+    = change phone input fields to three input fields, each only taking 3-4-3 digits
+    = change date input field to drop-downs with pre-determined options (mm-dd-yyyy)
+    = change time input field to drop-downs with pre-determined options (hh-mm-//)
 
-= FILTER + SEARCH
-    use datefns to determine past/future status, add flag to Sequelize model
-    filter gigs into lists based on past, upcoming, open
-    search any gig list to match text input (name, location, booker/deejay)
+FILTER + SEARCH
+    = use datefns to determine past/future status, add flag to Sequelize model
+    = filter gigs into lists based on past, upcoming, open
+    = search any gig list to match text input (name, location, booker/deejay)
     search any gig list to match date range (input via two sets of dropdowns)
     search any gig list to match compensation minimum (input via textbox)
 

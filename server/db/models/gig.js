@@ -33,6 +33,14 @@ const Gig = db.define('gig', {
   deejayId: {
     type: Sequelize.INTEGER,
     allowNull: true
+  },
+  deejayApplicants: {
+    type: Sequelize.ARRAY(Sequelize.INTEGER),
+    allowNull: true
+  },
+  deejayInvites: {
+    type: Sequelize.ARRAY(Sequelize.INTEGER),
+    allowNull: true
   }
 });
 

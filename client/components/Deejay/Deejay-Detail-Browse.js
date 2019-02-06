@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { List } from 'semantic-ui-react'
+import { List, Button } from 'semantic-ui-react'
 
 class DeejayDetailBrowse extends Component {
   constructor (props) {
     super(props)
+
+    this.handleBookingInvite = this.handleBookingInvite.bind(this);
   }
 
   render() {
@@ -26,9 +28,19 @@ class DeejayDetailBrowse extends Component {
               <List.Item icon='phone' content={currentDeejayBrowse.phone} />
             </List>
           }
+          <Button
+            size='massive'
+            onClick={this.handleBookingInvite()}>
+            Send Booking Request
+          </Button>
         </div>
       )
     }
+  }
+
+  handleBookingInvite(event) {
+    event.preventDefault();
+    const gig = {}
   }
 }
 
