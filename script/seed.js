@@ -55,7 +55,7 @@ async function seed() {
     {name: 'Miles big mix', date: '2019/2/3', time: '9:00pm - 2:00am', location: 'TBD', compensation: '100', deejayId: 3},
     {name: 'Meri big mix', date: '2019/2/4', time: '9:00pm - 2:00am', location: 'TBD', compensation: '100', deejayId: 2},
 
-    {name: 'Open Humboldt', date: '2019/7/10', time: '12:00pm - 8:00pm', location: 'Humboldt Park', compensation: 'fun', bookerId: 1},
+    {name: 'Open Humboldt', date: '2019/7/10', time: '12:00pm - 8:00pm', location: 'Humboldt Park', compensation: 'fun', bookerId: 1, deejayInvites: [2]},
     {name: 'Open House Party', date: '2019/6/10', time: '12:00pm - 10:00pm', location: 'Albany Park', compensation: 'fun', bookerId: 1},
     {name: 'Open Danny\'s', date: '2019/2/20', time: '10:00pm - 2:00am', location: 'Danny\'s', compensation: '150', bookerId: 2},
     {name: 'Open Whistler', date: '2019/1/15', time: '10:00pm - 2:00am', location: 'The Whistler', compensation: '150', bookerId: 3},

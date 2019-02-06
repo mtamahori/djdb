@@ -42,12 +42,15 @@ class DeejayDetailBrowse extends Component {
 
   handleBookingInvite(event) {
     event.preventDefault();
-    const { currentDeejayBrowse } = this.props
+    const { currentDeejayBrowse, updateGig } = this.props
     const { currentGig } = this.props.location.state
-    // const gig = {
-
-    // }
-    // updateGig(gig);
+    if (currentGig.deejayInvites.indexOf(currentDeejayBrowse.id) === -1) {
+      currentGig.deejayInvites.push(currentDeejayBrowse.id);
+      updateGig(currentGig);
+    }
+    else {
+      console.log('You have already sent a booking request to this Deejay!')
+    }
   }
 }
 
