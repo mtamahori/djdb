@@ -10,7 +10,7 @@ const GigList = (props) => {
       <div>
         {
           gigs.map(gig => (
-            <GigItem gig={gig} key={gig.id} currentBooker={currentBooker}/>
+            <GigItem gig={gig} key={gig.id} currentBooker={currentBooker} />
           ))
         }
       </div>
@@ -22,7 +22,7 @@ const GigList = (props) => {
       <div>
         {
           gigs.map(gig => (
-            <GigItem gig={gig} key={gig.id} currentDeejay={currentDeejay}/>
+            <GigItem gig={gig} key={gig.id} currentDeejay={currentDeejay} />
           ))
         }
       </div>

@@ -253,7 +253,7 @@ class GigMain extends Component {
       let openGigs = gigs.filter(gig => gig.deejayId === null)
       return (
         <div>
-          <FilterGigs currentDeejay={currentDeejay} gigs={openGigs} />
+          <GigList currentDeejay={currentDeejay} gigs={openGigs} />
         </div>
       )
     }

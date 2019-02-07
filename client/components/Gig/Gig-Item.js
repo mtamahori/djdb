@@ -11,7 +11,7 @@ class GigItem extends Component {
   }
 
   render() {
-    const { gig } = this.props
+    const { gig, currentBooker, currentDeejay } = this.props
     const gigDateArr = gig.date.split('/')
               const gigYear = gigDateArr[0]
               const gigMonth = gigDateArr[1]
@@ -23,7 +23,15 @@ class GigItem extends Component {
               )
     return (
       <div>
-        <NavLink activeClassName="active" to={`/gigs/${gig.id}`} >
+        <NavLink activeClassName="active"
+        to={{
+          pathname: `/gigs/${gig.id}`,
+          state: {
+            currentGig: gig,
+            currentBooker: currentBooker,
+            currentDeejay: currentDeejay
+          }
+        }}>
           <h4>{gig.name}</h4>
         </NavLink>
         <h5>{formattedDate}</h5>

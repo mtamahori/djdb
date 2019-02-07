@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { deleteGig, updateGig } from '../../store'
+import { Button } from 'semantic-ui-react'
 import DeejayList from '../Deejay/Deejay-List'
 import history from '../../history'
 import dateFns from 'date-fns'
@@ -16,7 +17,9 @@ class GigDetail extends Component {
   }
 
   render() {
-    const { currentGig } = this.props;
+    // const { currentGig, currentBooker, currentDeejay } = this.props;
+    const { currentGig, currentBooker, currentDeejay } = this.props.location.state
+    console.log('CURRENT STUFF', this.props.location.state)
 
     if (!currentGig) {
       return <div>Loading!</div>
@@ -27,16 +30,29 @@ class GigDetail extends Component {
       <div>
         <div>{this.renderCurrentGig()}</div>
         {
+          currentDeejay &&
+          <div>{this.renderBookingApplication()}</div>
+        }
+        {
+          currentBooker &&
           !currentGig.deejayId &&
           <div>{this.renderDeejayList()}</div>
         }
-        <div>{this.renderUpdateGig()}</div>
+        {
+          currentBooker &&
+          currentGig.bookerId === currentBooker.id &&
+          <div>
+            <div>{this.renderUpdateGig()}</div>
+            <div>{this.renderDeleteGig()}</div>
+          </div>
+        }
       </div>
     )}
   }
 
   renderCurrentGig() {
-    const { gigs, currentGig } = this.props
+    const { gigs } = this.props
+    const { currentGig } = this.props.location.state
     return (
       <div>
         {
@@ -59,14 +75,22 @@ class GigDetail extends Component {
                 <h4>{gig.time}</h4>
                 <h4>{gig.location}</h4>
                 <h4>{gig.compensation}</h4>
-                <button onClick={this.handleDeleteGig} type="button" >
-                Delete Gig
-                </button>
               </div>
               )}
             )
         }
       </div>
+    )
+  }
+
+  renderBookingApplication() {
+    return (
+      <Button
+            size='massive'
+            onClick={(event) => this.handleBookingApplication(event)}
+            >
+            Send Booking Request
+      </Button>
     )
   }
 
@@ -215,15 +239,32 @@ class GigDetail extends Component {
     )
   }
 
+  renderDeleteGig() {
+    return (
+      <button onClick={this.handleDeleteGig} type="button" >
+        Delete Gig
+      </button>
+    )
+  }
+
+  handleBookingApplication(event) {
+    event.preventDefault();
+    const { updateGig } = this.props
+    const { currentGig, currentDeejay } = this.props.location.state
+    if (currentGig.deejayApplicants.indexOf(currentDeejay.id) === -1) {
+      currentGig.deejayApplicants.push(currentDeejay.id);
+      updateGig(currentGig);
+    }
+    else {
+      console.log('You have already sent a booking request to this booker!')
+    }
+  }
+
   handleDeleteGig(event) {
     event.stopPropagation();
     const { deleteGig, currentGig } = this.props;
     deleteGig(currentGig);
     history.push('/home')
-  }
-
-  handleBookGig(event) {
-    event.preventDefault();
   }
 
   handleUpdateGig(event) {
