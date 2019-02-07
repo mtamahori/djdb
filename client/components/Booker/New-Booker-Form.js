@@ -53,7 +53,8 @@ class NewBookerForm extends Component {
     event.target.phone1.value = '';
     event.target.phone2.value = '';
     event.target.phone3.value = '';
-    history.push('/bookers')
+    
+    history.push('/booker')
   }
 }
 

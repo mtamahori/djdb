@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { createGig } from '../../store'
+import { createGig, fetchGig } from '../../store'
 import history from '../../history'
 
 class NewGigForm extends Component {
@@ -148,14 +148,20 @@ class NewGigForm extends Component {
 
   handleCreateGig(event) {
     event.preventDefault();
-    const { createGig, currentBooker, currentDeejay } = this.props
+    const { gigs, createGig, currentBooker, currentDeejay } = this.props
     let newGig;
+    
     let dateInput = event.target.date3.value + '/' + event.target.date1.value + '/' + event.target.date2.value;
     let startTime = event.target.startTime1.value + ':' + event.target.startTime2.value + event.target.startTime3.value;
     let endTime = event.target.endTime1.value + ':' + event.target.endTime2.value + event.target.endTime3.value;
+    
+    // let idArr = gigs.map(gig => gig.id)
+    // let lastId = Math.max(...idArr)
+    // let newId = lastId + 1;
 
     if (currentBooker) {
       newGig = {
+        // id: newId,
         bookerId: currentBooker.id,
         name: event.target.name.value,
         date: dateInput,
@@ -163,10 +169,15 @@ class NewGigForm extends Component {
         location: event.target.location.value,
         compensation: event.target.compensation.value
       }
+      
+      createGig(newGig)
+      history.push('/booker')
+      // history.push(`/gigs/${newId}`);
     }
 
     else if (currentDeejay) {
       newGig = {
+        // id: newId,
         deejayId: currentDeejay.id,
         name: event.target.name.value,
         date: dateInput,
@@ -174,9 +185,11 @@ class NewGigForm extends Component {
         location: event.target.location.value,
         compensation: event.target.compensation.value
       }
+      createGig(newGig);
+      history.push('/deejay')
+      // history.push(`/gigs/${newId}/`);
     }
 
-    createGig(newGig);
     event.target.name.value = '';
     event.target.date1.value = '';
     event.target.date2.value = '';
@@ -189,13 +202,11 @@ class NewGigForm extends Component {
     event.target.endTime3.value = '';
     event.target.location.value = '';
     event.target.compensation.value = '';
-
-    history.push(`/gigs/${newGig.id}`)
   }
 
 }
 
 const mapState = ({ gigs }) => ({ gigs })
-const mapDispatch = ({ createGig })
+const mapDispatch = ({ createGig, fetchGig })
 
 export default connect(mapState, mapDispatch)(NewGigForm)

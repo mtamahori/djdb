@@ -53,7 +53,8 @@ class NewDeejayForm extends Component {
     event.target.phone1.value = '';
     event.target.phone2.value = '';
     event.target.phone3.value = '';
-    history.push('/deejays')
+    
+    history.push('/deejay')
   }
 }
 

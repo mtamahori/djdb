@@ -18,8 +18,9 @@ class GigDetail extends Component {
 
   render() {
     // const { currentGig, currentBooker, currentDeejay } = this.props;
-    const { currentGig, currentBooker, currentDeejay } = this.props.location.state
-    console.log('CURRENT STUFF', this.props.location.state)
+    const { currentGig, currentBooker, currentDeejay, gigs, bookers, deejays } = this.props.location.state
+    
+    console.log('CURRENT this.props.location.state PASSED FROM NAVLINK', this.props.location.state)
 
     if (!currentGig) {
       return <div>Loading!</div>
@@ -307,7 +308,11 @@ class GigDetail extends Component {
       event.target.location.value = '';
       event.target.compensation.value = '';
     }
+    
+    history.push(`/gigs/:${gig.id}`)
   }
+  
+  
 
 }
 

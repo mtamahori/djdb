@@ -21,7 +21,7 @@ class BookerMain extends Component {
 
           currentBooker === undefined
           ?
-          <NavLink activeClassName="active" to="/bookers/new">
+          <NavLink activeClassName="active" to="/booker/new">
             <Button size="massive">Create Booker Profile</Button>
           </NavLink>
           :

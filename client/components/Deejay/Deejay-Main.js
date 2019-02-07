@@ -19,7 +19,7 @@ class DeejayMain extends Component {
         {
           currentDeejay === undefined
           ?
-          <NavLink activeClassName="active" to="/deejays/new">
+          <NavLink activeClassName="active" to="/deejay/new">
             <Button size="massive">Create Deejay Profile</Button>
           </NavLink>
           :

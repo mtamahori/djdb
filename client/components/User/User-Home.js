@@ -20,11 +20,11 @@ class UserHome extends Component {
           <NavLink activeClassName="active" to="/user">
             <Button size="massive">User Profile</Button>
           </NavLink>
-          <NavLink activeClassName="active" to="/bookers">
-            <Button size="massive">Bookers</Button>
+          <NavLink activeClassName="active" to="/booker">
+            <Button size="massive">Booker</Button>
           </NavLink>
-          <NavLink activeClassName="active" to="/deejays">
-            <Button size="massive">Deejays</Button>
+          <NavLink activeClassName="active" to="/deejay">
+            <Button size="massive">Deejay</Button>
           </NavLink>
         </div>
       </div>
