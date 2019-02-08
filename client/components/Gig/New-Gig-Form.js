@@ -155,13 +155,13 @@ class NewGigForm extends Component {
     let startTime = event.target.startTime1.value + ':' + event.target.startTime2.value + event.target.startTime3.value;
     let endTime = event.target.endTime1.value + ':' + event.target.endTime2.value + event.target.endTime3.value;
     
-    // let idArr = gigs.map(gig => gig.id)
-    // let lastId = Math.max(...idArr)
-    // let newId = lastId + 1;
+    let idArr = gigs.map(gig => gig.id)
+    let lastId = Math.max(...idArr)
+    let newId = lastId + 1;
 
     if (currentBooker) {
       newGig = {
-        // id: newId,
+        id: newId,
         bookerId: currentBooker.id,
         name: event.target.name.value,
         date: dateInput,
@@ -169,15 +169,13 @@ class NewGigForm extends Component {
         location: event.target.location.value,
         compensation: event.target.compensation.value
       }
-      
       createGig(newGig)
-      history.push('/booker')
-      // history.push(`/gigs/${newId}`);
+      history.push(`/gigs/${newId}`);
     }
 
     else if (currentDeejay) {
       newGig = {
-        // id: newId,
+        id: newId,
         deejayId: currentDeejay.id,
         name: event.target.name.value,
         date: dateInput,
@@ -186,8 +184,7 @@ class NewGigForm extends Component {
         compensation: event.target.compensation.value
       }
       createGig(newGig);
-      history.push('/deejay')
-      // history.push(`/gigs/${newId}/`);
+      history.push(`/gigs/${newId}/`);
     }
 
     event.target.name.value = '';

@@ -16,7 +16,7 @@ class DeejayItem extends Component {
         <NavLink
         activeClassName="active"
         to={{
-          pathname: `/browse/deejays/${deejay.id}`,
+          pathname: `/deejays/${deejay.id}`,
           state: {
             currentGig: currentGig
           }

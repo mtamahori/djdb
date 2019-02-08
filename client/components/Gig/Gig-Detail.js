@@ -17,9 +17,19 @@ class GigDetail extends Component {
   }
 
   render() {
-    // const { currentGig, currentBooker, currentDeejay } = this.props;
-    const { currentGig, currentBooker, currentDeejay, gigs, bookers, deejays } = this.props.location.state
+    const { currentGig } = this.props;
+    let currentBooker;
+    let currentDeejay;
     
+    // so stupid and brittle but whatever
+    this.props.location.state 
+    ? 
+    {currentBooker, currentDeejay} = this.props.location.state
+    :
+    console.log('nope')
+    
+    
+    console.log('PROPS', this.props)
     console.log('CURRENT this.props.location.state PASSED FROM NAVLINK', this.props.location.state)
 
     if (!currentGig) {
@@ -32,6 +42,7 @@ class GigDetail extends Component {
         <div>{this.renderCurrentGig()}</div>
         {
           currentDeejay &&
+          !currentGig.deejayId &&
           <div>{this.renderBookingApplication()}</div>
         }
         {
@@ -52,8 +63,7 @@ class GigDetail extends Component {
   }
 
   renderCurrentGig() {
-    const { gigs } = this.props
-    const { currentGig } = this.props.location.state
+    const { gigs, currentGig } = this.props
     return (
       <div>
         {
@@ -250,11 +260,12 @@ class GigDetail extends Component {
 
   handleBookingApplication(event) {
     event.preventDefault();
-    const { updateGig } = this.props
-    const { currentGig, currentDeejay } = this.props.location.state
-    if (currentGig.deejayApplicants.indexOf(currentDeejay.id) === -1) {
+    const { updateGig, currentGig } = this.props
+    const { currentDeejay } = this.props.location.state
+    if ((currentGig.deejayApplicants.indexOf(currentDeejay.id) === -1) && !currentGig.deejayId) {
       currentGig.deejayApplicants.push(currentDeejay.id);
       updateGig(currentGig);
+      history.push('/deejay')
     }
     else {
       console.log('You have already sent a booking request to this booker!')

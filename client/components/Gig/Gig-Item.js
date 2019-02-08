@@ -27,7 +27,6 @@ class GigItem extends Component {
         to={{
           pathname: `/gigs/${gig.id}`,
           state: {
-            currentGig: gig,
             currentBooker: currentBooker,
             currentDeejay: currentDeejay
           }

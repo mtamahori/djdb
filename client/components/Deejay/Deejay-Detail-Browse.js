@@ -47,6 +47,7 @@ class DeejayDetailBrowse extends Component {
     if (currentGig.deejayInvites.indexOf(currentDeejayBrowse.id) === -1) {
       currentGig.deejayInvites.push(currentDeejayBrowse.id);
       updateGig(currentGig);
+      history.push('/booker')
     }
     else {
       console.log('You have already sent a booking request to this Deejay!')
