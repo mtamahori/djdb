@@ -1,40 +1,35 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { deleteBooker } from "../../store";
 
 class BookerItem extends Component {
   constructor(props) {
     super(props);
-
-    this.handleDeleteBooker = this.handleDeleteBooker.bind(this);
   }
 
   render() {
-    const { booker } = this.props;
+    const { booker, currentGig } = this.props;
     return (
       <div>
-        <NavLink activeClassName="active" to={`/bookers/${booker.id}`}>
+        <NavLink 
+        activeClassName="active" 
+        to={{
+          pathname: `/bookers/${booker.id}`,
+          state: {
+            currentGig: currentGig
+          }
+          }}>
           <h4>{booker.name}</h4>
         </NavLink>
         <h5>{booker.email}</h5>
         <h5>{booker.phone}</h5>
-        <button onClick={this.handleDeleteBooker} type="button">
-          Delete Booker
-        </button>
       </div>
     );
-  }
-
-  handleDeleteBooker(event) {
-    event.stopPropagation();
-    const { deleteBooker, booker } = this.props;
-    deleteBooker(booker);
   }
 }
 
 const mapState = null;
-const mapDispatch = { deleteBooker };
+const mapDispatch = null;
 
 export default connect(
   mapState,

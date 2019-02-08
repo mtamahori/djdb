@@ -9,6 +9,7 @@ export { default as BookerMain } from './Booker/Booker-Main'
 export { default as BookerList } from './Booker/Booker-List'
 export { default as BookerItem } from './Booker/Booker-Item'
 export { default as BookerDetail } from './Booker/Booker-Detail'
+export { default as BookerDetailBrowse } from './Booker/Booker-Detail-Browse'
 export { default as NewBookerForm } from './Booker/New-Booker-Form'
 
 export { default as DeejayMain } from './Deejay/Deejay-Main'

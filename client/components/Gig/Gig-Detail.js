@@ -4,6 +4,7 @@ import { deleteGig, updateGig } from '../../store'
 import { Button } from 'semantic-ui-react'
 import DeejayList from '../Deejay/Deejay-List'
 import DeejayItem from '../Deejay/Deejay-Item'
+import BookerItem from '../Booker/Booker-Item'
 import history from '../../history'
 import dateFns from 'date-fns'
 
@@ -92,6 +93,13 @@ class GigDetail extends Component {
                 <h4>{gig.time}</h4>
                 <h4>{gig.location}</h4>
                 <h4>{gig.compensation}</h4>
+                {
+                  gigBooker &&
+                  <div>
+                    <h4>This Gig's Booker:</h4>
+                    <BookerItem booker={gigBooker} key={gigBooker.id} currentGig={currentGig} />
+                  </div>
+                }
                 {
                   gigDeejay &&
                   <div>

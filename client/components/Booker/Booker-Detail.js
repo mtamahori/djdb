@@ -8,6 +8,7 @@ class BookerDetail extends Component {
     super(props);
 
     this.handleUpdateBooker = this.handleUpdateBooker.bind(this);
+    this.handleDeleteBooker = this.handleDeleteBooker.bind(this);
   }
 
   render() {
@@ -21,19 +22,30 @@ class BookerDetail extends Component {
 
   renderCurrentBooker() {
     const { currentBooker } = this.props;
-    return (
-      <div>
-        <h3>Booker Details</h3>
-        {
-          <List key={currentBooker.id}>
-            <List.Item icon="users" content={currentBooker.name} />
-            <List.Item icon="marker" content="Chicago, IL" />
-            <List.Item icon="mail" content={currentBooker.email} />
-            <List.Item icon="phone" content={currentBooker.phone} />
-          </List>
-        }
-      </div>
-    );
+    
+    if (!currentBooker) {
+      return <div>Loading!</div>
+    }
+    
+    else if (currentBooker) {
+      
+      return (
+        <div>
+          <h3>Your Booker Profile</h3>
+          {
+            <List key={currentBooker.id}>
+              <List.Item icon="users" content={currentBooker.name} />
+              <List.Item icon="marker" content="Chicago, IL" />
+              <List.Item icon="mail" content={currentBooker.email} />
+              <List.Item icon="phone" content={currentBooker.phone} />
+              <button onClick={this.handleDeleteBooker} type="button">
+                Delete Booker
+              </button>
+            </List>
+          }
+        </div>
+      )
+    }
   }
 
   renderUpdateBooker() {
@@ -61,6 +73,12 @@ class BookerDetail extends Component {
         </form>
       </div>
     );
+  }
+  
+  handleDeleteBooker(event) {
+    event.stopPropagation();
+    const { deleteBooker, booker } = this.props;
+    deleteBooker(booker);
   }
 
   handleUpdateBooker(event) {

@@ -12,6 +12,7 @@ import {
   BookerMain,
   BookerList,
   BookerDetail,
+  BookerDetailBrowse,
   NewBookerForm,
   DeejayMain,
   DeejayList,
@@ -44,7 +45,7 @@ class Routes extends Component {
             {!isBooker && (
               <Route exact path="/booker/new" component={NewBookerForm} />
             )}
-            <Route exact path="/bookers/:id" component={BookerDetail} />
+            <Route exact path="/bookers/:id" component={BookerDetailBrowse} />
 
             
             {!isDeejay && (

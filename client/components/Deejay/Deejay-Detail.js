@@ -9,8 +9,8 @@ class DeejayDetail extends Component {
   constructor(props) {
     super(props);
 
-    this.handleDeleteDeejay = this.handleDeleteDeejay.bind(this)
     this.handleUpdateDeejay = this.handleUpdateDeejay.bind(this);
+    this.handleDeleteDeejay = this.handleDeleteDeejay.bind(this);
   }
 
   render() {
@@ -21,6 +21,16 @@ class DeejayDetail extends Component {
         </div>
       )
     }
+    
+    // render details
+        // Deejay-Detail
+        // Deejay-Detail-Browse
+    // render update deejay profile 
+        // Deejay-Main
+    // render delete deejay profile
+        // Deejay-Main
+    // render booking request button
+        // Deejay-Detail-Browse
 
   renderCurrentDeejay() {
     const { currentDeejay } = this.props
@@ -32,7 +42,7 @@ class DeejayDetail extends Component {
     else if (currentDeejay) {
       return (
         <div>
-        <h3>Deejay Details</h3>
+        <h3>Your Deejay Profile</h3>
           {
             <List key={currentDeejay.id} >
               <List.Item icon='users' content={currentDeejay.name} />
@@ -47,7 +57,6 @@ class DeejayDetail extends Component {
         </div>
       )
     }
-
   }
 
   renderUpdateDeejay() {
