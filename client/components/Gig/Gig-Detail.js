@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { deleteGig, updateGig } from '../../store'
 import { Button } from 'semantic-ui-react'
 import DeejayList from '../Deejay/Deejay-List'
+import DeejayItem from '../Deejay/Deejay-Item'
 import history from '../../history'
 import dateFns from 'date-fns'
 
@@ -26,7 +27,7 @@ class GigDetail extends Component {
     ? 
     {currentBooker, currentDeejay} = this.props.location.state
     :
-    console.log('nope')
+    console.log('')
     
     
     console.log('PROPS', this.props)
@@ -63,7 +64,7 @@ class GigDetail extends Component {
   }
 
   renderCurrentGig() {
-    const { gigs, currentGig } = this.props
+    const { currentGig, gigs, deejays, bookers } = this.props
     return (
       <div>
         {
@@ -74,6 +75,11 @@ class GigDetail extends Component {
               const gigYear = gigDateArr[0]
               const gigMonth = gigDateArr[1]
               const gigDate = gigDateArr[2]
+              let gigDeejay;
+              let gigBooker;
+              
+              currentGig.deejayId ? gigDeejay = deejays.filter(deejay => deejay.id === currentGig.deejayId)[0] : null;
+              currentGig.bookerId ? gigBooker = bookers.filter(booker => booker.id === currentGig.bookerId)[0] : null;
 
               const formattedDate = dateFns.format(
                 new Date(gigYear, gigMonth, gigDate),
@@ -86,6 +92,13 @@ class GigDetail extends Component {
                 <h4>{gig.time}</h4>
                 <h4>{gig.location}</h4>
                 <h4>{gig.compensation}</h4>
+                {
+                  gigDeejay &&
+                  <div>
+                    <h4>This Gig's Deejay:</h4>
+                    <DeejayItem deejay={gigDeejay} key={gigDeejay.id} currentGig={currentGig} />
+                  </div>
+                }
               </div>
               )}
             )
@@ -329,10 +342,12 @@ class GigDetail extends Component {
 
 // CONTAINER
 
-const mapState = ({ gigs }, ownProps) => {
+const mapState = ({ gigs, deejays, bookers }, ownProps) => {
   const gigParamId = Number(ownProps.match.params.id)
   return {
     gigs,
+    deejays,
+    bookers,
     currentGig: gigs.filter(gig => gig.id === gigParamId)[0]
   }
 }
