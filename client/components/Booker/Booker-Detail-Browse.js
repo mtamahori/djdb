@@ -31,9 +31,6 @@ class BookerDetailBrowse extends Component {
       )
     }
   }
-
-  
-
 }
 
 const mapState = ({ user, bookers }, ownProps) => {

@@ -21,7 +21,6 @@ class DeejayList extends Component {
     const { deejays, currentGig } = this.props;
     return (
       <div>
-        <h3>Deejay List</h3>
         {
           deejays.map(deejay => (
           <DeejayItem deejay={deejay} key={deejay.id} currentGig={currentGig} />

@@ -8,59 +8,59 @@ Think about how to use the calendar component for multiple use cases. One way co
 
 /////// CURRENT STEPS ////////
 
-INPUT + VALIDATION (1)
+INPUT + VALIDATION
     = Sequelize model constraints
     = Reg Ex study
     = change phone input fields to three input fields, each only taking 3-4-3 digits
     = change date input field to drop-downs with pre-determined options (mm-dd-yyyy)
     = change time input field to drop-downs with pre-determined options (hh-mm-//)
 
-FILTER + SEARCH (1)
+FILTER + SEARCH
     = use datefns to determine past/future status, add flag to Sequelize model
     = filter gigs into lists based on past, upcoming, open
     = search any gig list to match text input (name, location, booker/deejay)
     search any gig list to match date range (input via two sets of dropdowns)
     search any gig list to match compensation minimum (input via textbox)
 
-APPLY/ACCEPT GIG (1)
-    simple "request" button on each open gig
-    clicking "request" button sets a "pending" flag on that gig
+APPLY/ACCEPT GIG
+    = simple "request" button on each open gig
+    = clicking "request" button sets a "pending" flag on that gig
     create a "requests" list that renders on deejay/booker homepage - a gig list specifically for invites
     accepting/declining a gig will add the correct deejayId/bookerId to that gig
     ~maybe have a separate tab for "history" - i.e. all past gigs, both declined, pending, and accepted
 
-UI UX (2)
+UI UX
     color Scheme
     button types
     layout
 
-CALENDAR - (2)
+CALENDAR
     ((*hierarchy of filter/browse/calendar ??))
     greyed out "+ new gig" button on each cell
     greyed out "view gigs" button on each cell
     hover over each cell and select appropriate button
     +
 
-BROWSE OPEN GIGS (UI/UX TBD) (1)
+BROWSE OPEN GIGS (UI/UX TBD)
     default renders a list of all open gigs in chronological order
     option to select date/date range via calendar
     option to search based on all fields (name, location, booker/deejay, etc)
     calendar should render only these dates
 
-MESSAGING (1)
+MESSAGING
     one chatbox per gig
     keep the layout dead simple
 
 
 /////////////////////////////////////// ^ MVP - 2mo (til end of March)
 
-SEED file (1)
+SEED file
     of fake user base and gigs
 
-ERROR MESSAGES (1)
+ERROR MESSAGES
     for bad inputs
 
-EXTERNAL INTEGRATIONS (1)
+EXTERNAL INTEGRATIONS
     Soundcloud
     Mixcloud
     Spotify
@@ -68,11 +68,11 @@ EXTERNAL INTEGRATIONS (1)
     Facebook
     Instagram
 
-LANDING PAGE / FOOTER (1)
+LANDING PAGE / FOOTER
     animation
     logos
 
-TESTING (4)
+TESTING
     back end tests
     front end tests
 

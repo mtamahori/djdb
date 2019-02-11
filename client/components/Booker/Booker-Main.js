@@ -5,6 +5,7 @@ import { Button } from 'semantic-ui-react'
 import BookerDetail from './Booker-Detail'
 import CalendarMain from '../Calendar/Calendar-Main'
 import GigMain from '../Gig/Gig-Main'
+import GigApplications from './Gig-Applications'
 
 
 class BookerMain extends Component {
@@ -13,7 +14,7 @@ class BookerMain extends Component {
   }
 
   render() {
-    const { currentBooker } = this.props;
+    const { currentBooker, gigs } = this.props;
     return (
       <div>
         <h3>Booker Main Portal</h3>
@@ -27,11 +28,10 @@ class BookerMain extends Component {
           :
 
           <div>
-
             <BookerDetail currentBooker={currentBooker} />
             <CalendarMain currentBooker={currentBooker} />
+            <GigApplications gigs={gigs} currentBooker={currentBooker} />
             <GigMain currentBooker={currentBooker} />
-
           </div>
 
         }

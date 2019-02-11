@@ -46,12 +46,12 @@ class Routes extends Component {
               <Route exact path="/booker/new" component={NewBookerForm} />
             )}
             <Route exact path="/bookers/:id" component={BookerDetailBrowse} />
-
             
             {!isDeejay && (
               <Route exact path="/deejay/new" component={NewDeejayForm} />
             )}
             <Route exact path="/deejays/:id" component={DeejayDetailBrowse} />
+            
             <Route exact path="/gigs/:id" component={GigDetail} />
             
             </Switch>

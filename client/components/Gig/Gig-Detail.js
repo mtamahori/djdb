@@ -22,17 +22,12 @@ class GigDetail extends Component {
     const { currentGig } = this.props;
     let currentBooker;
     let currentDeejay;
-    
+
     // so stupid and brittle but whatever
-    this.props.location.state 
-    ? 
-    {currentBooker, currentDeejay} = this.props.location.state
-    :
-    console.log('')
-    
-    
-    console.log('PROPS', this.props)
-    console.log('CURRENT this.props.location.state PASSED FROM NAVLINK', this.props.location.state)
+    this.props.location.state ? {currentBooker, currentDeejay} = this.props.location.state : {currentBooker, currentDeejay} = null;
+
+    // console.log('PROPS', this.props)
+    // console.log('CURRENT this.props.location.state PASSED FROM NAVLINK', this.props.location.state)
 
     if (!currentGig) {
       return <div>Loading!</div>
@@ -78,9 +73,9 @@ class GigDetail extends Component {
               const gigDate = gigDateArr[2]
               let gigDeejay;
               let gigBooker;
-              
-              currentGig.deejayId ? gigDeejay = deejays.filter(deejay => deejay.id === currentGig.deejayId)[0] : null;
-              currentGig.bookerId ? gigBooker = bookers.filter(booker => booker.id === currentGig.bookerId)[0] : null;
+
+              currentGig.deejayId ? gigDeejay = deejays.filter(deejay => deejay.id === currentGig.deejayId)[0] : gigDeejay = null;
+              currentGig.bookerId ? gigBooker = bookers.filter(booker => booker.id === currentGig.bookerId)[0] : gigBooker = null;
 
               const formattedDate = dateFns.format(
                 new Date(gigYear, gigMonth, gigDate),
@@ -130,6 +125,7 @@ class GigDetail extends Component {
     const { currentGig } = this.props;
     return (
       <div>
+        <h3>Deejays You Can Book (below)</h3>
         <DeejayList currentGig={currentGig} />
       </div>
     )
@@ -340,11 +336,11 @@ class GigDetail extends Component {
       event.target.location.value = '';
       event.target.compensation.value = '';
     }
-    
+
     history.push(`/gigs/:${gig.id}`)
   }
-  
-  
+
+
 
 }
 

@@ -243,11 +243,11 @@ class GigMain extends Component {
   renderBrowse() {
     const { currentBooker, currentDeejay, gigs } = this.props;
 
-    if (currentBooker) {
-      return (
-        <DeejayList />
-      )
-    }
+    // if (currentBooker) {
+    //   return (
+    //     <DeejayList />
+    //   )
+    // }
 
     if (currentDeejay) {
       let openGigs = gigs.filter(gig => gig.deejayId === null)

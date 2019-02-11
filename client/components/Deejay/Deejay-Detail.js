@@ -21,16 +21,6 @@ class DeejayDetail extends Component {
         </div>
       )
     }
-    
-    // render details
-        // Deejay-Detail
-        // Deejay-Detail-Browse
-    // render update deejay profile 
-        // Deejay-Main
-    // render delete deejay profile
-        // Deejay-Main
-    // render booking request button
-        // Deejay-Detail-Browse
 
   renderCurrentDeejay() {
     const { currentDeejay } = this.props
