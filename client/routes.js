@@ -10,13 +10,9 @@ import {
   UserHome,
   UserProfile,
   BookerMain,
-  BookerList,
-  BookerDetail,
   BookerDetailBrowse,
   NewBookerForm,
   DeejayMain,
-  DeejayList,
-  DeejayDetail,
   DeejayDetailBrowse,
   NewDeejayForm,
   GigDetail
@@ -34,26 +30,26 @@ class Routes extends Component {
       <Switch>
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
-          
+
           {isLoggedIn && (
             <Switch>
             <Route exact path="/home" component={UserHome} />
             <Route exact path="/user" component={UserProfile} />
             <Route exact path="/deejay" component={DeejayMain} />
             <Route exact path="/booker" component={BookerMain} />
-            
+
             {!isBooker && (
               <Route exact path="/booker/new" component={NewBookerForm} />
             )}
             <Route exact path="/bookers/:id" component={BookerDetailBrowse} />
-            
+
             {!isDeejay && (
               <Route exact path="/deejay/new" component={NewDeejayForm} />
             )}
             <Route exact path="/deejays/:id" component={DeejayDetailBrowse} />
-            
+
             <Route exact path="/gigs/:id" component={GigDetail} />
-            
+
             </Switch>
           )}
           <Route exact path="/" component={Landing} />

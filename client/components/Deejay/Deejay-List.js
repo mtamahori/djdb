@@ -34,7 +34,7 @@ class DeejayList extends Component {
 
 // CONTAINER
 
-const mapState = ({ deejays }) => ({ deejays });
+const mapState = null;
 const mapDispatch = null;
 
 export default connect(mapState, mapDispatch)(DeejayList);

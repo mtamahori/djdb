@@ -44,6 +44,11 @@ class GigDetail extends Component {
         }
         {
           currentBooker &&
+          currentGig.deejayApplicants.length &&
+          <div>{this.renderDeejayApplicants()}</div>
+        }
+        {
+          currentBooker &&
           !currentGig.deejayId &&
           <div>{this.renderDeejayList()}</div>
         }
@@ -121,12 +126,26 @@ class GigDetail extends Component {
     )
   }
 
+  renderDeejayApplicants() {
+    const { currentGig, deejays } = this.props;
+    const deejayApplicants = deejays.filter(deejay => (
+      currentGig.deejayApplicants.indexOf(deejay.id) !== -1)
+    )
+
+    return (
+      <div>
+        <h3>Deejay Applicants (below)</h3>
+        <DeejayList deejays={deejayApplicants} currentGig={currentGig} />
+      </div>
+    )
+  }
+
   renderDeejayList() {
-    const { currentGig } = this.props;
+    const { currentGig, deejays } = this.props;
     return (
       <div>
         <h3>Deejays You Can Book (below)</h3>
-        <DeejayList currentGig={currentGig} />
+        <DeejayList deejays={deejays} currentGig={currentGig} />
       </div>
     )
   }

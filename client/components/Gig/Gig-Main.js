@@ -5,10 +5,6 @@ import { withRouter } from 'react-router-dom'
 import dateFns from 'date-fns'
 import GigList from './Gig-List'
 import NewGigForm from './New-Gig-Form'
-import FilterGigs from './Filter-Gigs'
-import DeejayList from '../Deejay/Deejay-List'
-
-// PROPS PASSED: currentBooker, currentDeejay
 
 class GigMain extends Component {
   constructor(props) {
@@ -242,12 +238,6 @@ class GigMain extends Component {
 
   renderBrowse() {
     const { currentBooker, currentDeejay, gigs } = this.props;
-
-    // if (currentBooker) {
-    //   return (
-    //     <DeejayList />
-    //   )
-    // }
 
     if (currentDeejay) {
       let openGigs = gigs.filter(gig => gig.deejayId === null)
