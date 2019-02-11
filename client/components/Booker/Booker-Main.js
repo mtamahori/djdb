@@ -6,6 +6,7 @@ import BookerDetail from './Booker-Detail'
 import CalendarMain from '../Calendar/Calendar-Main'
 import GigMain from '../Gig/Gig-Main'
 import GigApplications from './Gig-Applications'
+import GigPendingInvites from './Gig-Pending-Invites'
 
 
 class BookerMain extends Component {
@@ -31,6 +32,7 @@ class BookerMain extends Component {
             <BookerDetail currentBooker={currentBooker} />
             <CalendarMain currentBooker={currentBooker} />
             <GigApplications gigs={gigs} currentBooker={currentBooker} />
+            <GigPendingInvites gigs={gigs} currentBooker={currentBooker} />
             <GigMain currentBooker={currentBooker} />
           </div>
 
