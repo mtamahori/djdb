@@ -23,7 +23,7 @@ class GigPendingInvites extends Component {
             this.setState({ view: false })
           }}
           size="massive">
-          Pending Booking Requests
+          Outgoing Booking Requests (PENDING)
         </Button>
         {
         this.state.view &&
@@ -45,7 +45,7 @@ class GigPendingInvites extends Component {
       ?
       <GigList currentBooker={currentBooker} gigs={gigPendingInvites} />
       :
-      <h3>You Have No Pending Booking Requests Right Now</h3>
+      <h3>You Have No Outgoing Pending Booking Requests Right Now</h3>
     )
   }
 }

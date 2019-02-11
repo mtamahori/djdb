@@ -23,6 +23,7 @@ export { default as DeejayDetailBrowse } from './Deejay/Deejay-Detail-Browse'
 export { default as NewDeejayForm } from './Deejay/New-Deejay-Form'
 
 export { default as GigInvites } from './Deejay/Gig-Invites'
+export { default as GigPendingApplications} from './Deejay/Gig-Pending-Applications'
 
 export { default as GigList } from './Gig/Gig-List'
 export { default as GigItem } from './Gig/Gig-Item'

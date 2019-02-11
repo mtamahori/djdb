@@ -6,6 +6,7 @@ import DeejayDetail from './Deejay-Detail'
 import CalendarMain from '../Calendar/Calendar-Main'
 import GigMain from '../Gig/Gig-Main'
 import GigInvites from './Gig-Invites'
+import GigPendingApplications from './Gig-Pending-Applications'
 
 class DeejayMain extends Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class DeejayMain extends Component {
             <DeejayDetail currentDeejay={currentDeejay} />
             <CalendarMain currentDeejay={currentDeejay} />
             <GigInvites currentDeejay={currentDeejay} gigs={gigs} />
+            <GigPendingApplications currentDeejay={currentDeejay} gigs={gigs} />
             <GigMain currentDeejay={currentDeejay} />
 
           </div>

@@ -23,7 +23,7 @@ class GigApplications extends Component {
             this.setState({ view: false })
           }}
           size="massive">
-          Incoming Booking Applications
+          Incoming Booking Requests
         </Button>
         {
         this.state.view &&
@@ -45,7 +45,7 @@ class GigApplications extends Component {
       ?
       <GigList currentBooker={currentBooker} gigs={gigApplications} />
       :
-      <h3>You Have No Gig Applications Right Now</h3>
+      <h3>You Have No Incoming Booking Requests Right Now</h3>
     )
   }
 }
