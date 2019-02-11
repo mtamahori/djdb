@@ -5,6 +5,7 @@ import { Button } from 'semantic-ui-react'
 import DeejayDetail from './Deejay-Detail'
 import CalendarMain from '../Calendar/Calendar-Main'
 import GigMain from '../Gig/Gig-Main'
+import GigInvites from './Gig-Invites'
 
 class DeejayMain extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class DeejayMain extends Component {
   }
 
   render() {
-    const { currentDeejay } = this.props;
+    const { currentDeejay, gigs } = this.props;
     return (
       <div>
         <h3>Deejay Main Portal</h3>
@@ -27,6 +28,7 @@ class DeejayMain extends Component {
 
             <DeejayDetail currentDeejay={currentDeejay} />
             <CalendarMain currentDeejay={currentDeejay} />
+            <GigInvites currentDeejay={currentDeejay} gigs={gigs} />
             <GigMain currentDeejay={currentDeejay} />
 
           </div>
@@ -36,9 +38,10 @@ class DeejayMain extends Component {
   }
 }
 
-const mapState = ({ user, deejays }) => {
+const mapState = ({ user, gigs, deejays }) => {
   return {
     user,
+    gigs,
     deejays,
     currentDeejay: deejays.filter(deejay => deejay.userId === user.id)[0]
   }

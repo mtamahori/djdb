@@ -16,19 +16,19 @@ class GigApplications extends Component {
   render() {
     return (
       <div>
-      <Button
-        onClick={() => {
-          this.state.view === false ?
-          this.setState({ view: true }) :
-          this.setState({ view: false })
-        }}
-        size="massive">
-        Incoming Booking Applications
-      </Button>
-      {
-       this.state.view &&
-       this.renderGigApplications()
-      }
+        <Button
+          onClick={() => {
+            this.state.view === false ?
+            this.setState({ view: true }) :
+            this.setState({ view: false })
+          }}
+          size="massive">
+          Incoming Booking Applications
+        </Button>
+        {
+        this.state.view &&
+        this.renderGigApplications()
+        }
       </div>
     )
   }
@@ -45,7 +45,7 @@ class GigApplications extends Component {
       ?
       <GigList currentBooker={currentBooker} gigs={gigApplications} />
       :
-      <h3>Currently No Gig Applications</h3>
+      <h3>You Have No Gig Applications Right Now</h3>
     )
   }
 }
