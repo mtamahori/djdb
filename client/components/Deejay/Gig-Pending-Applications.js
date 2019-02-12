@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import GigList from '../Gig/Gig-List'
+import dateFns from 'date-fns'
 
 class GigPendingApplications extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class GigPendingApplications extends Component {
             this.setState({ view: false })
           }}
           size="massive">
-          Outgoing Booking Requests (PENDING)
+          Outgoing Booking Requests
         </Button>
         {
         this.state.view &&
@@ -35,9 +36,19 @@ class GigPendingApplications extends Component {
 
   renderGigPendingApplications() {
     const { currentDeejay, gigs } = this.props;
-    const gigPendingApplications = gigs.filter(gig => (
-      gig.deejayApplicants.indexOf(currentDeejay.id) !== -1
-    ))
+
+    const gigPendingApplications = gigs.filter(gig => {
+      let gigDateArr = gig.date.split('/')
+      let gigYear = gigDateArr[0]
+      let gigMonth = gigDateArr[1]
+      let gigDate = gigDateArr[2]
+
+      return (
+        gig.deejayApplicants.indexOf(currentDeejay.id) !== -1
+        &&
+        dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
+      )
+    })
 
     return (
       gigPendingApplications.length

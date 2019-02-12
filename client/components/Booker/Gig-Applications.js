@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import GigList from '../Gig/Gig-List'
+import dateFns from 'date-fns'
 
 class GigApplications extends Component {
   constructor(props) {
@@ -35,10 +36,21 @@ class GigApplications extends Component {
 
   renderGigApplications() {
     const { currentBooker, gigs } = this.props;
-    const gigApplications = gigs.filter(gig => (
-      gig.bookerId === currentBooker.id &&
-      gig.deejayApplicants.length
-    ))
+
+    const gigApplications = gigs.filter(gig => {
+      let gigDateArr = gig.date.split('/')
+      let gigYear = gigDateArr[0]
+      let gigMonth = gigDateArr[1]
+      let gigDate = gigDateArr[2]
+
+      return (
+        gig.bookerId === currentBooker.id
+        &&
+        gig.deejayApplicants.length
+        &&
+        dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
+      )
+    })
 
     return (
       gigApplications.length

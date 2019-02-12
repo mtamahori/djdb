@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateGig } from '../../store'
 import { List, Button } from 'semantic-ui-react'
+import history from '../../history'
 
 class DeejayDetailBrowse extends Component {
   constructor (props) {
@@ -11,7 +12,9 @@ class DeejayDetailBrowse extends Component {
   }
 
   render() {
-    const { currentDeejayBrowse } = this.props
+    const { currentDeejayBrowse } = this.props;
+    const { currentGig } = this.props.location.state;
+
 
     if (!currentDeejayBrowse) {
       return <div>Loading!</div>
@@ -29,12 +32,16 @@ class DeejayDetailBrowse extends Component {
               <List.Item icon='phone' content={currentDeejayBrowse.phone} />
             </List>
           }
-          <Button
-            size='massive'
-            onClick={(event) => this.handleBookingInvite(event)}
-            >
-            Send Booking Request
-          </Button>
+          {
+            !currentGig.deejayId &&
+            currentGig.deejayInvites.indexOf(currentDeejayBrowse.id) === -1 &&
+            <Button
+              size='massive'
+              onClick={(event) => this.handleBookingInvite(event)}
+              >
+              Send Booking Request
+            </Button>
+          }
         </div>
       )
     }
