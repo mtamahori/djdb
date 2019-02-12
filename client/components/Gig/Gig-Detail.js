@@ -25,8 +25,6 @@ class GigDetail extends Component {
 
     // so stupid and brittle but whatever
     this.props.location.state ? {currentBooker, currentDeejay} = this.props.location.state : {currentBooker, currentDeejay} = null;
-
-    // console.log('PROPS', this.props)
     // console.log('CURRENT this.props.location.state PASSED FROM NAVLINK', this.props.location.state)
 
     if (!currentGig) {
@@ -43,6 +41,11 @@ class GigDetail extends Component {
           currentGig.deejayApplicants.indexOf(currentDeejay.id) === -1 &&
           currentGig.deejayInvites.indexOf(currentDeejay.id) === -1 &&
           <div>{this.renderBookingApplication()}</div>
+        }
+        {
+          currentBooker &&
+          currentGig.deejayInvites.length &&
+          <div>{this.renderDeejayInvites()}</div>
         }
         {
           currentBooker &&
@@ -128,11 +131,25 @@ class GigDetail extends Component {
     )
   }
 
+  renderDeejayInvites() {
+    const { currentGig, deejays } = this.props;
+    const deejayInvites = deejays.filter(deejay => (
+      currentGig.deejayInvites.indexOf(deejay.id) !== -1
+    ))
+
+    return (
+      <div>
+        <h3>Deejay Invites (below)</h3>
+        <DeejayList deejays={deejayInvites} currentGig={currentGig} />
+      </div>
+    )
+  }
+
   renderDeejayApplicants() {
     const { currentGig, deejays } = this.props;
     const deejayApplicants = deejays.filter(deejay => (
-      currentGig.deejayApplicants.indexOf(deejay.id) !== -1)
-    )
+      currentGig.deejayApplicants.indexOf(deejay.id) !== -1
+    ))
 
     return (
       <div>
@@ -145,8 +162,10 @@ class GigDetail extends Component {
   renderDeejayList() {
     const { currentGig, deejays } = this.props;
     const eligibleDeejays = deejays.filter(deejay => (
-      currentGig.deejayApplicants.indexOf(deejay.id) === -1)
-    )
+      currentGig.deejayApplicants.indexOf(deejay.id) === -1
+      &&
+      currentGig.deejayInvites.indexOf(deejay.id) === -1
+      ))
     return (
       <div>
         <h3>Deejays You Can Book (below)</h3>
