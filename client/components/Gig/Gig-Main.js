@@ -240,7 +240,24 @@ class GigMain extends Component {
     const { currentBooker, currentDeejay, gigs } = this.props;
 
     if (currentDeejay) {
-      let openGigs = gigs.filter(gig => gig.deejayId === null)
+      let openGigs = gigs.filter(gig => {
+        let gigDateArr = gig.date.split('/')
+        let gigYear = gigDateArr[0]
+        let gigMonth = gigDateArr[1]
+        let gigDate = gigDateArr[2]
+
+        return (
+          gig.deejayId === null
+          &&
+          gig.deejayInvites.indexOf(currentDeejay.id) === -1
+          &&
+          gig.deejayApplicants.indexOf(currentDeejay.id) === -1
+          &&
+          dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
+        )
+      })
+
+
       return (
         <div>
           <GigList currentDeejay={currentDeejay} gigs={openGigs} />
