@@ -9,6 +9,8 @@ class DeejayDetailBrowse extends Component {
     super(props)
 
     this.handleBookingInvite = this.handleBookingInvite.bind(this);
+    this.handleBookingAccept = this.handleBookingAccept.bind(this);
+    this.handleBookingDecline = this.handleBookingDecline.bind(this);
   }
 
   render() {
@@ -35,12 +37,30 @@ class DeejayDetailBrowse extends Component {
           {
             !currentGig.deejayId &&
             currentGig.deejayInvites.indexOf(currentDeejayBrowse.id) === -1 &&
+            currentGig.deejayApplicants.indexOf(currentDeejayBrowse.id) === -1 &&
             <Button
               size='massive'
               onClick={(event) => this.handleBookingInvite(event)}
               >
               Send Booking Request
             </Button>
+          }
+          {
+            currentGig.deejayApplicants.indexOf(currentDeejayBrowse.id) !== -1 &&
+            <div>
+            <Button
+              size='massive'
+              onClick={(event) => this.handleBookingAccept(event)}
+              >
+              Accept Booking Request
+            </Button>
+            <Button
+              size='massive'
+              onClick={(event) => this.handleBookingDecline(event)}
+              >
+              Decline Booking Request
+            </Button>
+            </div>
           }
         </div>
       )
@@ -59,6 +79,24 @@ class DeejayDetailBrowse extends Component {
     else {
       console.log('You have already sent a booking request to this Deejay!')
     }
+  }
+
+  handleBookingAccept(event) {
+    event.preventDefault();
+    const { currentDeejayBrowse, updateGig } = this.props
+    const { currentGig } = this.props.location.state
+    if (!currentGig.deejayId) {
+      currentGig.deejayId = currentDeejayBrowse.id;
+      updateGig(currentGig);
+    }
+  }
+
+  handleBookingDecline(event) {
+    event.preventDefault();
+    const { currentDeejayBrowse, updateGig } = this.props
+    const { currentGig } = this.props.location.state
+      // currentGig.declinedApps.push(currentDeejayBrowse.id);
+      updateGig(currentGig);
   }
 }
 
