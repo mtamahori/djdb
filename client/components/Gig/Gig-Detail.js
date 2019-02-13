@@ -49,6 +49,14 @@ class GigDetail extends Component {
           <div>{this.renderBookingApplication()}</div>
         }
         {
+          currentDeejay &&
+          !currentGig.deejayId &&
+          currentGig.deejayInvites.indexOf(currentDeejay.id) !== -1 &&
+          currentGig.declinedApps.indexOf(currentDeejay.id) === -1 &&
+          currentGig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
+          <div>{this.renderBookingAcceptDecline()}</div>
+        }
+        {
           currentBooker &&
           currentGig.deejayInvites.length &&
           <div>{this.renderDeejayInvites()}</div>
@@ -59,10 +67,12 @@ class GigDetail extends Component {
           <div>{this.renderDeejayApplicants()}</div>
         }
         {
+          currentBooker &&
           currentGig.declinedApps.length &&
           <div>{this.renderDeclinedApps()}</div>
         }
         {
+          currentBooker &&
           currentGig.declinedInvs.length &&
           <div>{this.renderDeclinedInvs()}</div>
         }
@@ -142,6 +152,25 @@ class GigDetail extends Component {
             >
             Send Booking Request
       </Button>
+    )
+  }
+
+  renderBookingAcceptDecline() {
+    return (
+      <div>
+      <Button
+        size='massive'
+        onClick={(event) => this.handleBookingAccept(event)}
+        >
+        Accept Booking Request
+      </Button>
+      <Button
+        size='massive'
+        onClick={(event) => this.handleBookingDecline(event)}
+        >
+        Decline Booking Request
+      </Button>
+      </div>
     )
   }
 
@@ -374,8 +403,8 @@ class GigDetail extends Component {
 
   handleBookingApplication(event) {
     event.preventDefault();
-    const { updateGig, currentGig } = this.props
-    const { currentDeejay } = this.props.location.state
+    const { currentGig, updateGig } = this.props;
+    const { currentDeejay } = this.props.location.state;
     if ((currentGig.deejayApplicants.indexOf(currentDeejay.id) === -1) && !currentGig.deejayId) {
       currentGig.deejayApplicants.push(currentDeejay.id);
       updateGig(currentGig);
@@ -384,6 +413,26 @@ class GigDetail extends Component {
     else {
       console.log('You have already sent a booking request to this booker!')
     }
+  }
+
+  handleBookingAccept(event) {
+    event.preventDefault();
+    const { currentGig, updateGig } = this.props;
+    const { currentDeejay } = this.props.location.state;
+    if (!currentGig.deejayId) {
+      currentGig.deejayId = currentDeejay.id;
+      updateGig(currentGig);
+      history.push('/deejay');
+    }
+  }
+
+  handleBookingDecline(event) {
+    event.preventDefault();
+    const { currentGig, updateGig } = this.props;
+    const { currentDeejay } = this.props.location.state;
+    currentGig.declinedInvs.push(currentDeejay.id);
+    updateGig(currentGig);
+    history.push('/deejay')
   }
 
   handleDeleteGig(event) {

@@ -44,8 +44,10 @@ class GigPendingApplications extends Component {
       let gigDate = gigDateArr[2]
 
       return (
-        gig.deejayApplicants.indexOf(currentDeejay.id) !== -1
-        &&
+        !gig.deejayId &&
+        gig.deejayApplicants.indexOf(currentDeejay.id) !== -1 &&
+        gig.declinedApps.indexOf(currentDeejay.id) === -1 &&
+        gig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
         dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
       )
     })

@@ -44,8 +44,10 @@ class GigInvites extends Component {
       let gigDate = gigDateArr[2]
 
       return (
-        gig.deejayInvites.indexOf(currentDeejay.id) !== -1
-        &&
+        !gig.deejayId &&
+        gig.deejayInvites.indexOf(currentDeejay.id) !== -1 &&
+        gig.declinedApps.indexOf(currentDeejay.id) === -1 &&
+        gig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
         dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
       )
     })
