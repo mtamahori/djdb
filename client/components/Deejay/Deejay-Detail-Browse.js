@@ -74,7 +74,7 @@ class DeejayDetailBrowse extends Component {
     if (currentGig.deejayInvites.indexOf(currentDeejayBrowse.id) === -1) {
       currentGig.deejayInvites.push(currentDeejayBrowse.id);
       updateGig(currentGig);
-      history.push('/booker')
+      history.push('/booker');
     }
     else {
       console.log('You have already sent a booking request to this Deejay!')
@@ -88,6 +88,7 @@ class DeejayDetailBrowse extends Component {
     if (!currentGig.deejayId) {
       currentGig.deejayId = currentDeejayBrowse.id;
       updateGig(currentGig);
+      history.push('/booker');
     }
   }
 
@@ -95,8 +96,9 @@ class DeejayDetailBrowse extends Component {
     event.preventDefault();
     const { currentDeejayBrowse, updateGig } = this.props
     const { currentGig } = this.props.location.state
-      // currentGig.declinedApps.push(currentDeejayBrowse.id);
+      currentGig.declinedApps.push(currentDeejayBrowse.id);
       updateGig(currentGig);
+      history.push('/booker');
   }
 }
 

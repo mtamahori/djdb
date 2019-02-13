@@ -24,7 +24,11 @@ class GigDetail extends Component {
     let currentDeejay;
 
     // so stupid and brittle but whatever
-    this.props.location.state ? {currentBooker, currentDeejay} = this.props.location.state : {currentBooker, currentDeejay} = null;
+    this.props.location.state
+    ?
+    {currentBooker, currentDeejay} = this.props.location.state
+    :
+    {currentBooker, currentDeejay} = null;
     // console.log('CURRENT this.props.location.state PASSED FROM NAVLINK', this.props.location.state)
 
     if (!currentGig) {
@@ -40,6 +44,8 @@ class GigDetail extends Component {
           !currentGig.deejayId &&
           currentGig.deejayApplicants.indexOf(currentDeejay.id) === -1 &&
           currentGig.deejayInvites.indexOf(currentDeejay.id) === -1 &&
+          currentGig.declinedApps.indexOf(currentDeejay.id) === -1 &&
+          currentGig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
           <div>{this.renderBookingApplication()}</div>
         }
         {
@@ -51,6 +57,14 @@ class GigDetail extends Component {
           currentBooker &&
           currentGig.deejayApplicants.length &&
           <div>{this.renderDeejayApplicants()}</div>
+        }
+        {
+          currentGig.declinedApps.length &&
+          <div>{this.renderDeclinedApps()}</div>
+        }
+        {
+          currentGig.declinedInvs.length &&
+          <div>{this.renderDeclinedInvs()}</div>
         }
         {
           currentBooker &&
@@ -135,6 +149,10 @@ class GigDetail extends Component {
     const { currentGig, deejays } = this.props;
     const deejayInvites = deejays.filter(deejay => (
       currentGig.deejayInvites.indexOf(deejay.id) !== -1
+      &&
+      currentGig.declinedApps.indexOf(deejay.id) === -1
+      &&
+      currentGig.declinedInvs.indexOf(deejay.id) === -1
     ))
 
     return (
@@ -149,6 +167,10 @@ class GigDetail extends Component {
     const { currentGig, deejays } = this.props;
     const deejayApplicants = deejays.filter(deejay => (
       currentGig.deejayApplicants.indexOf(deejay.id) !== -1
+      &&
+      currentGig.declinedApps.indexOf(deejay.id) === -1
+      &&
+      currentGig.declinedInvs.indexOf(deejay.id) === -1
     ))
 
     return (
@@ -159,12 +181,44 @@ class GigDetail extends Component {
     )
   }
 
+  renderDeclinedApps() {
+    const { currentGig, deejays } = this.props;
+    const declinedApplicants = deejays.filter(deejay => (
+      currentGig.declinedApps.indexOf(deejay.id) !== -1
+    ))
+
+    return (
+      <div>
+        <h3>Declined Applicants (below)</h3>
+        <DeejayList deejays={declinedApplicants} currentGig={currentGig} />
+      </div>
+    )
+  }
+
+  renderDeclinedInvs() {
+    const { currentGig, deejays } = this.props;
+    const declinedInvites = deejays.filter(deejay => (
+      currentGig.declinedInvs.indexOf(deejay.id) !== -1
+    ))
+
+    return (
+      <div>
+        <h3>Declined Invites (below)</h3>
+        <DeejayList deejays={declinedInvites} currentGig={currentGig} />
+      </div>
+    )
+  }
+
   renderDeejayList() {
     const { currentGig, deejays } = this.props;
     const eligibleDeejays = deejays.filter(deejay => (
       currentGig.deejayApplicants.indexOf(deejay.id) === -1
       &&
       currentGig.deejayInvites.indexOf(deejay.id) === -1
+      &&
+      currentGig.declinedApps.indexOf(deejay.id) === -1
+      &&
+      currentGig.declinedInvs.indexOf(deejay.id) === -1
       ))
     return (
       <div>

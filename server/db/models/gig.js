@@ -43,6 +43,16 @@ const Gig = db.define('gig', {
     type: Sequelize.ARRAY(Sequelize.INTEGER),
     defaultValue: [],
     allowNull: true
+  },
+  declinedApps: {
+    type: Sequelize.ARRAY(Sequelize.INTEGER),
+    defaultValue: [],
+    allowNull: true
+  },
+  declinedInvs: {
+    type: Sequelize.ARRAY(Sequelize.INTEGER),
+    defaultValue: [],
+    allowNull: true
   }
 });
 
