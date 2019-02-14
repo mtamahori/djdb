@@ -57,6 +57,21 @@ class GigDetail extends Component {
           <div>{this.renderBookingAcceptDecline()}</div>
         }
         {
+          currentDeejay &&
+          !currentGig.deejayId &&
+          currentGig.deejayApplicants.indexOf(currentDeejay.id) !== -1 &&
+          currentGig.declinedApps.indexOf(currentDeejay.id) === -1 &&
+          currentGig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
+          <div>{this.renderRetractApplication()}</div>
+        }
+        {
+          currentDeejay &&
+          currentGig.deejayId === currentDeejay.id &&
+          currentGig.declinedApps.indexOf(currentDeejay.id) === -1 &&
+          currentGig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
+          <div>{this.renderCancelBooking()}</div>
+        }
+        {
           currentBooker &&
           currentGig.deejayInvites.length &&
           <div>{this.renderDeejayInvites()}</div>
@@ -206,6 +221,32 @@ class GigDetail extends Component {
       <div>
         <h3>Deejay Applicants (below)</h3>
         <DeejayList deejays={deejayApplicants} currentGig={currentGig} />
+      </div>
+    )
+  }
+
+  renderRetractApplication () {
+    return (
+      <div>
+      <Button
+        size='massive'
+        onClick={(event) => this.handleRetractApplication(event)}
+        >
+        Retract Booking Application
+      </Button>
+      </div>
+    )
+  }
+
+  renderCancelBooking() {
+    return (
+      <div>
+      <Button
+        size='massive'
+        onClick={(event) => this.handleCancelBooking(event)}
+        >
+        Cancel Your Set
+      </Button>
       </div>
     )
   }
@@ -431,6 +472,38 @@ class GigDetail extends Component {
     const { currentGig, updateGig } = this.props;
     const { currentDeejay } = this.props.location.state;
     currentGig.declinedInvs.push(currentDeejay.id);
+    updateGig(currentGig);
+    history.push('/deejay')
+  }
+
+  handleRetractApplication(event) {
+    event.preventDefault();
+    const { currentGig, updateGig } = this.props;
+    const { currentDeejay } = this.props.location.state;
+    currentGig.declinedApps.push(currentDeejay.id);
+    updateGig(currentGig);
+    history.push('/deejay')
+  }
+
+  handleCancelBooking(event) {
+    event.preventDefault();
+    const { currentGig, updateGig } = this.props;
+
+    for (let i = 0; i < currentGig.deejayApplicants.length; i++) {
+      if (currentGig.deejayApplicants[i] === currentGig.deejayId) {
+        currentGig.deejayApplicants.splice(i, 1)
+        break;
+      }
+    }
+
+    for (let i = 0; i < currentGig.deejayInvites.length; i++) {
+      if (currentGig.deejayInvites[i] === currentGig.deejayId) {
+        currentGig.deejayInvites.splice(i, 1)
+        break;
+      }
+    }
+
+    currentGig.deejayId = null;
     updateGig(currentGig);
     history.push('/deejay')
   }
