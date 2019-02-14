@@ -122,7 +122,19 @@ class GigMain extends Component {
     let openGigs;
 
     if (currentBooker) {
-      openGigs = gigs.filter(gig => (gig.bookerId === currentBooker.id) && (gig.deejayId === null))
+
+      openGigs = gigs.filter(gig => {
+        let gigDateArr = gig.date.split('/')
+        let gigYear = gigDateArr[0]
+        let gigMonth = gigDateArr[1]
+        let gigDate = gigDateArr[2]
+
+        return (
+          gig.bookerId === currentBooker.id &&
+          gig.deejayId === null &&
+          dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
+        )
+      })
       return (
         <div>
           <GigList currentBooker={currentBooker} gigs={openGigs} />
@@ -131,7 +143,20 @@ class GigMain extends Component {
     }
 
     else if (currentDeejay) {
-      openGigs = gigs.filter(gig => (gig.deejayId === currentDeejay.id) && (gig.bookerId === null))
+
+      openGigs = gigs.filter(gig => {
+        let gigDateArr = gig.date.split('/')
+        let gigYear = gigDateArr[0]
+        let gigMonth = gigDateArr[1]
+        let gigDate = gigDateArr[2]
+
+        return (
+          gig.deejayId === currentDeejay.id &&
+          gig.bookerId === null &&
+          dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
+        )
+      })
+
       return (
         <div>
           <GigList currentDeejay={currentDeejay} gigs={openGigs} />

@@ -45,10 +45,9 @@ class GigPendingInvites extends Component {
       let gigDate = gigDateArr[2]
 
       return (
-        gig.bookerId === currentBooker.id
-        &&
-        gig.deejayInvites.length
-        &&
+        gig.deejayId === null &&
+        gig.bookerId === currentBooker.id &&
+        gig.deejayInvites.length &&
         dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
       )
     })

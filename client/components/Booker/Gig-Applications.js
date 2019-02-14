@@ -44,10 +44,9 @@ class GigApplications extends Component {
       let gigDate = gigDateArr[2]
 
       return (
-        gig.bookerId === currentBooker.id
-        &&
-        gig.deejayApplicants.length
-        &&
+        gig.deejayId === null &&
+        gig.bookerId === currentBooker.id &&
+        gig.deejayApplicants.length &&
         dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
       )
     })
