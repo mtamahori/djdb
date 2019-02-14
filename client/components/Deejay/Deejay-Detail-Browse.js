@@ -73,6 +73,19 @@ class DeejayDetailBrowse extends Component {
               </Button>
             </div>
           }
+          {
+            currentGig.deejayInvites.indexOf(currentDeejayBrowse.id) !== -1 &&
+            currentGig.declinedApps.indexOf(currentDeejayBrowse.id) === -1 &&
+            currentGig.declinedInvs.indexOf(currentDeejayBrowse.id) === -1 &&
+            <div>
+              <Button
+                size='massive'
+                onClick={(event) => this.handleBookingRetractInvite(event)}
+              >
+              Retract Booking Request
+              </Button>
+            </div>
+          }
         </div>
       )
     }
@@ -117,6 +130,15 @@ class DeejayDetailBrowse extends Component {
     const { updateGig } = this.props
     const { currentGig } = this.props.location.state
       currentGig.deejayId = null;
+      updateGig(currentGig);
+      history.push('/booker')
+  }
+
+  handleBookingRetractInvite(event) {
+    event.preventDefault();
+    const { currentDeejayBrowse, updateGig } = this.props
+    const { currentGig } = this.props.location.state
+      currentGig.declinedInvs.push(currentDeejayBrowse.id);
       updateGig(currentGig);
       history.push('/booker')
   }
