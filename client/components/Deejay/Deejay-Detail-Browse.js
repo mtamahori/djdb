@@ -110,6 +110,14 @@ class DeejayDetailBrowse extends Component {
     const { currentDeejayBrowse, updateGig } = this.props
     const { currentGig } = this.props.location.state
     if (!currentGig.deejayId) {
+
+      for (let i = 0; i < currentGig.deejayApplicants.length; i++) {
+        if (currentGig.deejayApplicants[i] === currentDeejayBrowse.id) {
+          currentGig.deejayApplicants.splice(i, 1)
+          break;
+        }
+      }
+
       currentGig.deejayId = currentDeejayBrowse.id;
       updateGig(currentGig);
       history.push('/booker');
@@ -120,28 +128,61 @@ class DeejayDetailBrowse extends Component {
     event.preventDefault();
     const { currentDeejayBrowse, updateGig } = this.props
     const { currentGig } = this.props.location.state
+
+    for (let i = 0; i < currentGig.deejayApplicants.length; i++) {
+      if (currentGig.deejayApplicants[i] === currentDeejayBrowse.id) {
+        currentGig.deejayApplicants.splice(i, 1)
+        break;
+      }
+    }
+
       currentGig.declinedApps.push(currentDeejayBrowse.id);
       updateGig(currentGig);
       history.push('/booker');
-  }
-
-  handleBookingRetract(event) {
-    event.preventDefault();
-    const { updateGig } = this.props
-    const { currentGig } = this.props.location.state
-      currentGig.deejayId = null;
-      updateGig(currentGig);
-      history.push('/booker')
   }
 
   handleBookingRetractInvite(event) {
     event.preventDefault();
     const { currentDeejayBrowse, updateGig } = this.props
     const { currentGig } = this.props.location.state
+
+    for (let i = 0; i < currentGig.deejayInvites.length; i++) {
+      if (currentGig.deejayInvites[i] === currentDeejayBrowse.id) {
+        currentGig.deejayInvites.splice(i, 1)
+        break;
+      }
+    }
       currentGig.declinedInvs.push(currentDeejayBrowse.id);
       updateGig(currentGig);
       history.push('/booker')
   }
+
+  handleBookingRetract(event) {
+    event.preventDefault();
+    const { currentDeejayBrowse, updateGig } = this.props
+    const { currentGig } = this.props.location.state
+
+    for (let i = 0; i < currentGig.deejayApplicants.length; i++) {
+      if (currentGig.deejayApplicants[i] === currentDeejayBrowse.id) {
+        currentGig.deejayApplicants.splice(i, 1)
+        // currentGig.declinedApps.push(currentGig.deejayId)
+        break;
+      }
+    }
+
+    for (let i = 0; i < currentGig.deejayInvites.length; i++) {
+      if (currentGig.deejayInvites[i] === currentDeejayBrowse.id) {
+        currentGig.deejayInvites.splice(i, 1)
+        // currentGig.declinedInvs.push(currentGig.deejayId)
+        break;
+      }
+    }
+
+      currentGig.deejayId = null;
+      updateGig(currentGig);
+      history.push('/booker')
+  }
+
 }
 
 const mapState = ({ user, deejays }, ownProps) => {

@@ -517,7 +517,7 @@ class GigDetail extends Component {
     for (let i = 0; i < currentGig.deejayApplicants.length; i++) {
       if (currentGig.deejayApplicants[i] === currentGig.deejayId) {
         currentGig.deejayApplicants.splice(i, 1)
-        currentGig.declinedApps.push(currentGig.deejayId)
+        // currentGig.declinedApps.push(currentGig.deejayId)
         break;
       }
     }
@@ -525,7 +525,7 @@ class GigDetail extends Component {
     for (let i = 0; i < currentGig.deejayInvites.length; i++) {
       if (currentGig.deejayInvites[i] === currentGig.deejayId) {
         currentGig.deejayInvites.splice(i, 1)
-        currentGig.declinedInvs.push(currentGig.deejayId)
+        // currentGig.declinedInvs.push(currentGig.deejayId)
         break;
       }
     }
