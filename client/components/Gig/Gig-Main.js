@@ -89,7 +89,7 @@ class GigMain extends Component {
             this.setState({ viewBrowse: false })
           }}
           size="massive">
-          Browse
+          Browse Open Bookings
         </Button>
         }
         {
@@ -122,17 +122,11 @@ class GigMain extends Component {
     let openGigs;
 
     if (currentBooker) {
-
       openGigs = gigs.filter(gig => {
-        let gigDateArr = gig.date.split('/')
-        let gigYear = gigDateArr[0]
-        let gigMonth = gigDateArr[1]
-        let gigDate = gigDateArr[2]
-
         return (
           gig.bookerId === currentBooker.id &&
           gig.deejayId === null &&
-          dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
+          this.futureDateCheck(gig)
         )
       })
       return (
@@ -143,20 +137,13 @@ class GigMain extends Component {
     }
 
     else if (currentDeejay) {
-
       openGigs = gigs.filter(gig => {
-        let gigDateArr = gig.date.split('/')
-        let gigYear = gigDateArr[0]
-        let gigMonth = gigDateArr[1]
-        let gigDate = gigDateArr[2]
-
         return (
           gig.deejayId === currentDeejay.id &&
           gig.bookerId === null &&
-          dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
+          this.futureDateCheck(gig)
         )
       })
-
       return (
         <div>
           <GigList currentDeejay={currentDeejay} gigs={openGigs} />
@@ -170,17 +157,10 @@ class GigMain extends Component {
     let pastGigs;
 
     if (currentBooker) {
-
       pastGigs = gigs.filter(gig => {
-        let gigDateArr = gig.date.split('/')
-        let gigYear = gigDateArr[0]
-        let gigMonth = gigDateArr[1]
-        let gigDate = gigDateArr[2]
-
         return (
-          gig.bookerId === currentBooker.id
-          &&
-          dateFns.isBefore(new Date(gigYear, gigMonth, gigDate), Date.now())
+          gig.bookerId === currentBooker.id &&
+          this.pastDateCheck(gig)
         )
       })
       return (
@@ -191,17 +171,10 @@ class GigMain extends Component {
     }
 
     else if (currentDeejay) {
-
       pastGigs = gigs.filter(gig => {
-        let gigDateArr = gig.date.split('/')
-        let gigYear = gigDateArr[0]
-        let gigMonth = gigDateArr[1]
-        let gigDate = gigDateArr[2]
-
         return (
-          gig.deejayId === currentDeejay.id
-          &&
-          dateFns.isBefore(new Date(gigYear, gigMonth, gigDate), Date.now())
+          gig.deejayId === currentDeejay.id &&
+          this.pastDateCheck(gig)
         )
       })
       return (
@@ -217,18 +190,11 @@ class GigMain extends Component {
     let upcomingGigs;
 
     if (currentBooker) {
-
       upcomingGigs = gigs.filter(gig => {
-        let gigDateArr = gig.date.split('/')
-        let gigYear = gigDateArr[0]
-        let gigMonth = gigDateArr[1]
-        let gigDate = gigDateArr[2]
         return (
-          gig.bookerId === currentBooker.id
-          &&
-          gig.deejayId !== null
-          &&
-          dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
+          gig.bookerId === currentBooker.id &&
+          gig.deejayId !== null &&
+          this.futureDateCheck(gig)
         )
       })
       return (
@@ -239,18 +205,11 @@ class GigMain extends Component {
     }
 
     else if (currentDeejay) {
-
       upcomingGigs = gigs.filter(gig => {
-        let gigDateArr = gig.date.split('/')
-        let gigYear = gigDateArr[0]
-        let gigMonth = gigDateArr[1]
-        let gigDate = gigDateArr[2]
         return (
-          gig.deejayId === currentDeejay.id
-          &&
-          gig.bookerId !== null
-          &&
-          dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
+          gig.deejayId === currentDeejay.id &&
+          gig.bookerId !== null &&
+          this.futureDateCheck(gig)
         )
       })
       return (
@@ -266,35 +225,39 @@ class GigMain extends Component {
 
     if (currentDeejay) {
       let openGigs = gigs.filter(gig => {
-        let gigDateArr = gig.date.split('/')
-        let gigYear = gigDateArr[0]
-        let gigMonth = gigDateArr[1]
-        let gigDate = gigDateArr[2]
-
         return (
-          gig.deejayId === null
-          &&
-          gig.deejayInvites.indexOf(currentDeejay.id) === -1
-          &&
-          gig.deejayApplicants.indexOf(currentDeejay.id) === -1
-          &&
-          gig.declinedApps.indexOf(currentDeejay.id) === -1
-          &&
-          gig.declinedInvs.indexOf(currentDeejay.id) === -1
-          &&
-          dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
+          gig.deejayId === null &&
+          gig.deejayInvites.indexOf(currentDeejay.id) === -1 &&
+          gig.deejayApplicants.indexOf(currentDeejay.id) === -1 &&
+          gig.declinedApps.indexOf(currentDeejay.id) === -1 &&
+          gig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
+          this.futureDateCheck(gig)
         )
       })
-
-
       return (
         <div>
           <GigList currentDeejay={currentDeejay} gigs={openGigs} />
         </div>
       )
     }
-
   }
+
+  pastDateCheck(gig) {
+      let gigDateArr = gig.date.split('/')
+      let gigYear = gigDateArr[0]
+      let gigMonth = gigDateArr[1]
+      let gigDate = gigDateArr[2]
+      return dateFns.isBefore(new Date(gigYear, gigMonth, gigDate), Date.now())
+  }
+
+  futureDateCheck(gig) {
+    let gigDateArr = gig.date.split('/')
+      let gigYear = gigDateArr[0]
+      let gigMonth = gigDateArr[1]
+      let gigDate = gigDateArr[2]
+      return dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
+  }
+
 }
 
 const mapState = ({ gigs }) => ({ gigs });

@@ -8,8 +8,6 @@ import BookerItem from '../Booker/Booker-Item'
 import history from '../../history'
 import dateFns from 'date-fns'
 
-// COMPONENT
-
 class GigDetail extends Component {
   constructor(props) {
     super(props);
@@ -587,15 +585,9 @@ class GigDetail extends Component {
       event.target.location.value = '';
       event.target.compensation.value = '';
     }
-
     history.push(`/gigs/:${gig.id}`)
   }
-
-
-
 }
-
-// CONTAINER
 
 const mapState = ({ gigs, deejays, bookers }, ownProps) => {
   const gigParamId = Number(ownProps.match.params.id)
