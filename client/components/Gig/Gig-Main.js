@@ -269,19 +269,19 @@ class GigMain extends Component {
   }
 
   pastDateCheck(gig) {
-      let gigDateArr = gig.date.split('/')
-      let gigYear = gigDateArr[0]
-      let gigMonth = gigDateArr[1]
-      let gigDate = gigDateArr[2]
-      return dateFns.isBefore(new Date(gigYear, gigMonth, gigDate), Date.now())
+    let gigDateArr = gig.date.split('/')
+    let gigYear = gigDateArr[0]
+    let gigMonth = gigDateArr[1]
+    let gigDate = gigDateArr[2]
+    return dateFns.isBefore(new Date(gigYear, gigMonth, gigDate), Date.now())
   }
 
   futureDateCheck(gig) {
     let gigDateArr = gig.date.split('/')
-      let gigYear = gigDateArr[0]
-      let gigMonth = gigDateArr[1]
-      let gigDate = gigDateArr[2]
-      return dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
+    let gigYear = gigDateArr[0]
+    let gigMonth = gigDateArr[1]
+    let gigDate = gigDateArr[2]
+    return dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
   }
 
 }

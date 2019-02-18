@@ -37,16 +37,11 @@ class GigApplications extends Component {
     const { currentBooker, gigs } = this.props;
 
     const gigApplications = gigs.filter(gig => {
-      let gigDateArr = gig.date.split('/')
-      let gigYear = gigDateArr[0]
-      let gigMonth = gigDateArr[1]
-      let gigDate = gigDateArr[2]
-
       return (
         gig.deejayId === null &&
         gig.bookerId === currentBooker.id &&
         gig.deejayApplicants.length &&
-        dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
+        this.futureDateCheck(gig)
       )
     })
 
@@ -57,6 +52,14 @@ class GigApplications extends Component {
       :
       <h3>You Have No Incoming Booking Requests Right Now</h3>
     )
+  }
+
+  futureDateCheck(gig) {
+    let gigDateArr = gig.date.split('/')
+    let gigYear = gigDateArr[0]
+    let gigMonth = gigDateArr[1]
+    let gigDate = gigDateArr[2]
+    return dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
   }
 }
 

@@ -38,17 +38,12 @@ class GigPendingApplications extends Component {
     const { currentDeejay, gigs } = this.props;
 
     const gigPendingApplications = gigs.filter(gig => {
-      let gigDateArr = gig.date.split('/')
-      let gigYear = gigDateArr[0]
-      let gigMonth = gigDateArr[1]
-      let gigDate = gigDateArr[2]
-
       return (
         !gig.deejayId &&
         gig.deejayApplicants.indexOf(currentDeejay.id) !== -1 &&
         gig.declinedApps.indexOf(currentDeejay.id) === -1 &&
         gig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
-        dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
+        this.futureDateCheck(gig)
       )
     })
 
@@ -59,6 +54,14 @@ class GigPendingApplications extends Component {
       :
       <h3>You Have No Outgoing Pending Booking Requests Right Now</h3>
     )
+  }
+
+  futureDateCheck(gig) {
+    let gigDateArr = gig.date.split('/')
+    let gigYear = gigDateArr[0]
+    let gigMonth = gigDateArr[1]
+    let gigDate = gigDateArr[2]
+    return dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
   }
 }
 
