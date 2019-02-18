@@ -36,6 +36,10 @@ class GigDetail extends Component {
     }
 
     else if (currentGig) {
+      let gigDateArr = currentGig.date.split('/')
+      let gigYear = gigDateArr[0]
+      let gigMonth = gigDateArr[1]
+      let gigDate = gigDateArr[2]
       return (
       <div>
         <div>{this.renderCurrentGig()}</div>
@@ -65,6 +69,7 @@ class GigDetail extends Component {
           <div>{this.renderRetractApplication()}</div>
         }
         {
+          dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now()) &&
           currentDeejay &&
           currentGig.deejayId === currentDeejay.id &&
           currentGig.declinedApps.indexOf(currentDeejay.id) === -1 &&
