@@ -19,7 +19,23 @@ class DeejayDetailBrowse extends Component {
 
 
     if (!currentDeejayBrowse) {
-      return <div>Loading!</div>
+      return <h1>Error Loading Deejay Details</h1>
+    }
+
+    if (!currentGig) {
+      return (
+        <div>
+          <h3>Deejay Details</h3>
+          {
+            <List key={currentDeejayBrowse.id} >
+              <List.Item icon='users' content={currentDeejayBrowse.name} />
+              <List.Item icon='marker' content='Chicago, IL' />
+              <List.Item icon='mail' content={currentDeejayBrowse.email} />
+              <List.Item icon='phone' content={currentDeejayBrowse.phone} />
+            </List>
+          }
+        </div>
+      )
     }
 
     else if (currentDeejayBrowse) {

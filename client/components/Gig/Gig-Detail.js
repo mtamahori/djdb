@@ -551,7 +551,7 @@ class GigDetail extends Component {
 
     let dateInput = event.target.date3.value + '/' + event.target.date1.value + '/' + event.target.date2.value;
     let startTimeInput = event.target.startTime1.value + ':' + event.target.startTime2.value + event.target.startTime3.value
-    let endtTimeInput = event.target.endTime1.value + ':' + event.target.endTime2.value + event.target.startTime3.value
+    let endTimeInput = event.target.endTime1.value + ':' + event.target.endTime2.value + event.target.endTime3.value
 
     if (
       event.target.name.value === '' &&

@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import dateFns from 'date-fns'
 import GigList from './Gig-List'
 import NewGigForm from './New-Gig-Form'
+import DeejayList from '../Deejay/Deejay-List'
 
 class GigMain extends Component {
   constructor(props) {
@@ -15,7 +16,8 @@ class GigMain extends Component {
       viewOpenGigList: false,
       viewPastGigList: false,
       viewUpcomingGigList: false,
-      viewBrowse: false
+      viewBrowseGigs: false,
+      viewBrowseDeejays: false,
     }
   }
 
@@ -84,17 +86,34 @@ class GigMain extends Component {
           currentDeejay &&
         <Button
           onClick={() => {
-            this.state.viewBrowse === false ?
-            this.setState({ viewBrowse: true }) :
-            this.setState({ viewBrowse: false })
+            this.state.viewBrowseGigs === false ?
+            this.setState({ viewBrowseGigs: true }) :
+            this.setState({ viewBrowseGigs: false })
           }}
           size="massive">
           Browse Open Bookings
         </Button>
         }
         {
-          this.state.viewBrowse && (
-            this.renderBrowse()
+          this.state.viewBrowseGigs && (
+            this.renderBrowseGigs()
+          )
+        }
+        {
+          currentBooker &&
+        <Button
+          onClick={() => {
+            this.state.viewBrowseDeejays === false ?
+            this.setState({ viewBrowseDeejays: true }) :
+            this.setState({ viewBrowseDeejays: false })
+          }}
+          size="massive">
+          Browse Deejays
+        </Button>
+        }
+        {
+          this.state.viewBrowseDeejays && (
+            this.renderBrowseDeejays()
           )
         }
       </div>
@@ -220,7 +239,14 @@ class GigMain extends Component {
     }
   }
 
-  renderBrowse() {
+  renderBrowseDeejays() {
+    const { deejays } = this.props;
+    return (
+      <DeejayList deejays={deejays} />
+    )
+  }
+
+  renderBrowseGigs() {
     const { currentDeejay, gigs } = this.props;
 
     if (currentDeejay) {
@@ -260,7 +286,7 @@ class GigMain extends Component {
 
 }
 
-const mapState = ({ gigs }) => ({ gigs });
+const mapState = ({ gigs, deejays }) => ({ gigs, deejays });
 const mapDispatch = null;
 
 export default withRouter(connect(mapState, mapDispatch)(GigMain))
