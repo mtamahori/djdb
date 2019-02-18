@@ -5,7 +5,6 @@ import { Icon } from 'semantic-ui-react'
 const Landing = () => {
   return (
     <div>
-    <h1>SETBOX LANDING</h1>
     <Icon.Group size='huge'>
       <Icon loading size='big' name='circle notch' />
       <Icon name='music' />

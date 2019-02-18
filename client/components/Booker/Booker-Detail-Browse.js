@@ -1,20 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { List, Button } from "semantic-ui-react";
+import { List } from "semantic-ui-react";
 
 class BookerDetailBrowse extends Component {
   constructor(props) {
     super(props);
-
   }
 
   render() {
     const { currentBookerBrowse } = this.props;
-    
+
     if (!currentBookerBrowse) {
       return <div>Loading!</div>
     }
-    
+
     else if (currentBookerBrowse) {
       return (
         <div>

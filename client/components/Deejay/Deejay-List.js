@@ -1,40 +1,15 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import DeejayItem from "./Deejay-Item";
+import React from 'react';
+import DeejayItem from './Deejay-Item';
 
-// COMPONENT
+const DeejayList = props => {
+  const { deejays, currentGig } = props;
+  return (
+    <div>
+      {deejays.map(deejay => (
+        <DeejayItem deejay={deejay} key={deejay.id} currentGig={currentGig} />
+      ))}
+    </div>
+  );
+};
 
-class DeejayList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div>
-        <div>{this.renderDeejayList()}</div>
-      </div>
-    );
-  }
-
-  renderDeejayList() {
-    const { deejays, currentGig } = this.props;
-    return (
-      <div>
-        {
-          deejays.map(deejay => (
-          <DeejayItem deejay={deejay} key={deejay.id} currentGig={currentGig} />
-          ))
-        }
-      </div>
-    );
-  }
-
-}
-
-// CONTAINER
-
-const mapState = null;
-const mapDispatch = null;
-
-export default connect(mapState, mapDispatch)(DeejayList);
+export default DeejayList;

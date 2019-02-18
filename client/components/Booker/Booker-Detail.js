@@ -22,13 +22,13 @@ class BookerDetail extends Component {
 
   renderCurrentBooker() {
     const { currentBooker } = this.props;
-    
+
     if (!currentBooker) {
       return <div>Loading!</div>
     }
-    
+
     else if (currentBooker) {
-      
+
       return (
         <div>
           <h3>Your Booker Profile</h3>
@@ -74,7 +74,7 @@ class BookerDetail extends Component {
       </div>
     );
   }
-  
+
   handleDeleteBooker(event) {
     event.stopPropagation();
     const { deleteBooker, booker } = this.props;
@@ -93,6 +93,7 @@ class BookerDetail extends Component {
       phoneInput === ''
     ) {
       alert("Please fill out at least one field");
+
     } else {
       const booker = {
         id: currentBooker.id,

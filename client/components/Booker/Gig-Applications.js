@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
 import GigList from '../Gig/Gig-List'
 import dateFns from 'date-fns'

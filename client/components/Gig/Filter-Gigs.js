@@ -52,6 +52,6 @@ class FilterGigs extends Component {
 }
 
 const mapState = null;
-const mapDispatch= null;
+const mapDispatch = null;
 
 export default connect(mapState, mapDispatch)(FilterGigs)

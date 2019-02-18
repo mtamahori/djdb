@@ -1,7 +1,7 @@
 import React from 'react'
 import GigItem from './Gig-Item'
 
-const GigList = (props) => {
+const GigList = props => {
 
   const { gigs, currentBooker, currentDeejay } = props;
 
