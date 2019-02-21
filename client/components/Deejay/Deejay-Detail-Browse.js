@@ -13,46 +13,30 @@ class DeejayDetailBrowse extends Component {
     this.handleBookingDecline = this.handleBookingDecline.bind(this);
   }
 
-  // REFACTORING ATTEMPT START
   render () {
     const { currentDeejayBrowse } = this.props;
     const { currentGig } = this.props.location.state;
-    const conditions = this.getBools();
-    const bools = `${conditions.isCurrentGig}-${conditions.isCurrentDeejayBrowse}-${conditions.hasDeejay}-${conditions.isApplicant}-${conditions.isInvite}-${conditions.hasDeclinedApp}-${conditions.hasDeclinedInv}`
 
     if (!currentGig) {
+      this.renderDeejayDetails(currentDeejayBrowse);
+    }
+    else {
+      const conditions = this.getBools();
+      const bools = `${conditions.isCurrentGig}-${conditions.isCurrentDeejayBrowse}-${conditions.hasDeejay}-${conditions.isGigDeejay}-${conditions.isApplicant}-${conditions.isInvite}-${conditions.hasDeclinedApp}-${conditions.hasDeclinedInv}`
       return (
         <div>
-          <h3>Deejay Details</h3>
           {
-            <List key={currentDeejayBrowse.id} >
-              <List.Item icon='users' content={currentDeejayBrowse.name} />
-              <List.Item icon='marker' content='Chicago, IL' />
-              <List.Item icon='mail' content={currentDeejayBrowse.email} />
-              <List.Item icon='phone' content={currentDeejayBrowse.phone} />
-            </List>
+            this.renderDeejayDetails(currentDeejayBrowse)
           }
+          {{
+            ['true-true-false-false-false-false-false-false']: this.renderSendBookingRequest(), //eslint-disable-line no-useless-computed-key
+            ['true-true-false-false-false-true-false-false']: this.renderRetractBookingRequest(), //eslint-disable-line no-useless-computed-key
+            ['true-true-false-false-true-false-false-false']: this.renderAcceptDeclineBookingRequest(), //eslint-disable-line no-useless-computed-key
+            ['true-true-true-true-false-false-false-false']: this.renderRetractBooking() //eslint-disable-line no-useless-computed-key
+          }[bools]}
         </div>
       )
     }
-
-    return (
-      <div>
-        {{
-          ['true-true-false-false-false-false-false']: this.renderBookingRequest(), //eslint-disable-line no-useless-computed-key
-        }[bools]}
-      </div>
-    )
-  }
-
-  renderBookingRequest() {
-    return (
-      <Button
-        size="massive"
-        onClick={(event) => this.handleBookingInvite(event)}
-      >Send Booking Request
-      </Button>
-    )
   }
 
   getBools() {
@@ -62,6 +46,7 @@ class DeejayDetailBrowse extends Component {
       isCurrentGig: !!currentGig,
       isCurrentDeejayBrowse: !!currentDeejayBrowse,
       hasDeejay: !!currentGig.deejayId,
+      isGigDeejay: currentGig.deejayId === currentDeejayBrowse.id,
       isApplicant: currentGig.deejayApplicants.includes(currentDeejayBrowse.id),
       isInvite: currentGig.deejayInvites.includes(currentDeejayBrowse.id),
       hasDeclinedApp: currentGig.declinedApps.includes(currentDeejayBrowse.id),
@@ -69,140 +54,103 @@ class DeejayDetailBrowse extends Component {
     }
   }
 
-  // REFACTORING ATTEMPT END
+  renderDeejayDetails(deejay) {
+    return (
+      <div>
+        <h3>Deejay Details</h3>
+        {
+          <List key={deejay.id} >
+            <List.Item icon="users" content={deejay.name} />
+            <List.Item icon="marker" content="Chicago, IL" />
+            <List.Item icon="mail" content={deejay.email} />
+            <List.Item icon="phone" content={deejay.phone} />
+          </List>
+        }
+      </div>
+    )
+  }
 
-  // PREVIOUS ATTEMPT
+  renderSendBookingRequest() {
+    return (
+      <div>
+        <Button
+          size="massive"
+          onClick={(event) => this.handleBookingInvite(event)}
+        >Send Booking Request
+        </Button>
+      </div>
+    )
+  }
 
-  // render() {
-  //   const { currentDeejayBrowse } = this.props;
-  //   const { currentGig } = this.props.location.state;
+  renderRetractBookingRequest() {
+    return (
+      <div>
+        <Button
+          size="massive"
+          onClick={(event) => this.handleBookingRetractInvite(event)}
+        >Retract Booking Request
+        </Button>
+      </div>
+    )
+  }
 
-  //   if (!currentDeejayBrowse) {
-  //     return <h1>Error Loading Deejay Details</h1>
-  //   }
+  renderAcceptDeclineBookingRequest() {
+    return (
+      <div>
+        <Button
+          size="massive"
+          onClick={(event) => this.handleBookingAccept(event)}
+        >Accept Booking Request
+        </Button>
+        <Button
+          size="massive"
+          onClick={(event) => this.handleBookingDecline(event)}
+        >Decline Booking Request
+        </Button>
+      </div>
+    )
+  }
 
-  //   if (!currentGig) {
-  //     return (
-  //       <div>
-  //         <h3>Deejay Details</h3>
-  //         {
-  //           <List key={currentDeejayBrowse.id} >
-  //             <List.Item icon='users' content={currentDeejayBrowse.name} />
-  //             <List.Item icon='marker' content='Chicago, IL' />
-  //             <List.Item icon='mail' content={currentDeejayBrowse.email} />
-  //             <List.Item icon='phone' content={currentDeejayBrowse.phone} />
-  //           </List>
-  //         }
-  //       </div>
-  //     )
-  //   }
-
-  //   else if (currentDeejayBrowse) {
-  //     return (
-  //       <div>
-  //       <h3>Deejay Details</h3>
-  //         {
-  //           <List key={currentDeejayBrowse.id} >
-  //             <List.Item icon='users' content={currentDeejayBrowse.name} />
-  //             <List.Item icon='marker' content='Chicago, IL' />
-  //             <List.Item icon='mail' content={currentDeejayBrowse.email} />
-  //             <List.Item icon='phone' content={currentDeejayBrowse.phone} />
-  //           </List>
-  //         }
-  //         {
-  //           !currentGig.deejayId &&
-  //           currentGig.deejayInvites.indexOf(currentDeejayBrowse.id) === -1 &&
-  //           currentGig.deejayApplicants.indexOf(currentDeejayBrowse.id) === -1 &&
-  //           <Button
-  //             size='massive'
-  //             onClick={(event) => this.handleBookingInvite(event)}
-  //             >
-  //             Send Booking Request
-  //           </Button>
-  //         }
-  //         {
-  //           currentGig.deejayApplicants.indexOf(currentDeejayBrowse.id) !== -1 &&
-  //           <div>
-  //           <Button
-  //             size='massive'
-  //             onClick={(event) => this.handleBookingAccept(event)}
-  //             >
-  //             Accept Booking Request
-  //           </Button>
-  //           <Button
-  //             size='massive'
-  //             onClick={(event) => this.handleBookingDecline(event)}
-  //             >
-  //             Decline Booking Request
-  //           </Button>
-  //           </div>
-  //         }
-  //         {
-  //           currentGig.deejayId === currentDeejayBrowse.id &&
-  //           <div>
-  //             <Button
-  //               size='massive'
-  //               onClick={(event) => this.handleBookingRetract(event)}
-  //             >
-  //             Retract Booking
-  //             </Button>
-  //           </div>
-  //         }
-  //         {
-  //           currentGig.deejayInvites.indexOf(currentDeejayBrowse.id) !== -1 &&
-  //           currentGig.declinedApps.indexOf(currentDeejayBrowse.id) === -1 &&
-  //           currentGig.declinedInvs.indexOf(currentDeejayBrowse.id) === -1 &&
-  //           <div>
-  //             <Button
-  //               size='massive'
-  //               onClick={(event) => this.handleBookingRetractInvite(event)}
-  //             >
-  //             Retract Booking Request
-  //             </Button>
-  //           </div>
-  //         }
-  //       </div>
-  //     )
-  //   }
-  // }
+  renderRetractBooking() {
+    return (
+      <div>
+        <Button
+          size="massive"
+          onClick={(event) => this.handleBookingRetract(event)}
+        >Retract Booking
+        </Button>
+      </div>
+    )
+  }
 
   handleBookingInvite(event) {
     event.preventDefault();
     const { currentDeejayBrowse, updateGig } = this.props
     const { currentGig } = this.props.location.state
-    if (currentGig.deejayInvites.indexOf(currentDeejayBrowse.id) === -1) {
-      currentGig.deejayInvites.push(currentDeejayBrowse.id);
-      updateGig(currentGig);
-      history.push('/booker');
-    }
-    else {
-      console.log('You have already sent a booking request to this Deejay!')
-    }
+    currentGig.deejayInvites.push(currentDeejayBrowse.id);
+    updateGig(currentGig);
+    history.push('/booker');
   }
 
   handleBookingAccept(event) {
     event.preventDefault();
     const { currentDeejayBrowse, updateGig } = this.props;
     const { currentGig } = this.props.location.state;
-
-    if (!currentGig.deejayId) {
-      for (let i = 0; i < currentGig.deejayApplicants.length; i++) {
-        if (currentGig.deejayApplicants[i] === currentDeejayBrowse.id) {
-          currentGig.deejayApplicants.splice(i, 1)
-          break;
-        }
+    for (let i = 0; i < currentGig.deejayApplicants.length; i++) {
+      if (currentGig.deejayApplicants[i] === currentDeejayBrowse.id) {
+        currentGig.deejayApplicants.splice(i, 1)
+        break;
       }
-      currentGig.deejayId = currentDeejayBrowse.id;
-      updateGig(currentGig);
-      history.push('/booker');
     }
+    currentGig.deejayId = currentDeejayBrowse.id;
+    updateGig(currentGig);
+    history.push('/booker');
   }
 
   handleBookingDecline(event) {
     event.preventDefault();
     const { currentDeejayBrowse, updateGig } = this.props;
     const { currentGig } = this.props.location.state;
-
     for (let i = 0; i < currentGig.deejayApplicants.length; i++) {
       if (currentGig.deejayApplicants[i] === currentDeejayBrowse.id) {
         currentGig.deejayApplicants.splice(i, 1)
@@ -210,15 +158,14 @@ class DeejayDetailBrowse extends Component {
         break;
       }
     }
-      updateGig(currentGig);
-      history.push('/booker');
+    updateGig(currentGig);
+    history.push('/booker');
   }
 
   handleBookingRetractInvite(event) {
     event.preventDefault();
     const { currentDeejayBrowse, updateGig } = this.props;
     const { currentGig } = this.props.location.state;
-
     for (let i = 0; i < currentGig.deejayInvites.length; i++) {
       if (currentGig.deejayInvites[i] === currentDeejayBrowse.id) {
         currentGig.deejayInvites.splice(i, 1)
@@ -226,45 +173,18 @@ class DeejayDetailBrowse extends Component {
         break;
       }
     }
-      updateGig(currentGig);
-      history.push('/booker')
+    updateGig(currentGig);
+    history.push('/booker')
   }
 
   handleBookingRetract(event) {
     event.preventDefault();
-    const { currentDeejayBrowse, updateGig } = this.props;
+    const { updateGig } = this.props;
     const { currentGig } = this.props.location.state;
-
-    for (let i = 0; i < currentGig.deejayApplicants.length; i++) {
-      if (currentGig.deejayApplicants[i] === currentDeejayBrowse.id) {
-        currentGig.deejayApplicants.splice(i, 1)
-        currentGig.declinedApps.push(currentGig.deejayId)
-        break;
-      }
-    }
-
-    for (let i = 0; i < currentGig.deejayInvites.length; i++) {
-      if (currentGig.deejayInvites[i] === currentDeejayBrowse.id) {
-        currentGig.deejayInvites.splice(i, 1)
-        currentGig.declinedInvs.push(currentGig.deejayId)
-        break;
-      }
-    }
-
-      currentGig.deejayId = null;
-      updateGig(currentGig);
-      history.push('/booker')
+    currentGig.deejayId = null;
+    updateGig(currentGig);
+    history.push('/booker')
   }
-
-  handleID(id, arr1, arr2) {
-    for (let i = 0; i < arr1.length; i++) {
-      if (arr1[i] === id) {
-        arr1.splice(i, 1)
-        arr2 && arr2.push(id)
-      }
-    }
-  }
-
 }
 
 const mapState = ({ user, deejays }, ownProps) => {
@@ -278,4 +198,3 @@ const mapState = ({ user, deejays }, ownProps) => {
 const mapDispatch = { updateGig };
 
 export default connect(mapState, mapDispatch)(DeejayDetailBrowse)
-
