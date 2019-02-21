@@ -18,22 +18,40 @@ class DeejayDetailBrowse extends Component {
     const { currentDeejayBrowse } = this.props;
     const { currentGig } = this.props.location.state;
     const conditions = this.getBools();
-
     const bools = `${conditions.isCurrentGig}-${conditions.isCurrentDeejayBrowse}-${conditions.hasDeejay}-${conditions.isApplicant}-${conditions.isInvite}-${conditions.hasDeclinedApp}-${conditions.hasDeclinedInv}`
+
+    if (!currentGig) {
+      return (
+        <div>
+          <h3>Deejay Details</h3>
+          {
+            <List key={currentDeejayBrowse.id} >
+              <List.Item icon='users' content={currentDeejayBrowse.name} />
+              <List.Item icon='marker' content='Chicago, IL' />
+              <List.Item icon='mail' content={currentDeejayBrowse.email} />
+              <List.Item icon='phone' content={currentDeejayBrowse.phone} />
+            </List>
+          }
+        </div>
+      )
+    }
 
     return (
       <div>
         {{
-          //eslint-disable-next-line no-useless-computed-key
-          ['true-true-false-false-false-false-false']:
-          <Button
-            size="massive"
-            onClick={(event) => this.handleBookingInvite(event)}
-          >
-          Send Booking Request
-          </Button>
+          ['true-true-false-false-false-false-false']: this.renderBookingRequest(), //eslint-disable-line no-useless-computed-key
         }[bools]}
       </div>
+    )
+  }
+
+  renderBookingRequest() {
+    return (
+      <Button
+        size="massive"
+        onClick={(event) => this.handleBookingInvite(event)}
+      >Send Booking Request
+      </Button>
     )
   }
 
@@ -50,6 +68,7 @@ class DeejayDetailBrowse extends Component {
       hasDeclinedInv: currentGig.declinedInvs.includes(currentDeejayBrowse.id)
     }
   }
+
   // REFACTORING ATTEMPT END
 
   // PREVIOUS ATTEMPT
