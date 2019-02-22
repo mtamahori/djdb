@@ -456,19 +456,16 @@ class GigDetail extends Component {
     const { currentGig, updateGig } = this.props;
     const { currentDeejay } = this.props.location.state;
 
-    if (!currentGig.deejayId) {
-
-      for (let i = 0; i < currentGig.deejayInvites.length; i++) {
-        if (currentGig.deejayInvites[i] === currentDeejay.id) {
-          currentGig.deejayInvites.splice(i, 1)
-          break;
-        }
+    for (let i = 0; i < currentGig.deejayInvites.length; i++) {
+      if (currentGig.deejayInvites[i] === currentDeejay.id) {
+        currentGig.deejayInvites.splice(i, 1)
+        break;
       }
-
-      currentGig.deejayId = currentDeejay.id;
-      updateGig(currentGig);
-      history.push('/deejay');
     }
+
+    currentGig.deejayId = currentDeejay.id;
+    updateGig(currentGig);
+    history.push('/deejay');
   }
 
   handleBookingDecline(event) {
@@ -565,6 +562,8 @@ class GigDetail extends Component {
     if (formBools === 'false-false-false-false-false-false-false-false-false-false-false-false') {
       alert("Please fill out at least one field")
     } else {
+
+      // Use SemanticUI form component to set the default values for the update form as the values pulled from the database. This will avoid sending updates with empty fields
 
       let dateInput = event.target.date3.value + '/' + event.target.date1.value + '/' + event.target.date2.value;
       let startTimeInput = event.target.startTime1.value + ':' + event.target.startTime2.value + event.target.startTime3.value
