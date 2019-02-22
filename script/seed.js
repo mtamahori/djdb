@@ -43,9 +43,9 @@ async function seed() {
   })
 
   const gigs = await Promise.each([
-    {name: 'Bar Night', date: '2018/11/18', time: '10:00pm - 01:00am', location: 'UChicago', compensation: '20', deejayId: 1, bookerId: 3},
-    {name: 'Erotic Wobble', date: '2018/0/18', time: '9:00pm - 02:00am', location: 'Hyde Park', compensation: '30', deejayId: 2, bookerId: 1},
-    {name: 'METER', date: '2017/10/18', time: '9:00pm - 01:00am', location: 'Meter Room', compensation: '40', deejayId: 2, bookerId: 1},
+    {name: 'Bar Night', date: '2018/11/18', time: '10:00pm - 1:00am', location: 'UChicago', compensation: '20', deejayId: 1, bookerId: 3},
+    {name: 'Erotic Wobble', date: '2018/0/18', time: '9:00pm - 2:00am', location: 'Hyde Park', compensation: '30', deejayId: 2, bookerId: 1},
+    {name: 'METER', date: '2017/10/18', time: '9:00pm - 1:00am', location: 'Meter Room', compensation: '40', deejayId: 2, bookerId: 1},
     {name: 'Humboldt Arboreal Society', date: '2019/5/6', time: '3:00pm - 8:00pm', location: 'Humboldt Park', compensation: 'fun', deejayId: 1, bookerId: 1},
     {name: 'Punch House', date: '2019/1/19', time: '10:00pm - 2:00am', location: 'Punch House', compensation: '150', deejayId: 1, bookerId: 4},
     {name: 'Smartbar', date: '2019/3/20', time: '10:00pm - 4:00am', location: 'Smartbar', compensation: '150', deejayId: 1, bookerId: 5},

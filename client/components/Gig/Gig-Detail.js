@@ -26,7 +26,7 @@ class GigDetail extends Component {
     ?
     {currentBooker, currentDeejay} = this.props.location.state
     :
-    {currentBooker, currentDeejay} = null;
+    console.log('haha')
     // console.log('CURRENT this.props.location.state PASSED FROM NAVLINK', this.props.location.state)
 
     if (!currentGig) {
@@ -56,7 +56,7 @@ class GigDetail extends Component {
           currentGig.deejayInvites.indexOf(currentDeejay.id) !== -1 &&
           currentGig.declinedApps.indexOf(currentDeejay.id) === -1 &&
           currentGig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
-          <div>{this.renderBookingAcceptDecline()}</div>
+          <div>{this.renderAcceptDeclineBookingRequest()}</div>
         }
         {
           currentDeejay &&
@@ -165,7 +165,7 @@ class GigDetail extends Component {
   renderBookingApplication() {
     return (
       <Button
-            size='massive'
+          size="massive"
             onClick={(event) => this.handleBookingApplication(event)}
             >
             Send Booking Request
@@ -173,21 +173,19 @@ class GigDetail extends Component {
     )
   }
 
-  renderBookingAcceptDecline() {
+  renderAcceptDeclineBookingRequest() {
     return (
       <div>
-      <Button
-        size='massive'
-        onClick={(event) => this.handleBookingAccept(event)}
-        >
-        Accept Booking Request
-      </Button>
-      <Button
-        size='massive'
-        onClick={(event) => this.handleBookingDecline(event)}
-        >
-        Decline Booking Request
-      </Button>
+        <Button
+          size="massive"
+          onClick={(event) => this.handleBookingAccept(event)}
+          >Accept Booking Request
+        </Button>
+        <Button
+          size="massive"
+          onClick={(event) => this.handleBookingDecline(event)}
+          >Decline Booking Request
+        </Button>
       </div>
     )
   }
@@ -195,10 +193,8 @@ class GigDetail extends Component {
   renderDeejayInvites() {
     const { currentGig, deejays } = this.props;
     const deejayInvites = deejays.filter(deejay => (
-      currentGig.deejayInvites.indexOf(deejay.id) !== -1
-      &&
-      currentGig.declinedApps.indexOf(deejay.id) === -1
-      &&
+      currentGig.deejayInvites.indexOf(deejay.id) !== -1 &&
+      currentGig.declinedApps.indexOf(deejay.id) === -1 &&
       currentGig.declinedInvs.indexOf(deejay.id) === -1
     ))
 
@@ -213,10 +209,8 @@ class GigDetail extends Component {
   renderDeejayApplicants() {
     const { currentGig, deejays } = this.props;
     const deejayApplicants = deejays.filter(deejay => (
-      currentGig.deejayApplicants.indexOf(deejay.id) !== -1
-      &&
-      currentGig.declinedApps.indexOf(deejay.id) === -1
-      &&
+      currentGig.deejayApplicants.indexOf(deejay.id) !== -1 &&
+      currentGig.declinedApps.indexOf(deejay.id) === -1 &&
       currentGig.declinedInvs.indexOf(deejay.id) === -1
     ))
 
@@ -231,12 +225,11 @@ class GigDetail extends Component {
   renderRetractApplication () {
     return (
       <div>
-      <Button
-        size='massive'
-        onClick={(event) => this.handleRetractApplication(event)}
-        >
-        Retract Booking Application
-      </Button>
+        <Button
+          size="massive"
+          onClick={(event) => this.handleRetractApplication(event)}
+          >Retract Booking Application
+        </Button>
       </div>
     )
   }
@@ -244,12 +237,11 @@ class GigDetail extends Component {
   renderCancelBooking() {
     return (
       <div>
-      <Button
-        size='massive'
-        onClick={(event) => this.handleCancelBooking(event)}
-        >
-        Cancel Your Set
-      </Button>
+        <Button
+          size="massive"
+          onClick={(event) => this.handleCancelBooking(event)}
+          >Cancel Your Set
+        </Button>
       </div>
     )
   }
@@ -520,7 +512,7 @@ class GigDetail extends Component {
     for (let i = 0; i < currentGig.deejayApplicants.length; i++) {
       if (currentGig.deejayApplicants[i] === currentGig.deejayId) {
         currentGig.deejayApplicants.splice(i, 1)
-        // currentGig.declinedApps.push(currentGig.deejayId)
+        currentGig.declinedApps.push(currentGig.deejayId)
         break;
       }
     }
@@ -528,7 +520,7 @@ class GigDetail extends Component {
     for (let i = 0; i < currentGig.deejayInvites.length; i++) {
       if (currentGig.deejayInvites[i] === currentGig.deejayId) {
         currentGig.deejayInvites.splice(i, 1)
-        // currentGig.declinedInvs.push(currentGig.deejayId)
+        currentGig.declinedInvs.push(currentGig.deejayId)
         break;
       }
     }
@@ -549,20 +541,35 @@ class GigDetail extends Component {
     event.preventDefault();
     const { updateGig, currentGig } = this.props;
 
-    let dateInput = event.target.date3.value + '/' + event.target.date1.value + '/' + event.target.date2.value;
-    let startTimeInput = event.target.startTime1.value + ':' + event.target.startTime2.value + event.target.startTime3.value
-    let endTimeInput = event.target.endTime1.value + ':' + event.target.endTime2.value + event.target.endTime3.value
+    const getFormBools = () => {
+      return (
+        {
+          name: !!event.target.name.value,
+          date1: !!event.target.date1.value,
+          date2: !!event.target.date2.value,
+          date3: !!event.target.date3.value,
+          startTime1: !!event.target.startTime1.value,
+          startTime2: !!event.target.startTime1.value,
+          startTime3: !!event.target.startTime1.value,
+          endTime1: !!event.target.endTime1.value,
+          endTime2: !!event.target.endTime1.value,
+          endTime3: !!event.target.endTime1.value,
+          location: !!event.target.location.value,
+          compensation: !!event.target.compensation.value
+        }
+      )
+    }
+    const formConditions = getFormBools();
+    const formBools = `${formConditions.name}-${formConditions.date1}-${formConditions.date2}-${formConditions.date3}-${formConditions.startTime1}-${formConditions.startTime2}-${formConditions.startTime3}-${formConditions.endTime1}-${formConditions.endTime2}-${formConditions.endTime3}-${formConditions.location}-${formConditions.compensation}`
 
-    if (
-      event.target.name.value === '' &&
-      dateInput === '' &&
-      startTimeInput === '' &&
-      endTimeInput === '' &&
-      event.target.location.value === '' &&
-      event.target.compensation.value === ''
-    ) {
+    if (formBools === 'false-false-false-false-false-false-false-false-false-false-false-false') {
       alert("Please fill out at least one field")
     } else {
+
+      let dateInput = event.target.date3.value + '/' + event.target.date1.value + '/' + event.target.date2.value;
+      let startTimeInput = event.target.startTime1.value + ':' + event.target.startTime2.value + event.target.startTime3.value
+      let endTimeInput = event.target.endTime1.value + ':' + event.target.endTime2.value + event.target.endTime3.value
+
       const gig = {
         id: currentGig.id,
         name: event.target.name.value || currentGig.name,
@@ -571,6 +578,7 @@ class GigDetail extends Component {
         location: event.target.location.value || currentGig.location,
         compensation: event.target.compensation.value || currentGig.compensation
       }
+
       updateGig(gig);
       event.target.name.value = '';
       event.target.date1.value = '';
@@ -584,8 +592,8 @@ class GigDetail extends Component {
       event.target.endTime3.value = '';
       event.target.location.value = '';
       event.target.compensation.value = '';
+      history.push(`/gigs/${gig.id}`)
     }
-    history.push(`/gigs/:${gig.id}`)
   }
 }
 
