@@ -2,7 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { deleteGig, updateGig } from '../../store'
 import history from '../../history'
-import dateFns from 'date-fns'
+
+import GigCurrentGig from './GigDetailElements/gigCurrentGig'
+import GigDetailBooker from './Gig-Detail-Booker'
+import GigDetailDeejay from './Gig-Detail-Deejay'
 
 class GigDetail extends Component {
   constructor(props) {
@@ -10,10 +13,15 @@ class GigDetail extends Component {
 
     this.handleDeleteGig = this.handleDeleteGig.bind(this)
     this.handleUpdateGig = this.handleUpdateGig.bind(this)
+    this.handleBookingAccept = this.handleBookingAccept.bind(this)
+    this.handleBookingApplication = this.handleBookingApplication.bind(this)
+    this.handleBookingDecline = this.handleBookingDecline.bind(this)
+    this.handleCancelBooking = this.handleCancelBooking.bind(this)
+    this.handleRetractApplication = this.handleRetractApplication.bind(this)
   }
 
   render() {
-    const { currentGig } = this.props;
+    const { currentGig, bookers, deejays, gigs } = this.props;
     let currentBooker;
     let currentDeejay;
 
@@ -28,109 +36,38 @@ class GigDetail extends Component {
     }
 
     else {
-      const deejayConditions = this.getDeejayBools();
-      const deejayBools = `${deejayConditions.isCurrentDeejay}-${deejayConditions.isCurrentBooker}-${deejayConditions.hasDeejay}-${deejayConditions.isGigDeejay}-${deejayConditions.isGigBooker}-${deejayConditions.isApplicant}-${deejayConditions.isInvite}-${deejayConditions.hasDeclinedApp}-${deejayConditions.hasDeclinedInv}`
-
-      const bookerConditions = this.getBookerBools();
-      const bookerBools = `${bookerConditions.isCurrentBooker}-${bookerConditions.declinedApps}-${bookerConditions.declinedInvs}`;
-
-      let gigDateArr = currentGig.date.split('/')
-      let gigYear = gigDateArr[0]
-      let gigMonth = gigDateArr[1]
-      let gigDate = gigDateArr[2]
-
       return (
       <div>
         {
-          this.renderCurrentGig()
-        }
-
-        {{
-          ['true-false-false-false-false-false-false']: this.renderBookingApplication(),
-          ['true-false-false-false-true-false-false']: this.renderAcceptDeclineBookingRequest(),
-          ['true-false-false-true-false-false-false']: this.renderRetractApplication()
-        }[deejayBools]}
-
-        {
-          deejayBools === ['true-true-true-false-false-true-true'] &&
-          dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now()) &&
-          this.renderCancelBooking()
-        }
-
-        {{
-          ['']: this.renderDeejayInvites(),
-          ['']: this.renderDeejayApplicants(),
-          ['']: this.renderDeclinedInvs(),
-          ['']: this.renderDeclinedApps(),
-          ['']: this.renderDeejayList(),
-        }[bookerBools]}
-
-        {
-          // currentDeejay &&
-          // !currentGig.deejayId &&
-          // currentGig.deejayApplicants.indexOf(currentDeejay.id) === -1 &&
-          // currentGig.deejayInvites.indexOf(currentDeejay.id) === -1 &&
-          // currentGig.declinedApps.indexOf(currentDeejay.id) === -1 &&
-          // currentGig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
-          // <div>{this.renderBookingApplication()}</div>
-        }
-        {
-          // currentDeejay &&
-          // !currentGig.deejayId &&
-          // currentGig.deejayInvites.indexOf(currentDeejay.id) !== -1 &&
-          // currentGig.declinedApps.indexOf(currentDeejay.id) === -1 &&
-          // currentGig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
-          // <div>{this.renderAcceptDeclineBookingRequest()}</div>
-        }
-        {
-          // currentDeejay &&
-          // !currentGig.deejayId &&
-          // currentGig.deejayApplicants.indexOf(currentDeejay.id) !== -1 &&
-          // currentGig.declinedApps.indexOf(currentDeejay.id) === -1 &&
-          // currentGig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
-          // <div>{this.renderRetractApplication()}</div>
-        }
-        {
-          // dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now()) &&
-          // currentDeejay &&
-          // currentGig.deejayId === currentDeejay.id &&
-          // currentGig.declinedApps.indexOf(currentDeejay.id) === -1 &&
-          // currentGig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
-          // <div>{this.renderCancelBooking()}</div>
-        }
-
-        {
-          currentBooker &&
-          currentGig.deejayInvites.length &&
-          <div>{this.renderDeejayInvites()}</div>
+          <GigCurrentGig
+          currentGig={currentGig}
+          bookers={bookers}
+          deejays={deejays}
+          gigs={gigs}
+          />
         }
         {
           currentBooker &&
-          currentGig.deejayApplicants.length &&
-          <div>{this.renderDeejayApplicants()}</div>
+          <GigDetailBooker
+          currentBooker={currentBooker}
+          currentGig={currentGig}
+          deejays={deejays}
+          handleUpdateGig={this.handleUpdateGig}
+          handleDeleteGig={this.handleDeleteGig}
+          />
         }
         {
-          currentBooker &&
-          currentGig.declinedApps.length &&
-          <div>{this.renderDeclinedApps()}</div>
-        }
-        {
-          currentBooker &&
-          currentGig.declinedInvs.length &&
-          <div>{this.renderDeclinedInvs()}</div>
-        }
-        {
-          currentBooker &&
-          !currentGig.deejayId &&
-          <div>{this.renderDeejayList()}</div>
-        }
-        {
-          currentBooker &&
-          currentGig.bookerId === currentBooker.id &&
-          <div>
-            <div>{this.renderUpdateGig()}</div>
-            <div>{this.renderDeleteGig()}</div>
-          </div>
+          currentDeejay &&
+          <GigDetailDeejay
+          currentDeejay={currentDeejay}
+          currentGig={currentGig}
+          getDeejayBools={this.getDeejayBools}
+          handleBookingApplication={this.handleBookingApplication}
+          handleRetractApplication={this.handleRetractApplication}
+          handleCancelBooking={this.handleCancelBooking}
+          handleBookingAccept={this.handleBookingAccept}
+          handleBookingDecline={this.handleBookingDecline}
+          />
         }
       </div>
     )}
@@ -147,17 +84,6 @@ class GigDetail extends Component {
       isInvite: currentGig.deejayInvites.includes(currentDeejay.id),
       hasDeclinedApp: currentGig.declinedApps.includes(currentDeejay.id),
       hasDeclinedInv: currentGig.declinedInvs.includes(currentDeejay.id),
-    }
-  }
-
-  getBookerBools() {
-    const {currentGig} = this.props;
-    const { currentBooker } = this.props.location.state;
-    return {
-      isCurrentBooker: !!currentBooker,
-      isGigBooker: currentGig.bookerId === currentBooker.id,
-      declinedApps: !!currentGig.declinedApps.length,
-      declinedInvs: !!currentGig.declinedInvs.length
     }
   }
 
