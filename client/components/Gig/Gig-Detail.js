@@ -21,59 +21,88 @@ class GigDetail extends Component {
     let currentBooker;
     let currentDeejay;
 
-    // so stupid and brittle but whatever
     this.props.location.state
     ?
     {currentBooker, currentDeejay} = this.props.location.state
     :
-    console.log('haha')
-    // console.log('CURRENT this.props.location.state PASSED FROM NAVLINK', this.props.location.state)
+    console.log('')
 
     if (!currentGig) {
       return <div>Loading!</div>
     }
 
-    else if (currentGig) {
+    else {
+      const deejayConditions = this.getDeejayBools();
+      const deejayBools = `${deejayConditions.isCurrentDeejay}-${deejayConditions.isCurrentBooker}-${deejayConditions.hasDeejay}-${deejayConditions.isGigDeejay}-${deejayConditions.isGigBooker}-${deejayConditions.isApplicant}-${deejayConditions.isInvite}-${deejayConditions.hasDeclinedApp}-${deejayConditions.hasDeclinedInv}`
+
+      const bookerConditions = this.getBookerBools();
+      const bookerBools = `${bookerConditions.isCurrentBooker}-${bookerConditions.declinedApps}-${bookerConditions.declinedInvs}`;
+
       let gigDateArr = currentGig.date.split('/')
       let gigYear = gigDateArr[0]
       let gigMonth = gigDateArr[1]
       let gigDate = gigDateArr[2]
+
       return (
       <div>
-        <div>{this.renderCurrentGig()}</div>
         {
-          currentDeejay &&
-          !currentGig.deejayId &&
-          currentGig.deejayApplicants.indexOf(currentDeejay.id) === -1 &&
-          currentGig.deejayInvites.indexOf(currentDeejay.id) === -1 &&
-          currentGig.declinedApps.indexOf(currentDeejay.id) === -1 &&
-          currentGig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
-          <div>{this.renderBookingApplication()}</div>
+          this.renderCurrentGig()
         }
+
+        {{
+          ['true-false-false-false-false-false-false']: this.renderBookingApplication(),
+          ['true-false-false-false-true-false-false']: this.renderAcceptDeclineBookingRequest(),
+          ['true-false-false-true-false-false-false']: this.renderRetractApplication()
+        }[deejayBools]}
+
         {
-          currentDeejay &&
-          !currentGig.deejayId &&
-          currentGig.deejayInvites.indexOf(currentDeejay.id) !== -1 &&
-          currentGig.declinedApps.indexOf(currentDeejay.id) === -1 &&
-          currentGig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
-          <div>{this.renderAcceptDeclineBookingRequest()}</div>
-        }
-        {
-          currentDeejay &&
-          !currentGig.deejayId &&
-          currentGig.deejayApplicants.indexOf(currentDeejay.id) !== -1 &&
-          currentGig.declinedApps.indexOf(currentDeejay.id) === -1 &&
-          currentGig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
-          <div>{this.renderRetractApplication()}</div>
-        }
-        {
+          deejayBools === ['true-true-true-false-false-true-true'] &&
           dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now()) &&
-          currentDeejay &&
-          currentGig.deejayId === currentDeejay.id &&
-          currentGig.declinedApps.indexOf(currentDeejay.id) === -1 &&
-          currentGig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
-          <div>{this.renderCancelBooking()}</div>
+          this.renderCancelBooking()
         }
+
+        {{
+          ['']: this.renderDeejayInvites(),
+          ['']: this.renderDeejayApplicants(),
+          ['']: this.renderDeclinedInvs(),
+          ['']: this.renderDeclinedApps(),
+          ['']: this.renderDeejayList(),
+        }[bookerBools]}
+
+        {
+          // currentDeejay &&
+          // !currentGig.deejayId &&
+          // currentGig.deejayApplicants.indexOf(currentDeejay.id) === -1 &&
+          // currentGig.deejayInvites.indexOf(currentDeejay.id) === -1 &&
+          // currentGig.declinedApps.indexOf(currentDeejay.id) === -1 &&
+          // currentGig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
+          // <div>{this.renderBookingApplication()}</div>
+        }
+        {
+          // currentDeejay &&
+          // !currentGig.deejayId &&
+          // currentGig.deejayInvites.indexOf(currentDeejay.id) !== -1 &&
+          // currentGig.declinedApps.indexOf(currentDeejay.id) === -1 &&
+          // currentGig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
+          // <div>{this.renderAcceptDeclineBookingRequest()}</div>
+        }
+        {
+          // currentDeejay &&
+          // !currentGig.deejayId &&
+          // currentGig.deejayApplicants.indexOf(currentDeejay.id) !== -1 &&
+          // currentGig.declinedApps.indexOf(currentDeejay.id) === -1 &&
+          // currentGig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
+          // <div>{this.renderRetractApplication()}</div>
+        }
+        {
+          // dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now()) &&
+          // currentDeejay &&
+          // currentGig.deejayId === currentDeejay.id &&
+          // currentGig.declinedApps.indexOf(currentDeejay.id) === -1 &&
+          // currentGig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
+          // <div>{this.renderCancelBooking()}</div>
+        }
+
         {
           currentBooker &&
           currentGig.deejayInvites.length &&
@@ -109,6 +138,31 @@ class GigDetail extends Component {
         }
       </div>
     )}
+  }
+
+  getDeejayBools() {
+    const { currentGig } = this.props;
+    const { currentDeejay } = this.props.location.state;
+    return {
+      isCurrentDeejay: !!currentDeejay,
+      hasDeejay: !!currentGig.deejayId,
+      isGigDeejay: currentGig.deejayId === currentDeejay.id,
+      isApplicant: currentGig.deejayApplicants.includes(currentDeejay.id),
+      isInvite: currentGig.deejayInvites.includes(currentDeejay.id),
+      hasDeclinedApp: currentGig.declinedApps.includes(currentDeejay.id),
+      hasDeclinedInv: currentGig.declinedInvs.includes(currentDeejay.id),
+    }
+  }
+
+  getBookerBools() {
+    const {currentGig} = this.props;
+    const { currentBooker } = this.props.locations.state;
+    return {
+      isCurrentBooker: !!currentBooker,
+      isGigBooker: currentGig.bookerId === currentBooker.id,
+      declinedApps: !!currentGig.declinedApps.length,
+      declinedInvs: !!currentGig.declinedInvs.length
+    }
   }
 
   renderCurrentGig() {
@@ -277,12 +331,9 @@ class GigDetail extends Component {
   renderDeejayList() {
     const { currentGig, deejays } = this.props;
     const eligibleDeejays = deejays.filter(deejay => (
-      currentGig.deejayApplicants.indexOf(deejay.id) === -1
-      &&
-      currentGig.deejayInvites.indexOf(deejay.id) === -1
-      &&
-      currentGig.declinedApps.indexOf(deejay.id) === -1
-      &&
+      currentGig.deejayApplicants.indexOf(deejay.id) === -1 &&
+      currentGig.deejayInvites.indexOf(deejay.id) === -1 &&
+      currentGig.declinedApps.indexOf(deejay.id) === -1 &&
       currentGig.declinedInvs.indexOf(deejay.id) === -1
       ))
     return (
