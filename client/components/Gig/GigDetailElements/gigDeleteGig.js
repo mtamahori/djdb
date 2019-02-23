@@ -1,0 +1,17 @@
+import React from 'react'
+import { Button } from 'semantic-ui-react'
+
+const GigDeleteGig = props => {
+  const { handleDeleteGig } = props;
+  return (
+    <div>
+      <Button
+        size="massive"
+        onClick={(event) => handleDeleteGig(event)}
+        >Delete Gig
+      </Button>
+    </div>
+  )
+}
+
+export default GigDeleteGig;
