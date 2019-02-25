@@ -14,13 +14,25 @@ class DeejayDetailBrowse extends Component {
   }
 
   render () {
-    const { currentDeejayBrowse } = this.props;
     const { currentGig } = this.props.location.state;
 
     if (!currentGig) {
-      this.renderDeejayDetails(currentDeejayBrowse);
+      const { currentDeejayBrowse } = this.props;
+
+      if (!currentDeejayBrowse) {
+        return <div>Loading!</div>
+      }
+
+      return (
+        <div>
+          {
+            this.renderDeejayDetails(currentDeejayBrowse)
+          }
+        </div>
+      )
     }
     else {
+      const { currentDeejayBrowse } = this.props;
       const conditions = this.getBools();
       const bools = `${conditions.isCurrentGig}-${conditions.isCurrentDeejayBrowse}-${conditions.hasDeejay}-${conditions.isGigDeejay}-${conditions.isApplicant}-${conditions.isInvite}-${conditions.hasDeclinedApp}-${conditions.hasDeclinedInv}`
       return (
