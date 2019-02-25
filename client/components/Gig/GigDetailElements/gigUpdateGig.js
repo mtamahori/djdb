@@ -4,7 +4,7 @@ const GigUpdateGig = props => {
   const { handleUpdateGig } = props;
   return (
       <div>
-        <form onSubmit={handleUpdateGig()} >
+        <form onSubmit={handleUpdateGig} >
           <div>
             <h3>Update Gig Details</h3>
             <h4> Name <br />

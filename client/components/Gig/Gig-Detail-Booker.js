@@ -34,8 +34,8 @@ const GigDetailBooker = props => {
       {
         currentGig.bookerId === currentBooker.id &&
         <div>
-          <GigUpdateGig handleUpdateGig={handleUpdateGig} handleDeleteGig={handleDeleteGig} />
-          <GigDeleteGig />
+          <GigUpdateGig handleUpdateGig={handleUpdateGig} />
+          <GigDeleteGig handleDeleteGig={handleDeleteGig} />
         </div>
       }
     </div>

@@ -32,8 +32,6 @@ const GigDetailDeejay = props => {
   let gigMonth = gigDateArr[1]
   let gigDate = gigDateArr[2]
 
-  console.log('BOOLS', deejayBools)
-
   return (
     <div>
 
