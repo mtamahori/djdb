@@ -61,7 +61,6 @@ class GigDetail extends Component {
           <GigDetailDeejay
           currentDeejay={currentDeejay}
           currentGig={currentGig}
-          getDeejayBools={this.getDeejayBools}
           handleBookingApplication={this.handleBookingApplication}
           handleRetractApplication={this.handleRetractApplication}
           handleCancelBooking={this.handleCancelBooking}
@@ -71,20 +70,6 @@ class GigDetail extends Component {
         }
       </div>
     )}
-  }
-
-  getDeejayBools() {
-    const { currentGig } = this.props;
-    const { currentDeejay } = this.props.location.state;
-    return {
-      isCurrentDeejay: !!currentDeejay,
-      hasDeejay: !!currentGig.deejayId,
-      isGigDeejay: currentGig.deejayId === currentDeejay.id,
-      isApplicant: currentGig.deejayApplicants.includes(currentDeejay.id),
-      isInvite: currentGig.deejayInvites.includes(currentDeejay.id),
-      hasDeclinedApp: currentGig.declinedApps.includes(currentDeejay.id),
-      hasDeclinedInv: currentGig.declinedInvs.includes(currentDeejay.id),
-    }
   }
 
   handleBookingApplication(event) {

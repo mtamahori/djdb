@@ -5,16 +5,34 @@ import GigAcceptDeclineBookingRequest from './GigDetailElements/gigAcceptDecline
 import GigRetractApplication from './GigDetailElements/gigRetractApplication'
 import GigCancelBooking from './GigDetailElements/gigCancelBooking'
 
-const GigDetailDeejay = props => {
-  const { currentGig, currentDeejay, getDeejayBools, handleBookingApplication, handleRetractApplication, handleCancelBooking, handleBookingAccept, handleBookingDecline } = props;
 
-  const deejayConditions = getDeejayBools();
-  const deejayBools = `${deejayConditions.isCurrentDeejay}-${deejayConditions.isCurrentBooker}-${deejayConditions.hasDeejay}-${deejayConditions.isGigDeejay}-${deejayConditions.isGigBooker}-${deejayConditions.isApplicant}-${deejayConditions.isInvite}-${deejayConditions.hasDeclinedApp}-${deejayConditions.hasDeclinedInv}`
+const getDeejayBools = (currentGig, currentDeejay) => {
+  // const { currentGig } = this.props;
+  // const { currentDeejay } = this.props.location.state;
+  return {
+    isCurrentDeejay: !!currentDeejay,
+    hasDeejay: !!currentGig.deejayId,
+    isGigDeejay: currentGig.deejayId === currentDeejay.id,
+    isApplicant: currentGig.deejayApplicants.includes(currentDeejay.id),
+    isInvite: currentGig.deejayInvites.includes(currentDeejay.id),
+    hasDeclinedApp: currentGig.declinedApps.includes(currentDeejay.id),
+    hasDeclinedInv: currentGig.declinedInvs.includes(currentDeejay.id),
+  }
+}
+
+const GigDetailDeejay = props => {
+  const { currentGig, currentDeejay, handleBookingApplication, handleRetractApplication, handleCancelBooking, handleBookingAccept, handleBookingDecline } = props;
+
+  const deejayConditions = getDeejayBools(currentGig, currentDeejay);
+  const deejayBools =
+  `${deejayConditions.isCurrentDeejay}-${deejayConditions.hasDeejay}-${deejayConditions.isGigDeejay}-${deejayConditions.isApplicant}-${deejayConditions.isInvite}-${deejayConditions.hasDeclinedApp}-${deejayConditions.hasDeclinedInv}`
 
   let gigDateArr = currentGig.date.split('/')
   let gigYear = gigDateArr[0]
   let gigMonth = gigDateArr[1]
   let gigDate = gigDateArr[2]
+
+  console.log('BOOLS', deejayBools)
 
   return (
     <div>
