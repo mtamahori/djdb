@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { updateGig } from '../../store'
 import { List, Button } from 'semantic-ui-react'
 import history from '../../history'
+import dateFns from 'date-fns'
 
 class DeejayDetailBrowse extends Component {
   constructor (props) {
@@ -15,13 +16,17 @@ class DeejayDetailBrowse extends Component {
 
   render () {
     const { currentGig } = this.props.location.state;
+    const { currentDeejayBrowse } = this.props;
+
+    if (!currentDeejayBrowse) {
+      return null;
+    }
 
     if (!currentGig) {
-      const { currentDeejayBrowse } = this.props;
 
-      if (!currentDeejayBrowse) {
-        return <div>Loading!</div>
-      }
+      // if (!currentDeejayBrowse) {
+      //   return null;
+      // }
 
       return (
         <div>
@@ -32,7 +37,6 @@ class DeejayDetailBrowse extends Component {
       )
     }
     else {
-      const { currentDeejayBrowse } = this.props;
       const conditions = this.getBools();
       const bools = `${conditions.isCurrentGig}-${conditions.isCurrentDeejayBrowse}-${conditions.hasDeejay}-${conditions.isGigDeejay}-${conditions.isApplicant}-${conditions.isInvite}-${conditions.hasDeclinedApp}-${conditions.hasDeclinedInv}`
       return (
@@ -124,7 +128,13 @@ class DeejayDetailBrowse extends Component {
   }
 
   renderRetractBooking() {
+    const { currentGig } = this.props.location.state;
+    let gigDateArr = currentGig.date.split('/')
+    let gigYear = gigDateArr[0]
+    let gigMonth = gigDateArr[1]
+    let gigDate = gigDateArr[2]
     return (
+      dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now()) &&
       <div>
         <Button
           size="massive"
