@@ -24,10 +24,6 @@ class DeejayDetailBrowse extends Component {
 
     if (!currentGig) {
 
-      // if (!currentDeejayBrowse) {
-      //   return null;
-      // }
-
       return (
         <div>
           {
@@ -36,6 +32,7 @@ class DeejayDetailBrowse extends Component {
         </div>
       )
     }
+
     else {
       const conditions = this.getBools();
       const bools = `${conditions.isCurrentGig}-${conditions.isCurrentDeejayBrowse}-${conditions.hasDeejay}-${conditions.isGigDeejay}-${conditions.isApplicant}-${conditions.isInvite}-${conditions.hasDeclinedApp}-${conditions.hasDeclinedInv}`
@@ -87,6 +84,7 @@ class DeejayDetailBrowse extends Component {
   }
 
   renderSendBookingRequest() {
+    console.log('sendbookingreqeust')
     return (
       <div>
         <Button
@@ -99,6 +97,7 @@ class DeejayDetailBrowse extends Component {
   }
 
   renderRetractBookingRequest() {
+    console.log('retractbookingrequest')
     return (
       <div>
         <Button
@@ -111,6 +110,7 @@ class DeejayDetailBrowse extends Component {
   }
 
   renderAcceptDeclineBookingRequest() {
+    console.log('acceptdeclinebooking')
     return (
       <div>
         <Button
@@ -128,6 +128,7 @@ class DeejayDetailBrowse extends Component {
   }
 
   renderRetractBooking() {
+    console.log('retractbooking')
     const { currentGig } = this.props.location.state;
     let gigDateArr = currentGig.date.split('/')
     let gigYear = gigDateArr[0]

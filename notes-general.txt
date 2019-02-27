@@ -77,3 +77,14 @@ TESTING
     front end tests
 
 ////////////////////////////////////// ^ Tinker + Test - 2mo (til end of May)
+
+If completed, things I can be proud of:
+
+Fullstack NodeJS/Express/React/Redux application
+Postgres/Sequelize
+Design, styling, UI/UX
+Calendar
+Chat functionality with websockets
+API integrations
+Testing (not TDD, but there are tests)
+
