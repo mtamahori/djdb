@@ -1,34 +1,3 @@
-General:
-
-Consider leaving out reviews, because you know why you hate that shit
-Also leave out payment, because it isn't necessary for MVP
-What you need for MVP is a damn good interface, the ability to search for the right venuse/bookers/deejays/events, and set up COMMUNICATION between the right parties. The rest will follow. No need to clutter your application with unnecessary features.
-
-Think about how to use the calendar component for multiple use cases. One way could be instead of using buttons with dropdown menus for each type of gig, could just render the calendar and COLOR CODE each type. You click a button and it filters to only show gigs of that type. Click a cell on the calendar and it takes you to a "Day" component with a list of gigs for that day. This is most useful for bookers who might be booking multiple deejays for a given night (different riders, time slots, communications, etc).
-
-/////// CURRENT STEPS ////////
-
-INPUT + VALIDATION
-    = Sequelize model constraints
-    = Reg Ex study
-    = change phone input fields to three input fields, each only taking 3-4-3 digits
-    = change date input field to drop-downs with pre-determined options (mm-dd-yyyy)
-    = change time input field to drop-downs with pre-determined options (hh-mm-//)
-
-FILTER + SEARCH
-    = use datefns to determine past/future status, add flag to Sequelize model
-    = filter gigs into lists based on past, upcoming, open
-    = search any gig list to match text input (name, location, booker/deejay)
-    search any gig list to match date range (input via two sets of dropdowns)
-    search any gig list to match compensation minimum (input via textbox)
-
-APPLY/ACCEPT GIG
-    = simple "request" button on each open gig
-    = clicking "request" button sets a "pending" flag on that gig
-    create a "requests" list that renders on deejay/booker homepage - a gig list specifically for invites
-    accepting/declining a gig will add the correct deejayId/bookerId to that gig
-    ~maybe have a separate tab for "history" - i.e. all past gigs, both declined, pending, and accepted
-
 UI UX
     color Scheme
     button types
@@ -52,13 +21,13 @@ MESSAGING
     keep the layout dead simple
 
 
-/////////////////////////////////////// ^ MVP - 2mo (til end of March)
+///////////////////////////////////////
 
 SEED file
     of fake user base and gigs
 
-ERROR MESSAGES
-    for bad inputs
+STATUS MESSAGES / ERROR MESSAGES
+    for bad inputs / requests
 
 EXTERNAL INTEGRATIONS
     Soundcloud
@@ -76,7 +45,7 @@ TESTING
     back end tests
     front end tests
 
-////////////////////////////////////// ^ Tinker + Test - 2mo (til end of May)
+//////////////////////////////////////
 
 If completed, things I can be proud of:
 
