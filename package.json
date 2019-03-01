@@ -38,6 +38,7 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "sass": "^1.17.2",
     "semantic-ui-react": "^0.84.0",
     "sequelize": "^4.39.0",
     "socket.io": "^2.1.1"
@@ -71,10 +72,12 @@
     "eslint-config-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.11.1",
     "mocha": "^5.2.0",
+    "node-sass": "^4.11.0",
     "nodemon": "^1.18.7",
     "prettier": "^1.14.3",
     "react-test-renderer": "^16.5.2",
     "redux-devtools-extension": "^2.13.5",
+    "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2"
