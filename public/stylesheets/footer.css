@@ -2,4 +2,10 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+  background: linear-gradient(#327f9e, #828ae5);
 }
+
+h4 {
+  color: white;
+}
+
