@@ -4,20 +4,21 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Menu } from 'semantic-ui-react';
 import { logout } from "../store";
+require('../../public/stylesheets/navbar.css')
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
-  <div>
+  <div className="navbar">
     <h1>D J D B</h1>
       {isLoggedIn ? (
-        <Menu>
+        <Menu className="navbar-buttons" fluid widths={5}>
           <Menu.Item as={Link} to="/home">Home</Menu.Item>
           <Menu.Item as={Link} to="/user">Profile</Menu.Item>
           <Menu.Item as={Link} to="/booker">Booker</Menu.Item>
           <Menu.Item as={Link} to="/deejay">Deejay</Menu.Item>
-          <Menu.Item onClick={handleClick}>Logout</Menu.Item>
+          <Menu.Item onClick={handleClick} position="right">Logout</Menu.Item>
         </Menu>
       ) : (
-        <Menu>
+        <Menu className="navbar-buttons" fluid widths={3}>
           <Menu.Item as={Link} to="/">Home</Menu.Item>
           <Menu.Item as={Link} to="/login">Log In</Menu.Item>
           <Menu.Item as={Link} to="/signup">Sign Up</Menu.Item>

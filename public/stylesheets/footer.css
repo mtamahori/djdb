@@ -2,10 +2,14 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: linear-gradient(#327f9e, #828ae5);
+  background: linear-gradient(#0c456e, white);
 }
 
-h4 {
+.footer-icons {
+  color: white;
+}
+
+.footer h4 {
   color: white;
 }
 
