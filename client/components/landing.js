@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Icon } from 'semantic-ui-react'
-
+require('../../public/stylesheets/landing.css')
 
 const Landing = () => {
   return (
-    <div>
-    <Icon.Group size='huge'>
+    <div className="landing-container">
+    <Icon.Group className="landing-icons" size='huge'>
       <Icon loading size='big' name='circle notch' />
       <Icon name='music' />
     </Icon.Group>
