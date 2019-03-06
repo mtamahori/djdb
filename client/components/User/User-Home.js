@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+require('../../../public/stylesheets/home.css')
 
 class UserHome extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class UserHome extends Component {
   render() {
     const { email } = this.props
     return (
-      <div>
+      <div className="welcome">
       <div className="welcome-message" >
         <h3>Welcome, {email}</h3>
       </div>

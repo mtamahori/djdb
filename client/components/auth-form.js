@@ -2,29 +2,26 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from  'prop-types'
 import { auth } from '../store'
+import { NavLink } from 'react-router-dom'
+import { Form } from 'semantic-ui-react'
 
 const AuthForm = ({ name, displayName, handleSubmit, error }) => {
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="email" >
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
-      <a href="/auth/google">{displayName} with Google</a>
+    <div className="auth-form-container">
+      <Form onSubmit={handleSubmit} name={name}>
+        <h4>Email</h4>
+        <Form.Input fluid name="email" placeholder="Email" />
+        <h4>Password</h4>
+        <Form.Input fluid name="password" placeholder="Password" />
+        <Form.Button type="submit">{displayName}</Form.Button>
+        {
+          error && error.response &&
+          <div>
+            {error.response.data}
+          </div>
+        }
+      </Form>
+      <NavLink activeClassName="active" to="/auth/google">{displayName} with Google</NavLink>
     </div>
   )
 }
@@ -47,11 +44,11 @@ const mapSignup = state => {
 
 const mapDispatch = dispatch => {
   return {
-    handleSubmit(evt) {
-      evt.preventDefault()
-      const formName = evt.target.name
-      const email = evt.target.email.value
-      const password = evt.target.password.value
+    handleSubmit(event) {
+      event.preventDefault()
+      const formName = event.target.name
+      const email = event.target.email.value
+      const password = event.target.password.value
       dispatch(auth(email, password, formName))
     }
   }
