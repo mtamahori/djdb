@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { deleteDeejay, updateDeejay } from '../../store'
-import { Form, List, Button } from 'semantic-ui-react'
+import { Form, List, Button, Message } from 'semantic-ui-react'
 require('../../../public/stylesheets/profile.css')
 
 class DeejayDetail extends Component {
@@ -12,7 +12,8 @@ class DeejayDetail extends Component {
     this.handleDeleteDeejay = this.handleDeleteDeejay.bind(this);
 
     this.state = {
-      viewUpdateDeejay: false
+      viewUpdateDeejay: false,
+      updateBool: false
     }
   }
 
@@ -67,7 +68,7 @@ class DeejayDetail extends Component {
   renderUpdateDeejay() {
     return (
       <div className="deejay-profile-update">
-        <Form onSubmit={this.handleUpdateDeejay} >
+        <Form success={this.state.updateBool} onSubmit={this.handleUpdateDeejay} >
           <div>
             <h3>Update Deejay Details</h3>
             <h4>
@@ -88,6 +89,7 @@ class DeejayDetail extends Component {
               <Form.Input name="phone3" type="text" maxLength="4" placeholder="" />
             </Form.Group>
             </div>
+            <Message success header="Update Successful" />
             <Form.Button type="submit" value="submit" >
             Submit
             </Form.Button>
@@ -132,6 +134,7 @@ class DeejayDetail extends Component {
         phone: phoneInput || currentDeejay.phone
       }
       updateDeejay(deejay);
+      this.setState({ updateBool: true })
       event.target.name.value = '';
       event.target.email.value = '';
       event.target.phone1.value = '';

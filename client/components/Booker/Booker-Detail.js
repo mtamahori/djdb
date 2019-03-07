@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateBooker } from "../../store";
-import { Form, List, Button } from "semantic-ui-react";
+import { Form, List, Button, Message } from "semantic-ui-react";
 require('../../../public/stylesheets/profile.css')
 
 class BookerDetail extends Component {
@@ -12,7 +12,8 @@ class BookerDetail extends Component {
     this.handleDeleteBooker = this.handleDeleteBooker.bind(this);
 
     this.state = {
-      viewUpdateBooker: false
+      viewUpdateBooker: false,
+      updateBool: false
     }
   }
 
@@ -66,7 +67,7 @@ class BookerDetail extends Component {
   renderUpdateBooker() {
     return (
       <div className="booker-profile-update">
-        <Form onSubmit={this.handleUpdateBooker}>
+        <Form success={this.state.updateBool} onSubmit={this.handleUpdateBooker}>
           <div>
             <h3>Update Your Booker Details</h3>
             <h4>
@@ -87,6 +88,7 @@ class BookerDetail extends Component {
               <Form.Input name="phone3" maxLength="4" placeholder="" />
             </Form.Group>
             </div>
+            <Message success header="Update Successful" />
             <Form.Button type="submit" value="submit" >
             Submit
             </Form.Button>
@@ -132,6 +134,7 @@ class BookerDetail extends Component {
         phone: phoneInput || currentBooker.phone
       }
       updateBooker(booker);
+      this.setState({ updateBool: true })
       event.target.name.value = '';
       event.target.email.value = '';
       event.target.phone1.value = '';
