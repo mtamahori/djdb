@@ -3,13 +3,13 @@ import { connect } from 'react-redux'
 import PropTypes from  'prop-types'
 import { auth } from '../store'
 import { NavLink } from 'react-router-dom'
-import { Form } from 'semantic-ui-react'
+import { Form, Message } from 'semantic-ui-react'
 require('../../public/stylesheets/authForm.css')
 
 const AuthForm = ({ name, displayName, handleSubmit, error }) => {
   return (
     <div className="auth-form-container">
-      <Form onSubmit={handleSubmit} name={name}>
+      <Form onSubmit={handleSubmit} name={name} success>
         <h4>Email</h4>
         <Form.Input fluid name="email" placeholder="Email" />
         <h4>Password</h4>
@@ -21,6 +21,10 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
           <div>
             {error.response.data}
           </div>
+        }
+        {
+          name === 'signup' &&
+          <Message success header="Signup Successful" content="Welcome to DJDB!" />
         }
       </Form>
       <br />

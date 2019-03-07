@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateUser } from '../../store'
-import { Button } from 'semantic-ui-react'
+import { Form, Button, Message } from 'semantic-ui-react'
 require('../../../public/stylesheets/profile.css')
 
 class UserProfile extends Component {
@@ -9,6 +9,10 @@ class UserProfile extends Component {
     super(props);
 
     this.handleUpdateUser = this.handleUpdateUser.bind(this);
+
+    this.state = {
+      updateBool: false
+    }
   }
 
   render() {
@@ -18,6 +22,8 @@ class UserProfile extends Component {
         <div className="profile-current">
           <h3>Current Email: {currentUser.email}</h3>
         </div>
+        <br />
+        <br />
         <div className="profile-update">
           {this.renderUpdateUser()}
         </div>
@@ -28,15 +34,18 @@ class UserProfile extends Component {
   renderUpdateUser() {
     return (
       <div>
-        <form onSubmit={this.handleUpdateUser} >
+        <Form success={this.state.updateBool} onSubmit={this.handleUpdateUser} >
           <div>
-            <h3>Update User Info</h3>
+            <h3>Update Email</h3>
             <h4>
-              <input name="email" type="text" required placeholder="Email" />
+              <Form.Input name="email" required placeholder="Email" />
             </h4>
-            <input type="submit" value="submit" />
+            <Message success header="Update Successful" />
+            <Form.Button type="submit" value="submit" >
+              Update
+            </Form.Button>
           </div>
-        </form>
+        </Form>
       </div>
     )
   }
@@ -49,7 +58,9 @@ class UserProfile extends Component {
       email: event.target.email.value
     }
     updateUser(user);
+    this.setState({ updateBool: true })
     event.target.email.value = '';
+
   }
 }
 
