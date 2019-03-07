@@ -18,7 +18,6 @@ class BookerMain extends Component {
     const { currentBooker, gigs } = this.props;
     return (
       <div>
-        <h3>Booker Main Portal</h3>
         {
 
           currentBooker === undefined
@@ -29,8 +28,8 @@ class BookerMain extends Component {
           :
 
           <div>
-            <BookerDetail currentBooker={currentBooker} />
             <CalendarMain currentBooker={currentBooker} />
+            <BookerDetail currentBooker={currentBooker} />
             <GigApplications gigs={gigs} currentBooker={currentBooker} />
             <GigPendingInvites gigs={gigs} currentBooker={currentBooker} />
             <GigMain currentBooker={currentBooker} />

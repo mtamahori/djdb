@@ -5,3 +5,23 @@
   transform: translate(-50%, -50%);
 }
 
+.booker-profile-container {
+  /* margin: auto; */
+  width: 50%
+}
+
+/* .booker-profile-detail {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+/* .booker-profile-update {
+  width: 300px;
+}
+
+.booker-profile-update-phone {
+  width: 300px;
+} */

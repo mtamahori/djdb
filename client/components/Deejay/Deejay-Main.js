@@ -17,7 +17,6 @@ class DeejayMain extends Component {
     const { currentDeejay, gigs } = this.props;
     return (
       <div>
-        <h3>Deejay Main Portal</h3>
         {
           currentDeejay === undefined
           ?
@@ -27,8 +26,8 @@ class DeejayMain extends Component {
           :
           <div>
 
-            <DeejayDetail currentDeejay={currentDeejay} />
             <CalendarMain currentDeejay={currentDeejay} />
+            <DeejayDetail currentDeejay={currentDeejay} />
             <GigInvites currentDeejay={currentDeejay} gigs={gigs} />
             <GigPendingApplications currentDeejay={currentDeejay} gigs={gigs} />
             <GigMain currentDeejay={currentDeejay} />

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateBooker } from "../../store";
-import { List } from "semantic-ui-react";
+import { Form, List, Button } from "semantic-ui-react";
 require('../../../public/stylesheets/profile.css')
 
 class BookerDetail extends Component {
@@ -10,13 +10,32 @@ class BookerDetail extends Component {
 
     this.handleUpdateBooker = this.handleUpdateBooker.bind(this);
     this.handleDeleteBooker = this.handleDeleteBooker.bind(this);
+
+    this.state = {
+      viewUpdateBooker: false
+    }
   }
 
   render() {
     return (
-      <div>
+      <div className="booker-profile-container">
         <div>{this.renderCurrentBooker()}</div>
-        <div>{this.renderUpdateBooker()}</div>
+        {
+          !this.state.viewUpdateBooker &&
+          <Button
+            onClick={() => {
+              this.state.viewUpdateBooker === false ?
+              this.setState({ viewUpdateBooker: true }) :
+              this.setState({ viewUpdateBooker: false })
+            }}>
+            Update Details
+          </Button>
+        }
+        {
+          this.state.viewUpdateBooker && (
+            this.renderUpdateBooker()
+          )
+        }
       </div>
     );
   }
@@ -31,7 +50,7 @@ class BookerDetail extends Component {
     else if (currentBooker) {
 
       return (
-        <div>
+        <div className="booker-profile-detail">
           <h3>Your Booker Profile</h3>
           {
             <List key={currentBooker.id}>
@@ -39,9 +58,6 @@ class BookerDetail extends Component {
               <List.Item icon="marker" content="Chicago, IL" />
               <List.Item icon="mail" content={currentBooker.email} />
               <List.Item icon="phone" content={currentBooker.phone} />
-              <button onClick={this.handleDeleteBooker} type="button">
-                Delete Booker
-              </button>
             </List>
           }
         </div>
@@ -51,27 +67,40 @@ class BookerDetail extends Component {
 
   renderUpdateBooker() {
     return (
-      <div>
-        <form onSubmit={this.handleUpdateBooker}>
+      <div className="booker-profile-update">
+        <Form onSubmit={this.handleUpdateBooker}>
           <div>
-            <h3>Update Booker Details</h3>
+            <h3>Update Your Booker Details</h3>
             <h4>
               Name <br />
-              <input name="name" type="text" placeholder="" />
             </h4>
+              <Form.Input fluid name="name" placeholder="" />
             <h4>
               Email <br />
-              <input name="email" type="text" placeholder="" />
             </h4>
+              <Form.Input fluid name="email" placeholder="" />
             <h4>
               Phone # <br />
-              <input name="phone1" type="text" maxLength="3" placeholder="" />
-              <input name="phone2" type="text" maxLength="3" placeholder="" />
-              <input name="phone3" type="text" maxLength="4" placeholder="" />
             </h4>
-            <input type="submit" value="submit" />
+            <div className="booker-profile-update-phone">
+            <Form.Group inline >
+              <Form.Input name="phone1" maxLength="3" placeholder="" />
+              <Form.Input name="phone2" maxLength="3" placeholder="" />
+              <Form.Input name="phone3" maxLength="4" placeholder="" />
+            </Form.Group>
+            </div>
+            <Form.Button type="submit" value="submit" >Submit</Form.Button>
           </div>
-        </form>
+        </Form>
+        <br />
+        <Button onClick={() => {
+          this.state.viewUpdateBooker === true ?
+          this.setState({ viewUpdateBooker: false }) :
+          this.setState({ viewUpdateBooker: true })
+          }}>
+          Cancel
+        </Button>
+        <br />
       </div>
     );
   }

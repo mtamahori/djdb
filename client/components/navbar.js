@@ -12,9 +12,9 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
       {isLoggedIn ? (
         <Menu className="navbar-buttons" fluid widths={5}>
           <Menu.Item as={Link} to="/home">Home</Menu.Item>
-          <Menu.Item as={Link} to="/user">Profile</Menu.Item>
-          <Menu.Item as={Link} to="/booker">Booker</Menu.Item>
-          <Menu.Item as={Link} to="/deejay">Deejay</Menu.Item>
+          <Menu.Item as={Link} to="/user">Profile Detail</Menu.Item>
+          <Menu.Item as={Link} to="/booker">Booker Portal</Menu.Item>
+          <Menu.Item as={Link} to="/deejay">Deejay Portal</Menu.Item>
           <Menu.Item onClick={handleClick} position="right">Logout</Menu.Item>
         </Menu>
       ) : (
