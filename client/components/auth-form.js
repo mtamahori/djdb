@@ -4,6 +4,7 @@ import PropTypes from  'prop-types'
 import { auth } from '../store'
 import { NavLink } from 'react-router-dom'
 import { Form } from 'semantic-ui-react'
+require('../../public/stylesheets/authForm.css')
 
 const AuthForm = ({ name, displayName, handleSubmit, error }) => {
   return (
@@ -13,6 +14,7 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
         <Form.Input fluid name="email" placeholder="Email" />
         <h4>Password</h4>
         <Form.Input fluid name="password" placeholder="Password" />
+        <br />
         <Form.Button type="submit">{displayName}</Form.Button>
         {
           error && error.response &&
@@ -21,6 +23,7 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
           </div>
         }
       </Form>
+      <br />
       <NavLink activeClassName="active" to="/auth/google">{displayName} with Google</NavLink>
     </div>
   )

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateUser } from '../../store'
 import { Button } from 'semantic-ui-react'
+require('../../../public/stylesheets/profile.css')
 
 class UserProfile extends Component {
   constructor(props) {
@@ -13,11 +14,11 @@ class UserProfile extends Component {
   render() {
     const { currentUser } = this.props
     return (
-      <div className="user-profile-container">
-        <div className="user-profile-current">
+      <div className="profile-container">
+        <div className="profile-current">
           <h3>Current Email: {currentUser.email}</h3>
         </div>
-        <div className="user-profile-update">
+        <div className="profile-update">
           {this.renderUpdateUser()}
         </div>
       </div>
