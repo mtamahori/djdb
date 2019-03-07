@@ -32,9 +32,8 @@ class BookerDetail extends Component {
           </Button>
         }
         {
-          this.state.viewUpdateBooker && (
-            this.renderUpdateBooker()
-          )
+          this.state.viewUpdateBooker &&
+          this.renderUpdateBooker()
         }
       </div>
     );
@@ -48,7 +47,6 @@ class BookerDetail extends Component {
     }
 
     else if (currentBooker) {
-
       return (
         <div className="booker-profile-detail">
           <h3>Your Booker Profile</h3>
@@ -89,7 +87,9 @@ class BookerDetail extends Component {
               <Form.Input name="phone3" maxLength="4" placeholder="" />
             </Form.Group>
             </div>
-            <Form.Button type="submit" value="submit" >Submit</Form.Button>
+            <Form.Button type="submit" value="submit" >
+            Submit
+            </Form.Button>
           </div>
         </Form>
         <br />

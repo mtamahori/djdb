@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { deleteDeejay, updateDeejay } from '../../store'
-import { List } from 'semantic-ui-react'
-
-// COMPONENT
+import { Form, List, Button } from 'semantic-ui-react'
+require('../../../public/stylesheets/profile.css')
 
 class DeejayDetail extends Component {
   constructor(props) {
@@ -11,13 +10,32 @@ class DeejayDetail extends Component {
 
     this.handleUpdateDeejay = this.handleUpdateDeejay.bind(this);
     this.handleDeleteDeejay = this.handleDeleteDeejay.bind(this);
+
+    this.state = {
+      viewUpdateDeejay: false
+    }
   }
 
   render() {
       return (
-        <div>
+        <div className="deejay-profile-container">
           <div>{this.renderCurrentDeejay()}</div>
-          <div>{this.renderUpdateDeejay()}</div>
+          {
+            !this.state.viewUpdateDeejay &&
+            <Button
+              onClick={() => {
+                this.state.viewUpdateDeejay === false ?
+                this.setState({ viewUpdateDeejay: true }) :
+                this.setState({ viewUpdateDeejay: false })
+              }}
+            >
+            Update Details
+            </Button>
+          }
+          {
+            this.state.viewUpdateDeejay &&
+            this.renderUpdateDeejay()
+          }
         </div>
       )
     }
@@ -31,17 +49,14 @@ class DeejayDetail extends Component {
 
     else if (currentDeejay) {
       return (
-        <div>
+        <div className="deejay-profile-detail">
         <h3>Your Deejay Profile</h3>
           {
             <List key={currentDeejay.id} >
-              <List.Item icon='users' content={currentDeejay.name} />
-              <List.Item icon='marker' content='Chicago, IL' />
-              <List.Item icon='mail' content={currentDeejay.email} />
-              <List.Item icon='phone' content={currentDeejay.phone} />
-              <button onClick={this.handleDeleteDeejay} type="button" >
-                Delete Deejay
-              </button>
+              <List.Item icon="users" content={currentDeejay.name} />
+              <List.Item icon="marker" content="Chicago, IL" />
+              <List.Item icon="mail" content={currentDeejay.email} />
+              <List.Item icon="phone" content={currentDeejay.phone} />
             </List>
           }
         </div>
@@ -51,27 +66,42 @@ class DeejayDetail extends Component {
 
   renderUpdateDeejay() {
     return (
-      <div>
-        <form onSubmit={this.handleUpdateDeejay} >
+      <div className="deejay-profile-update">
+        <Form onSubmit={this.handleUpdateDeejay} >
           <div>
             <h3>Update Deejay Details</h3>
             <h4>
               Name <br />
-              <input name="name" type="text" placeholder="" />
             </h4>
+              <Form.Input name="name" type="text" placeholder="" />
             <h4>
               Email <br />
-              <input name="email" type="text" placeholder="" />
             </h4>
+              <Form.Input name="email" type="text" placeholder="" />
             <h4>
-              Phone # <br />
-              <input name="phone1" type="text" maxLength="3" placeholder="" />
-              <input name="phone2" type="text" maxLength="3" placeholder="" />
-              <input name="phone3" type="text" maxLength="4" placeholder="" />
+            Phone # <br />
             </h4>
-            <input type="submit" value="submit" />
+            <div className="deejay-profile-update-phone">
+            <Form.Group inline >
+              <Form.Input name="phone1" type="text" maxLength="3" placeholder="" />
+              <Form.Input name="phone2" type="text" maxLength="3" placeholder="" />
+              <Form.Input name="phone3" type="text" maxLength="4" placeholder="" />
+            </Form.Group>
+            </div>
+            <Form.Button type="submit" value="submit" >
+            Submit
+            </Form.Button>
           </div>
-        </form>
+        </Form>
+        <br />
+        <Button onClick={() => {
+          this.state.viewUpdateDeejay === true ?
+          this.setState({ viewUpdateDeejay: false }) :
+          this.setState({ viewUpdateDeejay: true })
+          }}>
+          Cancel
+        </Button>
+        <br />
       </div>
     )
   }
