@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { updateBooker } from "../../store";
-import { Form, List, Button, Message } from "semantic-ui-react";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { updateBooker } from '../../store';
+import { Form, List, Button, Message } from 'semantic-ui-react';
 require('../../../public/stylesheets/profile.css')
 
 class BookerDetail extends Component {
