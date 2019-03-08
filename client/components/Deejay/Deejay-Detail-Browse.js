@@ -4,6 +4,7 @@ import { updateGig } from '../../store'
 import { List, Button } from 'semantic-ui-react'
 import history from '../../history'
 import dateFns from 'date-fns'
+require('../../../public/stylesheets/profile.css')
 
 class DeejayDetailBrowse extends Component {
   constructor (props) {
@@ -25,7 +26,7 @@ class DeejayDetailBrowse extends Component {
     if (!currentGig) {
 
       return (
-        <div>
+        <div className="deejay-profile-container">
           {
             this.renderDeejayDetails(currentDeejayBrowse)
           }
@@ -37,7 +38,7 @@ class DeejayDetailBrowse extends Component {
       const conditions = this.getBools();
       const bools = `${conditions.isCurrentGig}-${conditions.isCurrentDeejayBrowse}-${conditions.hasDeejay}-${conditions.isGigDeejay}-${conditions.isApplicant}-${conditions.isInvite}-${conditions.hasDeclinedApp}-${conditions.hasDeclinedInv}`
       return (
-        <div>
+        <div className="deejay-profile-container">
           {
             this.renderDeejayDetails(currentDeejayBrowse)
           }
@@ -69,7 +70,7 @@ class DeejayDetailBrowse extends Component {
 
   renderDeejayDetails(deejay) {
     return (
-      <div>
+      <div className="deejay-profile-detail">
         <h3>Deejay Details</h3>
         {
           <List key={deejay.id} >
@@ -84,7 +85,6 @@ class DeejayDetailBrowse extends Component {
   }
 
   renderSendBookingRequest() {
-    console.log('sendbookingreqeust')
     return (
       <div>
         <Button
@@ -97,7 +97,6 @@ class DeejayDetailBrowse extends Component {
   }
 
   renderRetractBookingRequest() {
-    console.log('retractbookingrequest')
     return (
       <div>
         <Button
@@ -110,7 +109,6 @@ class DeejayDetailBrowse extends Component {
   }
 
   renderAcceptDeclineBookingRequest() {
-    console.log('acceptdeclinebooking')
     return (
       <div>
         <Button
@@ -128,7 +126,6 @@ class DeejayDetailBrowse extends Component {
   }
 
   renderRetractBooking() {
-    console.log('retractbooking')
     const { currentGig } = this.props.location.state;
     let gigDateArr = currentGig.date.split('/')
     let gigYear = gigDateArr[0]

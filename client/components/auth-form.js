@@ -23,8 +23,8 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
           </div>
         }
         {
-          name === 'signup' &&
-          <Message success header="Signup Successful" content="Welcome to DJDB!" />
+          // name === 'signup' &&
+          // <Message success header="Signup Successful" content="Welcome to DJDB!" />
         }
       </Form>
       <br />

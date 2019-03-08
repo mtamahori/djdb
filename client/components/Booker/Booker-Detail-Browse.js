@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { List } from "semantic-ui-react";
+require('../../../public/stylesheets/profile.css')
 
 class BookerDetailBrowse extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class BookerDetailBrowse extends Component {
 
     else if (currentBookerBrowse) {
       return (
-        <div>
+        <div className="booker-profile-detail">
           <h3>Booker Details</h3>
           {
             <List key={currentBookerBrowse.id}>
