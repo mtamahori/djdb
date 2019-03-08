@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
-import { Button } from 'semantic-ui-react'
 import BookerDetail from './Booker-Detail'
 import CalendarMain from '../Calendar/Calendar-Main'
 import GigMain from '../Gig/Gig-Main'
 import GigApplications from './Gig-Applications'
 import GigPendingInvites from './Gig-Pending-Invites'
+import NewBookerForm from './New-Booker-Form'
 
 
 class BookerMain extends Component {
@@ -19,14 +18,10 @@ class BookerMain extends Component {
     return (
       <div>
         {
-
           currentBooker === undefined
           ?
-          <NavLink activeClassName="active" to="/booker/new">
-            <Button size="massive">Create Booker Profile</Button>
-          </NavLink>
+          <NewBookerForm />
           :
-
           <div>
             <CalendarMain currentBooker={currentBooker} />
             <BookerDetail currentBooker={currentBooker} />
@@ -34,7 +29,6 @@ class BookerMain extends Component {
             <GigPendingInvites gigs={gigs} currentBooker={currentBooker} />
             <GigMain currentBooker={currentBooker} />
           </div>
-
         }
       </div>
     )

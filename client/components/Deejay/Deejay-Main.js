@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
-import { Button } from 'semantic-ui-react'
 import DeejayDetail from './Deejay-Detail'
 import CalendarMain from '../Calendar/Calendar-Main'
 import GigMain from '../Gig/Gig-Main'
 import GigInvites from './Gig-Invites'
 import GigPendingApplications from './Gig-Pending-Applications'
+import NewDeejayForm from './New-Deejay-Form'
 
 class DeejayMain extends Component {
   constructor(props) {
@@ -20,18 +19,14 @@ class DeejayMain extends Component {
         {
           currentDeejay === undefined
           ?
-          <NavLink activeClassName="active" to="/deejay/new">
-            <Button size="massive">Create Deejay Profile</Button>
-          </NavLink>
+          <NewDeejayForm />
           :
           <div>
-
             <CalendarMain currentDeejay={currentDeejay} />
             <DeejayDetail currentDeejay={currentDeejay} />
             <GigInvites currentDeejay={currentDeejay} gigs={gigs} />
             <GigPendingApplications currentDeejay={currentDeejay} gigs={gigs} />
             <GigMain currentDeejay={currentDeejay} />
-
           </div>
         }
       </div>

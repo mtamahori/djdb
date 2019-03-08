@@ -11,10 +11,8 @@ import {
   UserProfile,
   BookerMain,
   BookerDetailBrowse,
-  NewBookerForm,
   DeejayMain,
   DeejayDetailBrowse,
-  NewDeejayForm,
   GigDetail
 } from './components'
 
@@ -24,7 +22,7 @@ class Routes extends Component {
   }
 
   render() {
-    const { isLoggedIn, isBooker, isDeejay } = this.props
+    const { isLoggedIn } = this.props
 
     return (
       <Switch>
@@ -37,17 +35,8 @@ class Routes extends Component {
             <Route exact path="/user" component={UserProfile} />
             <Route exact path="/deejay" component={DeejayMain} />
             <Route exact path="/booker" component={BookerMain} />
-
-            {!isBooker && (
-              <Route exact path="/booker/new" component={NewBookerForm} />
-            )}
             <Route exact path="/bookers/:id" component={BookerDetailBrowse} />
-
-            {!isDeejay && (
-              <Route exact path="/deejay/new" component={NewDeejayForm} />
-            )}
             <Route exact path="/deejays/:id" component={DeejayDetailBrowse} />
-
             <Route exact path="/gigs/:id" component={GigDetail} />
 
             </Switch>
@@ -57,13 +46,12 @@ class Routes extends Component {
     )
   }
 }
-            // <Route exact path="/deejays/:id" component={DeejayDetail} />
 
 const mapState = state => {
   return {
     isLoggedIn: !!state.user.id,
-    isBooker: !!state.bookers.filter(booker => booker.userId === state.user.id)[0],
-    isDeejay: !!state.deejays.filter(deejay => deejay.userId === state.user.id)[0]
+    // isBooker: !!state.bookers.filter(booker => booker.userId === state.user.id)[0],
+    // isDeejay: !!state.deejays.filter(deejay => deejay.userId === state.user.id)[0]
   }
 }
 
