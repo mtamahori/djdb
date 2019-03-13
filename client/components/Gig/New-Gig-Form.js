@@ -12,7 +12,19 @@ class NewGigForm extends Component {
     this.handleCreateGig = this.handleCreateGig.bind(this);
 
     this.state = {
-      createdBool: false
+      createdBool: false,
+      name: '',
+      date1: '',
+      date2: '',
+      date3: '',
+      startTime1: '',
+      startTime2: '',
+      startTime3: '',
+      endTime1: '',
+      endTime2: '',
+      endTime3: '',
+      location: '',
+      compensation: ''
     }
   }
 
@@ -95,41 +107,41 @@ class NewGigForm extends Component {
     return (
       <div className="new-gig-form-container">
         <Form success={this.state.createdBool} onSubmit={this.handleCreateGig} width={2}>
-          
-          <Form.Group  width={2}>
-            <Form.Input name="name" type="text" placeholder="Name">
-            </Form.Input>
-            <Form.Dropdown name="date1" type="text" placeholder="Month" fluid selection options={months}>
-            </Form.Dropdown>
-            <Form.Dropdown name="date2" type="text" placeholder="Date" fluid selection options={dates}>
-            </Form.Dropdown>
-            <Form.Dropdown name="date3" type="text" placeholder="Year" fluid selection options={years}>
-            </Form.Dropdown>
-          </Form.Group>
-          
 
           <Form.Group  width={2}>
-            <Form.Dropdown name="startTime1" type="text" placeholder="Hour" fluid selection options={hours}>
-            </Form.Dropdown>
-            <Form.Dropdown name="startTime2" type="text"   placeholder="Minute" fluid selection options={minutes}>
-            </Form.Dropdown>
-            <Form.Dropdown name="startTime3" type="text" placeholder="AM/PM" fluid selection options={ampm}>
-            </Form.Dropdown>
-          </Form.Group>
-          
-          <Form.Group  width={2}>
-            <Form.Dropdown name="endTime1" type="text" placeholder="Hour" fluid selection options={hours}>
-            </Form.Dropdown>
-            <Form.Dropdown name="endTime2" type="text" placeholder="Minute" fluid selection options={minutes}>
-            </Form.Dropdown>
-            <Form.Dropdown name="endTime3" type="text" placeholder="AM/PM" fluid selection options={ampm}>
-            </Form.Dropdown>
-          </Form.Group>
-          
-          <Form.Group  width={2}>
-            <Form.Input name="location" type="text" placeholder="Location">
+            <Form.Input name="name" placeholder="Name" value={this.state.name} onChange={this.handleName.bind(this)}>
             </Form.Input>
-            <Form.Input name="compensation" type="text" placeholder="Compensation">
+            <Form.Dropdown name="date1" placeholder="Month" fluid selection options={months} value={this.state.date1} onChange={this.handleDate1.bind(this)}>
+            </Form.Dropdown>
+            <Form.Dropdown name="date2" placeholder="Date" fluid selection options={dates} value={this.state.date2} onChange={this.handleDate2.bind(this)}>
+            </Form.Dropdown>
+            <Form.Dropdown name="date3" placeholder="Year" fluid selection options={years} value={this.state.date3} onChange={this.handleDate3.bind(this)}>
+            </Form.Dropdown>
+          </Form.Group>
+
+
+          <Form.Group  width={2}>
+            <Form.Dropdown name="startTime1" placeholder="Hour" fluid selection options={hours} value={this.state.startTime1} onChange={this.handleStartTime1.bind(this)}>
+            </Form.Dropdown>
+            <Form.Dropdown name="startTime2"   placeholder="Minute" fluid selection options={minutes} value={this.state.startTime2} onChange={this.handleStartTime2.bind(this)}>
+            </Form.Dropdown>
+            <Form.Dropdown name="startTime3" placeholder="AM/PM" fluid selection options={ampm} value={this.state.startTime3} onChange={this.handleStartTime3.bind(this)}>
+            </Form.Dropdown>
+          </Form.Group>
+
+          <Form.Group  width={2}>
+            <Form.Dropdown name="endTime1" placeholder="Hour" fluid selection options={hours} value={this.state.endTime1} onChange={this.handleEndTime1.bind(this)}>
+            </Form.Dropdown>
+            <Form.Dropdown name="endTime2" placeholder="Minute" fluid selection options={minutes} value={this.state.endTime2} onChange={this.handleEndTime2.bind(this)}>
+            </Form.Dropdown>
+            <Form.Dropdown name="endTime3" placeholder="AM/PM" fluid selection options={ampm} value={this.state.endTime3} onChange={this.handleEndTime3.bind(this)}>
+            </Form.Dropdown>
+          </Form.Group>
+
+          <Form.Group  width={2}>
+            <Form.Input name="location" placeholder="Location" value={this.state.location} onChange={this.handleLocation.bind(this)}>
+            </Form.Input>
+            <Form.Input name="compensation" placeholder="Compensation" value={this.state.compensation} onChange={this.handleCompensation.bind(this)}>
             </Form.Input>
           </Form.Group>
 
@@ -143,12 +155,58 @@ class NewGigForm extends Component {
     )
   }
 
+  handleName(event) {
+    this.setState({ name: event.target.value })
+  }
+
+  handleLocation(event) {
+    this.setState({ location: event.target.value })
+  }
+
+  handleCompensation(event) {
+    this.setState({ compensation: event.target.value })
+  }
+
+  handleDate1(data) {
+    this.setState({ date1: data.value })
+  }
+
+  handleDate2(data) {
+    this.setState({ date2: data.value })
+  }
+
+  handleDate3(data) {
+    this.setState({ date3: data.value })
+  }
+
+  handleStartTime1(data) {
+    this.setState({ startTime1: data.value })
+  }
+
+  handleStartTime2(data) {
+    this.setState({ startTime2: data.value })
+  }
+
+  handleStartTime3(data) {
+    this.setState({ startTime3: data.value })
+  }
+
+  handleEndTime1(data) {
+    this.setState( { endTime1: data.value } )
+  }
+
+  handleEndTime2(data) {
+    this.setState( { endTime2: data.value })
+  }
+
+  handleEndTime3(data) {
+    this.setState( { endTime3: data.value })
+  }
+
   handleCreateGig(event) {
     event.preventDefault();
     const { gigs, createGig, currentBooker, currentDeejay } = this.props
     let newGig;
-
-    console.log('EVENT', event.target)
 
     let dateInput = event.target.date3.value + '/' + event.target.date1.value + '/' + event.target.date2.value;
     let startTime = event.target.startTime1.value + ':' + event.target.startTime2.value + event.target.startTime3.value;
