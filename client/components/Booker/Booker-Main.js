@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Grid } from 'semantic-ui-react'
 import BookerDetail from './Booker-Detail'
 import CalendarMain from '../Calendar/Calendar-Main'
 import GigMain from '../Gig/Gig-Main'
@@ -24,9 +25,21 @@ class BookerMain extends Component {
           :
           <div>
             <CalendarMain currentBooker={currentBooker} />
-            <BookerDetail currentBooker={currentBooker} />
-            <GigApplications gigs={gigs} currentBooker={currentBooker} />
-            <GigPendingInvites gigs={gigs} currentBooker={currentBooker} />
+            <Grid>
+              <Grid.Row columns={1} textAlign="center">
+                <Grid.Column>
+                  <BookerDetail currentBooker={currentBooker} />
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row columns={2} textAlign="center">
+                <Grid.Column>
+                  <GigApplications gigs={gigs} currentBooker={currentBooker} />
+                </Grid.Column>
+                <Grid.Column>
+                  <GigPendingInvites gigs={gigs} currentBooker={currentBooker} />
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
             <GigMain currentBooker={currentBooker} />
           </div>
         }

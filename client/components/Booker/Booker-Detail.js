@@ -24,6 +24,7 @@ class BookerDetail extends Component {
         {
           !this.state.viewUpdateBooker &&
           <Button
+            className="booker-update-button"
             onClick={() => {
               this.state.viewUpdateBooker === false ?
               this.setState({ viewUpdateBooker: true }) :
