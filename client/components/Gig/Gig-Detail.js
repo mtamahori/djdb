@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { deleteGig, updateGig } from '../../store'
 import history from '../../history'
-
 import GigCurrentGig from './GigDetailElements/gigCurrentGig'
 import GigDetailBooker from './Gig-Detail-Booker'
 import GigDetailDeejay from './Gig-Detail-Deejay'
+require('../../../public/stylesheets/gigDetail.css')
 
 class GigDetail extends Component {
   constructor(props) {

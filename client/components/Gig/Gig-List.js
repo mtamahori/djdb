@@ -1,5 +1,6 @@
 import React from 'react'
 import GigItem from './Gig-Item'
+require('../../../public/stylesheets/gigList.css')
 
 const GigList = props => {
 
@@ -7,7 +8,7 @@ const GigList = props => {
 
   if (currentBooker) {
     return (
-      <div>
+      <div className="gig-list-items">
         {
           gigs.map(gig => (
             <GigItem gig={gig} key={gig.id} currentBooker={currentBooker} />
@@ -19,7 +20,7 @@ const GigList = props => {
 
   else if (currentDeejay) {
     return (
-      <div>
+      <div className="gig-list-items">
         {
           gigs.map(gig => (
             <GigItem gig={gig} key={gig.id} currentDeejay={currentDeejay} />
