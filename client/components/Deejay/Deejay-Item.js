@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { Card } from 'semantic-ui-react';
 
 const DeejayItem = props => {
   const { deejay, currentGig } = props;
@@ -14,10 +15,14 @@ const DeejayItem = props => {
           }
         }}
       >
-        <h4>{deejay.name}</h4>
+        <Card link>
+          <Card.Content>
+            <Card.Header>{deejay.name}</Card.Header>
+            <Card.Description>{deejay.email}</Card.Description>
+            <Card.Description>{deejay.phone}</Card.Description>
+          </Card.Content>
+        </Card>
       </NavLink>
-      <h5>{deejay.email}</h5>
-      <h5>{deejay.phone}</h5>
     </div>
   );
 };

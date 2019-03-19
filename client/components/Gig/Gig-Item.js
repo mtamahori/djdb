@@ -2,7 +2,6 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import dateFns from 'date-fns'
 import { Card } from 'semantic-ui-react'
-require('../../../public/stylesheets/gigItem.css')
 
 const GigItem = (props) => {
   const { gig, currentBooker, currentDeejay } = props;
