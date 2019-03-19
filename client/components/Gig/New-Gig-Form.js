@@ -122,7 +122,8 @@ class NewGigForm extends Component {
           </Form.Group>
 
 
-          <Form.Group  width={2}>
+          <Form.Group width={2}>
+            <h2>_Start Time</h2>
             <Form.Dropdown name="startTime1" placeholder="Hour" fluid selection options={hours} value={startTime1} onChange={this.handleStartTime1.bind(this)}>
             </Form.Dropdown>
             <Form.Dropdown name="startTime2" placeholder="Minute" fluid selection options={minutes} value={startTime2} onChange={this.handleStartTime2.bind(this)}>
@@ -131,7 +132,8 @@ class NewGigForm extends Component {
             </Form.Dropdown>
           </Form.Group>
 
-          <Form.Group  width={2}>
+          <Form.Group width={2}>
+            <h2>_End Time</h2>
             <Form.Dropdown name="endTime1" placeholder="Hour" fluid selection options={hours} value={endTime1} onChange={this.handleEndTime1.bind(this)}>
             </Form.Dropdown>
             <Form.Dropdown name="endTime2" placeholder="Minute" fluid selection options={minutes} value={endTime2} onChange={this.handleEndTime2.bind(this)}>

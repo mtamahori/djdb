@@ -168,9 +168,13 @@ class GigMain extends Component {
         )
       })
       return (
+        openGigs.length
+        ?
         <div>
           <GigList currentBooker={currentBooker} gigs={openGigs} />
         </div>
+        :
+        <h3>You Have No Open Bookings Right Now</h3>
       )
     }
 
@@ -183,9 +187,13 @@ class GigMain extends Component {
         )
       })
       return (
+        openGigs.length
+        ?
         <div>
           <GigList currentDeejay={currentDeejay} gigs={openGigs} />
         </div>
+        :
+        <h3>You Have No Open Bookings Right Now</h3>
       )
     }
   }
@@ -202,9 +210,13 @@ class GigMain extends Component {
         )
       })
       return (
+        pastGigs.length
+        ?
         <div>
           <GigList currentBooker={currentBooker} gigs={pastGigs} />
         </div>
+        :
+        <h3>You Have No Past Gigs Yet</h3>
       )
     }
 
@@ -216,9 +228,13 @@ class GigMain extends Component {
         )
       })
       return (
+        pastGigs.length
+        ?
         <div>
           <GigList currentDeejay={currentDeejay } gigs={pastGigs} />
         </div>
+        :
+        <h3>You Have No Past Gigs Yet</h3>
       )
     }
   }
@@ -236,9 +252,13 @@ class GigMain extends Component {
         )
       })
       return (
+        upcomingGigs.length
+        ?
         <div>
          <GigList currentBooker={currentBooker} gigs={upcomingGigs} />
         </div>
+        :
+        <h3>You Have No Upcoming Bookings Right Now</h3>
       )
     }
 
@@ -251,9 +271,13 @@ class GigMain extends Component {
         )
       })
       return (
+        upcomingGigs.length
+        ?
         <div>
          <GigList currentDeejay={currentDeejay} gigs={upcomingGigs} />
         </div>
+        :
+        <h3>You Have No Upcoming Bookings Right Now</h3>
       )
     }
   }

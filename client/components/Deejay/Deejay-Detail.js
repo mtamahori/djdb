@@ -24,6 +24,7 @@ class DeejayDetail extends Component {
           {
             !this.state.viewUpdateDeejay &&
             <Button
+              className="deejay-update-button"
               onClick={() => {
                 this.state.viewUpdateDeejay === false ?
                 this.setState({ viewUpdateDeejay: true }) :

@@ -26,24 +26,24 @@
   width: 50%;
 }
 
-
 .deejay-profile-container {
-  /* margin: auto; */
-  width: 50%
+  margin: auto;
+  width: 50%;
 }
 
-/* .deejay-profile-detail {
-  margin: 0;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-} */
-
-/* .deejay-profile-update {
-  width: 300px;
+.deejay-update-button {
+  text-align: center;
+  margin: auto;
+  width: 50%;
 }
 
-.deejay-profile-update-phone {
-  width: 300px;
-} */
+.deejay-profile-detail {
+  margin: auto;
+  width: 50%;
+}
+
+.deejay-profile-update {
+  margin: auto;
+  width: 50%;
+}
+
