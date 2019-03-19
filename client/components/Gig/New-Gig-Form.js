@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { createGig, fetchGig } from '../../store'
+import { createGig } from '../../store'
 import history from '../../history'
-import { Form, Message, Button } from 'semantic-ui-react'
-require('../../../public/stylesheets/newGig.css')
+import { Form, Message } from 'semantic-ui-react'
 
 class NewGigForm extends Component {
   constructor(props) {
@@ -173,7 +172,6 @@ class NewGigForm extends Component {
 
   handleDate1 = (event, data) => {
     this.setState({ date1: data.value })
-    console.log('data', data.value)
   }
 
   handleDate2 = (event, data) => {
@@ -210,7 +208,6 @@ class NewGigForm extends Component {
 
   handleCreateGig(event, name, date1, date2, date3, startTime1, startTime2, startTime3, endTime1, endTime2, endTime3, location, compensation) {
     event.preventDefault();
-    console.log('STATE', this.state)
     const { gigs, createGig, currentBooker, currentDeejay } = this.props
     let newGig;
 
@@ -255,6 +252,6 @@ class NewGigForm extends Component {
 }
 
 const mapState = ({ gigs }) => ({ gigs })
-const mapDispatch = ({ createGig, fetchGig })
+const mapDispatch = ({ createGig })
 
 export default connect(mapState, mapDispatch)(NewGigForm)

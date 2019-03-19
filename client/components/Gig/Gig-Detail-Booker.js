@@ -9,7 +9,7 @@ import GigDeleteGig from './GigDetailElements/gigDeleteGig'
 require('../../../public/stylesheets/gigDetail.css')
 
 const GigDetailBooker = props => {
-  const { currentGig, deejays, currentBooker, handleUpdateGig, handleDeleteGig } = props;
+  const { currentGig, deejays, currentBooker, handleDeleteGig } = props;
   return (
     <div>
       {
@@ -35,7 +35,7 @@ const GigDetailBooker = props => {
       {
         currentGig.bookerId === currentBooker.id &&
         <div>
-          <GigUpdateGig handleUpdateGig={handleUpdateGig} />
+          <GigUpdateGig currentGig={currentGig} currentBooker={currentBooker}/>
           <GigDeleteGig handleDeleteGig={handleDeleteGig} />
         </div>
       }

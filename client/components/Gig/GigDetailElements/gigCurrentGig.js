@@ -2,6 +2,7 @@ import React from 'react'
 import BookerItem from '../../Booker/Booker-Item'
 import DeejayItem from '../../Deejay/Deejay-Item'
 import dateFns from 'date-fns'
+import { Card } from 'semantic-ui-react'
 
 const GigCurrentGig = props => {
   const { currentGig, gigs, deejays, bookers } = props
@@ -27,11 +28,15 @@ const GigCurrentGig = props => {
               )
               return (
               <div key={gig.id}>
-                <h4>{gig.name}</h4>
-                <h4>{formattedDate}</h4>
-                <h4>{gig.time}</h4>
-                <h4>{gig.location}</h4>
-                <h4>{gig.compensation}</h4>
+                <Card>
+                  <Card.Content>
+                    <Card.Header>{gig.name}</Card.Header>
+                    <Card.Description>{formattedDate}</Card.Description>
+                    <Card.Description>{gig.time}</Card.Description>
+                    <Card.Description>{gig.location}</Card.Description>
+                    <Card.Description>${gig.compensation}</Card.Description>
+                  </Card.Content>
+                </Card>
                 {
                   gigBooker &&
                   <div>
@@ -47,8 +52,7 @@ const GigCurrentGig = props => {
                   </div>
                 }
               </div>
-              )}
-            )
+              )})
         }
       </div>
     )
