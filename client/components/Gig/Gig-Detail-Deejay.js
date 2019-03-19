@@ -4,7 +4,6 @@ import GigBookingApplication from './GigDetailElements/gigBookingApplication'
 import GigAcceptDeclineBookingRequest from './GigDetailElements/gigAcceptDeclineBookingRequest'
 import GigRetractApplication from './GigDetailElements/gigRetractApplication'
 import GigCancelBooking from './GigDetailElements/gigCancelBooking'
-require('../../../public/stylesheets/gigDetail.css')
 
 
 const getDeejayBools = (currentGig, currentDeejay) => {

@@ -38,7 +38,6 @@ class Routes extends Component {
             <Route exact path="/bookers/:id" component={BookerDetailBrowse} />
             <Route exact path="/deejays/:id" component={DeejayDetailBrowse} />
             <Route exact path="/gigs/:id" component={GigDetail} />
-
             </Switch>
           )}
           <Route exact path="/" component={Landing} />
