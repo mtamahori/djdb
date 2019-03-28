@@ -7,7 +7,6 @@ import bookers from './bookers'
 import deejays from './deejays'
 import gigs from './gigs'
 import messages from './messages'
-// import ui from './ui'
 
 const reducer = combineReducers({ user, bookers, deejays, gigs, messages })
 
@@ -22,4 +21,3 @@ export * from './bookers'
 export * from './deejays'
 export * from './gigs'
 export * from './messages'
-// export * from './ui'

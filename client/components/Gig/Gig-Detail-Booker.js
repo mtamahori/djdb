@@ -6,6 +6,7 @@ import GigDeclinedApps from './GigDetailElements/gigDeclinedApps'
 import GigDeejayList from './GigDetailElements/gigDeejayList'
 import GigUpdateGig from './GigDetailElements/gigUpdateGig'
 import GigDeleteGig from './GigDetailElements/gigDeleteGig'
+import ChannelList from '../Message/Channel-List'
 require('../../../public/stylesheets/gigDetail.css')
 
 const GigDetailBooker = props => {
@@ -39,6 +40,7 @@ const GigDetailBooker = props => {
           <GigDeleteGig handleDeleteGig={handleDeleteGig} />
         </div>
       }
+
     </div>
   )
 }

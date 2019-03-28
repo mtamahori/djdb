@@ -4,6 +4,7 @@ import GigBookingApplication from './GigDetailElements/gigBookingApplication'
 import GigAcceptDeclineBookingRequest from './GigDetailElements/gigAcceptDeclineBookingRequest'
 import GigRetractApplication from './GigDetailElements/gigRetractApplication'
 import GigCancelBooking from './GigDetailElements/gigCancelBooking'
+import ChannelList from '../Message/Channel-List'
 
 
 const getDeejayBools = (currentGig, currentDeejay) => {
