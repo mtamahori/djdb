@@ -6,9 +6,10 @@ import user from './user'
 import bookers from './bookers'
 import deejays from './deejays'
 import gigs from './gigs'
-import ui from './ui'
+import messages from './messages'
+// import ui from './ui'
 
-const reducer = combineReducers({ user, bookers, deejays, gigs, ui })
+const reducer = combineReducers({ user, bookers, deejays, gigs, messages })
 
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
@@ -20,4 +21,5 @@ export * from './user'
 export * from './bookers'
 export * from './deejays'
 export * from './gigs'
-export * from './ui'
+export * from './messages'
+// export * from './ui'
