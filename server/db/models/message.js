@@ -6,8 +6,8 @@ const Message = db.define('message', {
     type: Sequelize.TEXT,
     allowNull: false
   },
-  gigId: {
-    type: Sequelize.INTEGER,
+  timestamp: {
+    type: Sequelize.DATE,
     allowNull: false
   },
   channelId: {
@@ -21,7 +21,7 @@ const Message = db.define('message', {
   deejayId: {
     type: Sequelize.INTEGER,
     allowNull: true
-  }
+  },
 });
 
 module.exports = Message;

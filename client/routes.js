@@ -13,7 +13,8 @@ import {
   BookerDetailBrowse,
   DeejayMain,
   DeejayDetailBrowse,
-  GigDetail
+  GigDetail,
+  MainInbox
 } from './components'
 
 class Routes extends Component {
@@ -31,13 +32,18 @@ class Routes extends Component {
 
           {isLoggedIn && (
             <Switch>
-            <Route exact path="/home" component={UserHome} />
-            <Route exact path="/user" component={UserProfile} />
-            <Route exact path="/deejay" component={DeejayMain} />
-            <Route exact path="/booker" component={BookerMain} />
-            <Route exact path="/bookers/:id" component={BookerDetailBrowse} />
-            <Route exact path="/deejays/:id" component={DeejayDetailBrowse} />
-            <Route exact path="/gigs/:id" component={GigDetail} />
+              <Route exact path="/home" component={UserHome} />
+
+              <Route exact path="/user" component={UserProfile} />
+              <Route exact path="/deejay" component={DeejayMain} />
+              <Route exact path="/booker" component={BookerMain} />
+
+              <Route exact path="/bookers/:id" component={BookerDetailBrowse} />
+              <Route exact path="/deejays/:id" component={DeejayDetailBrowse} />
+              <Route exact path="/gigs/:id" component={GigDetail} />
+
+              <Route exact path="/booker/messages" component={MainInbox} />
+              <Route exact path="/deejay/messages" component={MainInbox} />
             </Switch>
           )}
           <Route exact path="/" component={Landing} />

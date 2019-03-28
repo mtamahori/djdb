@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import NewMessageForm from './New-Message-Form'
+import MessageList from './Message-List'
 import MessageItem from './Message-Item'
 
 class ChannelDetail extends Component {

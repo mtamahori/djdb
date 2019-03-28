@@ -1,78 +1,81 @@
 AS A VISITOR, I CAN
 
-  X-View the landing page
-  X-Sign up using an email / password
+      X-View the landing page
+      X-Sign up using an email / password
 
 AS A USER, I CAN
 
-  X-Log in using my email password
+      X-Log in using my email password
   -Log in using Google OAUTH
 
-  X-View my user profile
-  X-Edit my login info
+      X-View my user profile
+      X-Edit my login info
 
-  X-Create a BOOKER PROFILE
-  X-Create a DEEJAY PROFILE
+      X-Create a BOOKER PROFILE
+      X-Create a DEEJAY PROFILE
 
-  X-Navigate to BOOKER HOME
-  X-Navigate to DEEJAY HOME
+      X-Navigate to BOOKER HOME
+      X-Navigate to DEEJAY HOME
 
 AS A BOOKER, I CAN
 
-  X-View my profile info
-  X-Edit my profile info
+      X-View my profile info
+      X-Edit my profile info
 
-  -Navigate to my CALENDAR
-  -View my calendar
-  -Filter gigs by upcoming, open, past
+      X-Navigate to my CALENDAR
+      X-View my calendar
+  -Create new gig using calendar
+  -Search/filter gigs by upcoming, open, past
 
-  -Navigate to CREATE NEW OPEN GIG
-  -Submit new open gig info
+      X-Navigate to CREATE NEW OPEN GIG
+      X-Submit new open gig info
 
-  -Navigate to BROWSE OPEN GIGS
-  -View all open gigs + in detail
-  -Filter open gigs by deejay, name, date, time, location, compensation, style tags
+      X-Navigate to BROWSE DEEJAYS
+      X-View all deejays + in detail
+  -Filter deejays by style tags
 
-  -Navigate to OPEN GIG LIST
-  -View my open gigs + in detail
-  -Edit my open gigs
+      X-Navigate to OPEN GIG LIST
+      X-View my open gigs + in detail
+      X-Edit my open gigs
 
-  -Navigate to UPCOMING GIG LIST
-  -View my upcoming gigs + in detail
-  -Edit my upcoming gigs
-  -Navigate to MESSAGE DEEJAY
-  -Message the deejay
+      X-Navigate to UPCOMING GIG LIST
+      X-View my upcoming gigs + in detail
+      X-Edit my upcoming gigs
 
-  -Navigate to PAST GIG LIST
-  -View my past gigs + in detail
+      X-Navigate to PAST GIG LIST
+      X-View my past gigs + in detail
+
+  -Navigate to MESSAGES
+  -Message deejays
 
 
 AS A DEEJAY, I CAN
 
-  X-View my profile info
-  X-Edit my profile info
+      X-View my profile info
+      X-Edit my profile info
 
-  -Navigate to my CALENDAR
-  -View my calendar
-  -Toggle between month and week view
-  -Filter gigs by upcoming, open, past
+      X-Navigate to my CALENDAR
+      X-View my calendar
+  -Create new gig using calendar
+  -Search/filter gigs by upcoming, open, past
 
-  -Navigate to CREATE NEW OPEN GIG
-  -Submit new open gig info
+      X-Navigate to CREATE NEW OPEN GIG
+      X-Submit new open gig info
 
-  -Navigate to BROWSE OPEN GIGS
-  -View all open gigs + in detail
+      X-Navigate to BROWSE OPEN GIGS
+      X-View all open gigs + in detail
   -Filter open gigs by booker, name, date, time, location, compensation, style tags
 
-  -Navigate to OPEN GIG LIST
-  -View my open gigs + in detail
-  -Edit my open gigs
+      X-Navigate to OPEN GIG LIST
+      X-View my open gigs + in detail
+      X-Edit my open gigs
 
-  -Navigate to UPCOMING GIG LIST
-  -View my upcoming gigs + in detail
-  -Edit my upcoming gigs
-  -Navigate to MESSAGE BOOKER
-  -Message the booker
+      X-Navigate to UPCOMING GIG LIST
+      X-View my upcoming gigs + in detail
+      X-Edit my upcoming gigs
 
-  -Navigate to PAST GIG LIST
-  -View my past gigs + in detail
+      X-Navigate to PAST GIG LIST
+      X-View my past gigs + in detail
+
+  -Navigate to MESSAGES
+  -Message bookers

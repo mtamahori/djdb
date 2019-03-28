@@ -3,7 +3,7 @@ import ChannelItem from './Channel-Item'
 
 const ChannelList = (props) => {
   return (
-    <h1>channelList</h1>
+    <h1>ChannelList</h1>
   )
 }
 
