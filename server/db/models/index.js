@@ -2,39 +2,31 @@ const User = require('./user')
 const Booker = require('./booker')
 const Deejay = require('./deejay')
 const Gig = require('./gig')
+const Channel = require('./channel')
 const Message = require('./message')
-
-
-// Associations
 
 User.hasOne(Deejay);
 User.hasOne(Booker);
 
-// Deejay.belongsTo(User);
-
 Deejay.hasMany(Gig);
+Deejay.hasMany(Channel);
 Deejay.hasMany(Message);
 
-Gig.belongsTo(Deejay);
-Message.belongsTo(Deejay);
-
-// Booker.belongsTo(User);
-
 Booker.hasMany(Gig);
+Booker.hasMany(Channel);
 Booker.hasMany(Message);
 
-Gig.belongsTo(Booker);
-Message.belongsTo(Booker);
-
-Gig.hasMany(Message);
-
-
-// Central export for model definitions
+Channel.hasMany(Message, {
+  onDelete: 'cascade',
+  hooks: true
+});
+Message.belongsTo(Channel);
 
 module.exports = {
   User,
   Booker,
   Deejay,
   Gig,
+  Channel,
   Message,
 };

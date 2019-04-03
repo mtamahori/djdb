@@ -9,19 +9,7 @@ const Message = db.define('message', {
   timestamp: {
     type: Sequelize.DATE,
     allowNull: false
-  },
-  channelId: {
-    type: Sequelize.INTEGER,
-    allowNull: false
-  },
-  bookerId: {
-    type: Sequelize.INTEGER,
-    allowNull: true
-  },
-  deejayId: {
-    type: Sequelize.INTEGER,
-    allowNull: true
-  },
+  }
 });
 
 module.exports = Message;

@@ -26,14 +26,6 @@ const Gig = db.define('gig', {
     type: Sequelize.TEXT,
     allowNull: true
   },
-  bookerId: {
-    type: Sequelize.INTEGER,
-    allowNull: true
-  },
-  deejayId: {
-    type: Sequelize.INTEGER,
-    allowNull: true
-  },
   deejayApplicants: {
     type: Sequelize.ARRAY(Sequelize.INTEGER),
     defaultValue: [],
