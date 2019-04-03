@@ -10,20 +10,6 @@ router.get('/', function(req, res, next) {
     .catch(next)
 })
 
-// GET GIG CHANNEL MESSAGES
-router.get('/:gigId/:channelId', function(req, res, next) {
-  Message.findAll({
-    where: {
-      gigId: req.params.gigId,
-      channelId: req.params.channelId
-    }
-  })
-  .then(messages => {
-    res.status(200).json(messages)
-  })
-  .catch(next)
-})
-
 // GET ONE MESSAGE
 router.get('/:id', function(req, res, next) {
   Message.findOne({
