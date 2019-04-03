@@ -7,7 +7,6 @@ const defaultMessages = [];
 // ACTION TYPES
 
 const INIT_MESSAGES = 'INIT_MESSAGES'
-const GET_MESSAGE = 'GET_MESSAGE'
 const ADD_MESSAGE = 'ADD_MESSAGE'
 const EDIT_MESSAGE = 'EDIT_MESSAGE'
 const REMOVE_MESSAGE = 'REMOVE_MESSAGE'
@@ -15,24 +14,17 @@ const REMOVE_MESSAGE = 'REMOVE_MESSAGE'
 // ACTION CREATORS
 
 const initMessages = (messages) => ({ type: INIT_MESSAGES, messages })
-const getMessage = (message) => ({ type: GET_MESSAGE, message })
 const addMessage = (message) => ({ type: ADD_MESSAGE, message })
 const editMessage = (message) => ({ type: EDIT_MESSAGE, message })
 const removeMessage = (message) => ({ type: REMOVE_MESSAGE, message })
 
 // THUNKS
+
 export const fetchMessages = () => dispatch => {
   axios
     .get('/api/messages')
     .then(res => dispatch(initMessages(res.data)))
     .catch(err => console.error('Fetching messages unsuccessful', err))
-}
-
-export const fetchMessage = (message) => dispatch => {
-  axios
-    .get(`/api/messages/${message.id}`)
-    .then(res => dispatch(getMessage(res.data)))
-    .catch(err => console.error('Fetching message unsuccessful', err))
 }
 
 export const createMessage = (message) => dispatch => {
@@ -64,9 +56,6 @@ export default function(state = defaultMessages, action) {
 
       case INIT_MESSAGES:
         return action.messages
-
-      case GET_MESSAGE:
-        return action.message
 
       case ADD_MESSAGE:
         return [...state, action.message]

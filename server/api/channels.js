@@ -1,4 +1,4 @@
-const router = require('exoress').Router();
+const router = require('express').Router();
 const { Channel, Message } = require('../db/models');
 
 // GET ALL CHANNELS

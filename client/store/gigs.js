@@ -7,7 +7,6 @@ const defaultGigs = [];
 // ACTION TYPES
 
 const INIT_GIGS = 'INIT_GIGS'
-const GET_GIG = 'GET_GIG'
 const ADD_GIG = 'ADD_GIG'
 const EDIT_GIG = 'EDIT_GIG'
 const REMOVE_GIG = 'REMOVE_GIG'
@@ -15,7 +14,6 @@ const REMOVE_GIG = 'REMOVE_GIG'
 // ACTION CREATORS
 
 const initGigs = (gigs) => ({ type: INIT_GIGS, gigs })
-const getGig = (gig) => ({ type: GET_GIG, gig })
 const addGig = (gig) => ({ type: ADD_GIG, gig })
 const editGig = (gig) => ({ type: EDIT_GIG, gig })
 const removeGig = (gig) => ({ type: REMOVE_GIG, gig })
@@ -27,13 +25,6 @@ export const fetchGigs = () => dispatch => {
     .get('/api/gigs')
     .then(res => dispatch(initGigs(res.data)))
     .catch(err => console.error('Fetching gigs unsuccessful', err))
-}
-
-export const fetchGig = (gig) => dispatch => {
-  axios
-    .get(`/api/gigs/${gig.id}`)
-    .then(res => dispatch(getGig(res.data)))
-    .catch(err => console.error('Fetching gig unsuccessful', err))
 }
 
 export const createGig = (gig) => dispatch => {
@@ -65,9 +56,6 @@ export default function(state = defaultGigs, action) {
 
     case INIT_GIGS:
       return action.gigs
-
-    case GET_GIG:
-      return action.gig
 
     case ADD_GIG:
       return [...state, action.gig]
