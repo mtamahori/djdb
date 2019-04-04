@@ -1,5 +1,4 @@
 * create automatic naming convention for channels: "Gig Name"
-* how do we make each channel of deejay-booker unique?
 
 MAIN INBOX:
 

@@ -46,6 +46,7 @@ class DeejayDetailBrowse extends Component {
           {
             this.renderDeejayDetails(currentDeejayBrowse)
           }
+
           {
             this.renderCreateChannel()
           }
@@ -227,19 +228,23 @@ class DeejayDetailBrowse extends Component {
 
   handleCreateChannel(event) {
     event.preventDefault();
-    const { createChannel, currentDeejayBrowse } = this.props;
+    const { channels, createChannel, currentDeejayBrowse } = this.props;
     const { currentBooker } = this.props.location.state;
-    const channel = { deejayId: currentDeejayBrowse.id, bookerId: currentBooker.id }
-    createChannel(channel);
+    const newChannel = { deejayId: currentDeejayBrowse.id, bookerId: currentBooker.id }
+
+    let channelCheck = channels.filter(channel => (channel.bookerId === currentBooker.id) && (channel.deejayId === currentDeejayBrowse.id))
+
+    !channelCheck.length && createChannel(newChannel)
     history.push('/booker/messages')
   }
 }
 
-const mapState = ({ user, deejays }, ownProps) => {
+const mapState = ({ user, deejays, channels }, ownProps) => {
   const deejayParamId = Number(ownProps.match.params.id)
   return {
     user,
     deejays,
+    channels,
     currentDeejayBrowse: deejays.filter(deejay => deejay.id === deejayParamId)[0]
   }
 }
