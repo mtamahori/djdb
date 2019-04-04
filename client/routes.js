@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Route, Switch } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { me, fetchBookers, fetchDeejays, fetchGigs } from './store'
+import { me, fetchBookers, fetchDeejays, fetchGigs, fetchChannels, fetchMessages } from './store'
 import {
   Landing,
   Login,
@@ -42,8 +42,8 @@ class Routes extends Component {
               <Route exact path="/deejays/:id" component={DeejayDetailBrowse} />
               <Route exact path="/gigs/:id" component={GigDetail} />
 
-              <Route exact path="/booker/messages" component={MainInbox} />
-              <Route exact path="/deejay/messages" component={MainInbox} />
+              <Route exact path="/booker/inbox" component={MainInbox} />
+              <Route exact path="/deejay/inbox" component={MainInbox} />
             </Switch>
           )}
           <Route exact path="/" component={Landing} />
@@ -70,6 +70,8 @@ const mapDispatch = dispatch => {
       dispatch(fetchBookers())
       dispatch(fetchDeejays())
       dispatch(fetchGigs())
+      dispatch(fetchChannels())
+      dispatch(fetchMessages())
     }
   }
 }
