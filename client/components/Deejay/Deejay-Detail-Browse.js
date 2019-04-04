@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { updateGig } from '../../store'
+import { updateGig, createChannel } from '../../store'
 import { List, Button } from 'semantic-ui-react'
 import history from '../../history'
 import dateFns from 'date-fns'
@@ -13,6 +13,10 @@ class DeejayDetailBrowse extends Component {
     this.handleBookingInvite = this.handleBookingInvite.bind(this);
     this.handleBookingAccept = this.handleBookingAccept.bind(this);
     this.handleBookingDecline = this.handleBookingDecline.bind(this);
+    this.handleCreateChannel = this.handleCreateChannel.bind(this);
+
+    console.log('currentDeejayBrowse', this.props.currentDeejayBrowse)
+    console.log('currentBooker', this.props.location.state)
   }
 
   render () {
@@ -41,6 +45,9 @@ class DeejayDetailBrowse extends Component {
         <div className="deejay-profile-container">
           {
             this.renderDeejayDetails(currentDeejayBrowse)
+          }
+          {
+            this.renderCreateChannel()
           }
           {{
             ['true-true-false-false-false-false-false-false']: this.renderSendBookingRequest(), //eslint-disable-line no-useless-computed-key
@@ -80,6 +87,18 @@ class DeejayDetailBrowse extends Component {
             <List.Item icon="phone" content={deejay.phone} />
           </List>
         }
+      </div>
+    )
+  }
+
+  renderCreateChannel() {
+    return (
+      <div>
+        <Button
+          size="massive"
+          onClick={(event) => this.handleCreateChannel(event)}
+        >Send Message
+        </Button>
       </div>
     )
   }
@@ -205,6 +224,15 @@ class DeejayDetailBrowse extends Component {
     updateGig(currentGig);
     history.push('/booker')
   }
+
+  handleCreateChannel(event) {
+    event.preventDefault();
+    const { createChannel, currentDeejayBrowse } = this.props;
+    const { currentBooker } = this.props.location.state;
+    const channel = { deejayId: currentDeejayBrowse.id, bookerId: currentBooker.id }
+    createChannel(channel);
+    history.push('/booker/messages')
+  }
 }
 
 const mapState = ({ user, deejays }, ownProps) => {
@@ -215,6 +243,6 @@ const mapState = ({ user, deejays }, ownProps) => {
     currentDeejayBrowse: deejays.filter(deejay => deejay.id === deejayParamId)[0]
   }
 }
-const mapDispatch = { updateGig };
+const mapDispatch = { updateGig, createChannel };
 
 export default connect(mapState, mapDispatch)(DeejayDetailBrowse)

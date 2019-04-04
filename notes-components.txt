@@ -1,8 +1,11 @@
+* create automatic naming convention for channels: "Gig Name"
+* how do we make each channel of deejay-booker unique?
+
 MAIN INBOX:
 
     CHANNEL LIST: listed by most recent communication at the top, simple list layout
 
-        CHANNEL ITEM: name (if applicable), bold if contains unread messages, shows corresponding users, re: next upcoming gig
+        CHANNEL ITEM: gig name, bold if contains unread messages, shows corresponding users, re: next upcoming gig
 
             CHANNEL DETAIL:
 
