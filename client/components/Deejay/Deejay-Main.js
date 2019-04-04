@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Grid } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom'
+import { Grid, Button } from 'semantic-ui-react'
 import DeejayDetail from './Deejay-Detail'
 import CalendarMain from '../Calendar/Calendar-Main'
 import GigMain from '../Gig/Gig-Main'
@@ -30,9 +31,21 @@ class DeejayMain extends Component {
                   <DeejayDetail currentDeejay={currentDeejay} />
                 </Grid.Column>
               </Grid.Row>
-              <Grid.Row columns={2} textAlign="center">
+              <Grid.Row columns={3} textAlign="center">
                 <Grid.Column>
                   <GigInvites currentDeejay={currentDeejay} gigs={gigs} />
+                </Grid.Column>
+                <Grid.Column>
+                <NavLink
+                  activeClassName="active"
+                  to={{
+                    pathname: '/deejay/messages',
+                    state: {
+                      currentDeejay: currentDeejay
+                    }
+                  }}>
+                  <Button size="massive" >Messages</Button>
+                </NavLink>
                 </Grid.Column>
                 <Grid.Column>
                   <GigPendingApplications currentDeejay={currentDeejay} gigs={gigs} />

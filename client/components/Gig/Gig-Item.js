@@ -16,7 +16,8 @@ const GigItem = (props) => {
             )
   return (
     <div>
-      <NavLink activeClassName="active"
+      <NavLink
+      activeClassName="active"
       to={{
         pathname: `/gigs/${gig.id}`,
         state: {

@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Grid } from 'semantic-ui-react'
-import BookerDetail from './Booker-Detail'
+import { NavLink } from 'react-router-dom'
+import { Grid, Button } from 'semantic-ui-react'
 import CalendarMain from '../Calendar/Calendar-Main'
-import GigMain from '../Gig/Gig-Main'
-import GigApplications from './Gig-Applications'
-import GigPendingInvites from './Gig-Pending-Invites'
-import NewBookerForm from './New-Booker-Form'
+import { BookerDetail, GigMain, GigApplications, GigPendingInvites, NewBookerForm, MainInbox } from '../index'
 
 
 class BookerMain extends Component {
@@ -31,9 +28,21 @@ class BookerMain extends Component {
                   <BookerDetail currentBooker={currentBooker} />
                 </Grid.Column>
               </Grid.Row>
-              <Grid.Row columns={2} textAlign="center">
+              <Grid.Row columns={3} textAlign="center">
                 <Grid.Column>
                   <GigApplications gigs={gigs} currentBooker={currentBooker} />
+                </Grid.Column>
+                <Grid.Column>
+                  <NavLink
+                    activeClassName="active"
+                    to={{
+                      pathname: '/booker/messages',
+                      state: {
+                        currentBooker: currentBooker
+                      }
+                    }}>
+                    <Button size="massive" >Messages</Button>
+                  </NavLink>
                 </Grid.Column>
                 <Grid.Column>
                   <GigPendingInvites gigs={gigs} currentBooker={currentBooker} />

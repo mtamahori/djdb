@@ -1,3 +1,35 @@
+MAIN INBOX:
+
+    CHANNEL LIST: listed by most recent communication at the top, simple list layout
+
+        CHANNEL ITEM: name (if applicable), bold if contains unread messages, shows corresponding users, re: next upcoming gig
+
+            CHANNEL DETAIL:
+
+                MESSAGE LIST: listed by most recent communication at the bottom, simple list layout
+
+                    MESSAGE ITEM: simple text, name, timestamp
+
+                NEW MESSAGE FORM: content window, send button
+
+*NEW CHANNEL:  to be accessed via DeejayDetailBrowse; have a "send messge" button above "send booking request", immediately creates                 the required channel
+
+CALENDAR:
+
+    uh oh!
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////
+
+
 Landing Page: (some animated set of graphics)
 
 Login/Signup: (Google OAUTH, email login/signup)
