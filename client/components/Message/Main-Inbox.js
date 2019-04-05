@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ChannelList from './Channel-List'
-import NewChannel from './New-Channel'
 
 class MainInbox extends Component {
   constructor(props) {
