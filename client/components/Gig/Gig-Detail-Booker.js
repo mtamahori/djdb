@@ -14,19 +14,19 @@ const GigDetailBooker = props => {
     <div>
       {
         currentGig.deejayInvites.length &&
-        <GigDeejayInvites currentGig={currentGig} deejays={deejays} />
+        <GigDeejayInvites currentGig={currentGig} deejays={deejays} currentBooker={currentBooker} />
       }
       {
         currentGig.deejayApplicants.length &&
-        <GigDeejayApplicants currentGig={currentGig} deejays={deejays} />
+        <GigDeejayApplicants currentGig={currentGig} deejays={deejays} currentBooker={currentBooker} />
       }
       {
         currentGig.declinedInvs.length &&
-        <GigDeclinedInvs currentGig={currentGig} deejays={deejays} />
+        <GigDeclinedInvs currentGig={currentGig} deejays={deejays} currentBooker={currentBooker} />
       }
       {
         currentGig.declinedApps.length &&
-        <GigDeclinedApps currentGig={currentGig} deejays={deejays} />
+        <GigDeclinedApps currentGig={currentGig} deejays={deejays} currentBooker={currentBooker} />
       }
       {
         !currentGig.deejayId &&

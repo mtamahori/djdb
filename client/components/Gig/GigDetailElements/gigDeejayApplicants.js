@@ -2,7 +2,7 @@ import React from 'react'
 import DeejayList from '../../Deejay/Deejay-List'
 
 const GigDeejayApplicants = props => {
-  const { currentGig, deejays } = props;
+  const { currentGig, deejays, currentBooker } = props;
     const deejayApplicants = deejays.filter(deejay => (
       currentGig.deejayApplicants.indexOf(deejay.id) !== -1 &&
       currentGig.declinedApps.indexOf(deejay.id) === -1 &&
@@ -12,7 +12,7 @@ const GigDeejayApplicants = props => {
     return (
       <div>
         <h3>Deejay Applicants (below)</h3>
-        <DeejayList deejays={deejayApplicants} currentGig={currentGig} />
+        <DeejayList deejays={deejayApplicants} currentGig={currentGig} currentBooker={currentBooker} />
       </div>
     )
 }

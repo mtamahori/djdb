@@ -2,7 +2,7 @@ import React from 'react'
 import DeejayList from '../../Deejay/Deejay-List'
 
 const GigDeejayInvites = props => {
-  const { currentGig, deejays } = props;
+  const { currentGig, deejays, currentBooker } = props;
     const deejayInvites = deejays.filter(deejay => (
       currentGig.deejayInvites.includes(deejay.id) &&
       currentGig.declinedApps.indexOf(deejay.id) === -1 &&
@@ -11,7 +11,7 @@ const GigDeejayInvites = props => {
     return (
       <div>
         <h3>Deejay Invites (below)</h3>
-        <DeejayList deejays={deejayInvites} currentGig={currentGig} />
+        <DeejayList deejays={deejayInvites} currentGig={currentGig} currentBooker={currentBooker} />
       </div>
     )
 }
