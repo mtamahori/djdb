@@ -66,23 +66,23 @@ async function seed() {
   })
 
   const channels = await Promise.each([
-    { name: 'Channel One', bookerId: 1, deejayId: 2 },
-    { name: 'Channel Two', bookerId: 2, deejayId: 3 },
-    { name: 'Channel Three', bookerId: 3, deejayId: 4},
-    { name: 'Channel Four', bookerId: 4, deejayId: 1}
+    { name: 'Max + Meri', bookerId: 1, deejayId: 2 },
+    { name: 'Meri + Miles', bookerId: 2, deejayId: 3 },
+    { name: 'Miles + Maeve', bookerId: 3, deejayId: 4},
+    { name: 'Maeve + Max', bookerId: 4, deejayId: 1}
   ], (channel) => {
     return Channel.create(channel);
   })
 
   const messages = await Promise.each([
-    { content: 'Test Message one', timestamp: new Date('April 1, 2019 03:24:00'), channelId: 1, bookerId: 1 },
-    { content: 'Test Message two', timestamp: new Date('April 2, 2019 03:24:00'), channelId: 1, deejayId: 2 },
-    { content: 'Test Message three', timestamp: new Date('April 3, 2019 03:24:00'), channelId: 1, bookerId: 1 },
-    { content: 'Test Message four', timestamp: new Date('April 4, 2019 03:24:00'), channelId: 1, deejayId: 2 },
-    { content: 'Test Message five', timestamp: new Date('April 5, 2019 03:24:00'), channelId: 2, bookerId: 2 },
-    { content: 'Test Message six', timestamp: new Date('April 6, 2019 03:24:00'), channelId: 2, deejayId: 3 },
-    { content: 'Test Message seven', timestamp: new Date('April 7, 2019 03:24:00'), channelId: 2, bookerId: 2 },
-    { content: 'Test Message eight', timestamp: new Date('April 8, 2019 03:24:00'), channelId: 2, deejayId: 3 },
+    { content: 'Hi Meri! Want this gig in MEXICO?', timestamp: new Date('April 1, 2019 03:24:00'), channelId: 1, bookerId: 1 },
+    { content: 'Yes! My BIG MIX!!', timestamp: new Date('April 2, 2019 03:24:00'), channelId: 1, deejayId: 2 },
+    { content: 'Great, see you there!', timestamp: new Date('April 3, 2019 03:24:00'), channelId: 1, bookerId: 1 },
+    { content: 'MEXICO!!!!', timestamp: new Date('April 4, 2019 03:24:00'), channelId: 1, deejayId: 2 },
+    { content: 'Hi Miles', timestamp: new Date('April 5, 2019 03:24:00'), channelId: 2, bookerId: 2 },
+    { content: 'Sup', timestamp: new Date('April 6, 2019 03:24:00'), channelId: 2, deejayId: 3 },
+    { content: 'Want this gig in Mexico?', timestamp: new Date('April 7, 2019 03:24:00'), channelId: 2, bookerId: 2 },
+    { content: 'Idk maybe, I`m pretty tired', timestamp: new Date('April 8, 2019 03:24:00'), channelId: 2, deejayId: 3 },
   ], (message) => {
     return Message.create(message)
   })
