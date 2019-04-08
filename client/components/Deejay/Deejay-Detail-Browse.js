@@ -230,7 +230,7 @@ class DeejayDetailBrowse extends Component {
     event.preventDefault();
     const { channels, createChannel, currentDeejayBrowse } = this.props;
     const { currentBooker, currentGig } = this.props.location.state;
-    const newChannel = { name: currentGig.name, deejayId: currentDeejayBrowse.id, bookerId: currentBooker.id }
+    const newChannel = { name: currentBooker.name + ' + ' + currentDeejayBrowse.name, deejayId: currentDeejayBrowse.id, bookerId: currentBooker.id }
 
     let channelCheck = channels.filter(channel => (channel.bookerId === currentBooker.id) && (channel.deejayId === currentDeejayBrowse.id))
 

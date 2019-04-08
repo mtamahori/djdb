@@ -1,5 +1,10 @@
+////////////////////////////////////// (April)
+
 MESSAGING
     one channel per deejay / booker
+
+SEED file
+    comprehensive
 
 CALENDAR
     ((*hierarchy of filter/browse/calendar ??))
@@ -13,14 +18,10 @@ CALENDAR
         option to search based on all fields (name, location, booker/deejay, etc)
         calendar should render only these dates
 
+    + BROWSE DEEJAYS
+        create new front-end route for deejay list, make content searchable
 
-///////////////////////////////////////
-
-SEED file
-    comprehensive
-
-STATUS MESSAGES / ERROR MESSAGES
-    for bad inputs / requests
+/////////////////////////////////////// (May)
 
 EXTERNAL INTEGRATIONS
     Soundcloud
@@ -30,23 +31,47 @@ EXTERNAL INTEGRATIONS
     Facebook
     Instagram
 
-LANDING PAGE / FOOTER
-    animation
-    logos
+STATUS MESSAGES / ERROR MESSAGES
+    for bad inputs / requests
+
+UX TEST
+    for simplicity
 
 TESTING
     back end tests
     front end tests
 
-//////////////////////////////////////
+LANDING PAGE / FOOTER
+    animation
+    logos
+
+DEPLOY
+    Heroku
+
+///////////////////////////////////////
 
 If completed, things I can be proud of:
 
 Fullstack NodeJS/Express/React/Redux application
 Postgres/Sequelize
 Design, styling, UI/UX
-Calendar
-Chat functionality with websockets
-API integrations
+Calendar functionality
+Messaging functionality
+External API integrations
 Testing (not TDD, but there are tests)
 
+//////////////////////////////////////// (June - August)
+
+RESUMES
+
+PERSONAL WEBSITE
+
+ALGORITHM PRACTICE
+
+COMPANY LIST + RESEARCH
+
+NETWORKING
+
+JOB APPLICATIONS
+
+INTERVIEW PREP

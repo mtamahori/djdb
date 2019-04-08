@@ -8,12 +8,14 @@ const defaultChannels = [];
 
 const INIT_CHANNELS = 'INIT_CHANNELS'
 const ADD_CHANNEL = 'ADD_CHANNEL'
+const EDIT_CHANNEL = 'EDIT_CHANNEL'
 const REMOVE_CHANNEL = 'REMOVE_CHANNEL'
 
 // ACTION CREATORS
 
 const initChannels = (channels) => ({ type: INIT_CHANNELS, channels })
 const addChannel = (channel) => ({ type: ADD_CHANNEL, channel })
+const editChannel = (channel) => ({ type: EDIT_CHANNEL, channel })
 const removeChannel = (channel) => ({ type: REMOVE_CHANNEL, channel })
 
 // THUNKS
@@ -30,6 +32,13 @@ export const createChannel = (channel) => (dispatch) => {
     .post('/api/channels', channel)
     .then(res => dispatch(addChannel(res.data)))
     .catch(err => console.error('Creating channel unsuccessful', err))
+}
+
+export const updateChannel = (channel) => (dispatch) => {
+  axios
+    .put(`/api/channels/${channel.id}`)
+    .then(res => dispatch(editChannel(res.data)))
+    .catch(err => console.error('Updating channel unsuccessful', err))
 }
 
 export const deleteChannel = (channel) => (dispatch) => {

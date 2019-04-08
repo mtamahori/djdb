@@ -14,14 +14,6 @@ MAIN INBOX:
 
 (DONE) NEW CHANNEL:  accessed via DeejayDetailBrowse; have a "send messge" button above "send booking request", immediately creates                       the required channel
 
-CALENDAR:
-
-    uh oh!
-
-
-
-
-
 
 
 

@@ -32,6 +32,23 @@ router.post('/', function(req, res, next) {
     .catch(next)
 })
 
+// EDIT CHANNEL
+router.put('/:id', function(req, res, next) {
+  Channel.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(channel => {
+    return channel.update(req.body)
+  })
+  .then(updatedChannel => {
+    res.status(200).json(updatedChannel)
+  })
+  .catch(next)
+})
+
+
 // DELETE CHANNEL
 router.delete('/:id', function(req, res, next) {
   Channel.findOne({
