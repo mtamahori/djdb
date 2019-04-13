@@ -1,6 +1,6 @@
 MAIN INBOX:
 
-    CHANNEL LIST: listed by most recent communication at the top, simple list layout
+    CHANNEL LIST: lists by most recent communication at the top, simple list layout
 
         CHANNEL ITEM: gig name, bold if contains unread messages, shows corresponding users, re: next upcoming gig
 
