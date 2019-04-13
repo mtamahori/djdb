@@ -8,14 +8,65 @@ class MainInbox extends Component {
   }
 
   render() {
+    const { currentBooker, currentDeejay } = this.props.location.state;
     return (
-      <h1>MainInbox</h1>
+      <div>
+      {
+        currentBooker &&
+        this.renderBookerChannels()
+      }
+      {
+        currentDeejay &&
+        this.renderDeejayChannels()
+      }
+      </div>
     )
   }
 
+  renderBookerChannels() {
+    const { channels, messages } = this.props;
+    const { currentBooker } = this.props.location.state;
+
+    let bookerChannels = channels.filter(channel => {
+      return (
+        channel.bookerId === currentBooker.id
+      )
+    })
+
+    let bookerMessages = messages.filter(message => {
+      return (
+      bookerChannels.includes(message.channelId)
+      )
+    })
+
+    return (
+      <ChannelList channels={bookerChannels} messages={bookerMessages} currentBooker={currentBooker} />
+    )
+  }
+
+  renderDeejayChannels() {
+    const { channels, messages } = this.props;
+    const { currentDeejay } = this.props.location.state;
+
+    let deejayChannels = channels.filter(channel => {
+      return (
+        channel.deejayId === currentDeejay.id
+      )
+    })
+
+    let deejayMessages = messages.filter(message => {
+      return (
+        deejayChannels.includes(message.channelId)
+      )
+    })
+
+    return (
+      <ChannelList channels={deejayChannels} messages={deejayMessages} currentDeejay={currentDeejay} />
+    )
+  }
 }
 
-const mapState = null;
+const mapState = ({ channels, messages }) => ({ channels, messages });
 const mapDispatch = null;
 
 export default connect(mapState, mapDispatch)(MainInbox)

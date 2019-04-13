@@ -39,7 +39,7 @@ class DeejayMain extends Component {
                 <NavLink
                   activeClassName="active"
                   to={{
-                    pathname: '/deejay/messages',
+                    pathname: '/deejay/inbox',
                     state: {
                       currentDeejay: currentDeejay
                     }
