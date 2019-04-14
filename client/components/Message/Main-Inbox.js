@@ -35,7 +35,7 @@ class MainInbox extends Component {
 
     let bookerMessages = messages.filter(message => {
       return (
-      bookerChannels.includes(message.channelId)
+      bookerChannels.indexOf(message.channelId) !== 0
       )
     })
 
@@ -54,11 +54,9 @@ class MainInbox extends Component {
       )
     })
 
-    let deejayMessages = messages.filter(message => {
-      return (
-        deejayChannels.includes(message.channelId)
-      )
-    })
+    let deejayMessages = messages.filter(message => (
+        deejayChannels.indexOf(message.channelId) !== 0
+    ))
 
     return (
       <ChannelList channels={deejayChannels} messages={deejayMessages} currentDeejay={currentDeejay} />

@@ -1,9 +1,17 @@
 import React from 'react'
+import { List } from 'semantic-ui-react'
 import MessageItem from './Message-Item'
 
 const MessageList = (props) => {
+  const { messages } = props;
   return (
-    <h1>MessageList</h1>
+    <div>
+      {
+        messages.map(message => (
+          <MessageItem message={message} key={message.id} />
+        ))
+      }
+    </div>
   )
 }
 

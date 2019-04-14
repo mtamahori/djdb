@@ -14,7 +14,8 @@ import {
   DeejayMain,
   DeejayDetailBrowse,
   GigDetail,
-  MainInbox
+  MainInbox,
+  ChannelDetail
 } from './components'
 
 class Routes extends Component {
@@ -43,7 +44,10 @@ class Routes extends Component {
               <Route exact path="/gigs/:id" component={GigDetail} />
 
               <Route exact path="/booker/inbox" component={MainInbox} />
+              <Route exact path="/booker/inbox/channels/:id" component={ChannelDetail} />
               <Route exact path="/deejay/inbox" component={MainInbox} />
+              <Route exact path="/deejay/inbox/channels/:id" component={ChannelDetail} />
+
             </Switch>
           )}
           <Route exact path="/" component={Landing} />

@@ -1,8 +1,12 @@
 import React from 'react'
 
 const MessageItem = (props) => {
+  const { message } = props;
   return (
-    <h1>messageItem</h1>
+    <div>
+      <h5>author: { message.deejayId || message.bookerId }</h5>
+      <h4>{message.content}</h4>
+    </div>
   )
 }
 

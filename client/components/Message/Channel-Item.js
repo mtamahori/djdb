@@ -11,7 +11,7 @@ const ChannelItem = (props) => {
         <NavLink
           activeClassName="active"
           to={{
-            pathname: `/booker/channels/${channel.id}`,
+            pathname: `/booker/inbox/channels/${channel.id}`,
             state: {
               channel: channel,
               messages: messages,
@@ -31,7 +31,7 @@ const ChannelItem = (props) => {
         <NavLink
           activeClassName="active"
           to={{
-            pathname: `/deejay/channels/${channel.id}`,
+            pathname: `/deejay/inbox/channels/${channel.id}`,
             state: {
               channel: channel,
               messages: messages,
