@@ -4,8 +4,8 @@ const MessageItem = (props) => {
   const { message } = props;
   return (
     <div>
-      <h5>author: { message.deejayId || message.bookerId }</h5>
-      <h4>{message.content}</h4>
+      <h4>author: { message.deejayId || message.bookerId }</h4>
+      <h5>content: { message.content }</h5>
     </div>
   )
 }
