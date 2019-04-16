@@ -1,0 +1,44 @@
+APRIL - MAY ///////////////////////////////////////////////////////////////////////////
+
+MESSAGING
+    one channel per deejay / booker
+
+CALENDAR
+    ((*hierarchy of filter/browse/calendar ??))
+    greyed out "+ new gig" button on each cell
+    greyed out "view gigs" button on each cell
+    hover over each cell and select appropriate button
+
+    + BROWSE OPEN GIGS (UI/UX TBD)
+        default renders a list of all open gigs in chronological order
+        option to select date/date range via calendar
+        option to search based on all fields (name, location, booker/deejay, etc)
+        calendar should render only these dates
+
+    + BROWSE DEEJAYS
+        create new front-end route for deejay list, make content searchable
+
+EXTERNAL INTEGRATIONS
+    Soundcloud
+    Mixcloud
+    Spotify
+    Bandcamp
+    Facebook
+    Instagram
+
+STATUS MESSAGES / ERROR MESSAGES
+    for bad inputs / requests
+
+TESTING
+    back end tests
+    front end tests
+
+DESIGN
+    better design / colors
+
+LANDING PAGE / FOOTER
+    animation
+    logos
+
+DEPLOY
+    heroku
