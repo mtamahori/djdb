@@ -1,4 +1,5 @@
 import React from 'react'
+import { List } from 'semantic-ui-react'
 import ChannelItem from './Channel-Item'
 
 const ChannelList = (props) => {
@@ -6,35 +7,35 @@ const ChannelList = (props) => {
 
   if (currentBooker) {
     return (
-      <div className="channel-list-items">
+      <List divided relaxed className="channel-list-items">
         {
           channels.map(channel => {
             let channelMessages = messages.filter(message => (
                 message.channelId === channel.id
             ))
             return (
-              <ChannelItem channel={channel} messages={channelMessages} currentBooker={currentBooker} key={channel.id} />
+              <List.Item as={ChannelItem} channel={channel} messages={channelMessages} currentBooker={currentBooker} key={channel.id} />
             )
           })
         }
-      </div>
+      </List>
     )
   }
 
   if (currentDeejay) {
     return (
-      <div className="channel-list-items">
+      <List divided relaxed className="channel-list-items">
         {
           channels.map(channel => {
             let channelMessages = messages.filter(message => (
               message.channelId === channel.id
             ))
             return (
-              <ChannelItem channel={channel} messages={channelMessages} currentDeejay={currentDeejay} key={channel.id} />
+              <List.Item as={ChannelItem} channel={channel} messages={channelMessages} currentDeejay={currentDeejay} key={channel.id} />
             )
           })
         }
-      </div>
+      </List>
     )
   }
 }

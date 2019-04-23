@@ -66,6 +66,8 @@ class NewMessageForm extends Component {
   }
 }
 
+// currently passing in : channel, currentDeejay, currentBooker (as props) from ChannelDetail
+// question: should these be accessed by ownProps? I think this is working ok as is ...
 const mapState = null;
 const mapDispatch = ({ createMessage });
 
