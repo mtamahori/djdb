@@ -24,7 +24,7 @@ class MainInbox extends Component {
   }
 
   renderBookerChannels() {
-    const { channels, messages } = this.props;
+    const { channels } = this.props;
     const { currentBooker } = this.props.location.state;
 
     let bookerChannels = channels.filter(channel => {
@@ -33,19 +33,13 @@ class MainInbox extends Component {
       )
     })
 
-    let bookerMessages = messages.filter(message => {
-      return (
-      bookerChannels.indexOf(message.channelId) !== 0
-      )
-    })
-
     return (
-      <ChannelList channels={bookerChannels} messages={bookerMessages} currentBooker={currentBooker} />
+      <ChannelList channels={bookerChannels} currentBooker={currentBooker} />
     )
   }
 
   renderDeejayChannels() {
-    const { channels, messages } = this.props;
+    const { channels } = this.props;
     const { currentDeejay } = this.props.location.state;
 
     let deejayChannels = channels.filter(channel => {
@@ -54,17 +48,13 @@ class MainInbox extends Component {
       )
     })
 
-    let deejayMessages = messages.filter(message => (
-        deejayChannels.indexOf(message.channelId) !== 0
-    ))
-
     return (
-      <ChannelList channels={deejayChannels} messages={deejayMessages} currentDeejay={currentDeejay} />
+      <ChannelList channels={deejayChannels} currentDeejay={currentDeejay} />
     )
   }
 }
 
-const mapState = ({ channels, messages }) => ({ channels, messages });
+const mapState = ({ channels }) => ({ channels });
 const mapDispatch = null;
 
 export default connect(mapState, mapDispatch)(MainInbox)

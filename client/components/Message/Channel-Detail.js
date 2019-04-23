@@ -26,13 +26,13 @@ class ChannelDetail extends Component {
   }
 
   renderBookerChannelDetail() {
-    const { channel, messages, currentBooker } = this.props.location.state;
+    const { channel, currentBooker } = this.props.location.state;
 
     return (
       <div>
         <h3>{channel.name}</h3>
         <div>
-          <MessageList messages={messages} />
+          <MessageList channel={channel} currentBooker={currentBooker}/>
         </div>
         <div>
           <NewMessageForm channel={channel} currentBooker={currentBooker} />
@@ -42,13 +42,13 @@ class ChannelDetail extends Component {
   }
 
   renderDeejayChannelDetail() {
-    const { channel, messages, currentDeejay } = this.props.location.state;
+    const { channel, currentDeejay } = this.props.location.state;
 
     return (
       <div>
         <h3>{channel.name}</h3>
         <div>
-          <MessageList messages={messages} />
+          <MessageList channel={channel} currentDeejay={currentDeejay} />
         </div>
         <div>
           <NewMessageForm channel={channel} currentDeejay={currentDeejay} />

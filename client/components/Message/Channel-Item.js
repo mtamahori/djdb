@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import dateFns from 'date-fns'
 
 const ChannelItem = (props) => {
-  const { channel, messages, currentBooker, currentDeejay } = props;
+  const { channel, currentBooker, currentDeejay } = props;
 
   if (currentBooker) {
     return (
@@ -14,7 +14,6 @@ const ChannelItem = (props) => {
             pathname: `/booker/inbox/channels/${channel.id}`,
             state: {
               channel: channel,
-              messages: messages,
               currentBooker: currentBooker
             }
           }}
@@ -34,7 +33,6 @@ const ChannelItem = (props) => {
             pathname: `/deejay/inbox/channels/${channel.id}`,
             state: {
               channel: channel,
-              messages: messages,
               currentDeejay: currentDeejay
             }
           }}
