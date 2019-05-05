@@ -1,4 +1,5 @@
 import axios from 'axios'
+import socket from '../socket'
 
 // INITIAL STATE
 
@@ -14,7 +15,7 @@ const REMOVE_MESSAGE = 'REMOVE_MESSAGE'
 // ACTION CREATORS
 
 const initMessages = (messages) => ({ type: INIT_MESSAGES, messages })
-const addMessage = (message) => ({ type: ADD_MESSAGE, message })
+export const addMessage = (message) => ({ type: ADD_MESSAGE, message })
 const editMessage = (message) => ({ type: EDIT_MESSAGE, message })
 const removeMessage = (message) => ({ type: REMOVE_MESSAGE, message })
 
@@ -30,7 +31,10 @@ export const fetchMessages = () => dispatch => {
 export const createMessage = (message) => dispatch => {
   axios
     .post('/api/messages', message)
-    .then(res => dispatch(addMessage(res.data)))
+    .then(res => {
+      dispatch(addMessage(res.data))
+      socket.emit('new-message', res.data)
+    })
     .catch(err => console.error('Creating message unsuccessful', err))
 }
 

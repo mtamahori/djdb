@@ -16,10 +16,11 @@ const middleware = composeWithDevTools(
 )
 const store = createStore(reducer, middleware)
 
-export default store
 export * from './user'
 export * from './bookers'
 export * from './deejays'
 export * from './gigs'
 export * from './channels'
 export * from './messages'
+
+export default store

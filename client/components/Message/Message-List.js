@@ -9,18 +9,27 @@ class MessageList extends Component {
   }
 
   render() {
+    return (
+      <div>
+        {this.renderMessageList()}
+      </div>
+    )
+  }
+
+  renderMessageList() {
     const { messages, channel } = this.props;
+
     let channelMessages = messages.filter(message => (
       message.channelId === channel.id))
 
     return (
-    <div>
-      {
-        channelMessages.map(message => (
-          <MessageItem message={message} key={message.id} />
-        ))
-      }
-    </div>
+      <List divided relaxed className="message-list-items">
+        {
+          channelMessages.map(message => (
+            <List.Item as={MessageItem} message={message} key={message.id} />
+          ))
+        }
+      </List>
     )
   }
 }

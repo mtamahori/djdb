@@ -22,7 +22,7 @@ class NewMessageForm extends Component {
             className="form-control"
             type="text"
             name="content"
-            value={this.state.newMessageEntry}
+            value={this.state.content}
             onChange={this.writeMessage}
             placeholder="Text Input"
           />
