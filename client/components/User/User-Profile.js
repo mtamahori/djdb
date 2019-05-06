@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateUser } from '../../store'
-import { Form, Button, Message } from 'semantic-ui-react'
+import { BookerDetail, DeejayDetail } from '../index'
+import { Form, Button, Grid, Message } from 'semantic-ui-react'
 require('../../../public/stylesheets/profile.css')
 
 class UserProfile extends Component {
@@ -16,26 +17,32 @@ class UserProfile extends Component {
   }
 
   render() {
-    const { currentUser } = this.props
+    const { currentUser, currentBooker, currentDeejay } = this.props
     return (
-      <div className="profile-container">
-        <div className="profile-current">
-          <h3>Current Email: {currentUser.email}</h3>
-        </div>
-        <br />
-        <br />
-        <div className="profile-update">
-          {this.renderUpdateUser()}
-        </div>
-      </div>
+      <Grid>
+        <Grid.Row columns={1} textAlign="center">
+          <Grid.Column className="profile-container">
+            <div className="profile-current">
+              <h3>Current Email: {currentUser.email}</h3>
+            </div>
+            <br />
+            <br />
+            <div className="profile-update">
+              {this.renderUpdateUser()}
+            </div>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row columns={2} textAlign="center">
+          <Grid.Column>
+            <BookerDetail currentBooker={currentBooker} />
+          </Grid.Column>
+          <Grid.Column>
+            <DeejayDetail currentDeejay={currentDeejay} />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     )
   }
-
-//   <Grid.Row columns={1} textAlign="center">
-//   <Grid.Column>
-//     <BookerDetail currentBooker={currentBooker} />
-//   </Grid.Column>
-// </Grid.Row>
 
   renderUpdateUser() {
     return (
@@ -70,9 +77,11 @@ class UserProfile extends Component {
   }
 }
 
-const mapState = ({ user }) => {
+const mapState = ({ user, bookers, deejays }) => {
   return {
-    currentUser: user
+    currentUser: user,
+    currentBooker: bookers.filter(booker => booker.userId === user.id)[0],
+    currentDeejay: deejays.filter(deejay => deejay.userId === user.id)[0]
   }
 }
 const mapDispatch = { updateUser };

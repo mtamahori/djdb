@@ -13,7 +13,7 @@ const REMOVE_BOOKER = 'REMOVE_BOOKER'
 
 // ACTION CREATORS
 
-const initBookers =  (bookers) => ({ type: INIT_BOOKERS, bookers })
+const initBookers = (bookers) => ({ type: INIT_BOOKERS, bookers })
 const addBooker = (booker) => ({ type: ADD_BOOKER, booker })
 const editBooker = (booker) => ({ type: EDIT_BOOKER, booker })
 const removeBooker = (booker) => ({ type: REMOVE_BOOKER, booker })
