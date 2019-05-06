@@ -43,10 +43,9 @@ class Routes extends Component {
               <Route exact path="/deejays/:id" component={DeejayDetailBrowse} />
               <Route exact path="/gigs/:id" component={GigDetail} />
 
-              <Route exact path="/booker/inbox" component={MainInbox} />
-              <Route exact path="/booker/inbox/channels/:id" component={ChannelDetail} />
-              <Route exact path="/deejay/inbox" component={MainInbox} />
-              <Route exact path="/deejay/inbox/channels/:id" component={ChannelDetail} />
+              <Route exact path="/inbox" component={MainInbox} />
+              <Route exact path="/inbox/booker/channels/:id" component={ChannelDetail} />
+              <Route exact path="/inbox/deejay/channels/:id" component={ChannelDetail} />
 
             </Switch>
           )}

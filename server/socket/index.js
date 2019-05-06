@@ -11,6 +11,10 @@ module.exports = io => {
       socket.broadcast.emit('new-message', newMessage)
     })
 
+    socket.on('new-channel', newChannel => {
+      socket.broadcast.emit('new-channel', newChannel)
+    })
+
     socket.on('new-gig', newGig => {
       socket.broadcast.emit('new-gig', newGig)
     })

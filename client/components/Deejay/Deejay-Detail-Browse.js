@@ -235,7 +235,7 @@ class DeejayDetailBrowse extends Component {
     let channelCheck = channels.filter(channel => (channel.bookerId === currentBooker.id) && (channel.deejayId === currentDeejayBrowse.id))
 
     !channelCheck.length && createChannel(newChannel)
-    history.push('/booker/messages')
+    history.push('/inbox')
   }
 }
 

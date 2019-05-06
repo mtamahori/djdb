@@ -36,10 +36,7 @@ class BookerMain extends Component {
                   <NavLink
                     activeClassName="active"
                     to={{
-                      pathname: '/booker/inbox',
-                      state: {
-                        currentBooker: currentBooker
-                      }
+                      pathname: '/inbox',
                     }}>
                     <Button size="massive" >Messages</Button>
                   </NavLink>

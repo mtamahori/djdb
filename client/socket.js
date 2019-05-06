@@ -1,5 +1,5 @@
 import io from 'socket.io-client'
-import store, { addMessage, addGig, editGig, removeGig } from './store'
+import store, { addMessage, addChannel, addGig, editGig, removeGig } from './store'
 
 const socket = io(window.location.origin)
 
@@ -9,6 +9,10 @@ socket.on('connect', () => {
 
 socket.on('new-message', newMessage => {
   store.dispatch(addMessage(newMessage))
+})
+
+socket.on('new-channel', newChannel => {
+  store.dispatch(addChannel(newChannel))
 })
 
 socket.on('new-gig', newGig => {

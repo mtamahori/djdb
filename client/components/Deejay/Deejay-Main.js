@@ -39,10 +39,7 @@ class DeejayMain extends Component {
                 <NavLink
                   activeClassName="active"
                   to={{
-                    pathname: '/deejay/inbox',
-                    state: {
-                      currentDeejay: currentDeejay
-                    }
+                    pathname: '/inbox',
                   }}>
                   <Button size="massive" >Messages</Button>
                 </NavLink>
