@@ -15,5 +15,13 @@ module.exports = io => {
       socket.broadcast.emit('new-gig', newGig)
     })
 
+    socket.on('update-gig', gig => {
+      socket.broadcast.emit('update-gig', gig)
+    })
+
+    socket.on('delete-gig', gig => {
+      socket.broadcast.emit('delete-gig', gig)
+    })
+
   })
 }

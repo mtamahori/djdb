@@ -16,8 +16,8 @@ const REMOVE_GIG = 'REMOVE_GIG'
 
 const initGigs = (gigs) => ({ type: INIT_GIGS, gigs })
 export const addGig = (gig) => ({ type: ADD_GIG, gig })
-const editGig = (gig) => ({ type: EDIT_GIG, gig })
-const removeGig = (gig) => ({ type: REMOVE_GIG, gig })
+export const editGig = (gig) => ({ type: EDIT_GIG, gig })
+export const removeGig = (gig) => ({ type: REMOVE_GIG, gig })
 
 // THUNKS
 
@@ -41,12 +41,16 @@ export const createGig = (gig) => dispatch => {
 export const updateGig = (gig) => dispatch => {
   axios
     .put(`/api/gigs/${gig.id}`, gig)
-    .then(res => dispatch(editGig(res.data)))
+    .then(res => {
+      dispatch(editGig(res.data))
+      socket.emit('update-gig', res.data)
+    })
     .catch(err => console.error('Updating gig unsuccessful', err))
 }
 
 export const deleteGig = (gig) => dispatch => {
   dispatch(removeGig(gig))
+  socket.emit('delete-gig', gig)
   axios
     .delete(`/api/gigs/${gig.id}`)
     .catch(err => console.error('Deleting gig unsuccessful', err))
