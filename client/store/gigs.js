@@ -1,4 +1,5 @@
 import axios from 'axios'
+import socket from '../socket'
 
 // INITIAL STATE
 
@@ -14,7 +15,7 @@ const REMOVE_GIG = 'REMOVE_GIG'
 // ACTION CREATORS
 
 const initGigs = (gigs) => ({ type: INIT_GIGS, gigs })
-const addGig = (gig) => ({ type: ADD_GIG, gig })
+export const addGig = (gig) => ({ type: ADD_GIG, gig })
 const editGig = (gig) => ({ type: EDIT_GIG, gig })
 const removeGig = (gig) => ({ type: REMOVE_GIG, gig })
 
@@ -30,7 +31,10 @@ export const fetchGigs = () => dispatch => {
 export const createGig = (gig) => dispatch => {
   axios
     .post('/api/gigs', gig)
-    .then(res => dispatch(addGig(res.data)))
+    .then(res => {
+      dispatch(addGig(res.data))
+      socket.emit('new-gig', res.data)
+    })
     .catch(err => console.error('Creating gig unsuccessful', err))
 }
 
