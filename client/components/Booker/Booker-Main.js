@@ -23,23 +23,9 @@ class BookerMain extends Component {
           <div>
             <CalendarMain currentBooker={currentBooker} />
             <Grid>
-              <Grid.Row columns={1} textAlign="center">
-                <Grid.Column>
-                  <BookerDetail currentBooker={currentBooker} />
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row columns={3} textAlign="center">
+              <Grid.Row columns={2} textAlign="center">
                 <Grid.Column>
                   <GigApplications gigs={gigs} currentBooker={currentBooker} />
-                </Grid.Column>
-                <Grid.Column>
-                  <NavLink
-                    activeClassName="active"
-                    to={{
-                      pathname: '/inbox',
-                    }}>
-                    <Button size="massive" >Messages</Button>
-                  </NavLink>
                 </Grid.Column>
                 <Grid.Column>
                   <GigPendingInvites gigs={gigs} currentBooker={currentBooker} />

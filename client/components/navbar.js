@@ -11,16 +11,16 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
     <h1>D J D B</h1>
       {isLoggedIn ? (
         <Menu className="navbar-buttons" fluid widths={5}>
-          <Menu.Item as={Link} to="/home">Home</Menu.Item>
-          <Menu.Item as={Link} to="/user">Profile Detail</Menu.Item>
-          <Menu.Item as={Link} to="/booker">Booker Portal</Menu.Item>
-          <Menu.Item as={Link} to="/deejay">Deejay Portal</Menu.Item>
+          <Menu.Item as={Link} to="/user">Account</Menu.Item>
+          <Menu.Item as={Link} to="/booker">Booker</Menu.Item>
+          <Menu.Item as={Link} to="/inbox">Messages</Menu.Item>
+          <Menu.Item as={Link} to="/deejay">Deejay</Menu.Item>
           <Menu.Item onClick={handleClick} position="right">Logout</Menu.Item>
         </Menu>
       ) : (
         <Menu className="navbar-buttons" fluid widths={3}>
-          <Menu.Item as={Link} to="/">Home</Menu.Item>
-          <Menu.Item as={Link} to="/login">Log In</Menu.Item>
+        <Menu.Item as={Link} to="/login">Log In</Menu.Item>
+        <Menu.Item as={Link} to="/">DJDB</Menu.Item>
           <Menu.Item as={Link} to="/signup">Sign Up</Menu.Item>
         </Menu>
       )}

@@ -26,23 +26,9 @@ class DeejayMain extends Component {
           <div>
             <CalendarMain currentDeejay={currentDeejay} />
             <Grid>
-              <Grid.Row columns={1} textAlign="center">
-                <Grid.Column>
-                  <DeejayDetail currentDeejay={currentDeejay} />
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row columns={3} textAlign="center">
+              <Grid.Row columns={2} textAlign="center">
                 <Grid.Column>
                   <GigInvites currentDeejay={currentDeejay} gigs={gigs} />
-                </Grid.Column>
-                <Grid.Column>
-                <NavLink
-                  activeClassName="active"
-                  to={{
-                    pathname: '/inbox',
-                  }}>
-                  <Button size="massive" >Messages</Button>
-                </NavLink>
                 </Grid.Column>
                 <Grid.Column>
                   <GigPendingApplications currentDeejay={currentDeejay} gigs={gigs} />

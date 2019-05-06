@@ -26,6 +26,9 @@ class GigMain extends Component {
 
     return (
       <Grid>
+
+        {
+          currentBooker &&
         <Grid.Row columns={2} textAlign="center">
           <Grid.Column>
             <Button
@@ -60,6 +63,7 @@ class GigMain extends Component {
             }
           </Grid.Column>
         </Grid.Row>
+        }
 
         <Grid.Row columns={2} textAlign="center">
           <Grid.Column>

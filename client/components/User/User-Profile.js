@@ -31,6 +31,12 @@ class UserProfile extends Component {
     )
   }
 
+//   <Grid.Row columns={1} textAlign="center">
+//   <Grid.Column>
+//     <BookerDetail currentBooker={currentBooker} />
+//   </Grid.Column>
+// </Grid.Row>
+
   renderUpdateUser() {
     return (
       <div>
