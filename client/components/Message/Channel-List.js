@@ -11,7 +11,7 @@ const ChannelList = (props) => {
         {
           channels.map(channel => {
             return (
-              <List.Item as={ChannelItem} channel={channel} currentBooker={currentBooker} key={channel.id} />
+              <ChannelItem channel={channel} currentBooker={currentBooker} key={channel.id} />
             )
           })
         }
@@ -25,7 +25,7 @@ const ChannelList = (props) => {
         {
           channels.map(channel => {
             return (
-              <List.Item as={ChannelItem} channel={channel} currentDeejay={currentDeejay} key={channel.id} />
+              <ChannelItem channel={channel} currentDeejay={currentDeejay} key={channel.id} />
             )
           })
         }

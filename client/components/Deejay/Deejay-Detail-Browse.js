@@ -15,8 +15,6 @@ class DeejayDetailBrowse extends Component {
     this.handleBookingDecline = this.handleBookingDecline.bind(this);
     this.handleCreateChannel = this.handleCreateChannel.bind(this);
 
-    console.log('currentDeejayBrowse', this.props.currentDeejayBrowse)
-    console.log('currentBooker', this.props.location.state)
   }
 
   render () {

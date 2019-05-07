@@ -1,12 +1,16 @@
 import React from 'react'
+import { List } from 'semantic-ui-react'
 
 const MessageItem = (props) => {
   const { message } = props;
   return (
-    <div>
-      <h4>author: { message.deejayId || message.bookerId }</h4>
-      <h5>content: { message.content }</h5>
-    </div>
+    <List.Item>
+      <List.Content>
+        <List.Description>
+          { message.content }
+        </List.Description>
+      </List.Content>
+    </List.Item>
   )
 }
 

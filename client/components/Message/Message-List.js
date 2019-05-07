@@ -9,25 +9,89 @@ class MessageList extends Component {
   }
 
   render() {
+    const { currentBooker, currentDeejay } = this.props;
     return (
       <div>
-        {this.renderMessageList()}
+        {
+          currentBooker && this.renderBookerMessageList()
+        }
+        {
+          currentDeejay && this.renderDeejayMessageList()}
       </div>
     )
   }
 
-  renderMessageList() {
+  renderBookerMessageList() {
     const { messages, channel } = this.props;
 
     let channelMessages = messages.filter(message => (
       message.channelId === channel.id))
 
     return (
-      <List divided relaxed className="message-list-items">
+      <List divided relaxed>
         {
-          channelMessages.map(message => (
-            <List.Item as={MessageItem} message={message} key={message.id} />
-          ))
+          channelMessages.map(message => {
+            if (message.bookerId) {
+              return (
+                <List.Item key={message.id}>
+                  <List.Content floated="right">
+                    <List.Description>
+                      { message.content }
+                    </List.Description>
+                  </List.Content>
+                </List.Item>
+              )
+            }
+            else if (message.deejayId) {
+              return (
+                <List.Item key={message.id}>
+                  <List.Content floated="left">
+                    <List.Description>
+                      { message.content }
+                    </List.Description>
+                  </List.Content>
+                </List.Item>
+              )
+            }
+          })
+        }
+      </List>
+    )
+  }
+
+  renderDeejayMessageList() {
+    const { messages, channel } = this.props;
+
+    let channelMessages = messages.filter(message => (
+      message.channelId === channel.id))
+
+    return (
+      <List divided relaxed>
+        {
+          channelMessages.map(message => {
+            if (message.deejayId) {
+              return (
+                <List.Item key={message.id}>
+                  <List.Content floated="right">
+                    <List.Description>
+                      { message.content }
+                    </List.Description>
+                  </List.Content>
+                </List.Item>
+              )
+            }
+            else if (message.bookerId) {
+              return (
+                <List.Item key={message.id}>
+                  <List.Content floated="left">
+                    <List.Description>
+                      { message.content }
+                    </List.Description>
+                  </List.Content>
+                </List.Item>
+              )
+            }
+          })
         }
       </List>
     )
