@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 import { updateGig, createChannel } from '../../store'
 import { List, Button } from 'semantic-ui-react'
 import history from '../../history'
@@ -14,12 +15,15 @@ class DeejayDetailBrowse extends Component {
     this.handleBookingAccept = this.handleBookingAccept.bind(this);
     this.handleBookingDecline = this.handleBookingDecline.bind(this);
     this.handleCreateChannel = this.handleCreateChannel.bind(this);
-
   }
 
   render () {
-    const { currentGig } = this.props.location.state;
-    const { currentDeejayBrowse } = this.props;
+    const { currentGig, currentBooker } = this.props.location.state;
+    const { channels, currentDeejayBrowse } = this.props;
+
+    let currentChannel;
+    let channelCheck = channels.filter(channel => (channel.bookerId === currentBooker.id) && (channel.deejayId === currentDeejayBrowse.id))
+    channelCheck.length ? currentChannel = channelCheck[0] : currentChannel = null;
 
     if (!currentDeejayBrowse) {
       return null;
@@ -31,6 +35,14 @@ class DeejayDetailBrowse extends Component {
         <div className="deejay-profile-container">
           {
             this.renderDeejayDetails(currentDeejayBrowse)
+          }
+          {
+            !currentChannel &&
+            this.renderCreateChannel()
+          }
+          {
+            currentChannel &&
+            this.renderSendMessage(currentChannel, currentBooker)
           }
         </div>
       )
@@ -44,9 +56,8 @@ class DeejayDetailBrowse extends Component {
           {
             this.renderDeejayDetails(currentDeejayBrowse)
           }
-
           {
-            this.renderCreateChannel()
+            this.renderSendMessage()
           }
           {{
             ['true-true-false-false-false-false-false-false']: this.renderSendBookingRequest(), //eslint-disable-line no-useless-computed-key
@@ -96,8 +107,30 @@ class DeejayDetailBrowse extends Component {
         <Button
           size="massive"
           onClick={(event) => this.handleCreateChannel(event)}
-        >Send Message
+        >Start a Chat Channel
         </Button>
+      </div>
+    )
+  }
+
+  renderSendMessage(channel, currentBooker) {
+    return (
+      <div>
+        <NavLink
+          activeClassName="active"
+          to={{
+            pathname: `/inbox/booker/channels/${channel.id}`,
+            state: {
+              channel: channel,
+              currentBooker: currentBooker
+            }
+          }}
+        >
+          <Button
+            size="massive"
+            >Send Message
+          </Button>
+        </NavLink>
       </div>
     )
   }
@@ -227,12 +260,13 @@ class DeejayDetailBrowse extends Component {
   handleCreateChannel(event) {
     event.preventDefault();
     const { channels, createChannel, currentDeejayBrowse } = this.props;
-    const { currentBooker, currentGig } = this.props.location.state;
+    const { currentBooker } = this.props.location.state;
     const newChannel = { name: currentBooker.name + ' + ' + currentDeejayBrowse.name, deejayId: currentDeejayBrowse.id, bookerId: currentBooker.id }
 
     let channelCheck = channels.filter(channel => (channel.bookerId === currentBooker.id) && (channel.deejayId === currentDeejayBrowse.id))
 
     !channelCheck.length && createChannel(newChannel)
+
     history.push('/inbox')
   }
 }

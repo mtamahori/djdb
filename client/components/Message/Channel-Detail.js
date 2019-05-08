@@ -45,7 +45,7 @@ class ChannelDetail extends Component {
     const { channel, currentDeejay } = this.props.location.state;
 
     return (
-      <div>
+      <div className="channel-detail">
         <h3>{channel.name}</h3>
         <div>
           <MessageList channel={channel} currentDeejay={currentDeejay} />
