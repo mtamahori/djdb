@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Button } from 'semantic-ui-react'
 import NewMessageForm from './New-Message-Form'
 import MessageList from './Message-List'
 
@@ -58,7 +56,4 @@ class ChannelDetail extends Component {
   }
 }
 
-const mapState = null;
-const mapDispatch = null;
-
-export default connect(mapState, mapDispatch)(ChannelDetail)
+export default ChannelDetail
