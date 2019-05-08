@@ -39,34 +39,43 @@ class GigDetail extends Component {
       return (
       <div>
         {
-          <GigCurrentGig
-          currentGig={currentGig}
-          bookers={bookers}
-          deejays={deejays}
-          gigs={gigs}
-          />
-        }
-        {
           currentBooker &&
-          <GigDetailBooker
-          currentBooker={currentBooker}
-          currentGig={currentGig}
-          deejays={deejays}
-          handleUpdateGig={this.handleUpdateGig}
-          handleDeleteGig={this.handleDeleteGig}
-          />
+          <div>
+            <GigCurrentGig
+            currentGig={currentGig}
+            bookers={bookers}
+            deejays={deejays}
+            gigs={gigs}
+            />
+            <GigDetailBooker
+            currentBooker={currentBooker}
+            currentGig={currentGig}
+            deejays={deejays}
+            handleUpdateGig={this.handleUpdateGig}
+            handleDeleteGig={this.handleDeleteGig}
+            />
+          </div>
         }
         {
           currentDeejay &&
-          <GigDetailDeejay
-          currentDeejay={currentDeejay}
-          currentGig={currentGig}
-          handleBookingApplication={this.handleBookingApplication}
-          handleRetractApplication={this.handleRetractApplication}
-          handleCancelBooking={this.handleCancelBooking}
-          handleBookingAccept={this.handleBookingAccept}
-          handleBookingDecline={this.handleBookingDecline}
-          />
+          <div>
+            <GigCurrentGig
+            currentGig={currentGig}
+            currentDeejay={currentDeejay}
+            bookers={bookers}
+            deejays={deejays}
+            gigs={gigs}
+            />
+            <GigDetailDeejay
+            currentDeejay={currentDeejay}
+            currentGig={currentGig}
+            handleBookingApplication={this.handleBookingApplication}
+            handleRetractApplication={this.handleRetractApplication}
+            handleCancelBooking={this.handleCancelBooking}
+            handleBookingAccept={this.handleBookingAccept}
+            handleBookingDecline={this.handleBookingDecline}
+            />
+          </div>
         }
       </div>
     )}

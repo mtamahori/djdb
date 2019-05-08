@@ -1,10 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Card } from 'semantic-ui-react';
-import deejays from '../../store/deejays';
 
 const BookerItem = props => {
-  const { booker, currentGig } = props;
+  const { booker, currentGig, currentDeejay } = props;
   return (
     <div>
       <NavLink
@@ -12,7 +11,8 @@ const BookerItem = props => {
         to={{
           pathname: `/bookers/${booker.id}`,
           state: {
-            currentGig: currentGig
+            // currentGig: currentGig,
+            currentDeejay: currentDeejay
           }
         }}
       >
