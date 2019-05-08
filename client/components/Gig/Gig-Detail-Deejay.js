@@ -7,8 +7,6 @@ import GigCancelBooking from './GigDetailElements/gigCancelBooking'
 
 
 const getDeejayBools = (currentGig, currentDeejay) => {
-  // const { currentGig } = this.props;
-  // const { currentDeejay } = this.props.location.state;
   return {
     isCurrentDeejay: !!currentDeejay,
     hasDeejay: !!currentGig.deejayId,

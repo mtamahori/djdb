@@ -26,7 +26,6 @@ class GigMain extends Component {
 
     return (
       <Grid>
-
         {
           currentBooker &&
         <Grid.Row columns={2} textAlign="center">
@@ -144,26 +143,16 @@ class GigMain extends Component {
   }
 
   renderNewGigForm() {
-    const { currentBooker, currentDeejay } = this.props;
-
-    if (currentBooker) {
+    const { currentBooker } = this.props;
       return (
         <NewGigForm currentBooker={currentBooker} key={currentBooker.id} />
       )
-    }
-
-    else if (currentDeejay) {
-      return (
-        <NewGigForm currentDeejay={currentDeejay} key={currentDeejay.id} />
-      )
-    }
   }
 
   renderOpenGigList() {
-    const { currentBooker, currentDeejay, gigs } = this.props;
+    const { currentBooker, gigs } = this.props;
     let openGigs;
 
-    if (currentBooker) {
       openGigs = gigs.filter(gig => {
         return (
           gig.bookerId === currentBooker.id &&
@@ -180,26 +169,6 @@ class GigMain extends Component {
         :
         <h3>You Have No Open Bookings Right Now</h3>
       )
-    }
-
-    else if (currentDeejay) {
-      openGigs = gigs.filter(gig => {
-        return (
-          gig.deejayId === currentDeejay.id &&
-          gig.bookerId === null &&
-          this.futureDateCheck(gig)
-        )
-      })
-      return (
-        openGigs.length
-        ?
-        <div>
-          <GigList currentDeejay={currentDeejay} gigs={openGigs} />
-        </div>
-        :
-        <h3>You Have No Open Bookings Right Now</h3>
-      )
-    }
   }
 
   renderPastGigList() {
