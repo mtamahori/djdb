@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { List } from 'semantic-ui-react'
 import MessageItem from './Message-Item'
+import dateFns from 'date-fns'
 
 class MessageList extends Component {
   constructor(props) {
@@ -31,12 +32,18 @@ class MessageList extends Component {
       <List divided relaxed>
         {
           channelMessages.map(message => {
+            let date = dateFns.format(message.timestamp, 'MMM Do, YYYY')
+            let time = dateFns.format(message.timestamp, 'hh:mm a')
             if (message.bookerId) {
               return (
                 <List.Item key={message.id}>
                   <List.Content floated="right">
                     <List.Description>
                       { message.content }
+                    </List.Description>
+                    <br />
+                    <List.Description>
+                      { time } on { date }
                     </List.Description>
                   </List.Content>
                 </List.Item>
