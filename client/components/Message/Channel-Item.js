@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { List, Button } from 'semantic-ui-react'
+import { List, Label } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
 class ChannelItem extends Component {
@@ -8,14 +8,19 @@ class ChannelItem extends Component {
   }
 
   render() {
-    const { channel, channelMessages, currentBooker, currentDeejay } = this.props;
+    const { channel, unreadMessages, currentBooker, currentDeejay } = this.props;
 
     if (currentBooker) {
       return (
         <List.Item>
+        {
+          unreadMessages.length &&
+          <Label>
+            <List.Icon name="mail" /> {unreadMessages.length}
+          </Label>
+        }
           <NavLink
             activeClassName="active"
-            onClick={() => {this.handleClick()}}
             to={{
               pathname: `/inbox/booker/channels/${channel.id}`,
               state: {
@@ -35,7 +40,6 @@ class ChannelItem extends Component {
         <List.Item>
           <NavLink
             activeClassName="active"
-            onClick={() => {this.handleClick()}}
             to={{
               pathname: `/inbox/deejay/channels/${channel.id}`,
               state: {
@@ -49,10 +53,6 @@ class ChannelItem extends Component {
         </List.Item>
       )
     }
-  }
-
-  handleClick() {
-    //some state update that clears the "new messages" notification badge
   }
 }
 

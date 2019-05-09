@@ -7,6 +7,10 @@ class ChannelDetail extends Component {
     super(props)
   }
 
+  componentDidMount() {
+    //dispatch "mark_channel_read" action to store
+  }
+
   render() {
     const { currentBooker, currentDeejay } = this.props.location.state;
       return (

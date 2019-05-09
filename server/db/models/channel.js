@@ -13,6 +13,14 @@ const Channel = db.define('channel', {
   bookerId: {
     type: Sequelize.INTEGER,
     allowNull: false
+  },
+  deejayLastRead: {
+    type: Sequelize.DATE,
+    allowNull: true
+  },
+  bookerLastRead: {
+    type: Sequelize.DATE,
+    allowNull: true
   }
 },
 {
