@@ -20,11 +20,9 @@ router.put('/:id', function(req, res, next) {
     }
   })
   .then(user => {
-    console.log('DB USER', user)
     return user.update(req.body)
   })
   .then(updatedUser => {
-    console.log('UPDATED USER', updatedUser)
     res.status(200).json(updatedUser)
   })
   .catch(next)

@@ -268,8 +268,6 @@ class DeejayDetailBrowse extends Component {
       deejayLastRead: null
     }
 
-    console.log('handleCreateChannel', newChannel)
-
     let channelCheck = channels.filter(channel => (channel.bookerId === currentBooker.id) && (channel.deejayId === currentDeejayBrowse.id))
 
     !channelCheck.length && createChannel(newChannel)

@@ -39,10 +39,16 @@ class ChannelList extends Component {
         <List divided relaxed className="channel-list-items">
           {
             channels.map(channel => {
+
               let channelMessages = messages.filter(message => (
                 message.channelId === channel.id))
+
+              let unreadMessages = channelMessages.filter(message => {
+                return (dateFns.isAfter(message.timestamp, channel.deejayLastRead) && message.deejayId === null)
+              });
+
               return (
-                <ChannelItem channel={channel} channelMessages={channelMessages} currentDeejay={currentDeejay} key={channel.id} />
+                <ChannelItem channel={channel} unreadMessages={unreadMessages} currentDeejay={currentDeejay} key={channel.id} />
               )
             })
           }

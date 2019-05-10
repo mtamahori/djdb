@@ -38,6 +38,12 @@ class ChannelItem extends Component {
     if (currentDeejay) {
       return (
         <List.Item>
+        {
+          unreadMessages.length &&
+          <Label>
+            <List.Icon name="mail" /> {unreadMessages.length}
+          </Label>
+        }
           <NavLink
             activeClassName="active"
             to={{

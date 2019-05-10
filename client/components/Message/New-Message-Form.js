@@ -61,7 +61,6 @@ class NewMessageForm extends Component {
         channelId: channel.id
       }
     }
-    console.log('submitMessage', newMessage)
     createMessage(newMessage)
     this.setState({ content: ''});
   }
