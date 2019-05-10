@@ -40,21 +40,3 @@ const GigItem = (props) => {
 }
 
 export default GigItem;
-
-
-// <div>
-// <NavLink activeClassName="active"
-// to={{
-//   pathname: `/gigs/${gig.id}`,
-//   state: {
-//     currentBooker: currentBooker,
-//     currentDeejay: currentDeejay
-//   }
-// }}>
-//   <h4>{gig.name}</h4>
-// </NavLink>
-// <h5>{formattedDate}</h5>
-// <h5>{gig.time}</h5>
-// <h5>{gig.location}</h5>
-// <h5>{gig.compensation}</h5>
-// </div>

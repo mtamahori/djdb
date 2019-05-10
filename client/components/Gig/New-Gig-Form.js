@@ -103,6 +103,7 @@ class NewGigForm extends Component {
       { key: 'am', text: 'AM', value: 'am' },
       { key: 'pm', text: 'PM', value: 'pm' }
     ]
+
     let { name, date1, date2, date3, startTime1, startTime2, startTime3, endTime1, endTime2, endTime3, location, compensation } = this.state
 
     return (
@@ -150,8 +151,9 @@ class NewGigForm extends Component {
 
           <Message success header="New Gig Created Successfully" />
 
+
           <Form.Button type="submit" value="submit">
-          Submit
+            Submit
           </Form.Button>
         </Form>
       </div>
@@ -215,6 +217,8 @@ class NewGigForm extends Component {
     let startTime = startTime1 + ':' + startTime2 + startTime3;
     let endTime = endTime1 + ':' + endTime2 + endTime3;
 
+    // THIS IS SUPER BRITTLE
+    // because if there are gigs being created at the same time, there could be an issue with asynchronicity as the database updates
     let idArr = gigs.map(gig => gig.id)
     let lastId = Math.max(...idArr)
     let newId = lastId + 1;
@@ -234,20 +238,20 @@ class NewGigForm extends Component {
       history.push(`/gigs/${newId}`);
     }
 
-    else if (currentDeejay) {
-      newGig = {
-        id: newId,
-        deejayId: currentDeejay.id,
-        name: name,
-        date: dateInput,
-        time: startTime + '-' + endTime,
-        location: location,
-        compensation: compensation
-      }
-      createGig(newGig);
-      this.setState({ createdBool: true })
-      history.push(`/gigs/${newId}/`);
-    }
+    // else if (currentDeejay) {
+    //   newGig = {
+    //     id: newId,
+    //     deejayId: currentDeejay.id,
+    //     name: name,
+    //     date: dateInput,
+    //     time: startTime + '-' + endTime,
+    //     location: location,
+    //     compensation: compensation
+    //   }
+    //   createGig(newGig);
+    //   this.setState({ createdBool: true })
+    //   history.push(`/gigs/${newId}/`);
+    // }
   }
 }
 

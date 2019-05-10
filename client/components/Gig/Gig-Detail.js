@@ -22,16 +22,21 @@ class GigDetail extends Component {
 
   render() {
     const { currentGig, bookers, deejays, gigs } = this.props;
+
     let currentBooker;
     let currentDeejay;
 
     this.props.location.state
     ?
-    {currentBooker, currentDeejay} = this.props.location.state
+    { currentBooker, currentDeejay } = this.props.location.state
     :
-    console.log('')
+    { currentBooker } = this.props;
+
+    console.log('CURRENTGIG', currentGig)
+    console.log('CURRENTBOOKER', currentBooker)
 
     if (!currentGig) {
+      console.log('NO CURRENT GIG')
       return <div>Loading!</div>
     }
 
@@ -240,13 +245,16 @@ class GigDetail extends Component {
   }
 }
 
-const mapState = ({ gigs, deejays, bookers }, ownProps) => {
+    // consider computing currentBooker right here, rather than finding a way to pass it into this component after BOOKER creates a new GIG. a little messy, since it's otherwise passed top-down thru the component tree from BookerMain, but if it's only used for when a booker creates a gig, maybe it's not so bad?
+
+const mapState = ({ gigs, deejays, bookers, user }, ownProps) => {
   const gigParamId = Number(ownProps.match.params.id)
   return {
     gigs,
     deejays,
     bookers,
-    currentGig: gigs.filter(gig => gig.id === gigParamId)[0]
+    currentGig: gigs.filter(gig => gig.id === gigParamId)[0],
+    currentBooker: bookers.filter(booker => booker.userId === user.id)[0]
   }
 }
 const mapDispatch = ({ deleteGig, updateGig })
