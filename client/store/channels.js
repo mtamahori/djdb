@@ -9,19 +9,15 @@ const defaultChannels = [];
 
 const INIT_CHANNELS = 'INIT_CHANNELS'
 const ADD_CHANNEL = 'ADD_CHANNEL'
-// const EDIT_CHANNEL = 'EDIT_CHANNEL'
+const EDIT_CHANNEL = 'EDIT_CHANNEL'
 const REMOVE_CHANNEL = 'REMOVE_CHANNEL'
-
-const MARK_CHANNEL_READ = 'MARK_CHANNEL_READ'
 
 // ACTION CREATORS
 
 const initChannels = (channels) => ({ type: INIT_CHANNELS, channels })
 export const addChannel = (channel) => ({ type: ADD_CHANNEL, channel })
-// const editChannel = (channel) => ({ type: EDIT_CHANNEL, channel })
+const editChannel = (channel) => ({ type: EDIT_CHANNEL, channel })
 const removeChannel = (channel) => ({ type: REMOVE_CHANNEL, channel })
-
-const markChannelRead = (channel) => ({ type: MARK_CHANNEL_READ, channel })
 
 // THUNKS
 
@@ -43,9 +39,10 @@ export const createChannel = (channel) => (dispatch) => {
 }
 
 export const updateChannel = (channel) => (dispatch) => {
+  console.log('TRYING TO UPDATE DATABASE', channel)
   axios
     .put(`/api/channels/${channel.id}`)
-    .then(res => dispatch(markChannelRead(res.data)))
+    .then(res => dispatch(editChannel(res.data)))
     .catch(err => console.error('Updating channel unsuccessful', err))
 }
 
@@ -68,11 +65,11 @@ export default function(state = defaultChannels, action) {
     case ADD_CHANNEL:
       return [...state, action.channel]
 
+    case EDIT_CHANNEL:
+      return state.map(channel => (channel.id === action.channel.id ? action.channel : channel))
+
     case REMOVE_CHANNEL:
       return state.filter(channel => channel.id !== action.channel.id)
-
-    case MARK_CHANNEL_READ:
-      return state.map(channel => (action.channel.id === channel.id ? action.channel : channel))
 
     default:
       return state;

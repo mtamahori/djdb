@@ -37,12 +37,9 @@ class DeejayDetailBrowse extends Component {
             this.renderDeejayDetails(currentDeejayBrowse)
           }
           {
-            !currentChannel &&
+            currentChannel ?
+            this.renderSendMessage(currentChannel, currentBooker) :
             this.renderCreateChannel()
-          }
-          {
-            currentChannel &&
-            this.renderSendMessage(currentChannel, currentBooker)
           }
         </div>
       )
@@ -57,7 +54,9 @@ class DeejayDetailBrowse extends Component {
             this.renderDeejayDetails(currentDeejayBrowse)
           }
           {
-            this.renderSendMessage()
+            currentChannel ?
+            this.renderSendMessage(currentChannel, currentBooker) :
+            this.renderCreateChannel()
           }
           {{
             ['true-true-false-false-false-false-false-false']: this.renderSendBookingRequest(), //eslint-disable-line no-useless-computed-key

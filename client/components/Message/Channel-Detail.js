@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import NewMessageForm from './New-Message-Form'
 import MessageList from './Message-List'
+import { updateChannel } from '../../store'
 
 class ChannelDetail extends Component {
   constructor(props) {
@@ -8,7 +10,23 @@ class ChannelDetail extends Component {
   }
 
   componentDidMount() {
-    //dispatch "mark_channel_read" action to store
+    const { channel, currentBooker, currentDeejay } = this.props.location.state
+    const { updateChannel } = this.props
+    let now = new Date()
+
+    console.log('OG channel', channel)
+    if (currentBooker) {
+      let readChannel = {
+        id: channel.id,
+        name: channel.name,
+        deejayId: channel.deejayId,
+        bookerId: channel.bookerId,
+        deejayLastRead: channel.deejayLastRead,
+        bookerLastRead: now
+      }
+      console.log('NU channel', readChannel)
+      updateChannel(readChannel)
+    }
   }
 
   render() {
@@ -60,4 +78,7 @@ class ChannelDetail extends Component {
   }
 }
 
-export default ChannelDetail
+const mapState = null;
+const mapDispatch = ({ updateChannel })
+
+export default connect(mapState, mapDispatch)(ChannelDetail)

@@ -20,9 +20,7 @@ class ChannelList extends Component {
 
               let channelMessages = messages.filter(message => (
                 message.channelId === channel.id))
-                    //check "lastRead" property on each channel and return timestamps
-                    //filter messages that have a timestamp that is after the "check_channel_last_opened" timestamp
-                    //render a badge on each channelItem with the correct number of unread messages
+
               let unreadMessages = channelMessages.filter(message => {
                 return dateFns.isAfter(message.timestamp, channel.bookerLastRead)
               });
