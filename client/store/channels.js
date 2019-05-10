@@ -32,6 +32,7 @@ export const createChannel = (channel) => (dispatch) => {
   axios
     .post('/api/channels', channel)
     .then(res => {
+      console.log('SERVER create channel', res.data)
       dispatch(addChannel(res.data))
       socket.emit('new-channel', res.data)
     })
@@ -39,10 +40,13 @@ export const createChannel = (channel) => (dispatch) => {
 }
 
 export const updateChannel = (channel) => (dispatch) => {
-  console.log('TRYING TO UPDATE DATABASE', channel)
   axios
-    .put(`/api/channels/${channel.id}`)
-    .then(res => dispatch(editChannel(res.data)))
+    .put(`/api/channels/${channel.id}`, channel)
+    .then(res => {
+      // THIS IS THE PROBLEM: the server is responding with a channel that has the previous timestamp, i.e. it is NOT updating correctly
+      console.log('SERVER update channel', res.data)
+      dispatch(editChannel(res.data))
+    })
     .catch(err => console.error('Updating channel unsuccessful', err))
 }
 
@@ -73,5 +77,6 @@ export default function(state = defaultChannels, action) {
 
     default:
       return state;
+
   }
 }

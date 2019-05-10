@@ -260,7 +260,15 @@ class DeejayDetailBrowse extends Component {
     event.preventDefault();
     const { channels, createChannel, currentDeejayBrowse } = this.props;
     const { currentBooker } = this.props.location.state;
-    const newChannel = { name: currentBooker.name + ' + ' + currentDeejayBrowse.name, deejayId: currentDeejayBrowse.id, bookerId: currentBooker.id }
+    const newChannel = {
+      name: currentBooker.name + ' + ' + currentDeejayBrowse.name,
+      deejayId: currentDeejayBrowse.id,
+      bookerId: currentBooker.id,
+      bookerLastRead: Date.now(),
+      deejayLastRead: null
+    }
+
+    console.log('handleCreateChannel', newChannel)
 
     let channelCheck = channels.filter(channel => (channel.bookerId === currentBooker.id) && (channel.deejayId === currentDeejayBrowse.id))
 
@@ -279,6 +287,6 @@ const mapState = ({ user, deejays, channels }, ownProps) => {
     currentDeejayBrowse: deejays.filter(deejay => deejay.id === deejayParamId)[0]
   }
 }
-const mapDispatch = { updateGig, createChannel };
+const mapDispatch = ({ updateGig, createChannel });
 
 export default connect(mapState, mapDispatch)(DeejayDetailBrowse)

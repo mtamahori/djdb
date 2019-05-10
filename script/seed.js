@@ -85,10 +85,10 @@ async function seed() {
   })
 
   const channels = await Promise.each([
-    { name: 'Max / Smartbar', bookerId: 2, deejayId: 1 },
-    { name: 'Max / Dannys', bookerId: 3, deejayId: 1 },
-    { name: 'Max / Punch House', bookerId: 4, deejayId: 1},
-    { name: 'Max / Whistler', bookerId: 5, deejayId: 1}
+    { name: 'Max + Smartbar', bookerId: 2, deejayId: 1, bookerLastRead: new Date('April 9, 2019 03:34:01'), deejayLastRead: new Date('April 9, 2019 03:24:01') },
+    { name: 'Max + Dannys', bookerId: 3, deejayId: 1, bookerLastRead: new Date('April 10, 2019 04:44:01'), deejayLastRead: new Date('April 10, 2019 04:34:01')},
+    { name: 'Max + Punch House', bookerId: 4, deejayId: 1, bookerLastRead: new Date('April 11, 2019 03:44:01'), deejayLastRead: new Date('April 11, 2019 03:34:01')},
+    { name: 'Max + Whistler', bookerId: 5, deejayId: 1, bookerLastRead: new Date('April 12, 2019 04:44:01'), deejayLastRead: new Date('April 12, 2019 04:34:01')}
   ], (channel) => {
     return Channel.create(channel);
   })

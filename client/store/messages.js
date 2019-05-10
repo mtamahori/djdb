@@ -32,6 +32,7 @@ export const createMessage = (message) => dispatch => {
   axios
     .post('/api/messages', message)
     .then(res => {
+      console.log('SERVER create message', res.data)
       dispatch(addMessage(res.data))
       socket.emit('new-message', res.data)
     })

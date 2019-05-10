@@ -40,9 +40,11 @@ router.put('/:id', function(req, res, next) {
     }
   })
   .then(channel => {
+    console.log('DB CHANNEL', channel)
     return channel.update(req.body)
   })
   .then(updatedChannel => {
+    console.log('UPDATED CHANNEL', updatedChannel)
     res.status(200).json(updatedChannel)
   })
   .catch(next)

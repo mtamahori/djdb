@@ -22,7 +22,7 @@ class ChannelList extends Component {
                 message.channelId === channel.id))
 
               let unreadMessages = channelMessages.filter(message => {
-                return dateFns.isAfter(message.timestamp, channel.bookerLastRead)
+                return (dateFns.isAfter(message.timestamp, channel.bookerLastRead) && message.bookerId === null)
               });
 
               return (

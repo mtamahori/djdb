@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import NewMessageForm from './New-Message-Form'
 import MessageList from './Message-List'
 import { updateChannel } from '../../store'
+import dateFns from 'date-fns'
 
 class ChannelDetail extends Component {
   constructor(props) {
@@ -12,21 +13,21 @@ class ChannelDetail extends Component {
   componentDidMount() {
     const { channel, currentBooker, currentDeejay } = this.props.location.state
     const { updateChannel } = this.props
-    let now = new Date()
-
-    console.log('OG channel', channel)
+    const now = Date.now()
+    let readChannel;
+    console.log('MOUNT channel', channel)
     if (currentBooker) {
-      let readChannel = {
+      readChannel = {
         id: channel.id,
-        name: channel.name,
+        name: channel.name + ' edited',
         deejayId: channel.deejayId,
         bookerId: channel.bookerId,
         deejayLastRead: channel.deejayLastRead,
         bookerLastRead: now
       }
-      console.log('NU channel', readChannel)
-      updateChannel(readChannel)
+      console.log('READ channel', readChannel)
     }
+    updateChannel(readChannel)
   }
 
   render() {
