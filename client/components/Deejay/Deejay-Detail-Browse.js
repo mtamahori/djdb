@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { GigList } from '../index'
 import { updateGig, createChannel } from '../../store'
 import { List, Button } from 'semantic-ui-react'
 import history from '../../history'
@@ -41,6 +42,9 @@ class DeejayDetailBrowse extends Component {
             this.renderSendMessage(currentChannel, currentBooker) :
             this.renderCreateChannel()
           }
+          {
+            this.renderDeejayPastGigs(currentDeejayBrowse)
+          }
         </div>
       )
     }
@@ -64,6 +68,9 @@ class DeejayDetailBrowse extends Component {
             ['true-true-false-false-true-false-false-false']: this.renderAcceptDeclineBookingRequest(), //eslint-disable-line no-useless-computed-key
             ['true-true-true-true-false-false-false-false']: this.renderRetractBooking() //eslint-disable-line no-useless-computed-key
           }[bools]}
+          {
+            this.renderDeejayPastGigs(currentDeejayBrowse)
+          }
         </div>
       )
     }
@@ -97,6 +104,26 @@ class DeejayDetailBrowse extends Component {
           </List>
         }
       </div>
+    )
+  }
+
+  renderDeejayPastGigs(currentDeejay) {
+    const { gigs } = this.props;
+    let pastGigs = gigs.filter(gig => {
+      return (
+        gig.deejayId === currentDeejay.id &&
+        this.pastDateCheck(gig)
+      )
+    })
+    return (
+      pastGigs.length
+      ?
+      <div>
+        <h3>This Deejay's Past Gigs:</h3>
+        <GigList currentDeejay={currentDeejay} gigs={pastGigs} />
+      </div>
+      :
+      <h3>This Deejay Has Not Played Out Yet</h3>
     )
   }
 
@@ -193,6 +220,14 @@ class DeejayDetailBrowse extends Component {
     )
   }
 
+  pastDateCheck(gig) {
+    let gigDateArr = gig.date.split('/')
+    let gigYear = gigDateArr[0]
+    let gigMonth = gigDateArr[1]
+    let gigDate = gigDateArr[2]
+    return dateFns.isBefore(new Date(gigYear, gigMonth, gigDate), Date.now())
+  }
+
   handleBookingInvite(event) {
     event.preventDefault();
     const { currentDeejayBrowse, updateGig } = this.props
@@ -276,12 +311,13 @@ class DeejayDetailBrowse extends Component {
   }
 }
 
-const mapState = ({ user, deejays, channels }, ownProps) => {
+const mapState = ({ user, deejays, channels, gigs }, ownProps) => {
   const deejayParamId = Number(ownProps.match.params.id)
   return {
     user,
     deejays,
     channels,
+    gigs,
     currentDeejayBrowse: deejays.filter(deejay => deejay.id === deejayParamId)[0]
   }
 }
