@@ -23,7 +23,11 @@ class DeejayDetailBrowse extends Component {
     const { channels, currentDeejayBrowse } = this.props;
 
     let currentChannel;
-    let channelCheck = channels.filter(channel => (channel.bookerId === currentBooker.id) && (channel.deejayId === currentDeejayBrowse.id))
+    let channelCheck = channels.filter(channel => {
+    console.log('CURRENTBOOKERRRRRR', currentBooker)
+    console.log('CURRENTDEEJAYBROWSEEEEEE', currentDeejayBrowse)
+      return ((channel.bookerId === currentBooker.id) && (channel.deejayId === currentDeejayBrowse.id))
+    })
     channelCheck.length ? currentChannel = channelCheck[0] : currentChannel = null;
 
     if (!currentDeejayBrowse) {

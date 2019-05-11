@@ -5,7 +5,7 @@ import dateFns from 'date-fns'
 import { Card } from 'semantic-ui-react'
 
 const GigCurrentGig = props => {
-  const { currentGig, currentDeejay, gigs, deejays, bookers } = props
+  const { currentGig, currentBooker, currentDeejay, gigs, deejays, bookers } = props
     return (
       <div>
         {
@@ -48,7 +48,7 @@ const GigCurrentGig = props => {
                   gigDeejay &&
                   <div>
                     <h4>This Gig's Deejay:</h4>
-                    <DeejayItem deejay={gigDeejay} key={gigDeejay.id} currentGig={currentGig} />
+                    <DeejayItem deejay={gigDeejay} key={gigDeejay.id} currentGig={currentGig} currentBooker={currentBooker} />
                   </div>
                 }
               </div>

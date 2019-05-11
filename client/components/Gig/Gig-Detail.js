@@ -47,6 +47,7 @@ class GigDetail extends Component {
           currentBooker &&
           <div>
             <GigCurrentGig
+            currentBooker={currentBooker}
             currentGig={currentGig}
             bookers={bookers}
             deejays={deejays}
@@ -65,8 +66,8 @@ class GigDetail extends Component {
           currentDeejay &&
           <div>
             <GigCurrentGig
-            currentGig={currentGig}
             currentDeejay={currentDeejay}
+            currentGig={currentGig}
             bookers={bookers}
             deejays={deejays}
             gigs={gigs}
