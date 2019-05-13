@@ -58,6 +58,12 @@ class BookerDetail extends Component {
               <List.Item icon="marker" content="Chicago, IL" />
               <List.Item icon="mail" content={currentBooker.email} />
               <List.Item icon="phone" content={currentBooker.phone} />
+              <List.Item>
+                <List.Content>
+                  <List.Header>Bio</List.Header>
+                  <List.Description>{currentBooker.bio}</List.Description>
+                </List.Content>
+              </List.Item>
             </List>
           }
         </div>
@@ -89,6 +95,10 @@ class BookerDetail extends Component {
               <Form.Input name="phone3" maxLength="4" placeholder="" />
             </Form.Group>
             </div>
+            <h4>
+              Bio <br />
+            </h4>
+            <Form.Input fluid name="bio" placeholder="" />
             <Message success header="Update Successful" />
             <Form.Button type="submit" value="submit" >
             Submit
@@ -123,7 +133,8 @@ class BookerDetail extends Component {
     if (
       event.target.name.value === '' &&
       event.target.email.value === '' &&
-      phoneInput === ''
+      phoneInput === '' &&
+      event.target.bio.value === ''
     ) {
       alert("Please fill out at least one field");
 
@@ -132,7 +143,8 @@ class BookerDetail extends Component {
         id: currentBooker.id,
         name: event.target.name.value || currentBooker.name,
         email: event.target.email.value || currentBooker.email,
-        phone: phoneInput || currentBooker.phone
+        phone: phoneInput || currentBooker.phone,
+        bio: event.target.bio.value || currentBooker.bio
       }
       updateBooker(booker);
       this.setState({ updateBool: true })
@@ -141,6 +153,7 @@ class BookerDetail extends Component {
       event.target.phone1.value = '';
       event.target.phone2.value = '';
       event.target.phone3.value = '';
+      event.target.bio.value = '';
     }
   }
 }

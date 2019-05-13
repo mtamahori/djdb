@@ -35,7 +35,7 @@ async function seed() {
   })
 
   const bookers = await Promise.each([
-    {name: 'Max', email: 'max@email.com', phone: '3108693703', userId: 1},
+    {name: 'Max', email: 'max@email.com', phone: '3108693703', userId: 1, bio: 'This is Max booker bio description very useful and long much text'},
     {name: 'Smartbar', email: 'smartbar@email.com', phone: '1234567890', userId: 13},
     {name: 'Dannys', email: 'dannys@email.com', phone: '1234567890', userId: 14},
     {name: 'Punch House', email: 'punchhouse@email.com', phone: '1234567890', userId: 15},
@@ -49,7 +49,7 @@ async function seed() {
   })
 
   const deejays = await Promise.each([
-    {name: 'Max', email: 'max@email.com', phone: '3108693703', userId: 1},
+    {name: 'Max', email: 'max@email.com', phone: '3108693703', userId: 1, bio: 'This is Max booker bio description very useful and long much text'},
     {name: 'Meri', email: 'meri@email.com', phone: '7818012471', userId: 2},
     {name: 'Miles', email: 'miles@email.com', phone: '4043846952', userId: 3},
     {name: 'Maeve', email: 'maeve@email.com', phone: '2072660335', userId: 4},

@@ -28,44 +28,6 @@ class GigMain extends Component {
 
     return (
       <Grid>
-        {
-          currentBooker &&
-          <Grid.Row columns={2} textAlign="center">
-            <Grid.Column>
-              <Button
-                onClick={() => {
-                  this.state.viewNewGigForm === false ?
-                  this.setState({ viewNewGigForm: true }) :
-                  this.setState({ viewNewGigForm: false })
-                }}
-                size="massive">
-                New Booking
-              </Button>
-              {
-                this.state.viewNewGigForm && (
-                  this.renderNewGigForm()
-                )
-              }
-            </Grid.Column>
-            <Grid.Column>
-              <Button
-                onClick={() => {
-                  this.state.viewOpenGigList === false ?
-                  this.setState({ viewOpenGigList: true }) :
-                  this.setState({ viewOpenGigList: false })
-                }}
-                size="massive">
-                Open Bookings
-              </Button>
-              {
-                this.state.viewOpenGigList && (
-                  this.renderOpenGigList()
-                )
-              }
-            </Grid.Column>
-          </Grid.Row>
-        }
-
         <Grid.Row columns={2} textAlign="center">
           <Grid.Column>
             <Button
@@ -121,7 +83,7 @@ class GigMain extends Component {
                 }
               </Grid.Column>
               <Grid.Column>
-                  <Button
+                <Button
                   onClick={() => {
                     this.state.viewBrowseBookers === false ?
                     this.setState({ viewBrowseBookers : true }) :
@@ -141,7 +103,44 @@ class GigMain extends Component {
 
         {
           currentBooker &&
-            <Grid.Row columns={1} textAlign="center">
+          <Grid.Row columns={2} textAlign="center">
+            <Grid.Column>
+              <Button
+                onClick={() => {
+                  this.state.viewNewGigForm === false ?
+                  this.setState({ viewNewGigForm: true }) :
+                  this.setState({ viewNewGigForm: false })
+                }}
+                size="massive">
+                New Booking
+              </Button>
+              {
+                this.state.viewNewGigForm && (
+                  this.renderNewGigForm()
+                )
+              }
+            </Grid.Column>
+            <Grid.Column>
+              <Button
+                onClick={() => {
+                  this.state.viewOpenGigList === false ?
+                  this.setState({ viewOpenGigList: true }) :
+                  this.setState({ viewOpenGigList: false })
+                }}
+                size="massive">
+                Open Bookings
+              </Button>
+              {
+                this.state.viewOpenGigList && (
+                  this.renderOpenGigList()
+                )
+              }
+            </Grid.Column>
+          </Grid.Row>
+        }
+        {
+          currentBooker &&
+          <Grid.Row columns={1} textAlign="center">
               <Grid.Column>
                 <Button
                   onClick={() => {
@@ -158,8 +157,10 @@ class GigMain extends Component {
                   )
                 }
               </Grid.Column>
-            </Grid.Row>
+          </Grid.Row>
         }
+      }
+
       </Grid>
     )
   }

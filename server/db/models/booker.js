@@ -16,6 +16,10 @@ const Booker = db.define('booker', {
   phone: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  bio: {
+    type: Sequelize.TEXT,
+    allowNull: true
   }
 });
 

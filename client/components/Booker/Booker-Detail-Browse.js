@@ -54,6 +54,12 @@ class BookerDetailBrowse extends Component {
             <List.Item icon="marker" content="Chicago, IL" />
             <List.Item icon="mail" content={booker.email} />
             <List.Item icon="phone" content={booker.phone} />
+            <List.Item>
+            <List.Content>
+              <List.Header>Bio</List.Header>
+              <List.Description>{booker.bio}</List.Description>
+            </List.Content>
+            </List.Item>
           </List>
         }
       </div>
