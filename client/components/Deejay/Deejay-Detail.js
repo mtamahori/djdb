@@ -59,6 +59,12 @@ class DeejayDetail extends Component {
               <List.Item icon="marker" content="Chicago, IL" />
               <List.Item icon="mail" content={currentDeejay.email} />
               <List.Item icon="phone" content={currentDeejay.phone} />
+              <List.Item>
+                <List.Content>
+                  <List.Header>Bio</List.Header>
+                  <List.Description>{currentDeejay.bio}</List.Description>
+                </List.Content>
+              </List.Item>
             </List>
           }
         </div>
@@ -89,6 +95,10 @@ class DeejayDetail extends Component {
               <Form.Input name="phone2" type="text" maxLength="3" placeholder="" />
               <Form.Input name="phone3" type="text" maxLength="4" placeholder="" />
             </Form.Group>
+            <h4>
+            Bio <br />
+            </h4>
+            <Form.Input name="bio" type="text" placeholder="" />
             </div>
             <Message success header="Update Successful" />
             <Form.Button type="submit" value="submit" >
@@ -124,7 +134,8 @@ class DeejayDetail extends Component {
     if (
       event.target.name.value === '' &&
       event.target.email.value === '' &&
-      phoneInput === ''
+      phoneInput === '' &&
+      event.target.bio.value === ''
     ) {
       alert("Please fill out at least one field");
     } else {
@@ -132,7 +143,8 @@ class DeejayDetail extends Component {
         id: currentDeejay.id,
         name: event.target.name.value || currentDeejay.name,
         email: event.target.email.value || currentDeejay.email,
-        phone: phoneInput || currentDeejay.phone
+        phone: phoneInput || currentDeejay.phone,
+        bio: event.target.bio.value || currentDeejay.bio
       }
       updateDeejay(deejay);
       this.setState({ updateBool: true })
@@ -141,6 +153,7 @@ class DeejayDetail extends Component {
       event.target.phone1.value = '';
       event.target.phone2.value = '';
       event.target.phone3.value = '';
+      event.target.bio.value = '';
     }
   }
 }

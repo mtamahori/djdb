@@ -23,6 +23,7 @@ class DeejayDetailBrowse extends Component {
     const { channels, currentDeejayBrowse } = this.props;
 
     let currentChannel;
+
     let channelCheck = channels.filter(channel => {
       return ((channel.bookerId === currentBooker.id) && (channel.deejayId === currentDeejayBrowse.id))
     })
@@ -103,6 +104,12 @@ class DeejayDetailBrowse extends Component {
             <List.Item icon="marker" content="Chicago, IL" />
             <List.Item icon="mail" content={deejay.email} />
             <List.Item icon="phone" content={deejay.phone} />
+            <List.Item>
+                <List.Content>
+                  <List.Header>Bio</List.Header>
+                  <List.Description>{deejay.bio}</List.Description>
+                </List.Content>
+            </List.Item>
           </List>
         }
       </div>
