@@ -23,7 +23,8 @@ class GigUpdateGig extends Component {
       endTime2: '',
       endTime3: '',
       location: '',
-      compensation: ''
+      compensation: '',
+      styleTags: ''
     }
   }
 
@@ -103,6 +104,7 @@ class GigUpdateGig extends Component {
       { key: 'am', text: 'AM', value: 'am' },
       { key: 'pm', text: 'PM', value: 'pm' }
     ]
+
     let { name, date1, date2, date3, startTime1, startTime2, startTime3, endTime1, endTime2, endTime3, location, compensation } = this.state
     const { currentGig } = this.props;
     return (
@@ -141,11 +143,15 @@ class GigUpdateGig extends Component {
             </Form.Dropdown>
           </Form.Group>
 
-          <Form.Group  width={2}>
+          <Form.Group width={2}>
             <Form.Input name="location" placeholder="Location" onChange={this.handleLocation.bind(this)}>
             </Form.Input>
             <Form.Input name="compensation" placeholder="Compensation" onChange={this.handleCompensation.bind(this)}>
             </Form.Input>
+          </Form.Group>
+
+          <Form.Group widths={1}>
+            <Form.Input name="styleTags" onChange={this.handleStyleTags.bind(this)}placeholder="Add styles separated by comma + space" />
           </Form.Group>
 
           <Message success header="Booking Info Updated Successfully" />
@@ -168,6 +174,10 @@ class GigUpdateGig extends Component {
 
   handleCompensation(event) {
     this.setState({ compensation: event.target.value })
+  }
+
+  handleStyleTags(event) {
+    this.setState({ styleTags: event.target.value })
   }
 
   handleDate1 = (event, data) => {
@@ -214,7 +224,8 @@ class GigUpdateGig extends Component {
     if (
       event.target.name.value === '' &&
       event.target.location.value === '' &&
-      event.target.compensation.value === ''
+      event.target.compensation.value === '' &&
+      event.target.styleTags.value === ''
     ) {
       alert("Please fill out at least one field");
     }
@@ -222,6 +233,9 @@ class GigUpdateGig extends Component {
     let dateInput = date3 + '/' + date1 + '/' + date2;
     let startTime = startTime1 + ':' + startTime2 + startTime3;
     let endTime = endTime1 + ':' + endTime2 + endTime3;
+    let styleTagsInput = event.target.styleTags.value.split(', ')
+
+    console.log('STYLETAGSINPUT', styleTagsInput)
 
       newGig = {
         id: currentGig.id,
@@ -230,11 +244,13 @@ class GigUpdateGig extends Component {
         date: (dateInput !== '//') ? dateInput : currentGig.date,
         time: ((startTime + ' - ' + endTime) !== ': - :') ? (startTime + ' - ' + endTime) : currentGig.time,
         location: location || currentGig.location,
-        compensation: compensation || currentGig.compensation
+        compensation: compensation || currentGig.compensation,
+        styleTags: styleTagsInput || currentGig.styleTags
       }
       updateGig(newGig)
       this.setState({ updatedBool: true })
-      history.push(`/gigs/${currentGig.id}`);
+      event.target.styleTags.value = '';
+      // history.push(`/gigs/${currentGig.id}`);
   }
 }
 

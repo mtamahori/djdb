@@ -73,7 +73,7 @@ async function seed() {
     {name: 'Past Punch House', date: '2019/1/19', time: '10:00pm - 2:00am', location: 'Punch House', compensation: '150', deejayId: 1, bookerId: 4},
     {name: 'Smartbar', date: '2019/3/20', time: '10:00pm - 4:00am', location: 'Smartbar', compensation: '150', deejayId: 1, bookerId: 2},
     {name: 'Humboldt Arboreal Society Kickoff', date: '2019/7/10', time: '12:00pm - 8:00pm', location: 'Humboldt Park', compensation: 'fun', bookerId: 8},
-    {name: 'Max House Party', date: '2019/6/10', time: '12:00pm - 10:00pm', location: 'Albany Park', compensation: 'fun', bookerId: 1},
+    {name: 'Max House Party', date: '2019/6/10', time: '12:00pm - 10:00pm', location: 'Albany Park', compensation: 'fun', bookerId: 1, styleTags: ['jazz', 'soul', 'disco', 'boogie', 'house', 'techno']},
     {name: 'Open Format at BoozeBox', date: '2019/5/8', time: '9:00pm - 2:00am', location: 'Booze Box', compensation: '150', bookerId: 6},
     {name: 'Clark St Jams at Hideout', date: '2019/5/20', time: '11:00pm - 3:00am', location: 'Hideout', compensation: '50', bookerId: 7},
     {name: 'Underground Party', date: '2019/7/1', time: '11:00pm - 7:00am', location: 'TBA', compensation: '200', bookerId: 9},

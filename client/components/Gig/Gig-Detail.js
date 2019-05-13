@@ -12,7 +12,7 @@ class GigDetail extends Component {
     super(props);
 
     this.handleDeleteGig = this.handleDeleteGig.bind(this)
-    this.handleUpdateGig = this.handleUpdateGig.bind(this)
+    // this.handleUpdateGig = this.handleUpdateGig.bind(this)
     this.handleBookingAccept = this.handleBookingAccept.bind(this)
     this.handleBookingApplication = this.handleBookingApplication.bind(this)
     this.handleBookingDecline = this.handleBookingDecline.bind(this)
@@ -57,7 +57,7 @@ class GigDetail extends Component {
             currentBooker={currentBooker}
             currentGig={currentGig}
             deejays={deejays}
-            handleUpdateGig={this.handleUpdateGig}
+            // handleUpdateGig={this.handleUpdateGig}
             handleDeleteGig={this.handleDeleteGig}
             />
           </div>
@@ -184,66 +184,66 @@ class GigDetail extends Component {
     history.push('/home')
   }
 
-  handleUpdateGig(event) {
-    event.preventDefault();
-    const { updateGig, currentGig } = this.props;
+  // handleUpdateGig(event) {
+  //   event.preventDefault();
+  //   const { updateGig, currentGig } = this.props;
 
-    const getFormBools = () => {
-      return (
-        {
-          name: !!event.target.name.value,
-          date1: !!event.target.date1.value,
-          date2: !!event.target.date2.value,
-          date3: !!event.target.date3.value,
-          startTime1: !!event.target.startTime1.value,
-          startTime2: !!event.target.startTime1.value,
-          startTime3: !!event.target.startTime1.value,
-          endTime1: !!event.target.endTime1.value,
-          endTime2: !!event.target.endTime1.value,
-          endTime3: !!event.target.endTime1.value,
-          location: !!event.target.location.value,
-          compensation: !!event.target.compensation.value
-        }
-      )
-    }
-    const formConditions = getFormBools();
-    const formBools = `${formConditions.name}-${formConditions.date1}-${formConditions.date2}-${formConditions.date3}-${formConditions.startTime1}-${formConditions.startTime2}-${formConditions.startTime3}-${formConditions.endTime1}-${formConditions.endTime2}-${formConditions.endTime3}-${formConditions.location}-${formConditions.compensation}`
+  //   const getFormBools = () => {
+  //     return (
+  //       {
+  //         name: !!event.target.name.value,
+  //         date1: !!event.target.date1.value,
+  //         date2: !!event.target.date2.value,
+  //         date3: !!event.target.date3.value,
+  //         startTime1: !!event.target.startTime1.value,
+  //         startTime2: !!event.target.startTime1.value,
+  //         startTime3: !!event.target.startTime1.value,
+  //         endTime1: !!event.target.endTime1.value,
+  //         endTime2: !!event.target.endTime1.value,
+  //         endTime3: !!event.target.endTime1.value,
+  //         location: !!event.target.location.value,
+  //         compensation: !!event.target.compensation.value
+  //       }
+  //     )
+  //   }
+  //   const formConditions = getFormBools();
+  //   const formBools = `${formConditions.name}-${formConditions.date1}-${formConditions.date2}-${formConditions.date3}-${formConditions.startTime1}-${formConditions.startTime2}-${formConditions.startTime3}-${formConditions.endTime1}-${formConditions.endTime2}-${formConditions.endTime3}-${formConditions.location}-${formConditions.compensation}`
 
-    if (formBools === 'false-false-false-false-false-false-false-false-false-false-false-false') {
-      alert("Please fill out at least one field")
-    } else {
+  //   if (formBools === 'false-false-false-false-false-false-false-false-false-false-false-false') {
+  //     alert("Please fill out at least one field")
+  //   } else {
 
-      // Use SemanticUI form component to set the default values for the update form as the values pulled from the database. This will avoid sending updates with empty fields
+  //     // Use SemanticUI form component to set the default values for the update form as the values pulled from the database. This will avoid sending updates with empty fields
 
-      let dateInput = event.target.date3.value + '/' + event.target.date1.value + '/' + event.target.date2.value;
-      let startTimeInput = event.target.startTime1.value + ':' + event.target.startTime2.value + event.target.startTime3.value
-      let endTimeInput = event.target.endTime1.value + ':' + event.target.endTime2.value + event.target.endTime3.value
+  //     let dateInput = event.target.date3.value + '/' + event.target.date1.value + '/' + event.target.date2.value;
+  //     let startTimeInput = event.target.startTime1.value + ':' + event.target.startTime2.value + event.target.startTime3.value
+  //     let endTimeInput = event.target.endTime1.value + ':' + event.target.endTime2.value + event.target.endTime3.value
 
-      const gig = {
-        id: currentGig.id,
-        name: event.target.name.value || currentGig.name,
-        date: dateInput || currentGig.date,
-        time: startTimeInput + ' - ' + endTimeInput || currentGig.time,
-        location: event.target.location.value || currentGig.location,
-        compensation: event.target.compensation.value || currentGig.compensation
-      }
+  //     const gig = {
+  //       id: currentGig.id,
+  //       name: event.target.name.value || currentGig.name,
+  //       date: dateInput || currentGig.date,
+  //       time: startTimeInput + ' - ' + endTimeInput || currentGig.time,
+  //       location: event.target.location.value || currentGig.location,
+  //       compensation: event.target.compensation.value || currentGig.compensation
+  //     }
 
-      updateGig(gig);
-      event.target.name.value = '';
-      event.target.date1.value = '';
-      event.target.date2.value = '';
-      event.target.date3.value = '';
-      event.target.startTime1.value = '';
-      event.target.startTime2.value = '';
-      event.target.startTime3.value = '';
-      event.target.endTime1.value = '';
-      event.target.endTime2.value = '';
-      event.target.endTime3.value = '';
-      event.target.location.value = '';
-      event.target.compensation.value = '';
-      history.push(`/gigs/${gig.id}`)
-    }
-  }
+  //     updateGig(gig);
+  //     event.target.name.value = '';
+  //     event.target.date1.value = '';
+  //     event.target.date2.value = '';
+  //     event.target.date3.value = '';
+  //     event.target.startTime1.value = '';
+  //     event.target.startTime2.value = '';
+  //     event.target.startTime3.value = '';
+  //     event.target.endTime1.value = '';
+  //     event.target.endTime2.value = '';
+  //     event.target.endTime3.value = '';
+  //     event.target.location.value = '';
+  //     event.target.compensation.value = '';
+  //     history.push(`/gigs/${gig.id}`)
+  //   }
+  // }
 }
 
     // consider computing currentBooker right here, rather than finding a way to pass it into this component after BOOKER creates a new GIG. a little messy, since it's otherwise passed top-down thru the component tree from BookerMain, but if it's only used for when a booker creates a gig, maybe it's not so bad?

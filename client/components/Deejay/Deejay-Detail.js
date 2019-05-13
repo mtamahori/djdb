@@ -59,7 +59,7 @@ class DeejayDetail extends Component {
               <List.Item icon="marker" content="Chicago, IL" />
               <List.Item icon="mail" content={currentDeejay.email} />
               <List.Item icon="phone" content={currentDeejay.phone} />
-              <List.Item icon="music" content={currentDeejay.styleTags.map(tag => {return tag + '! '})} />
+              <List.Item icon="music" content={currentDeejay.styleTags.map(tag => {return tag + ', '})} />
               <List.Item>
                 <List.Content>
                   <List.Header>Bio</List.Header>

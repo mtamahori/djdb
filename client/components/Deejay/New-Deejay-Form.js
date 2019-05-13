@@ -40,6 +40,10 @@ class NewDeejayForm extends Component {
               <Form.Input name="phone3" type="text" maxLength="4" placeholder="" />
             </Form.Group>
             </div>
+            <h4>
+            Style Tags <br />
+            </h4>
+              <Form.Input name="styleTags" type="text" placeholder="Add styles separated by comma + space" />
             <Message success heeader="Deejay Profile Created Successfully" />
             <Form.Button type="submit" value="submit" >
             Submit
@@ -59,12 +63,16 @@ class NewDeejayForm extends Component {
   handleCreateDeejay(event) {
     event.preventDefault();
     const { user, createDeejay } = this.props;
+
     let phoneInput = event.target.phone1.value + event.target.phone2.value + event.target.phone3.value;
+    let styleTagsInput = event.target.styleTags.value.split(', ')
+
     const newDeejay = {
       userId: user.id,
       name: event.target.name.value,
       email: event.target.email.value,
-      phone: phoneInput
+      phone: phoneInput,
+      styleTags: styleTagsInput
     };
     createDeejay(newDeejay);
     this.setState({ createdBool: true })
@@ -73,6 +81,7 @@ class NewDeejayForm extends Component {
     event.target.phone1.value = '';
     event.target.phone2.value = '';
     event.target.phone3.value = '';
+    event.target.styleTags.value = '';
     history.push('/deejay')
   }
 }

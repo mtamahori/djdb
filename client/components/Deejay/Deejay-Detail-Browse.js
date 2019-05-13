@@ -104,7 +104,7 @@ class DeejayDetailBrowse extends Component {
             <List.Item icon="marker" content="Chicago, IL" />
             <List.Item icon="mail" content={deejay.email} />
             <List.Item icon="phone" content={deejay.phone} />
-            <List.Item icon="music" content={deejay.styleTags.map(tag => {return tag + '! '})} />
+            <List.Item icon="music" content={deejay.styleTags.map(tag => {return tag + ', '})} />
             <List.Item>
                 <List.Content>
                   <List.Header>Bio</List.Header>

@@ -19,8 +19,7 @@ const DeejayItem = props => {
         <Card link>
           <Card.Content>
             <Card.Header>{deejay.name}</Card.Header>
-            <Card.Description>{deejay.email}</Card.Description>
-            <Card.Description>{deejay.phone}</Card.Description>
+            <Card.Description>{deejay.styleTags.map(tag => {return tag + ', '})}</Card.Description>
           </Card.Content>
         </Card>
       </NavLink>

@@ -34,6 +34,7 @@ const GigCurrentGig = props => {
                     <Card.Description>{formattedDate}</Card.Description>
                     <Card.Description>{gig.time}</Card.Description>
                     <Card.Description>{gig.location}</Card.Description>
+                    <Card.Description>Styles: {gig.styleTags.map(tag => {return tag + ', '})}</Card.Description>
                     <Card.Description>${gig.compensation}</Card.Description>
                   </Card.Content>
                 </Card>
