@@ -26,6 +26,11 @@ const Gig = db.define('gig', {
     type: Sequelize.TEXT,
     allowNull: true
   },
+  styleTags: {
+    type: Sequelize.ARRAY(Sequelize.STRING),
+    defaultValue: [],
+    allowNull: true
+  },
   deejayApplicants: {
     type: Sequelize.ARRAY(Sequelize.INTEGER),
     defaultValue: [],

@@ -59,6 +59,7 @@ class DeejayDetail extends Component {
               <List.Item icon="marker" content="Chicago, IL" />
               <List.Item icon="mail" content={currentDeejay.email} />
               <List.Item icon="phone" content={currentDeejay.phone} />
+              <List.Item icon="music" content={currentDeejay.styleTags.map(tag => {return tag + '! '})} />
               <List.Item>
                 <List.Content>
                   <List.Header>Bio</List.Header>
@@ -98,8 +99,12 @@ class DeejayDetail extends Component {
             <h4>
             Bio <br />
             </h4>
-            <Form.Input name="bio" type="text" placeholder="" />
+              <Form.Input name="bio" type="text" placeholder="" />
             </div>
+            <h4>
+            Style Tags <br />
+            </h4>
+              <Form.Input name="styleTags" type="text" placeholder="Add styles separated by comma + space" />
             <Message success header="Update Successful" />
             <Form.Button type="submit" value="submit" >
             Submit
@@ -130,12 +135,17 @@ class DeejayDetail extends Component {
     const { updateDeejay, currentDeejay } = this.props;
 
     let phoneInput = event.target.phone1.value + event.target.phone2.value + event.target.phone3.value;
+    let styleTagsInput = event.target.styleTags.value.split(', ')
+    // consider using a regEx to account for ',' and ', '
+
+    console.log('STYLETAGSINPUT', styleTagsInput)
 
     if (
       event.target.name.value === '' &&
       event.target.email.value === '' &&
       phoneInput === '' &&
-      event.target.bio.value === ''
+      event.target.bio.value === '' &&
+      event.target.styleTags.value === ''
     ) {
       alert("Please fill out at least one field");
     } else {
@@ -144,7 +154,8 @@ class DeejayDetail extends Component {
         name: event.target.name.value || currentDeejay.name,
         email: event.target.email.value || currentDeejay.email,
         phone: phoneInput || currentDeejay.phone,
-        bio: event.target.bio.value || currentDeejay.bio
+        bio: event.target.bio.value || currentDeejay.bio,
+        styleTags: styleTagsInput || currentDeejay.styleTags
       }
       updateDeejay(deejay);
       this.setState({ updateBool: true })
@@ -154,6 +165,7 @@ class DeejayDetail extends Component {
       event.target.phone2.value = '';
       event.target.phone3.value = '';
       event.target.bio.value = '';
+      event.target.styleTags.value = '';
     }
   }
 }

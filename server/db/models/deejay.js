@@ -20,7 +20,12 @@ const Deejay = db.define('deejay', {
   bio: {
     type: Sequelize.TEXT,
     allowNull: true
-  }
+  },
+  styleTags: {
+    type: Sequelize.ARRAY(Sequelize.STRING),
+    defaultValue: [],
+    allowNull: true
+  },
 });
 
 module.exports = Deejay;
