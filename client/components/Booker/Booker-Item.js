@@ -11,7 +11,7 @@ const BookerItem = props => {
         to={{
           pathname: `/bookers/${booker.id}`,
           state: {
-            // currentGig: currentGig,
+            currentGig: currentGig,
             currentDeejay: currentDeejay
           }
         }}

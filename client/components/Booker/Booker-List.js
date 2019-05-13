@@ -1,13 +1,13 @@
 import React from 'react';
 import BookerItem from './Booker-Item';
+require('../../../public/stylesheets/bookerList.css')
 
 const BookerList = props => {
-  const { bookers } = props;
+  const { bookers, currentGig, currentDeejay } = props;
   return (
-    <div>
-      <h3>Booker List</h3>
+    <div className="booker-list-items">
       {bookers.map(booker => (
-        <BookerItem booker={booker} key={booker.id} />
+        <BookerItem booker={booker} key={booker.id} currentGig={currentGig} currentDeejay={currentDeejay} />
       ))}
     </div>
   );

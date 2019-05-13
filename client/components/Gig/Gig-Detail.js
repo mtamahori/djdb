@@ -32,8 +32,8 @@ class GigDetail extends Component {
     :
     { currentBooker } = this.props;
 
-    console.log('CURRENTGIG', currentGig)
-    console.log('CURRENTBOOKER', currentBooker)
+    // console.log('CURRENTGIG', currentGig)
+    // console.log('CURRENTBOOKER', currentBooker)
 
     if (!currentGig) {
       console.log('NO CURRENT GIG')

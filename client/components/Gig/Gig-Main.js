@@ -6,6 +6,7 @@ import dateFns from 'date-fns'
 import GigList from './Gig-List'
 import NewGigForm from './New-Gig-Form'
 import DeejayList from '../Deejay/Deejay-List'
+import BookerList from '../Booker/Booker-List'
 
 class GigMain extends Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class GigMain extends Component {
       viewUpcomingGigList: false,
       viewBrowseGigs: false,
       viewBrowseDeejays: false,
+      viewBrowseBookers: false,
     }
   }
 
@@ -28,40 +30,40 @@ class GigMain extends Component {
       <Grid>
         {
           currentBooker &&
-        <Grid.Row columns={2} textAlign="center">
-          <Grid.Column>
-            <Button
-              onClick={() => {
-                this.state.viewNewGigForm === false ?
-                this.setState({ viewNewGigForm: true }) :
-                this.setState({ viewNewGigForm: false })
-              }}
-              size="massive">
-              New Booking
-            </Button>
-            {
-              this.state.viewNewGigForm && (
-                this.renderNewGigForm()
-              )
-            }
-          </Grid.Column>
-          <Grid.Column>
-            <Button
-              onClick={() => {
-                this.state.viewOpenGigList === false ?
-                this.setState({ viewOpenGigList: true }) :
-                this.setState({ viewOpenGigList: false })
-              }}
-              size="massive">
-              Open Bookings
-            </Button>
-            {
-              this.state.viewOpenGigList && (
-                this.renderOpenGigList()
-              )
-            }
-          </Grid.Column>
-        </Grid.Row>
+          <Grid.Row columns={2} textAlign="center">
+            <Grid.Column>
+              <Button
+                onClick={() => {
+                  this.state.viewNewGigForm === false ?
+                  this.setState({ viewNewGigForm: true }) :
+                  this.setState({ viewNewGigForm: false })
+                }}
+                size="massive">
+                New Booking
+              </Button>
+              {
+                this.state.viewNewGigForm && (
+                  this.renderNewGigForm()
+                )
+              }
+            </Grid.Column>
+            <Grid.Column>
+              <Button
+                onClick={() => {
+                  this.state.viewOpenGigList === false ?
+                  this.setState({ viewOpenGigList: true }) :
+                  this.setState({ viewOpenGigList: false })
+                }}
+                size="massive">
+                Open Bookings
+              </Button>
+              {
+                this.state.viewOpenGigList && (
+                  this.renderOpenGigList()
+                )
+              }
+            </Grid.Column>
+          </Grid.Row>
         }
 
         <Grid.Row columns={2} textAlign="center">
@@ -99,45 +101,65 @@ class GigMain extends Component {
           </Grid.Column>
         </Grid.Row>
 
-        <Grid.Row columns={1} textAlign="center">
-          <Grid.Column>
-            {
-              currentDeejay &&
-            <Button
-              onClick={() => {
-                this.state.viewBrowseGigs === false ?
-                this.setState({ viewBrowseGigs: true }) :
-                this.setState({ viewBrowseGigs: false })
-              }}
-              size="massive">
-              Browse Open Bookings
-            </Button>
-            }
-            {
-              this.state.viewBrowseGigs && (
-                this.renderBrowseGigs()
-              )
-            }
-            {
-              currentBooker &&
-            <Button
-              onClick={() => {
-                this.state.viewBrowseDeejays === false ?
-                this.setState({ viewBrowseDeejays: true }) :
-                this.setState({ viewBrowseDeejays: false })
-              }}
-              size="massive">
-              Browse Deejays
-            </Button>
-            }
-            {
-              this.state.viewBrowseDeejays && (
-                this.renderBrowseDeejays()
-              )
-            }
-          </Grid.Column>
-        </Grid.Row>
+        {
+          currentDeejay &&
+            <Grid.Row columns={2} textAlign="center">
+              <Grid.Column>
+                    <Button
+                      onClick={() => {
+                        this.state.viewBrowseGigs === false ?
+                        this.setState({ viewBrowseGigs: true }) :
+                        this.setState({ viewBrowseGigs: false })
+                      }}
+                      size="massive">
+                      Browse Open Bookings
+                    </Button>
+                {
+                  this.state.viewBrowseGigs && (
+                    this.renderBrowseGigs()
+                  )
+                }
+              </Grid.Column>
+              <Grid.Column>
+                  <Button
+                  onClick={() => {
+                    this.state.viewBrowseBookers === false ?
+                    this.setState({ viewBrowseBookers : true }) :
+                    this.setState({ viewBrowseBookers: false })
+                  }}
+                  size="massive">
+                  Browse Bookers
+                </Button>
+                {
+                  this.state.viewBrowseBookers && (
+                    this.renderBrowseBookers()
+                  )
+                }
+              </Grid.Column>
+            </Grid.Row>
+        }
 
+        {
+          currentBooker &&
+            <Grid.Row columns={1} textAlign="center">
+              <Grid.Column>
+                <Button
+                  onClick={() => {
+                    this.state.viewBrowseDeejays === false ?
+                    this.setState({ viewBrowseDeejays: true }) :
+                    this.setState({ viewBrowseDeejays: false })
+                  }}
+                  size="massive">
+                  Browse Deejays
+                </Button>
+                {
+                  this.state.viewBrowseDeejays && (
+                    this.renderBrowseDeejays()
+                  )
+                }
+              </Grid.Column>
+            </Grid.Row>
+        }
       </Grid>
     )
   }
@@ -262,6 +284,13 @@ class GigMain extends Component {
     )
   }
 
+  renderBrowseBookers() {
+    const { bookers, currentDeejay } = this.props;
+    return (
+      <BookerList bookers={bookers} currentDeejay={currentDeejay} />
+    )
+  }
+
   renderBrowseGigs() {
     const { currentDeejay, gigs } = this.props;
 
@@ -302,7 +331,7 @@ class GigMain extends Component {
 
 }
 
-const mapState = ({ gigs, deejays }) => ({ gigs, deejays });
+const mapState = ({ gigs, deejays, bookers }) => ({ gigs, deejays, bookers });
 const mapDispatch = null;
 
 export default withRouter(connect(mapState, mapDispatch)(GigMain))
