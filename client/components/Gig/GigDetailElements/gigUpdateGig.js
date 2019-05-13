@@ -110,7 +110,7 @@ class GigUpdateGig extends Component {
         <Form success={this.state.updatedBool} onSubmit={(event) => this.handleUpdateGig(event, name, date1, date2, date3, startTime1, startTime2, startTime3, endTime1, endTime2, endTime3, location, compensation)} width={2}>
 
           <Form.Group  width={2}>
-            <Form.Input required name="name" placeholder="Name" onChange={this.handleName.bind(this)}>
+            <Form.Input name="name" placeholder="Name" onChange={this.handleName.bind(this)}>
             </Form.Input>
 
             <Form.Dropdown required name="date1" placeholder="Month" fluid selection options={months} onChange={this.handleDate1.bind(this)}>
@@ -142,9 +142,9 @@ class GigUpdateGig extends Component {
           </Form.Group>
 
           <Form.Group  width={2}>
-            <Form.Input required name="location" placeholder="Location" onChange={this.handleLocation.bind(this)}>
+            <Form.Input name="location" placeholder="Location" onChange={this.handleLocation.bind(this)}>
             </Form.Input>
-            <Form.Input required name="compensation" placeholder="Compensation" onChange={this.handleCompensation.bind(this)}>
+            <Form.Input name="compensation" placeholder="Compensation" onChange={this.handleCompensation.bind(this)}>
             </Form.Input>
           </Form.Group>
 
@@ -211,6 +211,14 @@ class GigUpdateGig extends Component {
     const { updateGig, currentGig, currentBooker } = this.props
     let newGig;
 
+    if (
+      event.target.name.value === '' &&
+      event.target.location.value === '' &&
+      event.target.compensation.value === ''
+    ) {
+      alert("Please fill out at least one field");
+    }
+
     let dateInput = date3 + '/' + date1 + '/' + date2;
     let startTime = startTime1 + ':' + startTime2 + startTime3;
     let endTime = endTime1 + ':' + endTime2 + endTime3;
@@ -218,11 +226,11 @@ class GigUpdateGig extends Component {
       newGig = {
         id: currentGig.id,
         bookerId: currentBooker.id,
-        name: name,
-        date: dateInput,
-        time: startTime + ' - ' + endTime,
-        location: location,
-        compensation: compensation
+        name: name || currentGig.name,
+        date: (dateInput !== '//') ? dateInput : currentGig.date,
+        time: ((startTime + ' - ' + endTime) !== ': - :') ? (startTime + ' - ' + endTime) : currentGig.time,
+        location: location || currentGig.location,
+        compensation: compensation || currentGig.compensation
       }
       updateGig(newGig)
       this.setState({ updatedBool: true })
