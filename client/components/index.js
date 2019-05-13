@@ -27,7 +27,9 @@ export { default as GigPendingApplications} from './Deejay/Gig-Pending-Applicati
 
 export { default as GigMain } from './Gig/Gig-Main'
 export { default as GigList } from './Gig/Gig-List'
+export { default as GigListStatic } from './Gig/Gig-List-Static'
 export { default as GigItem } from './Gig/Gig-Item'
+export { default as GigItemStatic } from './Gig/Gig-Item-Static'
 export { default as GigDetail } from './Gig/Gig-Detail'
 
 export { default as GigAcceptDeclineBookingRequest } from './Gig/GigDetailElements/gigAcceptDeclineBookingRequest'

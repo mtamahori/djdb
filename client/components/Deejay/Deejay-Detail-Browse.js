@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { GigList } from '../index'
+import { GigList, GigListStatic } from '../index'
 import { updateGig, createChannel } from '../../store'
 import { List, Button } from 'semantic-ui-react'
 import history from '../../history'
@@ -129,7 +129,7 @@ class DeejayDetailBrowse extends Component {
       ?
       <div>
         <h3>This Deejay's Past Gigs:</h3>
-        <GigList currentDeejay={currentDeejay} gigs={pastGigs} />
+        <GigListStatic gigs={pastGigs} />
       </div>
       :
       <h3>This Deejay Has Not Played Out Yet</h3>
