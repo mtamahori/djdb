@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { GigList, GigListStatic } from '../index'
+import { GigListStatic } from '../index'
 import { updateGig, createChannel } from '../../store'
 import { List, Button } from 'semantic-ui-react'
 import history from '../../history'

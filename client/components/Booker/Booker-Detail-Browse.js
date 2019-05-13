@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { GigListStatic } from '../index'
 import { createChannel } from '../../store'
 import { List, Button } from 'semantic-ui-react'
 import history from '../../history'
+import dateFns from 'date-fns'
 require('../../../public/stylesheets/profile.css')
 
 class BookerDetailBrowse extends Component {
@@ -39,6 +41,9 @@ class BookerDetailBrowse extends Component {
             currentChannel &&
             this.renderSendMessage(currentChannel, currentDeejay)
           }
+          {
+            this.renderBookerPastGigs(currentBookerBrowse)
+          }
         </div>
       )
     }
@@ -63,6 +68,26 @@ class BookerDetailBrowse extends Component {
           </List>
         }
       </div>
+    )
+  }
+
+  renderBookerPastGigs(currentBooker) {
+    const { gigs } = this.props;
+    let pastGigs = gigs.filter(gig => {
+      return (
+        gig.bookerId === currentBooker.id &&
+        this.pastDateCheck(gig)
+      )
+    })
+    return (
+      pastGigs.length
+      ?
+      <div>
+        <h3>This Booker's Past Gigs:</h3>
+        <GigListStatic gigs={pastGigs} />
+      </div>
+      :
+      <h3>This Booker Has Not Hosted and Event Yet</h3>
     )
   }
 
@@ -100,6 +125,14 @@ class BookerDetailBrowse extends Component {
     )
   }
 
+  pastDateCheck(gig) {
+    let gigDateArr = gig.date.split('/')
+    let gigYear = gigDateArr[0]
+    let gigMonth = gigDateArr[1]
+    let gigDate = gigDateArr[2]
+    return dateFns.isBefore(new Date(gigYear, gigMonth, gigDate), Date.now())
+  }
+
   handleCreateChannel(event) {
     event.preventDefault();
     const { channels, createChannel, currentBookerBrowse } = this.props;
@@ -114,12 +147,13 @@ class BookerDetailBrowse extends Component {
   }
 }
 
-const mapState = ({ user, bookers, channels }, ownProps) => {
+const mapState = ({ user, bookers, channels, gigs }, ownProps) => {
   const bookerParamId = Number(ownProps.match.params.id)
   return {
     user,
     bookers,
     channels,
+    gigs,
     currentBookerBrowse: bookers.filter(booker => booker.id === bookerParamId)[0]
   }
 }
