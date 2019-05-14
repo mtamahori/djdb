@@ -22,6 +22,10 @@ export { default as DeejayDetail } from './Deejay/Deejay-Detail'
 export { default as DeejayDetailBrowse } from './Deejay/Deejay-Detail-Browse'
 export { default as NewDeejayForm } from './Deejay/New-Deejay-Form'
 
+export { default as FilterGigs } from './Gig/Filter-Gigs'
+export { default as FilterBookers } from './Booker/Filter-Bookers'
+export { default as FilterDeejays } from './Deejay/Filter-Deejays'
+
 export { default as GigInvites } from './Deejay/Gig-Invites'
 export { default as GigPendingApplications} from './Deejay/Gig-Pending-Applications'
 

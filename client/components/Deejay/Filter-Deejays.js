@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import GigItem from './Gig-Item'
+import DeejayItem from './Deejay-Item'
 
-class FilterGigs extends Component {
+class FilterDeejays extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
-      inputValue: '',
+      inputValue: ''
     }
 
     this.handleInput = this.handleInput.bind(this)
@@ -21,13 +21,12 @@ class FilterGigs extends Component {
   }
 
   renderTextMatch() {
-    const { gigs, currentDeejay } = this.props;
+    const { deejays, currentBooker } = this.props;
 
-    const renderGigsByMatch = gigs.filter(gig => {
-        let tags = gig.styleTags.join(',');
+    const renderDeejaysByMatch = deejays.filter(deejay => {
+      let tags = deejay.styleTags.join(',');
       return (
-        gig.name.match(this.state.inputValue) ||
-        gig.location.match(this.state.inputValue) ||
+        deejay.name.match(this.state.inputValue) ||
         tags.match(this.state.inputValue)
       )
     })
@@ -35,11 +34,11 @@ class FilterGigs extends Component {
     return (
       <div>
         <form onChange={this.handleInput} >
-          <input name="filter" type="text" placeholder="Search by Name / Location / Style" />
+          <input name="filter" type="text" placeholder="Search by Name / Style" />
         </form>
           {
-            renderGigsByMatch.map(gig => (
-              <GigItem gig={gig} key={gig.id} currentDeejay={currentDeejay} />
+            renderDeejaysByMatch.map(deejay => (
+              <DeejayItem deejay={deejay} key={deejay.id} currentBooker={currentBooker} />
             ))
           }
       </div>
@@ -52,4 +51,4 @@ class FilterGigs extends Component {
   }
 }
 
-export default FilterGigs
+export default FilterDeejays;

@@ -8,6 +8,8 @@ import NewGigForm from './New-Gig-Form'
 import DeejayList from '../Deejay/Deejay-List'
 import BookerList from '../Booker/Booker-List'
 import FilterGigs from './Filter-Gigs'
+import FilterBookers  from '../Booker/Filter-Bookers'
+import FilterDeejays from '../Deejay/Filter-Deejays'
 
 class GigMain extends Component {
   constructor(props) {
@@ -282,7 +284,7 @@ class GigMain extends Component {
   renderBrowseDeejays() {
     const { deejays, currentBooker } = this.props;
     return (
-      <DeejayList deejays={deejays} currentBooker={currentBooker} />
+      <FilterDeejays deejays={deejays} currentBooker={currentBooker} />
     )
   }
 
@@ -309,7 +311,7 @@ class GigMain extends Component {
       })
       return (
         <div>
-          <FilterGigs currentDeejay={currentDeejay} gigs={openGigs} />
+          <FilterGigs gigs={openGigs} currentDeejay={currentDeejay} />
         </div>
       )
     }
