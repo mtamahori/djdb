@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import DeejayItem from './Deejay-Item'
+require('../../../public/stylesheets/deejayList.css')
 
 class FilterDeejays extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class FilterDeejays extends Component {
     })
 
     return (
-      <div>
+      <div className="deejay-list-items">
         <form onChange={this.handleInput} >
           <input name="filter" type="text" placeholder="Search by Name / Style" />
         </form>

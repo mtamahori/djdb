@@ -291,7 +291,7 @@ class GigMain extends Component {
   renderBrowseBookers() {
     const { bookers, currentDeejay } = this.props;
     return (
-      <BookerList bookers={bookers} currentDeejay={currentDeejay} />
+      <FilterBookers bookers={bookers} currentDeejay={currentDeejay} />
     )
   }
 
