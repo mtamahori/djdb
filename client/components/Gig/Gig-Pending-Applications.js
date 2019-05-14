@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
-import GigList from '../Gig/Gig-List'
+import GigList from './Gig-List'
 import dateFns from 'date-fns'
+
+// FOR DEEJAYS
+// VIEWING OUTGOING BOOKING REQUESTS TO BOOKERS
 
 class GigPendingApplications extends Component {
   constructor(props) {
@@ -65,7 +66,4 @@ class GigPendingApplications extends Component {
   }
 }
 
-const mapState = null;
-const mapDispatch = null;
-
-export default connect(mapState, mapDispatch)(GigPendingApplications)
+export default GigPendingApplications

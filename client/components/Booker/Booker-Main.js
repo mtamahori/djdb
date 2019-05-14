@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
 import { Grid, Button } from 'semantic-ui-react'
 import CalendarMain from '../Calendar/Calendar-Main'
-import { BookerDetail, GigMain, GigApplications, GigPendingInvites, NewBookerForm, MainInbox } from '../index'
+import { GigMain, GigApplications, GigPendingInvites, NewBookerForm } from '../index'
 
 
 class BookerMain extends Component {

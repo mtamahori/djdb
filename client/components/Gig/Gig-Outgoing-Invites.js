@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
 import { Button } from 'semantic-ui-react'
-import GigList from '../Gig/Gig-List'
+import GigList from './Gig-List'
 import dateFns from 'date-fns'
 
-class GigPendingInvites extends Component {
+// FOR DEEJAYS
+// VIEWING INCOMING BOOKING REQUESTS FROM BOOKERS
+
+class GigInvites extends Component {
   constructor(props) {
     super(props);
 
@@ -24,34 +25,33 @@ class GigPendingInvites extends Component {
             this.setState({ view: false })
           }}
           size="massive">
-          Outgoing Booking Requests
+          Incoming Booking Requests
         </Button>
         {
         this.state.view &&
-        this.renderGigPendingInvites()
+        this.renderGigInvites()
         }
       </div>
     )
   }
 
-  renderGigPendingInvites() {
-    const { currentBooker, gigs } = this.props;
-
-    const gigPendingInvites = gigs.filter(gig => {
+  renderGigInvites() {
+    const { currentDeejay, gigs } = this.props;
+    const gigInvites = gigs.filter(gig => {
       return (
-        gig.deejayId === null &&
-        gig.bookerId === currentBooker.id &&
-        gig.deejayInvites.length &&
+        !gig.deejayId &&
+        gig.deejayInvites.indexOf(currentDeejay.id) !== -1 &&
+        gig.declinedApps.indexOf(currentDeejay.id) === -1 &&
+        gig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
         this.futureDateCheck(gig)
       )
     })
-
     return (
-      gigPendingInvites.length
+      gigInvites.length
       ?
-      <GigList currentBooker={currentBooker} gigs={gigPendingInvites} />
+      <GigList currentDeejay={currentDeejay} gigs={gigInvites} />
       :
-      <h3>You Have No Outgoing Pending Booking Requests Right Now</h3>
+      <h3>You Have No Incoming Requests Right Now</h3>
     )
   }
 
@@ -64,7 +64,5 @@ class GigPendingInvites extends Component {
   }
 }
 
-const mapState = null;
-const mapDispatch = null;
+export default GigInvites
 
-export default connect(mapState, mapDispatch)(GigPendingInvites)

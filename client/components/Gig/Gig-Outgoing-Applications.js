@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
-import GigList from '../Gig/Gig-List'
+import GigList from './Gig-List'
 import dateFns from 'date-fns'
 
-class GigInvites extends Component {
+// FOR BOOKERS
+// VIEWING INCOMING BOOKING REQUESTS FROM DEEJAYS
+
+class GigApplications extends Component {
   constructor(props) {
     super(props);
 
@@ -27,29 +29,30 @@ class GigInvites extends Component {
         </Button>
         {
         this.state.view &&
-        this.renderGigInvites()
+        this.renderGigApplications()
         }
       </div>
     )
   }
 
-  renderGigInvites() {
-    const { currentDeejay, gigs } = this.props;
-    const gigInvites = gigs.filter(gig => {
+  renderGigApplications() {
+    const { currentBooker, gigs } = this.props;
+
+    const gigApplications = gigs.filter(gig => {
       return (
-        !gig.deejayId &&
-        gig.deejayInvites.indexOf(currentDeejay.id) !== -1 &&
-        gig.declinedApps.indexOf(currentDeejay.id) === -1 &&
-        gig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
+        gig.deejayId === null &&
+        gig.bookerId === currentBooker.id &&
+        gig.deejayApplicants.length &&
         this.futureDateCheck(gig)
       )
     })
+
     return (
-      gigInvites.length
+      gigApplications.length
       ?
-      <GigList currentDeejay={currentDeejay} gigs={gigInvites} />
+      <GigList currentBooker={currentBooker} gigs={gigApplications} />
       :
-      <h3>You Have No Incoming Requests Right Now</h3>
+      <h3>You Have No Incoming Booking Requests Right Now</h3>
     )
   }
 
@@ -62,8 +65,4 @@ class GigInvites extends Component {
   }
 }
 
-const mapState = null;
-const mapDispatch = null;
-
-export default connect(mapState, mapDispatch)(GigInvites)
-
+export default GigApplications

@@ -5,15 +5,14 @@ export { default as UserHome } from './User/User-Home'
 export { default as UserProfile } from './User/User-Profile'
 export { Login, Signup } from './Auth-Form'
 
+export { default as CalendarMain } from './Calendar/Calendar-Main'
+
 export { default as BookerMain } from './Booker/Booker-Main'
 export { default as BookerList } from './Booker/Booker-List'
 export { default as BookerItem } from './Booker/Booker-Item'
 export { default as BookerDetail } from './Booker/Booker-Detail'
 export { default as BookerDetailBrowse } from './Booker/Booker-Detail-Browse'
 export { default as NewBookerForm } from './Booker/New-Booker-Form'
-
-export { default as GigApplications } from './Booker/Gig-Applications'
-export { default as GigPendingInvites } from './Booker/Gig-Pending-Invites'
 
 export { default as DeejayMain } from './Deejay/Deejay-Main'
 export { default as DeejayList } from './Deejay/Deejay-List'
@@ -26,8 +25,10 @@ export { default as FilterGigs } from './Gig/Filter-Gigs'
 export { default as FilterBookers } from './Booker/Filter-Bookers'
 export { default as FilterDeejays } from './Deejay/Filter-Deejays'
 
-export { default as GigInvites } from './Deejay/Gig-Invites'
-export { default as GigPendingApplications} from './Deejay/Gig-Pending-Applications'
+export { default as GigInvites } from './Gig/Gig-Outgoing-Invites'
+export { default as GigPendingApplications} from './Gig/Gig-Pending-Applications'
+export { default as GigApplications } from './Gig/Gig-Outgoing-Applications'
+export { default as GigPendingInvites } from './Gig/Gig-Pending-Invites'
 
 export { default as GigMain } from './Gig/Gig-Main'
 export { default as GigList } from './Gig/Gig-List'

@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
-import GigList from '../Gig/Gig-List'
+import GigList from './Gig-List'
 import dateFns from 'date-fns'
 
-class GigApplications extends Component {
+// FOR BOOKERS
+// VIEWING OUTGOING BOOKING REQUESTS TO DEEJAYS
+
+class GigPendingInvites extends Component {
   constructor(props) {
     super(props);
 
@@ -23,34 +26,34 @@ class GigApplications extends Component {
             this.setState({ view: false })
           }}
           size="massive">
-          Incoming Booking Requests
+          Outgoing Booking Requests
         </Button>
         {
         this.state.view &&
-        this.renderGigApplications()
+        this.renderGigPendingInvites()
         }
       </div>
     )
   }
 
-  renderGigApplications() {
+  renderGigPendingInvites() {
     const { currentBooker, gigs } = this.props;
 
-    const gigApplications = gigs.filter(gig => {
+    const gigPendingInvites = gigs.filter(gig => {
       return (
         gig.deejayId === null &&
         gig.bookerId === currentBooker.id &&
-        gig.deejayApplicants.length &&
+        gig.deejayInvites.length &&
         this.futureDateCheck(gig)
       )
     })
 
     return (
-      gigApplications.length
+      gigPendingInvites.length
       ?
-      <GigList currentBooker={currentBooker} gigs={gigApplications} />
+      <GigList currentBooker={currentBooker} gigs={gigPendingInvites} />
       :
-      <h3>You Have No Incoming Booking Requests Right Now</h3>
+      <h3>You Have No Outgoing Pending Booking Requests Right Now</h3>
     )
   }
 
@@ -63,7 +66,4 @@ class GigApplications extends Component {
   }
 }
 
-const mapState = null;
-const mapDispatch = null;
-
-export default connect(mapState, mapDispatch)(GigApplications)
+export default GigPendingInvites

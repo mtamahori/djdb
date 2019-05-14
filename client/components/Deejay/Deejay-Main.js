@@ -1,13 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
 import { Grid, Button } from 'semantic-ui-react'
-import DeejayDetail from './Deejay-Detail'
-import CalendarMain from '../Calendar/Calendar-Main'
-import GigMain from '../Gig/Gig-Main'
-import GigInvites from './Gig-Invites'
-import GigPendingApplications from './Gig-Pending-Applications'
-import NewDeejayForm from './New-Deejay-Form'
+import { CalendarMain, GigMain, GigInvites, GigPendingApplications, NewDeejayForm } from '../index'
 
 class DeejayMain extends Component {
   constructor(props) {
