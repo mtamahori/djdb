@@ -7,6 +7,7 @@ import GigList from './Gig-List'
 import NewGigForm from './New-Gig-Form'
 import DeejayList from '../Deejay/Deejay-List'
 import BookerList from '../Booker/Booker-List'
+import FilterGigs from './Filter-Gigs'
 
 class GigMain extends Component {
   constructor(props) {
@@ -308,7 +309,7 @@ class GigMain extends Component {
       })
       return (
         <div>
-          <GigList currentDeejay={currentDeejay} gigs={openGigs} />
+          <FilterGigs currentDeejay={currentDeejay} gigs={openGigs} />
         </div>
       )
     }

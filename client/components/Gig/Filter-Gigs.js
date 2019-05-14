@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import GigItem from './Gig-Item'
 
 class FilterGigs extends Component {
@@ -7,7 +6,7 @@ class FilterGigs extends Component {
     super(props);
 
     this.state = {
-      inputValue: ''
+      inputValue: '',
     }
 
     this.handleInput = this.handleInput.bind(this)
@@ -25,16 +24,18 @@ class FilterGigs extends Component {
     const { gigs } = this.props
 
     const renderGigsByMatch = gigs.filter(gig => {
+        let tags = gig.styleTags.join(',');
       return (
         gig.name.match(this.state.inputValue) ||
-        gig.location.match(this.state.inputValue)
+        gig.location.match(this.state.inputValue) ||
+        tags.match(this.state.inputValue)
       )
     })
 
     return (
       <div>
         <form onChange={this.handleInput} >
-          <input name="filter" type="text" placeholder="Search" />
+          <input name="filter" type="text" placeholder="Search by Name / Location / Style" />
         </form>
           {
             renderGigsByMatch.map(gig => (
@@ -51,7 +52,4 @@ class FilterGigs extends Component {
   }
 }
 
-const mapState = null;
-const mapDispatch = null;
-
-export default connect(mapState, mapDispatch)(FilterGigs)
+export default FilterGigs
