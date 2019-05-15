@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button } from 'semantic-ui-react'
+import { NewGigForm } from '../index'
 
 class NewGig extends Component {
   constructor(props) {
@@ -12,7 +13,27 @@ class NewGig extends Component {
 
   render() {
     return (
-      <h1>NewGig</h1>
+      <div>
+        <Button
+          onClick={() => {
+            this.state.view === false ?
+            this.setState({ view: true }) :
+            this.setState({ view: false })
+          }}
+          size="massive"
+        >+ New Booking
+        </Button>
+        {
+          this.state.view && this.renderNewGigForm()
+        }
+      </div>
+    )
+  }
+
+  renderNewGigForm() {
+    const { currentBooker } = this.props;
+    return (
+      <NewGigForm currentBooker={currentBooker} key={currentBooker.id} />
     )
   }
 }
