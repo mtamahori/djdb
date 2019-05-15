@@ -72,14 +72,16 @@ class CalendarMain extends Component {
       let gigYear = gigDateArr[0]
       let gigMonth = gigDateArr[1]
       let gigDate = gigDateArr[2]
+      let rawDate = new Date(gigYear, gigMonth, gigDate)
       let formattedDate = dateFns.format(new Date(gigYear, gigMonth, gigDate), 'D')
-      return formattedDate
+      return dateFns.isWithinRange(rawDate, monthStart, monthEnd) && formattedDate
     })
 
     // need to check this date array with the date of any given cell, render as needed
 
     // first version of this function will only render the cells for the current month. will need to re-click the "view X gigs" button upon changing months
     console.log('calendarGigDates', calendarGigDates)
+
     //
 
     const dateFormat = "D";
@@ -93,22 +95,39 @@ class CalendarMain extends Component {
       for (let i = 0; i < 7; i++) {
         formattedDate = dateFns.format(day, dateFormat);
         // const cloneDay = day;
-        days.push(
-          <div
-            className={`col cell ${
-              !dateFns.isSameMonth(day, monthStart)
-                ? "disabled"
-                : dateFns.isSameDay(day, selectedDate)
-                  ? "selected"
-                  : ""
-            }`}
-            key={day}
-            // onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
-          >
-            <span className="number">{formattedDate}</span>
-            <span className="bg">{formattedDate}</span>
-          </div>
-        );
+
+        // add 'marked' class to dates that match the calendarGigDates
+        if (calendarGigDates.includes(formattedDate)) {
+          days.push(
+            <div
+              className={`col cell marked`}
+              key={day}
+            >
+              <span className="number">{formattedDate}</span>
+              <span className="bg">{formattedDate}</span>
+            </div>
+          );
+        }
+        //
+
+        else {
+          days.push(
+            <div
+              className={`col cell ${
+                !dateFns.isSameMonth(day, monthStart)
+                  ? "disabled"
+                  : dateFns.isSameDay(day, selectedDate)
+                    ? "selected"
+                    : ""
+              }`}
+              key={day}
+              // onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
+            >
+              <span className="number">{formattedDate}</span>
+              <span className="bg">{formattedDate}</span>
+            </div>
+          );
+        }
         day = dateFns.addDays(day, 1);
       }
       rows.push(
