@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import dateFns from "date-fns";
-import "./calendar.css";
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import dateFns from 'date-fns';
+import './calendar.css';
 
 class CalendarMain extends Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class CalendarMain extends Component {
 
     this.state = {
       currentMonth: new Date(),
-      selectedDate: new Date()
+      selectedDate: new Date(),
     };
   }
 
@@ -75,7 +75,7 @@ class CalendarMain extends Component {
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate = dateFns.format(day, dateFormat);
-        const cloneDay = day;
+        // const cloneDay = day;
         days.push(
           <div
             className={`col cell ${
@@ -86,7 +86,7 @@ class CalendarMain extends Component {
                   : ""
             }`}
             key={day}
-            onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
+            // onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
@@ -104,11 +104,11 @@ class CalendarMain extends Component {
     return <div className="body">{rows}</div>;
   }
 
-  onDateClick = day => {
-    this.setState({
-      selectedDate: day
-    });
-  };
+  // onDateClick = day => {
+  //   this.setState({
+  //     selectedDate: day
+  //   });
+  // };
 
   nextMonth = () => {
     this.setState({
@@ -126,7 +126,4 @@ class CalendarMain extends Component {
 const mapState = null;
 const mapDispatch = null;
 
-export default connect(
-  mapState,
-  mapDispatch
-)(CalendarMain);
+export default connect(mapState, mapDispatch)(CalendarMain)

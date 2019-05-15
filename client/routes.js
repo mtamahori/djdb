@@ -15,7 +15,7 @@ import {
   DeejayDetailBrowse,
   GigDetail,
   MainInbox,
-  ChannelDetail
+  ChannelDetail,
 } from './components'
 
 class Routes extends Component {

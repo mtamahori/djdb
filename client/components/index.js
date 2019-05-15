@@ -25,7 +25,7 @@ export { default as FilterGigs } from './Gig/Filter-Gigs'
 export { default as FilterBookers } from './Booker/Filter-Bookers'
 export { default as FilterDeejays } from './Deejay/Filter-Deejays'
 
-export { default as GigMain } from './Gig/Gig-Main'
+// export { default as GigMain } from './Gig/Gig-Main'
 export { default as GigList } from './Gig/Gig-List'
 export { default as GigListStatic } from './Gig/Gig-List-Static'
 export { default as GigItem } from './Gig/Gig-Item'

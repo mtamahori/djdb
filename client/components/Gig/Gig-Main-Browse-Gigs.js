@@ -16,11 +16,9 @@ class BrowseGigList extends Component {
     return (
       <div>
         <Button
-          onClick={() => {
-            this.state.view === false ?
-            this.setState({ view: true }) :
-            this.setState({ view: false })
-          }}
+          onClick={() => this.setState(state => ({
+            view: !state.view
+          }))}
           size="massive"
         >Browse Gigs
         </Button>
