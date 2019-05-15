@@ -5,14 +5,10 @@ import { Card } from 'semantic-ui-react'
 const GigItemStatic = (props) => {
   const { gig } = props;
   const gigDateArr = gig.date.split('/')
-            const gigYear = gigDateArr[0]
-            const gigMonth = gigDateArr[1]
-            const gigDate = gigDateArr[2]
-
-            const formattedDate = dateFns.format(
-              new Date(gigYear, gigMonth, gigDate),
-              'MMMM D, YYYY'
-            )
+  const gigYear = gigDateArr[0]
+  const gigMonth = gigDateArr[1]
+  const gigDate = gigDateArr[2]
+  const formattedDate = dateFns.format(new Date(gigYear, gigMonth, gigDate), 'MMMM D, YYYY')
   return (
     <div>
         <Card>

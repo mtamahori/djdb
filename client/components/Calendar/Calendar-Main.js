@@ -65,6 +65,23 @@ class CalendarMain extends Component {
     const startDate = dateFns.startOfWeek(monthStart);
     const endDate = dateFns.endOfWeek(monthEnd);
 
+    //
+    const { calendarGigs } = this.props;
+    let calendarGigDates = calendarGigs.map(gig => {
+      let gigDateArr = gig.date.split('/')
+      let gigYear = gigDateArr[0]
+      let gigMonth = gigDateArr[1]
+      let gigDate = gigDateArr[2]
+      let formattedDate = dateFns.format(new Date(gigYear, gigMonth, gigDate), 'D')
+      return formattedDate
+    })
+
+    // need to check this date array with the date of any given cell, render as needed
+
+    // first version of this function will only render the cells for the current month. will need to re-click the "view X gigs" button upon changing months
+    console.log('calendarGigDates', calendarGigDates)
+    //
+
     const dateFormat = "D";
     const rows = [];
 
@@ -123,7 +140,7 @@ class CalendarMain extends Component {
   };
 }
 
-const mapState = ({ calendar }) => ({ calendar });
+const mapState = ({ calendarGigs }) => ({ calendarGigs });
 const mapDispatch = null;
 
 export default connect(mapState, mapDispatch)(CalendarMain)

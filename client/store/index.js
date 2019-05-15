@@ -8,9 +8,9 @@ import deejays from './deejays'
 import gigs from './gigs'
 import channels from './channels'
 import messages from './messages'
-import calendar from './calendar'
+import calendarGigs from './calendarGigs'
 
-const reducer = combineReducers({ user, bookers, deejays, gigs, channels, messages, calendar })
+const reducer = combineReducers({ user, bookers, deejays, gigs, channels, messages, calendarGigs })
 
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
@@ -23,6 +23,6 @@ export * from './deejays'
 export * from './gigs'
 export * from './channels'
 export * from './messages'
-export * from './calendar'
+export * from './calendarGigs'
 
 export default store
