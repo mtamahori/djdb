@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Grid, Button } from 'semantic-ui-react'
-import { CalendarMain, GigMain, GigInvites, GigPendingApplications, NewDeejayForm } from '../index'
+import { Grid } from 'semantic-ui-react'
+import { NewDeejayForm, CalendarMain, GigInvites, GigPendingApplications, PastGigList, UpcomingGigList, BrowseGigList, BrowseBookerList } from '../index'
 
 class DeejayMain extends Component {
   constructor(props) {
@@ -9,27 +9,47 @@ class DeejayMain extends Component {
   }
 
   render() {
-    const { currentDeejay, gigs } = this.props;
+    const { currentDeejay, gigs, bookers } = this.props;
     return (
       <div>
         {
-          currentDeejay === undefined
-          ?
-          <NewDeejayForm />
-          :
+          currentDeejay === undefined ?
+          <NewDeejayForm /> :
+
           <div>
             <CalendarMain currentDeejay={currentDeejay} />
+
             <Grid>
               <Grid.Row columns={2} textAlign="center">
                 <Grid.Column>
-                  <GigInvites currentDeejay={currentDeejay} gigs={gigs} />
+                  <GigInvites gigs={gigs} currentDeejay={currentDeejay} />
                 </Grid.Column>
                 <Grid.Column>
-                  <GigPendingApplications currentDeejay={currentDeejay} gigs={gigs} />
+                  <GigPendingApplications gigs={gigs} currentDeejay={currentDeejay} />
+                </Grid.Column>
+              </Grid.Row>
+
+              <Grid.Row columns={1} textAlign="center">
+                <Grid.Column>
+                  <BrowseGigList gigs={gigs} currentDeejay={currentDeejay} />
+                </Grid.Column>
+              </Grid.Row>
+
+              <Grid.Row columns={2} textAlign="center">
+                <Grid.Column>
+                  <PastGigList gigs={gigs} currentDeejay={currentDeejay} />
+                </Grid.Column>
+                <Grid.Column>
+                  <UpcomingGigList gigs={gigs} currentDeejay={currentDeejay} />
+                </Grid.Column>
+              </Grid.Row>
+
+              <Grid.Row columns={1} textAlign="center">
+                <Grid.Column>
+                  <BrowseBookerList bookers={bookers} currentDeejay={currentDeejay} />
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-            <GigMain currentDeejay={currentDeejay} />
           </div>
         }
       </div>

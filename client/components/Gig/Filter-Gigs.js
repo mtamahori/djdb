@@ -33,7 +33,7 @@ class FilterGigs extends Component {
     })
 
     return (
-      <div>
+      <div className="gig-list-items">
         <form onChange={this.handleInput} >
           <input name="filter" type="text" placeholder="Search by Name / Location / Style" />
         </form>
