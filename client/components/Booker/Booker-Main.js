@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Grid, Button } from 'semantic-ui-react'
-import CalendarMain from '../Calendar/Calendar-Main'
-import { GigMain, GigApplications, GigPendingInvites, NewBookerForm } from '../index'
+import { Grid } from 'semantic-ui-react'
+import { NewBookerForm, CalendarMain, GigApplications, GigPendingInvites, PastGigList, UpcomingGigList, OpenGigList, NewGig, BrowseDeejayList } from '../index'
 
 
 class BookerMain extends Component {
@@ -11,16 +10,16 @@ class BookerMain extends Component {
   }
 
   render() {
-    const { currentBooker, gigs } = this.props;
+    const { currentBooker, gigs, deejays } = this.props;
     return (
       <div>
         {
-          currentBooker === undefined
-          ?
-          <NewBookerForm />
-          :
+          currentBooker === undefined ?
+          <NewBookerForm /> :
+
           <div>
             <CalendarMain currentBooker={currentBooker} />
+
             <Grid>
               <Grid.Row columns={2} textAlign="center">
                 <Grid.Column>
@@ -30,8 +29,29 @@ class BookerMain extends Component {
                   <GigPendingInvites gigs={gigs} currentBooker={currentBooker} />
                 </Grid.Column>
               </Grid.Row>
+
+              <Grid.Row columns={3} textAlign="center">
+                <Grid.Column>
+                  <NewGig currentBooker={currentBooker} />
+                </Grid.Column>
+                <Grid.Column>
+                  <BrowseDeejayList deejays={deejays} currentBooker={currentBooker} />
+                </Grid.Column>
+                <Grid.Column>
+                  <OpenGigList gigs={gigs} currentBooker={currentBooker} />
+                </Grid.Column>
+              </Grid.Row>
+
+              <Grid.Row columns={2} textAlign="center">
+                <Grid.Column>
+                  <PastGigList gigs={gigs} currentBooker={currentBooker} />
+                </Grid.Column>
+                <Grid.Column>
+                  <UpcomingGigList gigs={gigs} currentBooker={currentBooker} />
+                </Grid.Column>
+              </Grid.Row>
             </Grid>
-            <GigMain currentBooker={currentBooker} />
+
           </div>
         }
       </div>
@@ -39,11 +59,12 @@ class BookerMain extends Component {
   }
 }
 
-const mapState = ({ user, bookers, gigs }) => {
+const mapState = ({ user, bookers, deejays, gigs }) => {
   return {
     user,
     gigs,
     bookers,
+    deejays,
     currentBooker: bookers.filter(booker => booker.userId === user.id)[0]
   }
 };

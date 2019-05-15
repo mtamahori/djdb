@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button } from 'semantic-ui-react'
-import FilterBookers from '../index'
+import { FilterBookers } from '../index'
 
 class BrowseBookerList extends Component {
   constructor(props) {

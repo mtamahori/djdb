@@ -37,11 +37,12 @@ class DeejayMain extends Component {
   }
 }
 
-const mapState = ({ user, gigs, deejays }) => {
+const mapState = ({ user, gigs, deejays, bookers }) => {
   return {
     user,
     gigs,
     deejays,
+    bookers,
     currentDeejay: deejays.filter(deejay => deejay.userId === user.id)[0]
   }
 };
