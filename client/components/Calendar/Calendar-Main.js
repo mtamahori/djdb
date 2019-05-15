@@ -123,7 +123,7 @@ class CalendarMain extends Component {
   };
 }
 
-const mapState = null;
+const mapState = ({ calendar }) => ({ calendar });
 const mapDispatch = null;
 
 export default connect(mapState, mapDispatch)(CalendarMain)
