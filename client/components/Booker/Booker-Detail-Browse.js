@@ -20,8 +20,12 @@ class BookerDetailBrowse extends Component {
     const { channels, currentBookerBrowse } = this.props;
 
     let currentChannel;
+
     let channelCheck = channels.filter(channel => (channel.bookerId === currentBookerBrowse.id) && (channel.deejayId === currentDeejay.id))
-    channelCheck.length ? currentChannel = channelCheck[0] : currentChannel = null;
+
+    channelCheck.length ?
+    currentChannel = channelCheck[0] :
+    currentChannel = null;
 
     if (!currentBookerBrowse) {
       return <div>Loading!</div>

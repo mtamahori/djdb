@@ -36,7 +36,7 @@ class GigDetail extends Component {
     // console.log('CURRENTBOOKER', currentBooker)
 
     if (!currentGig) {
-      console.log('NO CURRENT GIG')
+      // console.log('NO CURRENT GIG')
       return <div>Loading!</div>
     }
 
@@ -57,7 +57,6 @@ class GigDetail extends Component {
             currentBooker={currentBooker}
             currentGig={currentGig}
             deejays={deejays}
-            // handleUpdateGig={this.handleUpdateGig}
             handleDeleteGig={this.handleDeleteGig}
             />
           </div>

@@ -40,6 +40,7 @@ const GigCurrentGig = props => {
                 </Card>
                 {
                   gigBooker &&
+                  currentDeejay &&
                   <div>
                     <h4>This Gig's Booker:</h4>
                     <BookerItem booker={gigBooker} key={gigBooker.id} currentGig={currentGig} currentDeejay={currentDeejay} />
@@ -47,6 +48,7 @@ const GigCurrentGig = props => {
                 }
                 {
                   gigDeejay &&
+                  currentBooker &&
                   <div>
                     <h4>This Gig's Deejay:</h4>
                     <DeejayItem deejay={gigDeejay} key={gigDeejay.id} currentGig={currentGig} currentBooker={currentBooker} />
