@@ -72,14 +72,19 @@ async function seed() {
     {name: 'Humboldt Arboreal Society', date: '2019/5/6', time: '3:00pm - 8:00pm', location: 'Humboldt Park', compensation: 'fun', deejayId: 3, bookerId: 8, styleTags: ['ambient', 'soundtrack', 'jazz', 'soul', 'funk', 'disco', 'boogie', 'house']},
     {name: 'Past Punch House', date: '2019/1/19', time: '10:00pm - 2:00am', location: 'Punch House', compensation: '150', deejayId: 1, bookerId: 4, styleTags: ['soul', 'funk', 'disco', 'boogie', 'hip-hop', 'dub']},
     {name: 'Smartbar', date: '2019/3/20', time: '10:00pm - 4:00am', location: 'Smartbar', compensation: '150', deejayId: 1, bookerId: 2, styleTags: ['house', 'techno']},
-    {name: 'Humboldt Arboreal Society Kickoff', date: '2019/7/10', time: '12:00pm - 8:00pm', location: 'Humboldt Park', compensation: 'fun', bookerId: 8, styleTags: ['ambient', 'soundtrack', 'jazz', 'soul', 'funk', 'disco', 'boogie', 'house']},
-    {name: 'Max House Party', date: '2019/6/10', time: '12:00pm - 10:00pm', location: 'Albany Park', compensation: 'fun', bookerId: 1, styleTags: ['jazz', 'soul', 'funk', 'disco', 'boogie', 'house', 'techno', 'acid']},
-    {name: 'Open Format at BoozeBox', date: '2019/5/8', time: '9:00pm - 2:00am', location: 'Booze Box', compensation: '150', bookerId: 6, styleTags: ['soul', 'funk', 'hip-hop', 'disco']},
-    {name: 'Clark St Jams at Hideout', date: '2019/5/20', time: '11:00pm - 3:00am', location: 'Hideout', compensation: '75', bookerId: 7, styleTags: ['house', 'techno']},
-    {name: 'Underground Party', date: '2019/7/1', time: '11:00pm - 7:00am', location: 'TBA', compensation: '200', bookerId: 9, styleTags: ['techno', 'acid', 'bangers']},
-    {name: 'Monday at Danny\'s', date: '2019/5/20', time: '10:00pm - 2:00am', location: 'Danny\'s', compensation: '150', bookerId: 3, styleTags: ['jazz', 'dub', 'soul', 'disco', 'boogie']},
-    {name: 'Night at the Whistler', date: '2019/4/15', time: '10:00pm - 2:00am', location: 'The Whistler', compensation: '150', bookerId: 5, styleTags: ['jazz', 'soul', 'disco']},
-    {name: 'Smartbar Opening Slot', date: '2019/4/2', time: '10:00pm - 5:00am', location: 'smartbar', compensation: '250', bookerId: 2, styleTags: ['ambient', 'house', 'techno']}
+    {name: 'Humboldt Arboreal Society Kickoff', date: '2019/7/10', time: '12:00pm - 8:00pm', location: 'Humboldt Park', compensation: 'fun', bookerId: 8, styleTags: ['ambient', 'soundtrack', 'jazz', 'soul', 'funk', 'disco', 'boogie', 'house'], deejayApplicants: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]},
+    {name: 'Max House Party #1', date: '2019/6/10', time: '12:00pm - 10:00pm', location: 'Albany Park', compensation: 'fun', bookerId: 1, styleTags: ['jazz', 'soul', 'funk', 'disco', 'boogie', 'house', 'techno', 'acid'], deejayInvites: [5, 6, 7, 8, 9, 10, 11, 12]},
+    {name: 'Open Format at BoozeBox', date: '2019/6/8', time: '9:00pm - 2:00am', location: 'Booze Box', compensation: '150', deejayId: 1, bookerId: 6, styleTags: ['soul', 'funk', 'hip-hop', 'disco']},
+    {name: 'Clark St Jams at Hideout', date: '2019/5/20', time: '11:00pm - 3:00am', location: 'Hideout', compensation: '75', bookerId: 7, styleTags: ['house', 'techno'], deejayApplicants: [1]},
+    {name: 'Underground Party', date: '2019/7/1', time: '11:00pm - 7:00am', location: 'TBA', compensation: '200', bookerId: 9, styleTags: ['techno', 'acid', 'bangers'], deejayApplicants: [1, 2, 3, 4, 5, 6]},
+    {name: 'Monday at Danny\'s', date: '2019/5/20', time: '10:00pm - 2:00am', location: 'Danny\'s', compensation: '150', bookerId: 3, styleTags: ['jazz', 'dub', 'soul', 'disco', 'boogie'], deejayApplicants: [2, 4, 6, 8], deejayInvites: [1, 3, 5, 7, 9]},
+    {name: 'Night at the Whistler', date: '2019/6/15', time: '10:00pm - 2:00am', location: 'The Whistler', compensation: '150', bookerId: 5, styleTags: ['jazz', 'soul', 'disco']},
+    {name: 'Smartbar Opening Slot', date: '2019/7/2', time: '10:00pm - 5:00am', location: 'smartbar', compensation: '250', bookerId: 2, styleTags: ['ambient', 'house', 'techno'], deejayApplicants: [2, 3, 4, 6, 7, 8], deejayInvites: [1]},
+    {name: 'Punch House Residency', date: '2019/6/1', time: '9:00pm - 2:00am', location: 'Punch House', compensation: '150', deejayId: 1, bookerId: 4, styleTags: ['soul', 'funk', 'disco', 'boogie', 'house', 'ambient']},
+    {name: 'Max Patio Party #1', date: '2019/5/10', time: '12:00pm - 10:00pm', location: 'Albany Park', compensation: 'fun', deejayId: 2, bookerId: 1, styleTags: ['jazz', 'soul', 'funk', 'disco', 'boogie', 'house', 'techno', 'acid'], deejayApplicants: [2, 3, 4], deejayInvites: [5, 6, 7, 8, 9, 10, 11, 12]},
+    {name: 'Max House Party #2', date: '2019/9/10', time: '12:00pm - 10:00pm', location: 'Albany Park', compensation: 'fun', bookerId: 1, styleTags: ['jazz', 'soul', 'funk', 'disco', 'boogie', 'house', 'techno', 'acid'], deejayApplicants: [2, 3, 4], deejayInvites: [5, 6, 7, 8, 9, 10, 11, 12]},
+    {name: 'Max Patio Party #2', date: '2019/8/10', time: '12:00pm - 10:00pm', location: 'Albany Park', compensation: 'fun', bookerId: 1, styleTags: ['jazz', 'soul', 'funk', 'disco', 'boogie', 'house', 'techno', 'acid'], deejayApplicants: [2, 3, 4, 5, 6]},
+    {name: 'Max House Party #3', date: '2019/6/20', time: '12:00pm - 10:00pm', location: 'Albany Park', compensation: 'fun', bookerId: 1, styleTags: ['jazz', 'soul', 'funk', 'disco', 'boogie', 'house', 'techno', 'acid'], deejayInvites: [5, 6, 7, 11, 12]},
   ], (gig) => {
     return Gig.create(gig);
   })
