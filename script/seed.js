@@ -29,57 +29,57 @@ async function seed() {
     {email: 'boozebox@email.com', password: '123'},
     {email: 'hideout@email.com', password: '123'},
     {email: 'arboreal@email.com', password: '123'},
-    {email: 'underground@email.com', password: '123'}
+    {email: 'underground@email.com', password: '123'},
   ], (user) => {
     return User.create(user);
   })
 
   const bookers = await Promise.each([
-    {name: 'Max', email: 'max@email.com', phone: '3108693703', userId: 1, bio: 'This is Max booker bio description very useful and long much text'},
-    {name: 'Smartbar', email: 'smartbar@email.com', phone: '1234567890', userId: 13},
-    {name: 'Dannys', email: 'dannys@email.com', phone: '1234567890', userId: 14},
-    {name: 'Punch House', email: 'punchhouse@email.com', phone: '1234567890', userId: 15},
-    {name: 'Whistler', email: 'whistler@email.com', phone: '1234567890', userId: 16},
-    {name: 'Booze Box', email: 'boozebox@email.com', phone: '1234567890', userId: 17},
-    {name: 'Hideout', email: 'hideout@email.com', phone: '1234567890', userId: 18},
-    {name: 'Humboldt Arboreal Society', email: 'arboreal@email.com', phone: '1234567890', userId: 19},
-    {name: 'Underground', email: 'underground@email.com', phone: '1234567890', userId: 20}
+    {name: 'Max', email: 'max@email.com', phone: '1234567890', userId: 1, bio: 'This is booker bio for Max, bio for Max here.'},
+    {name: 'Smartbar', email: 'smartbar@email.com', phone: '1234567890', userId: 13, bio: 'This is booker bio for Smartbar, bio for Smartbar here.'},
+    {name: 'Dannys', email: 'dannys@email.com', phone: '1234567890', userId: 14, bio: 'This is booker bio for Dannys, bio for Dannys here.'},
+    {name: 'Punch House', email: 'punchhouse@email.com', phone: '1234567890', userId: 15, bio: 'This is booker bio for Punch House, bio for Punch House here.'},
+    {name: 'Whistler', email: 'whistler@email.com', phone: '1234567890', userId: 16, bio: 'This is booker bio for Whistler, bio for Whistler here.'},
+    {name: 'Booze Box', email: 'boozebox@email.com', phone: '1234567890', userId: 17, bio: 'This is booker bio for Booze Box, bio for Booze Box here.'},
+    {name: 'Hideout', email: 'hideout@email.com', phone: '1234567890', userId: 18, bio: 'This is booker bio for Hideout, bio for Hidout here.'},
+    {name: 'Humboldt Arboreal Society', email: 'arboreal@email.com', phone: '1234567890', userId: 19, bio: 'We love trees yes we do yes we do'},
+    {name: 'Underground', email: 'underground@email.com', phone: '1234567890', userId: 20, bio: 'This is very cool bio for very cool underground booker.'}
   ], (booker) => {
-    return Booker.create(booker);
+    return Booker.create(booker)
   })
 
   const deejays = await Promise.each([
-    {name: 'Max', email: 'max@email.com', phone: '3108693703', userId: 1, bio: 'This is Max booker bio description very useful and long much text', styleTags: ['house', 'disco']},
-    {name: 'Meri', email: 'meri@email.com', phone: '7818012471', userId: 2},
-    {name: 'Miles', email: 'miles@email.com', phone: '4043846952', userId: 3},
-    {name: 'Maeve', email: 'maeve@email.com', phone: '2072660335', userId: 4},
-    {name: 'Jason', email: 'jason@email.com', phone: '1234567890', userId: 5},
-    {name: 'Jake', email: 'jake@email.com', phone: '1234567890', userId: 6},
-    {name: 'Ray', email: 'ray@email.com', phone: '1234567890', userId: 7},
-    {name: 'Tom', email: 'tom@email.com', phone: '1234567890', userId: 8},
-    {name: 'Paddy', email: 'paddy@email.com', phone: '1234567890', userId: 9},
-    {name: 'Merrick', email: 'merrick@email.com', phone: '1234567890', userId: 10},
-    {name: 'Alicia', email: 'alicia@email.com', phone: '1234567890', userId: 11},
-    {name: 'Sam', email: 'sam@email.com', phone: '1234567890', userId: 12}
+    {name: 'Max', email: 'max@email.com', phone: '1234567890', userId: 1, bio: 'This is deejay bio for Max, bio for Max here.', styleTags: ['jazz', 'funk', 'disco', 'boogie', 'house', 'techno']},
+    {name: 'Meri', email: 'meri@email.com', phone: '1234567890', userId: 2, bio: 'This is deejay bio for Meri, bio for Meri here.', styleTags: ['house', 'techno']},
+    {name: 'Miles', email: 'miles@email.com', phone: '1234567890', userId: 3, bio: 'This is deejay bio for Miles, bio for Miles here.', styleTags: ['funk', 'disco', 'house', 'techno', 'bangers']},
+    {name: 'Maeve', email: 'maeve@email.com', userId: 4, bio: 'This is deejay bio for Maeve, bio for Maeve here.', styleTags: ['house', 'techno']},
+    {name: 'Jason', email: 'jason@email.com', userId: 5, bio: 'This is deejay bio for Jason, bio for Jason here.', styleTags: ['house', 'techno', 'bangers']},
+    {name: 'Jake', email: 'jake@email.com', userId: 6, bio: 'This is deejay bio for Jake, bio for Jake here.', styleTags: ['soul', 'disco', 'house', 'techno']},
+    {name: 'Ray', email: 'ray@email.com', userId: 7, bio: 'This is deejay bio for Ray, bio for Ray here.', styleTags: ['disco', 'house']},
+    {name: 'Tom', email: 'tom@email.com', userId: 8, bio: 'This is deejay bio for Tom, bio for Tom here', styleTags: ['house', 'techno', 'bangers']},
+    {name: 'Paddy', email: 'paddy@email.com', userId: 9, bio: 'This is deejay bio for Paddy, bio for Paddy here.', styleTags: ['techno', 'bangers']},
+    {name: 'Merrick', email: 'merrick@email.com', userId: 10, bio: 'This is deejay bio for Merrick, bio for Merrick here.', styleTags: ['disco', 'funk', 'house', 'acid']},
+    {name: 'Alicia', email: 'alicia@email.com', userId: 11, bio: 'This is deejay bio for Alicia, bio for Alicia here.', styleTags: ['techno', 'acid']},
+    {name: 'Sam', email: 'sam@email.com', userId: 12, bio: 'This is deejay bio for Sam, bio for Sam here.', styleTags: ['house', 'techno', 'acid', 'bangers']}
   ], (deejay) => {
     return Deejay.create(deejay);
   })
 
   const gigs = await Promise.each([
-    {name: 'Bar Night', date: '2018/11/18', time: '10:00pm - 1:00am', location: 'UChicago', compensation: '20', deejayId: 1, bookerId: 1},
-    {name: 'Erotic Wobble', date: '2018/0/18', time: '9:00pm - 2:00am', location: 'Hyde Park', compensation: '30', deejayId: 2, bookerId: 1},
-    {name: 'METER', date: '2017/10/18', time: '9:00pm - 1:00am', location: 'Meter Room', compensation: '40', deejayId: 2, bookerId: 1},
-    {name: 'Humboldt Arboreal Society', date: '2019/5/6', time: '3:00pm - 8:00pm', location: 'Humboldt Park', compensation: 'fun', deejayId: 3, bookerId: 8},
-    {name: 'Past Punch House', date: '2019/1/19', time: '10:00pm - 2:00am', location: 'Punch House', compensation: '150', deejayId: 1, bookerId: 4},
-    {name: 'Smartbar', date: '2019/3/20', time: '10:00pm - 4:00am', location: 'Smartbar', compensation: '150', deejayId: 1, bookerId: 2},
-    {name: 'Humboldt Arboreal Society Kickoff', date: '2019/7/10', time: '12:00pm - 8:00pm', location: 'Humboldt Park', compensation: 'fun', bookerId: 8},
-    {name: 'Max House Party', date: '2019/6/10', time: '12:00pm - 10:00pm', location: 'Albany Park', compensation: 'fun', bookerId: 1, styleTags: ['jazz', 'soul', 'disco', 'boogie', 'house', 'techno']},
-    {name: 'Open Format at BoozeBox', date: '2019/5/8', time: '9:00pm - 2:00am', location: 'Booze Box', compensation: '150', bookerId: 6},
-    {name: 'Clark St Jams at Hideout', date: '2019/5/20', time: '11:00pm - 3:00am', location: 'Hideout', compensation: '50', bookerId: 7},
-    {name: 'Underground Party', date: '2019/7/1', time: '11:00pm - 7:00am', location: 'TBA', compensation: '200', bookerId: 9},
-    {name: 'Monday at Danny\'s', date: '2019/5/20', time: '10:00pm - 2:00am', location: 'Danny\'s', compensation: '150', bookerId: 3},
-    {name: 'Night at the Whistler', date: '2019/4/15', time: '10:00pm - 2:00am', location: 'The Whistler', compensation: '150', bookerId: 5},
-    {name: 'Smartbar Opening Slot', date: '2019/4/2', time: '10:00pm - 5:00am', location: 'smartbar', compensation: '250', bookerId: 2}
+    {name: 'Bar Night', date: '2018/11/18', time: '10:00pm - 1:00am', location: 'UChicago', compensation: '20', deejayId: 1, bookerId: 1, styleTags: ['house', 'techno', 'bangers']},
+    {name: 'Erotic Wobble', date: '2018/0/18', time: '9:00pm - 2:00am', location: 'Hyde Park', compensation: '30', deejayId: 2, bookerId: 1, styleTags: ['house', 'techno', 'bangers']},
+    {name: 'METER', date: '2017/10/18', time: '9:00pm - 1:00am', location: 'Meter Room', compensation: '40', deejayId: 2, bookerId: 1, styleTags: ['house', 'techno', 'bangers']},
+    {name: 'Humboldt Arboreal Society', date: '2019/5/6', time: '3:00pm - 8:00pm', location: 'Humboldt Park', compensation: 'fun', deejayId: 3, bookerId: 8, styleTags: ['ambient', 'soundtrack', 'jazz', 'soul', 'funk', 'disco', 'boogie', 'house']},
+    {name: 'Past Punch House', date: '2019/1/19', time: '10:00pm - 2:00am', location: 'Punch House', compensation: '150', deejayId: 1, bookerId: 4, styleTags: ['soul', 'funk', 'disco', 'boogie', 'hip-hop', 'dub']},
+    {name: 'Smartbar', date: '2019/3/20', time: '10:00pm - 4:00am', location: 'Smartbar', compensation: '150', deejayId: 1, bookerId: 2, styleTags: ['house', 'techno']},
+    {name: 'Humboldt Arboreal Society Kickoff', date: '2019/7/10', time: '12:00pm - 8:00pm', location: 'Humboldt Park', compensation: 'fun', bookerId: 8, styleTags: ['ambient', 'soundtrack', 'jazz', 'soul', 'funk', 'disco', 'boogie', 'house']},
+    {name: 'Max House Party', date: '2019/6/10', time: '12:00pm - 10:00pm', location: 'Albany Park', compensation: 'fun', bookerId: 1, styleTags: ['jazz', 'soul', 'funk', 'disco', 'boogie', 'house', 'techno', 'acid']},
+    {name: 'Open Format at BoozeBox', date: '2019/5/8', time: '9:00pm - 2:00am', location: 'Booze Box', compensation: '150', bookerId: 6, styleTags: ['soul', 'funk', 'hip-hop', 'disco']},
+    {name: 'Clark St Jams at Hideout', date: '2019/5/20', time: '11:00pm - 3:00am', location: 'Hideout', compensation: '75', bookerId: 7, styleTags: ['house', 'techno']},
+    {name: 'Underground Party', date: '2019/7/1', time: '11:00pm - 7:00am', location: 'TBA', compensation: '200', bookerId: 9, styleTags: ['techno', 'acid', 'bangers']},
+    {name: 'Monday at Danny\'s', date: '2019/5/20', time: '10:00pm - 2:00am', location: 'Danny\'s', compensation: '150', bookerId: 3, styleTags: ['jazz', 'dub', 'soul', 'disco', 'boogie']},
+    {name: 'Night at the Whistler', date: '2019/4/15', time: '10:00pm - 2:00am', location: 'The Whistler', compensation: '150', bookerId: 5, styleTags: ['jazz', 'soul', 'disco']},
+    {name: 'Smartbar Opening Slot', date: '2019/4/2', time: '10:00pm - 5:00am', location: 'smartbar', compensation: '250', bookerId: 2, styleTags: ['ambient', 'house', 'techno']}
   ], (gig) => {
     return Gig.create(gig);
   })
@@ -88,7 +88,10 @@ async function seed() {
     { name: 'Max + Smartbar', bookerId: 2, deejayId: 1, bookerLastRead: new Date('April 9, 2019 03:34:01'), deejayLastRead: new Date('April 9, 2019 03:24:01') },
     { name: 'Max + Dannys', bookerId: 3, deejayId: 1, bookerLastRead: new Date('April 10, 2019 04:44:01'), deejayLastRead: new Date('April 10, 2019 04:34:01')},
     { name: 'Max + Punch House', bookerId: 4, deejayId: 1, bookerLastRead: new Date('April 11, 2019 03:44:01'), deejayLastRead: new Date('April 11, 2019 03:34:01')},
-    { name: 'Max + Whistler', bookerId: 5, deejayId: 1, bookerLastRead: new Date('April 12, 2019 04:44:01'), deejayLastRead: new Date('April 12, 2019 04:34:01')}
+    { name: 'Max + Whistler', bookerId: 5, deejayId: 1, bookerLastRead: new Date('April 12, 2019 04:44:01'), deejayLastRead: new Date('April 12, 2019 04:34:01')},
+
+    { name: 'Max + Meri', bookerId: 1, deejayId: 2, deejayLastRead: new Date('May 15, 2019 08:00:00') },
+    { name: 'Max + Miles', bookerId: 1, deejayId: 3, deejayLastRead: new Date('May 15, 2019 08:00:00') }
   ], (channel) => {
     return Channel.create(channel);
   })
@@ -96,15 +99,27 @@ async function seed() {
   const messages = await Promise.each([
     { content: 'Hello Max', timestamp: new Date('April 9, 2019 03:24:00'), channelId: 1, bookerId: 2},
     { content: 'Hello Smartbar', timestamp: new Date('April 9, 2019 03:34:00'), channelId: 1, deejayId: 1},
+    { content: 'YO MAX', timestamp: new Date('May 9, 2019 03:24:00'), channelId: 1, bookerId: 2},
 
     { content: 'Hello Max', timestamp: new Date('April 10, 2019 04:34:00'), channelId: 2, bookerId: 3},
     { content: 'Hello Dannys', timestamp: new Date('April 10, 2019 04:44:00'), channelId: 2, deejayId: 1},
+    { content: 'YO MAX', timestamp: new Date('May 10, 2019 03:34:00'), channelId: 2, bookerId: 3},
 
     { content: 'Hello Max', timestamp: new Date('April 11, 2019 03:34:00'), channelId: 3, bookerId: 4},
     { content: 'Hello Punch House', timestamp: new Date('April 11, 2019 03:44:00'), channelId: 3, deejayId: 1},
+    { content: 'YO MAX', timestamp: new Date('May 11, 2019 03:34:00'), channelId: 3, bookerId: 4},
 
     { content: 'Hello Max', timestamp: new Date('April 12, 2019 04:34:00'), channelId: 4, bookerId: 5},
     { content: 'Hello Whistler', timestamp: new Date('April 12, 2019 04:44:00'), channelId: 4, deejayId: 1},
+    { content: 'YO MAX', timestamp: new Date('May 12, 2019 03:34:00'), channelId: 4, bookerId: 5},
+
+    { content: 'Hey Max', timestamp: new Date('May 15, 2019 06:00:00'), channelId: 5, deejayId: 2 },
+    { content: 'Hey Max', timestamp: new Date('May 15, 2019 07:00:00'), channelId: 5, deejayId: 2 },
+    { content: 'Hey Max', timestamp: new Date('May 15, 2019 08:00:00'), channelId: 5, deejayId: 2 },
+
+    { content: 'Hey Max', timestamp: new Date('May 15, 2019 06:00:00'), channelId: 6, deejayId: 3 },
+    { content: 'Hey Max', timestamp: new Date('May 15, 2019 07:00:00'), channelId: 6, deejayId: 3 },
+    { content: 'Hey Max', timestamp: new Date('May 15, 2019 08:00:00'), channelId: 6, deejayId: 3 }
   ], (message) => {
     return Message.create(message)
   })
