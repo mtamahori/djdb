@@ -19,6 +19,9 @@ class DeejayMain extends Component {
           <div>
             <CalendarMain currentDeejay={currentDeejay} />
 
+            <br />
+            <br />
+
             <Grid>
               <Grid.Row columns={2} textAlign="center">
                 <Grid.Column>

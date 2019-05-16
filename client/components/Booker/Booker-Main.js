@@ -20,6 +20,9 @@ class BookerMain extends Component {
           <div>
             <CalendarMain currentBooker={currentBooker} />
 
+            <br />
+            <br />
+
             <Grid>
               <Grid.Row columns={2} textAlign="center">
                 <Grid.Column>
