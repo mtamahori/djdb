@@ -52,7 +52,7 @@ class GigApplications extends Component {
       ?
       <GigList currentBooker={currentBooker} gigs={gigApplications} />
       :
-      <h3>You Have No Incoming Booking Requests Right Now</h3>
+      <h3>You Have No Booking Requests Right Now</h3>
     )
   }
 

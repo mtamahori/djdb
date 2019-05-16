@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { setCalendarGigs } from '../../store'
 import { Button } from 'semantic-ui-react'
 import { GigList } from '../index'
 import dateFns from 'date-fns'
@@ -10,15 +12,15 @@ class OpenGigList extends Component {
     this.state = {
       view: false
     }
+
+    this.handleClick = this.handleClick.bind(this)
   }
 
   render() {
     return (
       <div>
         <Button
-          onClick={() => this.setState(state => ({
-            view: !state.view
-          }))}
+          onClick={this.handleClick}
           size="massive"
         >Open Bookings
         </Button>
@@ -31,21 +33,39 @@ class OpenGigList extends Component {
 
   renderOpenGigList() {
     const { currentBooker, gigs } = this.props;
-    let openGigs;
-
-    openGigs = gigs.filter(gig => {
-      return (
-        gig.bookerId === currentBooker.id &&
-        gig.deejayId === null &&
-        this.futureDateCheck(gig)
-      )
-    })
+    let openGigs = this.getOpenGigs(currentBooker, gigs)
 
     return (
       openGigs.length ?
       <GigList currentBooker={currentBooker} gigs={openGigs} /> :
       <h3>You Have No Open Bookings Right Now</h3>
     )
+  }
+
+  handleClick(event) {
+    const { currentBooker, gigs, setCalendarGigs } = this.props;
+    let openGigs = this.getOpenGigs(currentBooker, gigs)
+
+    event.preventDefault();
+    this.setState(state => ({
+      view: !state.view
+    }))
+
+    return (
+      openGigs.length &&
+      this.state.view === false &&
+      setCalendarGigs(openGigs)
+    )
+  }
+
+  getOpenGigs(currentBooker, gigs) {
+    return gigs.filter(gig => {
+      return (
+        gig.bookerId === currentBooker.id &&
+        gig.deejayId === null &&
+        this.futureDateCheck(gig)
+      )
+    })
   }
 
   futureDateCheck(gig) {
@@ -57,4 +77,7 @@ class OpenGigList extends Component {
   }
 }
 
-export default OpenGigList
+const mapState = null;
+const mapDispatch = ({ setCalendarGigs })
+
+export default connect(mapState, mapDispatch)(OpenGigList)

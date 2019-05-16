@@ -53,7 +53,7 @@ class GigPendingInvites extends Component {
       ?
       <GigList currentBooker={currentBooker} gigs={gigPendingInvites} />
       :
-      <h3>You Have No Outgoing Pending Booking Requests Right Now</h3>
+      <h3>You Have Not Sent Any Booking Requests</h3>
     )
   }
 

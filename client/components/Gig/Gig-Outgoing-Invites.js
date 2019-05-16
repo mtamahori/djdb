@@ -51,7 +51,7 @@ class GigInvites extends Component {
       ?
       <GigList currentDeejay={currentDeejay} gigs={gigInvites} />
       :
-      <h3>You Have No Incoming Requests Right Now</h3>
+      <h3>You Have No Booking Requests Right Now</h3>
     )
   }
 
