@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { clearCalendar } from '../../store'
 import { Grid } from 'semantic-ui-react'
 import { NewDeejayForm, CalendarMain, GigInvites, GigPendingApplications, PastGigList, UpcomingGigList, BrowseGigList, BrowseBookerList } from '../index'
 
 class DeejayMain extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    const { clearCalendar } = this.props;
+    clearCalendar();
   }
 
   render() {
@@ -69,6 +75,6 @@ const mapState = ({ user, gigs, deejays, bookers }) => {
     currentDeejay: deejays.filter(deejay => deejay.userId === user.id)[0]
   }
 };
-const mapDispatch = null;
+const mapDispatch = ({ clearCalendar });
 
 export default connect(mapState, mapDispatch)(DeejayMain)

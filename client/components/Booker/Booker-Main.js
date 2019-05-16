@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { clearCalendar } from '../../store'
 import { Grid } from 'semantic-ui-react'
 import { NewBookerForm, CalendarMain, GigApplications, GigPendingInvites, PastGigList, UpcomingGigList, OpenGigList, NewGig, BrowseDeejayList } from '../index'
 
@@ -7,6 +8,11 @@ import { NewBookerForm, CalendarMain, GigApplications, GigPendingInvites, PastGi
 class BookerMain extends Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    const { clearCalendar } = this.props;
+    clearCalendar();
   }
 
   render() {
@@ -71,6 +77,6 @@ const mapState = ({ user, bookers, deejays, gigs }) => {
     currentBooker: bookers.filter(booker => booker.userId === user.id)[0]
   }
 };
-const mapDispatch = null;
+const mapDispatch = ({ clearCalendar });
 
 export default connect(mapState, mapDispatch)(BookerMain)

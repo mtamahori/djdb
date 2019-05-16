@@ -80,7 +80,7 @@ class CalendarMain extends Component {
     // need to check this date array with the date of any given cell, render as needed
 
     // first version of this function will only render the cells for the current month. will need to re-click the "view X gigs" button upon changing months
-    console.log('calendarGigDates', calendarGigDates)
+    // console.log('calendarGigDates', calendarGigDates)
 
     //
 
