@@ -20,12 +20,9 @@ if (!process.env.MIXCLOUD_CLIENT_ID || !process.env.MIXCLOUD_CLIENT_SECRET) {
       User.find({where: { username }})
       .then(foundUser => {
         if (!foundUser) {
-          console.log('USER DOES NOT EXIST')
         User.create({ username })
         .then(createdUser => {
-          console.log('CREATED USER', createdUser)
           let user = { id: createdUser.id, user: createdUser, access: accessToken, refreshToken }
-          console.log('USER', user)
           return done(null, user)
         })
       }
@@ -37,8 +34,6 @@ if (!process.env.MIXCLOUD_CLIENT_ID || !process.env.MIXCLOUD_CLIENT_SECRET) {
       .catch(done)
     }
   )
-
-  console.log('STRATEGY', strategy)
 
   passport.use(strategy)
 
@@ -54,28 +49,3 @@ if (!process.env.MIXCLOUD_CLIENT_ID || !process.env.MIXCLOUD_CLIENT_SECRET) {
 }
 
 module.exports = router
-
-// DOCS - strategy
-
-// passport.use(new MixCloudStrategy({
-//   clientID: CLIENT_ID,
-//   clientSecret: CLIENT_SECRET
-// },
-// function(accessToken, refreshToken, profile, done) {
-//   User.findOrCreate({ MixCloudId: profile.id }, function (err, user) {
-//     return done(err, user);
-//   });
-// }
-// ));
-
-// DOCS - authentication
-
-// app.get('/auth/mixcloud',
-//   passport.authorize('mixcloud'));
-
-// app.get('/auth/mixcloud/callback',
-//   passport.authorize('mixcloud', { failureRedirect: '/login' }),
-//   function(req, res) {
-//     // Successful authentication, redirect home.
-//     res.redirect('/');
-//   });

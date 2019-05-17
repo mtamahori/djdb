@@ -8,7 +8,7 @@ const Deejay = db.define('deejay', {
   },
   email: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
     validate: {
       isEmail: true
     }

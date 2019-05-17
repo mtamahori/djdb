@@ -4,7 +4,6 @@ export { default as Footer } from './Footer'
 export { default as UserHome } from './User/User-Home'
 export { default as UserProfile } from './User/User-Profile'
 export { Login, Signup } from './Auth-Form'
-export { MixcloudLogin, MixcloudSignup } from './Auth-Mixcloud'
 
 export { default as CalendarMain } from './Calendar/Calendar-Main'
 

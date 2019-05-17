@@ -10,8 +10,8 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
   return (
     <div className="auth-form-container">
       <Form onSubmit={handleSubmit} name={name} success>
-        <h4>Email</h4>
-        <Form.Input fluid name="email" placeholder="Email" />
+        <h4>Username</h4>
+        <Form.Input fluid name="username" placeholder="Username" />
         <h4>Password</h4>
         <Form.Input fluid name="password" placeholder="Password" />
         <br />
@@ -28,20 +28,12 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
         }
       </Form>
       <br />
-
           <Button href="/auth/mixcloud">
             Use Mixcloud Credentials!
           </Button>
-
     </div>
   )
 }
-
-// <NavLink
-// activeClassName="active"
-// to="/auth/mixcloud">
-// </NavLink>
-
 
 const mapLogin = state => {
   return {
@@ -64,9 +56,9 @@ const mapDispatch = dispatch => {
     handleSubmit(event) {
       event.preventDefault()
       const formName = event.target.name
-      const email = event.target.email.value
+      const username = event.target.username.value
       const password = event.target.password.value
-      dispatch(auth(email, password, formName))
+      dispatch(auth(username, password, formName))
     }
   }
 }

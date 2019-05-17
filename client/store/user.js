@@ -36,26 +36,10 @@ export const updateUser = (user) => dispatch => {
     .catch(err => console.error('Updating user info unsuccessful', err))
 }
 
-export const auth = (email, password, method) => async dispatch => {
+export const auth = (username, password, method) => async dispatch => {
   let res;
   try {
-    res = await axios.post(`/auth/${method}`, { email, password })
-  } catch (authError) {
-    return dispatch(getUser({ error: authError }))
-  }
-
-  try {
-    dispatch(getUser(res.data))
-    history.push('/home')
-  } catch (dispatchOrHistoryErr) {
-    console.error(dispatchOrHistoryErr)
-  }
-}
-
-export const authMixcloud = (email, password, method) => async dispatch => {
-  let res;
-  try {
-    res = await axios.get(`/auth/mixcloud`, { email, password })
+    res = await axios.post(`/auth/${method}`, { username, password })
   } catch (authError) {
     return dispatch(getUser({ error: authError }))
   }

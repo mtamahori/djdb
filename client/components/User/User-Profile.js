@@ -23,7 +23,7 @@ class UserProfile extends Component {
         <Grid.Row columns={1} textAlign="center">
           <Grid.Column className="profile-container">
             <div className="profile-current">
-              <h3>Current Email: {currentUser.email}</h3>
+              <h3>Current Username: {currentUser.username}</h3>
             </div>
             <br />
             <br />
@@ -49,9 +49,9 @@ class UserProfile extends Component {
       <div>
         <Form success={this.state.updateBool} onSubmit={this.handleUpdateUser} >
           <div>
-            <h3>Update Email</h3>
+            <h3>Update Username</h3>
             <h4>
-              <Form.Input name="email" required placeholder="Email" />
+              <Form.Input name="username" required placeholder="Username" />
             </h4>
             <Message success header="Update Successful" />
             <Form.Button type="submit" value="submit" >
@@ -68,11 +68,11 @@ class UserProfile extends Component {
     const { currentUser, updateUser } = this.props
     const user = {
       id: currentUser.id,
-      email: event.target.email.value
+      username: event.target.username.value
     }
     updateUser(user);
     this.setState({ updateBool: true })
-    event.target.email.value = '';
+    event.target.username.value = '';
 
   }
 }

@@ -8,7 +8,7 @@ const Booker = db.define('booker', {
   },
   email: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
     validate: {
       isEmail: true
     }

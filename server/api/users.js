@@ -4,8 +4,8 @@ const { User } = require('../db/models')
 router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
-      // send only id and email fields, rather than also including encrypted passwords
-      attributes: ['id', 'email']
+      // send only id and username fields, rather than also including encrypted passwords
+      attributes: ['id', 'username']
     })
     res.json(users)
   } catch (err) {
