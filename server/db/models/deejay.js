@@ -21,6 +21,13 @@ const Deejay = db.define('deejay', {
     type: Sequelize.TEXT,
     allowNull: true
   },
+  website: {
+    type: Sequelize.STRING,
+    allowNull: true,
+    validate: {
+      isUrl: true
+    }
+  },
   styleTags: {
     type: Sequelize.ARRAY(Sequelize.STRING),
     defaultValue: [],

@@ -59,6 +59,7 @@ class DeejayDetail extends Component {
               <List.Item icon="marker" content="Chicago, IL" />
               <List.Item icon="mail" content={currentDeejay.email} />
               <List.Item icon="phone" content={currentDeejay.phone} />
+              <List.Item icon="linkify" content={currentDeejay.website} />
               <List.Item icon="music" content={currentDeejay.styleTags.map(tag => {return tag + ', '})} />
               <List.Item>
                 <List.Content>
@@ -102,6 +103,10 @@ class DeejayDetail extends Component {
               <Form.Input name="bio" type="text" placeholder="" />
             </div>
             <h4>
+            Website <br />
+            </h4>
+              <Form.Input name="website" type="text" placeholder="Website URL (Mixcloud, Soundcloud, etc.)" />
+            <h4>
             Style Tags <br />
             </h4>
               <Form.Input name="styleTags" type="text" placeholder="Add styles separated by comma + space" />
@@ -138,13 +143,12 @@ class DeejayDetail extends Component {
     let styleTagsInput = event.target.styleTags.value.split(', ')
     // consider using a regEx to account for ',' and ', '
 
-    console.log('STYLETAGSINPUT', styleTagsInput)
-
     if (
       event.target.name.value === '' &&
       event.target.email.value === '' &&
       phoneInput === '' &&
       event.target.bio.value === '' &&
+      event.target.website.value === '' &&
       event.target.styleTags.value === ''
     ) {
       alert("Please fill out at least one field");
@@ -155,6 +159,7 @@ class DeejayDetail extends Component {
         email: event.target.email.value || currentDeejay.email,
         phone: phoneInput || currentDeejay.phone,
         bio: event.target.bio.value || currentDeejay.bio,
+        website: event.target.website.value || currentDeejay.website,
         styleTags: styleTagsInput || currentDeejay.styleTags
       }
       updateDeejay(deejay);
@@ -165,6 +170,7 @@ class DeejayDetail extends Component {
       event.target.phone2.value = '';
       event.target.phone3.value = '';
       event.target.bio.value = '';
+      event.target.website.value = '';
       event.target.styleTags.value = '';
     }
   }

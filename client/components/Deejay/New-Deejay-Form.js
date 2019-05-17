@@ -41,6 +41,10 @@ class NewDeejayForm extends Component {
             </Form.Group>
             </div>
             <h4>
+            Website <br />
+            </h4>
+              <Form.Input name="website" type="text" placeholder="Website URL (Mixcloud, Soundcloud, etc.)" />
+            <h4>
             Style Tags <br />
             </h4>
               <Form.Input name="styleTags" type="text" placeholder="Add styles separated by comma + space" />
@@ -72,6 +76,7 @@ class NewDeejayForm extends Component {
       name: event.target.name.value,
       email: event.target.email.value,
       phone: phoneInput,
+      website: event.target.website.value,
       styleTags: styleTagsInput
     };
     createDeejay(newDeejay);
@@ -81,6 +86,7 @@ class NewDeejayForm extends Component {
     event.target.phone1.value = '';
     event.target.phone2.value = '';
     event.target.phone3.value = '';
+    event.target.website.value = '';
     event.target.styleTags.value = '';
     history.push('/deejay')
   }
