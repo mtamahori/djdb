@@ -7,6 +7,8 @@ import {
   Landing,
   Login,
   Signup,
+  MixcloudLogin,
+  MixcloudSignup,
   UserHome,
   UserProfile,
   BookerMain,
@@ -28,8 +30,10 @@ class Routes extends Component {
 
     return (
       <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/login/mixcloud" component={MixcloudLogin} />
+          <Route exact path="/signup/mixcloud" component={MixcloudSignup} />
 
           {isLoggedIn && (
             <Switch>

@@ -7,7 +7,7 @@ if (!process.env.MIXCLOUD_CLIENT_ID || !process.env.MIXCLOUD_CLIENT_SECRET) {
   console.log('Mixcloud client ID and/or secret not found. Skipping Mixcloud OAuth.')
 } else {
   const mixcloudConfig = {
-    clientId: process.env.MIXCLOUD_CLIENT_ID,
+    clientID: process.env.MIXCLOUD_CLIENT_ID,
     clientSecret: process.env.MIXCLOUD_CLIENT_SECRET,
     callbackURL: process.env.MIXCLOUD_CALLBACK
   }
@@ -17,11 +17,21 @@ if (!process.env.MIXCLOUD_CLIENT_ID || !process.env.MIXCLOUD_CLIENT_SECRET) {
     (accessToken, refreshToken, profile, done) => {
       const MixCloudId = profile.id
 
-      User.findOrCreate({
-        where: { MixCloudId: profile.id }
-      })
-      .then(user => done(null, user))
-      .catch(null)
+      User.find({where: { MixCloudId }})
+      .then(foundUser => {
+        if (!foundUser) {
+        User.create({ name, email, mixcloudId })
+        .then(createdUser => {
+          let user = { id: createdUser.id, user: createdUser, access: accessToken, refreshToken }
+          return done(null, user)
+        })
+      }
+      else {
+        let user = { vid: foundUser.id, user: foundUser, access: accessToken, refreshToken }
+        return done(null, user)
+      }
+    })
+      .catch(done)
     }
   )
 
@@ -33,7 +43,7 @@ if (!process.env.MIXCLOUD_CLIENT_ID || !process.env.MIXCLOUD_CLIENT_SECRET) {
     '/callback',
     passport.authenticate('mixcloud', {
       successRedirect: '/home',
-      failureRedirect: '/login'
+      failureRedirect: '/'
     })
   )
 }

@@ -30,14 +30,16 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
       <br />
       <NavLink
         activeClassName="active"
-        to="/auth/mixcloud">
+        to={`/${name}/mixcloud`}>
           <Button>
-            {displayName} w/ Mixcloud
+            Or Use Mixcloud!
           </Button>
       </NavLink>
     </div>
   )
 }
+
+
 
 const mapLogin = state => {
   return {
