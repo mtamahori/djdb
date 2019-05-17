@@ -22,7 +22,7 @@ class AuthMixcloud extends Component {
           <h4>Password</h4>
           <Form.Input fluid name="password" placeholder="Password" />
           <br />
-          <Form.Button type="submit">{displayName}</Form.Button>
+          <Form.Button href="/auth/mixcloud" type="submit">{displayName}</Form.Button>
           {
             error && error.response &&
             <div>
@@ -36,11 +36,11 @@ class AuthMixcloud extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { authMixcloud } = this.props;
-    const formName = event.target.name;
-    const email = event.target.email;
-    const password = event.target.password;
-    authMixcloud(email, password, formName )
+    // const { authMixcloud } = this.props;
+    // const formName = event.target.name;
+    // const email = event.target.email;
+    // const password = event.target.password;
+    // authMixcloud(email, password, formName )
   }
 }
 

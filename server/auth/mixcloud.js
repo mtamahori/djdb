@@ -15,25 +15,30 @@ if (!process.env.MIXCLOUD_CLIENT_ID || !process.env.MIXCLOUD_CLIENT_SECRET) {
   const strategy = new MixCloudStrategy(
     mixcloudConfig,
     (accessToken, refreshToken, profile, done) => {
-      const MixCloudId = profile.id
+      const username = profile.username;
 
-      User.find({where: { MixCloudId }})
+      User.find({where: { username }})
       .then(foundUser => {
         if (!foundUser) {
-        User.create({ name, email, mixcloudId })
+          console.log('USER DOES NOT EXIST')
+        User.create({ username })
         .then(createdUser => {
+          console.log('CREATED USER', createdUser)
           let user = { id: createdUser.id, user: createdUser, access: accessToken, refreshToken }
+          console.log('USER', user)
           return done(null, user)
         })
       }
       else {
-        let user = { vid: foundUser.id, user: foundUser, access: accessToken, refreshToken }
+        let user = { id: foundUser.id, user: foundUser, access: accessToken, refreshToken }
         return done(null, user)
       }
     })
       .catch(done)
     }
   )
+
+  console.log('STRATEGY', strategy)
 
   passport.use(strategy)
 

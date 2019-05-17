@@ -7,13 +7,13 @@ const db = require('../db')
 // MODEL DEFINITION
 
 const User = db.define('user', {
-  email: {
+  username: {
     type: Sequelize.STRING,
     unique: true,
     allowNull: false,
-    validate: {
-      isEmail: true
-    }
+    // validate: {
+    //   isEmail: true
+    // }
   },
   password: {
     type: Sequelize.STRING,
@@ -30,7 +30,7 @@ const User = db.define('user', {
   googleId: {
     type: Sequelize.STRING
   },
-  mixCloudId: {
+  mixcloudId: {
     type: Sequelize.STRING
   }
 })
