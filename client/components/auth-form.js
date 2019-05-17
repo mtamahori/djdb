@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from  'prop-types'
 import { auth } from '../store'
 import { NavLink } from 'react-router-dom'
-import { Form, Message } from 'semantic-ui-react'
+import { Form, Button, Message } from 'semantic-ui-react'
 require('../../public/stylesheets/authForm.css')
 
 const AuthForm = ({ name, displayName, handleSubmit, error }) => {
@@ -28,7 +28,13 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
         }
       </Form>
       <br />
-      <NavLink activeClassName="active" to="/auth/google">{displayName} with Google</NavLink>
+      <NavLink
+        activeClassName="active"
+        to="/auth/mixcloud">
+          <Button>
+            {displayName} w/ Mixcloud
+          </Button>
+      </NavLink>
     </div>
   )
 }
