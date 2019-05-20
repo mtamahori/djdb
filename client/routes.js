@@ -58,13 +58,8 @@ class Routes extends Component {
 const mapState = state => {
   return {
     isLoggedIn: !!state.user.id,
-    // isBooker: !!state.bookers.filter(booker => booker.userId === state.user.id)[0],
-    // isDeejay: !!state.deejays.filter(deejay => deejay.userId === state.user.id)[0]
   }
 }
-
-// Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
-    // Otherwise, state.user will be an empty object, and state.user.id will be falsey
 
 const mapDispatch = dispatch => {
   return {

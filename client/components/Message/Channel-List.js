@@ -58,8 +58,6 @@ class ChannelList extends Component {
   }
 }
 
-// only providing messages in order to render # of unreads correctly for the corresponding channel
-
 const mapState = ({ messages }) => ({ messages });
 const mapDispatch = null;
 

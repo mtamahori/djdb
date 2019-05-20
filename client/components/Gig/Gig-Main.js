@@ -1,3 +1,5 @@
+// NOTE: This component is no longer used. It has been refactored and deconstructed into the components whose filenames begin with "Gig-Main...," which are located in this directory
+
 // import React, { Component } from 'react'
 // import { connect } from 'react-redux'
 // import { Button, Grid } from 'semantic-ui-react'

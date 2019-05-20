@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { List } from 'semantic-ui-react'
-import MessageItem from './Message-Item'
 import dateFns from 'date-fns'
 
 class MessageList extends Component {

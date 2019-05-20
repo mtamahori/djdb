@@ -2,8 +2,6 @@ const crypto = require('crypto')
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-// note: getter methods on password and salt make '.password' and '.salt' act like functions, which hide them when serializing to JSON. This is a hack to get around Sequelize's lack of a 'private' option.
-
 // MODEL DEFINITION
 
 const User = db.define('user', {
