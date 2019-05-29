@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import NewMessageForm from './New-Message-Form'
 import MessageList from './Message-List'
 import { updateChannel } from '../../store'
+require('../../../public/stylesheets/channelDetail.css')
 
 class ChannelDetail extends Component {
   constructor(props) {

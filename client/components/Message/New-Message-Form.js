@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Form, Button, Message } from 'semantic-ui-react'
 import { createMessage } from '../../store'
 import { connect } from 'react-redux'
 
@@ -16,21 +17,20 @@ class NewMessageForm extends Component {
 
   render() {
     return (
-      <form id="new-message-form" onSubmit={this.submitMessage}>
+      <Form id="new-message-form" onSubmit={this.submitMessage}>
         <div>
-          <input
+          <Form.Input
+            fluid
             className="form-control"
             type="text"
             name="content"
             value={this.state.content}
             onChange={this.writeMessage}
-            placeholder="Text Input"
+            placeholder="Write your message here"
           />
-          <span>
-            <button type="submit">Submit</button>
-          </span>
+            <Form.Button type="submit">Submit</Form.Button>
         </div>
-      </form>
+      </Form>
     );
   }
 

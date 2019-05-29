@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { List } from 'semantic-ui-react'
 import dateFns from 'date-fns'
+require('../../../public/stylesheets/messageList.css')
 
 class MessageList extends Component {
   constructor(props) {
@@ -37,11 +38,10 @@ class MessageList extends Component {
               return (
                 <List.Item key={message.id}>
                   <List.Content floated="right">
-                    <List.Description>
+                    <List.Description className="message-content">
                       { message.content }
                     </List.Description>
-                    <br />
-                    <List.Description>
+                    <List.Description as="h6" className="message-timestamp">
                       { time } on { date }
                     </List.Description>
                   </List.Content>
@@ -52,8 +52,11 @@ class MessageList extends Component {
               return (
                 <List.Item key={message.id}>
                   <List.Content floated="left">
-                    <List.Description>
+                    <List.Description className="message-content">
                       { message.content }
+                    </List.Description>
+                    <List.Description as="h6" className="message-timestamp">
+                     { time } on { date }
                     </List.Description>
                   </List.Content>
                 </List.Item>
@@ -75,12 +78,17 @@ class MessageList extends Component {
       <List divided relaxed>
         {
           channelMessages.map(message => {
+            let date = dateFns.format(message.timestamp, 'MMM Do, YYYY')
+            let time = dateFns.format(message.timestamp, 'hh:mm a')
             if (message.deejayId) {
               return (
                 <List.Item key={message.id}>
                   <List.Content floated="right">
-                    <List.Description>
+                    <List.Description className="message-content">
                       { message.content }
+                    </List.Description>
+                    <List.Description as="h6" className="message-timestamp">
+                      { time } on { date }
                     </List.Description>
                   </List.Content>
                 </List.Item>
@@ -90,8 +98,11 @@ class MessageList extends Component {
               return (
                 <List.Item key={message.id}>
                   <List.Content floated="left">
-                    <List.Description>
+                    <List.Description className="message-content">
                       { message.content }
+                    </List.Description>
+                    <List.Description as="h6" className="message-timestamp">
+                      { time } on { date }
                     </List.Description>
                   </List.Content>
                 </List.Item>
