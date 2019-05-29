@@ -8,7 +8,8 @@ class NewMessageForm extends Component {
     super(props)
 
     this.state = {
-      content: ''
+      content: '',
+      error: false,
     }
 
     this.writeMessage = this.writeMessage.bind(this);
@@ -17,20 +18,24 @@ class NewMessageForm extends Component {
 
   render() {
     return (
-      <Form id="new-message-form" onSubmit={this.submitMessage}>
-        <div>
-          <Form.Input
-            fluid
-            className="form-control"
-            type="text"
-            name="content"
-            value={this.state.content}
-            onChange={this.writeMessage}
-            placeholder="Write your message here"
-          />
-            <Form.Button type="submit">Submit</Form.Button>
-        </div>
-      </Form>
+      <div>
+        <Form id="new-message-form" onSubmit={this.submitMessage}>
+            <Form.Input
+              fluid
+              className="form-control"
+              type="text"
+              name="content"
+              value={this.state.content}
+              onChange={this.writeMessage}
+              placeholder="Write your message here"
+            />
+              <Form.Button type="submit">Submit</Form.Button>
+        </Form>
+        {
+          this.state.error === true &&
+          <Message error content="Cannot send empty message" />
+        }
+      </div>
     );
   }
 
@@ -45,7 +50,14 @@ class NewMessageForm extends Component {
     const newContent = this.state.content;
     const now = Date.now();
     let newMessage;
-    if (currentBooker) {
+
+    if (newContent === '') {
+      this.setState({ error: true })
+      setTimeout(() => {
+        this.setState({ error: false })
+      }, 3000)
+    }
+    else if (currentBooker) {
       newMessage = {
         content: newContent,
         timestamp: now,
@@ -53,7 +65,7 @@ class NewMessageForm extends Component {
         channelId: channel.id
       }
     }
-    if (currentDeejay) {
+    else if (currentDeejay) {
       newMessage = {
         content: newContent,
         timestamp: now,
