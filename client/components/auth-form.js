@@ -18,13 +18,11 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
         <Form.Button type="submit">{displayName}</Form.Button>
         {
           error && error.response &&
-          <div>
-            {error.response.data}
-          </div>
-        }
-        {
-          // name === 'signup' &&
-          // <Message success header="Signup Successful" content="Welcome to DJDB!" />
+          <Message
+            negative
+            header="Oops!"
+            content={error.response.data}
+            />
         }
       </Form>
       <br />
