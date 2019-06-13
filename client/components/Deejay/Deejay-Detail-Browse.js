@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { GigListStatic } from '../index'
 import { updateGig, createChannel } from '../../store'
-import { List, Button } from 'semantic-ui-react'
+import { List, Button, Message, Modal, Header } from 'semantic-ui-react'
 import history from '../../history'
 import dateFns from 'date-fns'
 require('../../../public/stylesheets/profile.css')
@@ -16,6 +16,7 @@ class DeejayDetailBrowse extends Component {
     this.handleBookingAccept = this.handleBookingAccept.bind(this);
     this.handleBookingDecline = this.handleBookingDecline.bind(this);
     this.handleCreateChannel = this.handleCreateChannel.bind(this);
+
   }
 
   render () {
@@ -142,12 +143,20 @@ class DeejayDetailBrowse extends Component {
   renderCreateChannel() {
     return (
       <div>
+      <Modal trigger={
         <Button
           size="massive"
-          onClick={(event) => this.handleCreateChannel(event)}
+          onClick={(event) => {
+            this.handleCreateChannel(event)
+          }}
         >Start a Chat Channel
         </Button>
+      }>
+        <Header icon="mail" content="Chat channel created!" />
+        <Modal.Content>You can now message this deejay.</Modal.Content>
+      </Modal>
       </div>
+      // The above currently doensn't work properly because the component reloads with a currentChannel, which will render the SendMessage button immediately. Need to look into using React Portals to potentially render the modal outside of the hierarchy that this component is a part of.
     )
   }
 
@@ -319,7 +328,9 @@ class DeejayDetailBrowse extends Component {
 
     !channelCheck.length && createChannel(newChannel)
 
-    history.push('/inbox')
+    setTimeout(() => {
+      history.push('/inbox')
+    }, 2000)
   }
 }
 
