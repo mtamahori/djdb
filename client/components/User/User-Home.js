@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 require('../../../public/stylesheets/home.css')
 
+// USER HOME, UPON LOGIN OR SIGNUP
+
 class UserHome extends Component {
   constructor(props) {
     super(props);

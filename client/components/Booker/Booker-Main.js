@@ -2,8 +2,20 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { clearCalendar } from '../../store'
 import { Grid } from 'semantic-ui-react'
-import { NewBookerForm, CalendarMain, GigApplications, GigPendingInvites, PastGigList, UpcomingGigList, OpenGigList, NewGig, BrowseDeejayList } from '../index'
+import {
+  NewBookerForm,
+  CalendarMain,
+  IncomingApplications,
+  OutgoingInvitations,
+  PastGigList,
+  UpcomingGigList,
+  OpenGigList,
+  NewGig,
+  BrowseDeejayList
+} from '../index'
 
+// MAIN BOOKER PORTAL
+// CONTAINS ALL RELEVANT GIG LISTS, BROWSE DEEJAYS, CALENDAR, AND NEW BOOKER FORM
 
 class BookerMain extends Component {
   constructor(props) {
@@ -32,10 +44,10 @@ class BookerMain extends Component {
             <Grid>
               <Grid.Row columns={2} textAlign="center">
                 <Grid.Column>
-                  <GigApplications gigs={gigs} currentBooker={currentBooker} />
+                  <IncomingApplications gigs={gigs} currentBooker={currentBooker} />
                 </Grid.Column>
                 <Grid.Column>
-                  <GigPendingInvites gigs={gigs} currentBooker={currentBooker} />
+                  <OutgoingInvitations gigs={gigs} currentBooker={currentBooker} />
                 </Grid.Column>
               </Grid.Row>
 

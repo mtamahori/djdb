@@ -4,6 +4,8 @@ import { updateGig } from '../../../store'
 import history from '../../../history'
 import { Form, Message } from 'semantic-ui-react'
 
+// FOR BOOKERS TO UPDATE GIG INFO
+
 class GigUpdateGig extends Component {
   constructor(props) {
     super(props)

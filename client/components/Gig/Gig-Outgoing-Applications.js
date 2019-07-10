@@ -3,10 +3,10 @@ import { Button } from 'semantic-ui-react'
 import GigList from './Gig-List'
 import dateFns from 'date-fns'
 
-// FOR BOOKERS
-// VIEWING INCOMING BOOKING REQUESTS FROM DEEJAYS
+// FOR DEEJAYS
+// VIEWING OUTGOING BOOKING APPLICATION REQUESTS TO BOOKERS
 
-class GigApplications extends Component {
+class OutgoingApplications extends Component {
   constructor(props) {
     super(props);
 
@@ -25,34 +25,35 @@ class GigApplications extends Component {
             this.setState({ view: false })
           }}
           size="massive">
-          Incoming Booking Requests
+          Outgoing Booking Requests
         </Button>
         {
         this.state.view &&
-        this.renderGigApplications()
+        this.renderGigPendingApplications()
         }
       </div>
     )
   }
 
-  renderGigApplications() {
-    const { currentBooker, gigs } = this.props;
+  renderGigPendingApplications() {
+    const { currentDeejay, gigs } = this.props;
 
-    const gigApplications = gigs.filter(gig => {
+    const gigPendingApplications = gigs.filter(gig => {
       return (
-        gig.deejayId === null &&
-        gig.bookerId === currentBooker.id &&
-        gig.deejayApplicants.length &&
+        !gig.deejayId &&
+        gig.deejayApplicants.indexOf(currentDeejay.id) !== -1 &&
+        gig.declinedApps.indexOf(currentDeejay.id) === -1 &&
+        gig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
         this.futureDateCheck(gig)
       )
     })
 
     return (
-      gigApplications.length
+      gigPendingApplications.length
       ?
-      <GigList currentBooker={currentBooker} gigs={gigApplications} />
+      <GigList currentDeejay={currentDeejay} gigs={gigPendingApplications} />
       :
-      <h3>You Have No Booking Requests Right Now</h3>
+      <h3>You Have Not Sent Any Booking Requests</h3>
     )
   }
 
@@ -65,4 +66,4 @@ class GigApplications extends Component {
   }
 }
 
-export default GigApplications
+export default OutgoingApplications;

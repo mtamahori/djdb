@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import GigItem from './Gig-Item'
 
+// FOR DEEJAYS
+// SEARCH/FILTER FOR BROWSING GIGS
+
 class FilterGigs extends Component {
   constructor(props) {
     super(props);

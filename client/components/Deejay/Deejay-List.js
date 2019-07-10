@@ -2,6 +2,8 @@ import React from 'react';
 import DeejayItem from './Deejay-Item';
 require('../../../public/stylesheets/deejayList.css')
 
+// LIST OF DEEJAY NAMES/CARDS
+
 const DeejayList = props => {
   const { deejays, currentGig, currentBooker } = props;
   return (

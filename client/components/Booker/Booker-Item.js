@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Card } from 'semantic-ui-react';
 
+// SINGLE BOOKER NAME/CARD
+
 const BookerItem = props => {
   const { booker, currentGig, currentDeejay } = props;
   return (

@@ -4,6 +4,8 @@ import { List } from 'semantic-ui-react'
 import dateFns from 'date-fns'
 require('../../../public/stylesheets/messageList.css')
 
+// VIEW ALL MESSAGES
+
 class MessageList extends Component {
   constructor(props) {
     super(props)

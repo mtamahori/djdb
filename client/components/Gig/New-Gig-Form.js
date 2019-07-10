@@ -4,6 +4,9 @@ import { createGig } from '../../store'
 import history from '../../history'
 import { Form, Message } from 'semantic-ui-react'
 
+// FOR BOOKERS
+// CREATE NEW GIG
+
 class NewGigForm extends Component {
   constructor(props) {
     super(props);

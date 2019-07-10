@@ -8,6 +8,11 @@ import history from '../../history'
 import dateFns from 'date-fns'
 require('../../../public/stylesheets/profile.css')
 
+// FOR BOOKERS
+// THIS IS THE COMPONENT BOOKERS SEE WHEN THEY BROWSE DEEJAYS
+// IT SHOWS THE DEEJAY'S PROFILE INFO, THEIR PAST GIGS
+// IT OFFERS VARIOUS ACTIONS: SEND/RETRACT INVITATION, ACCEPT/DECLINE APPLICATION, SEND MESSAGE TO DEEJAY
+
 class DeejayDetailBrowse extends Component {
   constructor (props) {
     super(props)

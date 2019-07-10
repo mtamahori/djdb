@@ -1,6 +1,8 @@
 import React from 'react'
 import { Button } from 'semantic-ui-react'
 
+// FOR DEEJAYS TO SEND BOOKING APPLICATION
+
 const GigBookingApplication = props => {
   const { handleBookingApplication } = props;
   return (

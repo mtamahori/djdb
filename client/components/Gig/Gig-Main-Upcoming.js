@@ -5,6 +5,8 @@ import { Button } from 'semantic-ui-react'
 import { GigList } from '../index'
 import dateFns from 'date-fns'
 
+// VIEW UPCOMING GIGS
+
 class UpcomingGigList extends Component {
   constructor(props) {
     super(props)

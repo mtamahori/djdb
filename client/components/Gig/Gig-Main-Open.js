@@ -5,6 +5,9 @@ import { Button } from 'semantic-ui-react'
 import { GigList } from '../index'
 import dateFns from 'date-fns'
 
+// FOR BOOKERS
+// VIEW ALL GIGS THAT STILL NEED A DEEJAY
+
 class OpenGigList extends Component {
   constructor(props) {
     super(props)

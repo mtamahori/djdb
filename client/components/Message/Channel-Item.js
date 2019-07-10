@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { List, Label } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
 
+// SINGLE CHANNEL NAME, HOUSED IN CHANNEL LIST
+
 class ChannelItem extends Component {
   constructor(props) {
     super(props)

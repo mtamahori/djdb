@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import DeejayItem from './Deejay-Item'
 require('../../../public/stylesheets/deejayList.css')
 
+// FOR BOOKERS
+// SEARCH/FILTER COMPONENT FOR BROWSING DEEJAYS
+
 class FilterDeejays extends Component {
   constructor(props) {
     super(props)

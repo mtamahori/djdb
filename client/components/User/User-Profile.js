@@ -5,6 +5,8 @@ import { BookerDetail, DeejayDetail } from '../index'
 import { Form, Button, Grid, Message } from 'semantic-ui-react'
 require('../../../public/stylesheets/profile.css')
 
+// USER PROFILE: current username, booker profile, deejay profile
+
 class UserProfile extends Component {
   constructor(props) {
     super(props);

@@ -1,6 +1,8 @@
 import React from 'react'
 import { Button } from 'semantic-ui-react'
 
+// FOR BOOKERS TO DELETE GIG
+
 const GigDeleteGig = props => {
   const { handleDeleteGig } = props;
   return (

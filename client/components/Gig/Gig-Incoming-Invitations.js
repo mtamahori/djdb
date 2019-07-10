@@ -4,9 +4,9 @@ import GigList from './Gig-List'
 import dateFns from 'date-fns'
 
 // FOR DEEJAYS
-// VIEWING OUTGOING BOOKING REQUESTS TO BOOKERS
+// VIEWING INCOMING BOOKING INVITATION REQUESTS FROM BOOKERS
 
-class GigPendingApplications extends Component {
+class IncomingInvitations extends Component {
   constructor(props) {
     super(props);
 
@@ -25,35 +25,33 @@ class GigPendingApplications extends Component {
             this.setState({ view: false })
           }}
           size="massive">
-          Outgoing Booking Requests
+          Incoming Booking Requests
         </Button>
         {
         this.state.view &&
-        this.renderGigPendingApplications()
+        this.renderGigInvites()
         }
       </div>
     )
   }
 
-  renderGigPendingApplications() {
+  renderGigInvites() {
     const { currentDeejay, gigs } = this.props;
-
-    const gigPendingApplications = gigs.filter(gig => {
+    const gigInvites = gigs.filter(gig => {
       return (
         !gig.deejayId &&
-        gig.deejayApplicants.indexOf(currentDeejay.id) !== -1 &&
+        gig.deejayInvites.indexOf(currentDeejay.id) !== -1 &&
         gig.declinedApps.indexOf(currentDeejay.id) === -1 &&
         gig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
         this.futureDateCheck(gig)
       )
     })
-
     return (
-      gigPendingApplications.length
+      gigInvites.length
       ?
-      <GigList currentDeejay={currentDeejay} gigs={gigPendingApplications} />
+      <GigList currentDeejay={currentDeejay} gigs={gigInvites} />
       :
-      <h3>You Have Not Sent Any Booking Requests</h3>
+      <h3>You Have No Booking Requests Right Now</h3>
     )
   }
 
@@ -66,4 +64,5 @@ class GigPendingApplications extends Component {
   }
 }
 
-export default GigPendingApplications
+export default IncomingInvitations;
+

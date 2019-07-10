@@ -5,6 +5,8 @@ import GigAcceptDeclineBookingRequest from './GigDetailElements/gigAcceptDecline
 import GigRetractApplication from './GigDetailElements/gigRetractApplication'
 import GigCancelBooking from './GigDetailElements/gigCancelBooking'
 
+// FOR DEEJAYS
+// PROVIDES DEEJAY-SPECIFIC DETAILS FOR THE GIG: APPLY/RETRACT, ACCEPT/DECLINE, CANCEL BOOKING
 
 const getDeejayBools = (currentGig, currentDeejay) => {
   return {

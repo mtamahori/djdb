@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { Button } from 'semantic-ui-react'
 import { NewGigForm } from '../index'
 
+// FOR BOOKERS
+// VIEW CREATE NEW GIG
+
 class NewGig extends Component {
   constructor(props) {
     super(props)

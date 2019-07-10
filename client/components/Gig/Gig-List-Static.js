@@ -2,6 +2,8 @@ import React from 'react'
 import GigItemStatic from './Gig-Item-Static'
 require('../../../public/stylesheets/gigList.css')
 
+// RENDERED IN BOOKER/DEEJAY DETAILS AS THEIR PAST GIG HISTORY
+
 const GigListStatic = props => {
 
   const { gigs } = props;

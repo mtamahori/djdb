@@ -1,6 +1,9 @@
 import React from 'react'
 import DeejayList from '../../Deejay/Deejay-List'
 
+// FOR BOOKERS
+// VIEW LIST OF AVAILABLE DEEJAYS
+
 const GigDeejayList = props => {
   const { currentBooker, currentGig, deejays } = props;
     const eligibleDeejays = deejays.filter(deejay => (

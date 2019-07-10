@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { Button } from 'semantic-ui-react'
 import { FilterBookers } from '../index'
 
+// FOR DEEJAYS
+// BROWSE BOOKERS USING SEARCH/FILTER
+// RENDERED IN DeejayMain
+
 class BrowseBookerList extends Component {
   constructor(props) {
     super(props)

@@ -3,6 +3,10 @@ import { Button } from 'semantic-ui-react'
 import { FilterGigs } from '../index'
 import dateFns from 'date-fns'
 
+// FOR DEEJAYS
+// BROWSE OPEN GIGS
+// RENDERED IN DeejayMain
+
 class BrowseGigList extends Component {
   constructor(props) {
     super(props)

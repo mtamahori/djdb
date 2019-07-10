@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ChannelList from './Channel-List'
 
+// INBOX HOME
+
 class MainInbox extends Component {
   constructor(props) {
     super(props)

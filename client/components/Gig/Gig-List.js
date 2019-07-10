@@ -2,6 +2,8 @@ import React from 'react'
 import GigItem from './Gig-Item'
 require('../../../public/stylesheets/gigList.css')
 
+// LIST OF GIG CARDS
+
 const GigList = props => {
 
   const { gigs, currentBooker, currentDeejay } = props;

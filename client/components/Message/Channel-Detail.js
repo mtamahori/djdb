@@ -5,6 +5,8 @@ import MessageList from './Message-List'
 import { updateChannel } from '../../store'
 require('../../../public/stylesheets/channelDetail.css')
 
+// SINGLE CHAT VIEW
+
 class ChannelDetail extends Component {
   constructor(props) {
     super(props)

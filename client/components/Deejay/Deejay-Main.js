@@ -2,7 +2,19 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { clearCalendar } from '../../store'
 import { Grid } from 'semantic-ui-react'
-import { NewDeejayForm, CalendarMain, GigInvites, GigPendingApplications, PastGigList, UpcomingGigList, BrowseGigList, BrowseBookerList } from '../index'
+import {
+  NewDeejayForm,
+  CalendarMain,
+  IncomingInvitations,
+  OutgoingApplications,
+  PastGigList,
+  UpcomingGigList,
+  BrowseGigList,
+  BrowseBookerList
+} from '../index'
+
+// MAIN DEEJAY PORTAL
+// CONTAINS ALL RELEVANT GIG LISTS, BROWSE BOOKERS, CALENDAR, AND NEW DEEJAY FORM
 
 class DeejayMain extends Component {
   constructor(props) {
@@ -31,10 +43,10 @@ class DeejayMain extends Component {
             <Grid>
               <Grid.Row columns={2} textAlign="center">
                 <Grid.Column>
-                  <GigInvites gigs={gigs} currentDeejay={currentDeejay} />
+                  <IncomingInvitations gigs={gigs} currentDeejay={currentDeejay} />
                 </Grid.Column>
                 <Grid.Column>
-                  <GigPendingApplications gigs={gigs} currentDeejay={currentDeejay} />
+                  <OutgoingApplications gigs={gigs} currentDeejay={currentDeejay} />
                 </Grid.Column>
               </Grid.Row>
 

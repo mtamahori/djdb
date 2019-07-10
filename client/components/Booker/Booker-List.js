@@ -2,6 +2,8 @@ import React from 'react';
 import BookerItem from './Booker-Item';
 require('../../../public/stylesheets/bookerList.css')
 
+// LIST OF DEEJAY NAMES/CARDS
+
 const BookerList = props => {
   const { bookers, currentGig, currentDeejay } = props;
   return (

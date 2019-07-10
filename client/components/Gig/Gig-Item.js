@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom'
 import dateFns from 'date-fns'
 import { Card } from 'semantic-ui-react'
 
+// SINGLE GIG CARD
+
 const GigItem = (props) => {
   const { gig, currentBooker, currentDeejay } = props;
   const gigDateArr = gig.date.split('/')

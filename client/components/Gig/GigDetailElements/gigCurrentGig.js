@@ -4,6 +4,9 @@ import DeejayItem from '../../Deejay/Deejay-Item'
 import dateFns from 'date-fns'
 import { Card } from 'semantic-ui-react'
 
+// DISPLAYS GIG'S CORE DETAILS
+// RENDERED IN gigDetail
+
 const GigCurrentGig = props => {
   const { currentGig, currentBooker, currentDeejay, gigs, deejays, bookers } = props
     return (

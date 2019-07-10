@@ -9,6 +9,9 @@ import GigUpdateGig from './GigDetailElements/gigUpdateGig'
 import GigDeleteGig from './GigDetailElements/gigDeleteGig'
 require('../../../public/stylesheets/gigDetail.css')
 
+// FOR BOOKERS
+// PROVIDES ALL BOOKER-SPECIFIC DETAILS FOR THE GIG: THE VARIOUS LISTS OF INVITATIONS/APPLICATIONS, DEEJAY LIST, UPDATE/DELETE GIG
+
 const futureDateCheck = (gig) => {
   let gigDateArr = gig.date.split('/')
   let gigYear = gigDateArr[0]

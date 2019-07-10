@@ -3,6 +3,8 @@ import { Form, Message } from 'semantic-ui-react'
 import { createMessage } from '../../store'
 import { connect } from 'react-redux'
 
+// WRITE NEW MESSAGE
+
 class NewMessageForm extends Component {
   constructor(props) {
     super(props)

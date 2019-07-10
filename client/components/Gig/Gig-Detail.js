@@ -7,6 +7,11 @@ import GigDetailBooker from './Gig-Detail-Booker'
 import GigDetailDeejay from './Gig-Detail-Deejay'
 require('../../../public/stylesheets/gigDetail.css')
 
+// PARENT COMPONENT FOR OTHER DETAIL COMPONENTS
+// PROVIDES THE GIG'S CORE DETAILS VIA gigCurrentGig
+// PROVIDES BOOKER-SPECIFIC DETAILS VIA gigDetailBooker
+// PROVIDES DEEJAY-SPECIFIC DETAILS VIA gigDetailDeejay
+
 class GigDetail extends Component {
   constructor(props) {
     super(props);

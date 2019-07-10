@@ -5,6 +5,8 @@ import history from '../../history'
 import { Form, Button, Message } from 'semantic-ui-react'
 require('../../../public/stylesheets/newProfile.css')
 
+// CREATE BOOKER PROFILE
+
 class NewBookerForm extends Component {
   constructor(props) {
     super(props);

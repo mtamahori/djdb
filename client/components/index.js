@@ -1,3 +1,5 @@
+// CENTRAL EXPORT FOR ALL COMPONENTS
+
 export { default as Landing } from './Landing'
 export { default as Navbar } from  './Navbar'
 export { default as Footer } from './Footer'
@@ -53,10 +55,10 @@ export { default as OpenGigList } from './Gig/Gig-Main-Open'
 export { default as PastGigList } from './Gig/Gig-Main-Past'
 export { default as UpcomingGigList } from './Gig/Gig-Main-Upcoming'
 
-export { default as GigInvites } from './Gig/Gig-Outgoing-Invites'
-export { default as GigPendingApplications} from './Gig/Gig-Pending-Applications'
-export { default as GigApplications } from './Gig/Gig-Outgoing-Applications'
-export { default as GigPendingInvites } from './Gig/Gig-Pending-Invites'
+export { default as IncomingInvitations } from './Gig/Gig-Incoming-Invitations'
+export { default as IncomingApplications } from './Gig/Gig-Incoming-Applications'
+export { default as OutgoingInvitations } from './Gig/Gig-Outgoing-Invites'
+export { default as OutgoingApplications } from './Gig/Gig-Outgoing-Applications'
 
 export { default as MainInbox } from './Message/Main-Inbox'
 export { default as ChannelList } from './Message/Channel-List'

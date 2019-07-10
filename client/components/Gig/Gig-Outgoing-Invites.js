@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Button } from 'semantic-ui-react'
 import GigList from './Gig-List'
 import dateFns from 'date-fns'
 
-// FOR DEEJAYS
-// VIEWING INCOMING BOOKING REQUESTS FROM BOOKERS
+// FOR BOOKERS
+// VIEWING OUTGOING BOOKING INVITATION REQUESTS TO DEEJAYS
 
-class GigInvites extends Component {
+class OutgoingInvitations extends Component {
   constructor(props) {
     super(props);
 
@@ -25,33 +26,34 @@ class GigInvites extends Component {
             this.setState({ view: false })
           }}
           size="massive">
-          Incoming Booking Requests
+          Outgoing Booking Requests
         </Button>
         {
         this.state.view &&
-        this.renderGigInvites()
+        this.renderGigPendingInvites()
         }
       </div>
     )
   }
 
-  renderGigInvites() {
-    const { currentDeejay, gigs } = this.props;
-    const gigInvites = gigs.filter(gig => {
+  renderGigPendingInvites() {
+    const { currentBooker, gigs } = this.props;
+
+    const gigPendingInvites = gigs.filter(gig => {
       return (
-        !gig.deejayId &&
-        gig.deejayInvites.indexOf(currentDeejay.id) !== -1 &&
-        gig.declinedApps.indexOf(currentDeejay.id) === -1 &&
-        gig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
+        gig.deejayId === null &&
+        gig.bookerId === currentBooker.id &&
+        gig.deejayInvites.length &&
         this.futureDateCheck(gig)
       )
     })
+
     return (
-      gigInvites.length
+      gigPendingInvites.length
       ?
-      <GigList currentDeejay={currentDeejay} gigs={gigInvites} />
+      <GigList currentBooker={currentBooker} gigs={gigPendingInvites} />
       :
-      <h3>You Have No Booking Requests Right Now</h3>
+      <h3>You Have Not Sent Any Booking Requests</h3>
     )
   }
 
@@ -64,5 +66,4 @@ class GigInvites extends Component {
   }
 }
 
-export default GigInvites
-
+export default OutgoingInvitations;

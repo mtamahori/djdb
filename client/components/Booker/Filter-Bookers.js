@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import BookerItem from './Booker-Item'
 require('../../../public/stylesheets/bookerList.css')
 
+// FOR DEEJAYS
+// SEARCH/FILTER COMPONENT FOR BROWSING BOOKERS
+
 class FilterBookers extends Component {
   constructor(props) {
     super(props)

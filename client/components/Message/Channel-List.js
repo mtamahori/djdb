@@ -4,6 +4,8 @@ import { List } from 'semantic-ui-react'
 import ChannelItem from './Channel-Item'
 import dateFns from 'date-fns'
 
+// LIST OF ALL CHAT CHANNELS (WHETHER BOOKER OR DEEJAY)
+
 class ChannelList extends Component {
   constructor(props) {
     super(props)

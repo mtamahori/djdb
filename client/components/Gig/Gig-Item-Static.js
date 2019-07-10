@@ -2,6 +2,9 @@ import React from 'react'
 import dateFns from 'date-fns'
 import { Card } from 'semantic-ui-react'
 
+// SIMPLE COMPONENT FOR PROVIDING A GIG'S CORE DETAILS WITHOUT LINKING TO A gigDetail COMPONENT
+// THIS IS RENDERED IN gigListStatic, WHICH IS THEN RENDERED IN BOOKER/DEEJAY DETAILS AS THEIR PAST GIG HISTORY
+
 const GigItemStatic = (props) => {
   const { gig } = props;
   const gigDateArr = gig.date.split('/')

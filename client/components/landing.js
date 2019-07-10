@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon } from 'semantic-ui-react'
+import { Icon, Card, Button } from 'semantic-ui-react'
 require('../../public/stylesheets/landing.css')
 
 const Landing = () => {
