@@ -1,7 +1,17 @@
-DJDB
-by Tamahori
+--------------------------------------------------------------------
 
-// WHAT IT DOES
+DJDB
+  by Max Tamahori
+  in Chicago, IL
+  2018-2019
+
+---------------------------------- WHY IT EXISTS / WHO IT IS FOR
+
+DJDB is a response to a problem that I have encountered in my experience as a deejay in Chicago: it is difficult to get gigs,especially if you are just getting started. The old paradigm of networking will always remain, as it should. However, both deejays and bookers could benefit from having easy access to lists of local gigs and talent, respectively. Deejays are always trying to get booked, and bookers can often benefit from bringing in some new blood.
+
+The goal of DJDB is to make the browsing and booking process easier for both deejays and bookers.
+
+---------------------------------- WHAT IT DOES
 
 DJDB is a booking service for local deejays and talent buyers.
 Users can sign up for free and create a deejay profile and a booker profile.
@@ -21,19 +31,25 @@ Deejays have the ability to view a list of open gigs.
 Deejays can apply to play open gigs.
 Deejays can accept/decline/retract booking requests from bookers.
 
-There is also basis scheduling functionality; bookers and deejays both have
+---------------------------------- HOW IT WORKS
 
-// WHY I MADE IT
+The following is a general technical overview of how the application works.
+The main ingredients are:
 
-DJDB is a response to a problem that I have encountered in my experience as a deejay in Chicago: it is difficult to get gigs,especially if you are just getting started. The old paradigm of networking will always remain, as it should. However, both deejays and bookers could benefit from having easy access to lists of local gigs and talent, respectively. Deejays are always trying to get booked, and bookers can often benefit from bringing in some new blood.
+Back-end:
+  - Node.js application
+  - Express server and API
+  - Postgres database using Sequelize ORM
 
-The goal of DJDB is to make the browsing and booking process easier for both deejays and bookers.
+Front-end:
+  - React application using Redux (react-redux) state management
+  - Semantic UI component library
+  - Webpack build tool
+  - Babel JS compiler
 
-// HOW IT WORKS
+---------------------------------- CLIENT
 
-
-
-// // CLIENT (hierarchy)
+----------------- COMPONENTS
 
 Deejay
 Booker
@@ -45,16 +61,24 @@ Message
 DeejayDetailBrowse
 BookerDetailBrowse
 
-props
+----------------- STATE/PROPS
 
-  currentBooker
-  currentDeejay
+// currentBooker
 
-// // SERVER
+// currentDeejay
 
-Express Server
+---------------------------------- SERVER
 
-Postgres Database
+// Express Server
 
-Sequelize ORM
+// Postgres Database
 
+// Sequelize ORM
+
+---------------------------------- GETTING STARTED
+
+// PULLING THE REPOSITORY
+
+// SCRIPTS: INSTALL, RUN START-DEV, SEED
+
+// A NOTE ON TESTING
