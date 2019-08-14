@@ -36,7 +36,9 @@ Features for both are generally the same, but some will differ depending on what
 
 Here is a very general overview of the core functionality:
 
-Users can sign up for a basic profile that provides two additional options: a booker
+Users can sign up for a basic profile with a username/password combination, or by using Mixcloud credentials.
+
+Users can then create a booker profile and/or a deejay profile.
 
 Both bookers and deejays can view various lists of gigs on their profiles (invitations, applications, past, upcoming, open, etc).
 Both bookers and deejays can view gigs corresponding to the calendar UI.
@@ -49,6 +51,10 @@ Bookers can accept or decline applications from deejays.
 Deejays can view a list of open gigs.
 Deejays can apply to play open gigs, and retract if necessary.
 Deejays can accept or decline invitations from bookers.
+
+Users can send messages to each other in real time.
+
+The "Messages" tab will show a list of conversations with deejays and bookers alike.
 
 ---------------- HOW THE APP WORKS (FROM A DEVELOPER'S PERSPECTIVE)
 
