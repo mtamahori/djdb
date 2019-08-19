@@ -339,6 +339,8 @@ class DeejayDetailBrowse extends Component {
   }
 }
 
+// When a user is browsing deejays as a booker, the currentDeejayBrowse prop contains the relevant data for the deejay that is currently being viewed/browsed.
+
 const mapState = ({ user, deejays, channels, gigs }, ownProps) => {
   const deejayParamId = Number(ownProps.match.params.id)
   return {

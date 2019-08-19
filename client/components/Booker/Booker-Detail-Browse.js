@@ -155,6 +155,8 @@ class BookerDetailBrowse extends Component {
   }
 }
 
+// When a user is browsing bookers as a deejay, the currentBookerBrowse prop contains the relevant data for the booker that is currently being viewed/browsed.
+
 const mapState = ({ user, bookers, channels, gigs }, ownProps) => {
   const bookerParamId = Number(ownProps.match.params.id)
   return {

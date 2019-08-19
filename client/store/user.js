@@ -18,7 +18,6 @@ const editUser = user => ({ type: EDIT_USER, user })
 const removeUser = () => ({ type: REMOVE_USER })
 
 // THUNK CREATORS
-//// read up on async/await!!!!
 
 export const me = () => async dispatch => {
   try {

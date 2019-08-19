@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Card } from 'semantic-ui-react';
 
 // SINGLE DEEJAY NAME/CARD
+// DeejayDetailBrowse is then rendered upon following the NavLink.
 
 const DeejayItem = props => {
   const { deejay, currentGig, currentBooker } = props;

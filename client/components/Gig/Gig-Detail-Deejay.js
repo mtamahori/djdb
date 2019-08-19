@@ -23,6 +23,8 @@ const getDeejayBools = (currentGig, currentDeejay) => {
 const GigDetailDeejay = props => {
   const { currentGig, currentDeejay, handleBookingApplication, handleRetractApplication, handleCancelBooking, handleBookingAccept, handleBookingDecline } = props;
 
+  // Interesting conditional rendering technique for React based on a string of booleans that indicate the status of various fields on the deejay model. Very useful in this case because there are particular cases for which certain buttons/functions should be rendered and made available.
+
   const deejayConditions = getDeejayBools(currentGig, currentDeejay);
   const deejayBools =
   `${deejayConditions.isCurrentDeejay}-${deejayConditions.hasDeejay}-${deejayConditions.isGigDeejay}-${deejayConditions.isApplicant}-${deejayConditions.isInvite}-${deejayConditions.hasDeclinedApp}-${deejayConditions.hasDeclinedInv}`

@@ -75,4 +75,4 @@ Client
 
   Each component has a single in-line comment (after the imports) which explains the component's basic function.
 
--------- THE NITTY GRITTY:
+-------- THE NITTY GRITTY (TBD):

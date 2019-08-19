@@ -4,7 +4,7 @@ import { updateBooker } from '../../store';
 import { Form, List, Button, Message } from 'semantic-ui-react';
 require('../../../public/stylesheets/profile.css')
 
-// DEEJAY PROFILE INFO, RENDERED IN USER PROFILE
+// BOOKER PROFILE INFO, RENDERED IN USER PROFILE
 
 class BookerDetail extends Component {
   constructor(props) {
