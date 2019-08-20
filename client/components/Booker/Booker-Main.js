@@ -11,8 +11,11 @@ import {
   UpcomingGigList,
   OpenGigList,
   NewGig,
-  BrowseDeejayList
+  BrowseDeejayList,
+  BookerSideBar,
+  GigItem
 } from '../index'
+import dateFns from 'date-fns'
 
 // MAIN BOOKER PORTAL
 // CONTAINS ALL RELEVANT GIG LISTS, BROWSE DEEJAYS, CALENDAR, AND NEW BOOKER FORM
@@ -20,6 +23,12 @@ import {
 class BookerMain extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      viewIncomingApplications: false
+    }
+
+    this.viewIncomingApplications = this.viewIncomingApplications.bind(this);
   }
 
   componentDidMount() {
@@ -31,52 +40,76 @@ class BookerMain extends Component {
     const { currentBooker, gigs, deejays } = this.props;
     return (
       <div>
-        {
-          currentBooker === undefined ?
-          <NewBookerForm /> :
+      {
+        currentBooker === undefined ?
+        <NewBookerForm /> :
 
-          <div>
+          <div className="booker-main-container">
             <CalendarMain currentBooker={currentBooker} />
-
-            <br />
-            <br />
-
-            <Grid>
-              <Grid.Row columns={2} textAlign="center">
-                <Grid.Column>
-                  <IncomingApplications gigs={gigs} currentBooker={currentBooker} />
-                </Grid.Column>
-                <Grid.Column>
-                  <OutgoingInvitations gigs={gigs} currentBooker={currentBooker} />
-                </Grid.Column>
-              </Grid.Row>
-
-              <Grid.Row columns={3} textAlign="center">
-                <Grid.Column>
-                  <NewGig currentBooker={currentBooker} />
-                </Grid.Column>
-                <Grid.Column>
-                  <BrowseDeejayList deejays={deejays} currentBooker={currentBooker} />
-                </Grid.Column>
-                <Grid.Column>
-                  <OpenGigList gigs={gigs} currentBooker={currentBooker} />
-                </Grid.Column>
-              </Grid.Row>
-
-              <Grid.Row columns={2} textAlign="center">
-                <Grid.Column>
-                  <PastGigList gigs={gigs} currentBooker={currentBooker} />
-                </Grid.Column>
-                <Grid.Column>
-                  <UpcomingGigList gigs={gigs} currentBooker={currentBooker} />
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-
+            <div className="gig-list-container">
+              <BookerSideBar
+              className="sidebar"
+              currentBooker={currentBooker}
+              gigs={gigs}
+              deejays={deejays}
+              viewIncomingApplications={this.viewIncomingApplications}
+              />
+              <div className="gig-list">
+              {
+                this.state.viewIncomingApplications &&
+                this.renderIncomingApplications()
+              }
+              </div>
+            </div>
           </div>
-        }
+      }
       </div>
     )
+  }
+
+  viewIncomingApplications() {
+    this.state.viewIncomingApplications === false ?
+    this.setState({ viewIncomingApplications: true }) :
+    this.setState({ viewIncomingApplications: false })
+  }
+
+  renderIncomingApplications() {
+    const { currentBooker, gigs } = this.props;
+
+    const gigApplications = gigs.filter(gig => {
+      return (
+        gig.deejayId === null &&
+        gig.bookerId === currentBooker.id &&
+        gig.deejayApplicants.length &&
+        this.futureDateCheck(gig)
+      )
+    })
+
+    return (
+      gigApplications.length ?
+      <Grid
+        className="gig-list"
+        gigs={gigApplications}
+        columns='equal'
+        text-align='center'
+        relaxed
+        stackable>
+        {
+          gigApplications.map(gig => (
+            <GigItem gig={gig} key={gig.id} currentBooker={currentBooker} />
+          ))
+        }
+      </Grid> :
+      <h3>You Have No Booking Requests Right Now</h3>
+    )
+  }
+
+  futureDateCheck(gig) {
+    let gigDateArr = gig.date.split('/')
+    let gigYear = gigDateArr[0]
+    let gigMonth = gigDateArr[1]
+    let gigDate = gigDateArr[2]
+    return dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
   }
 }
 

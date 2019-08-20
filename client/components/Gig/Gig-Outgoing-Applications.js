@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button } from 'semantic-ui-react'
 import GigList from './Gig-List'
 import dateFns from 'date-fns'
+require('../../../public/stylesheets/sidebar.css')
 
 // FOR DEEJAYS
 // VIEWING OUTGOING BOOKING APPLICATION REQUESTS TO BOOKERS

@@ -15,6 +15,7 @@ export { default as BookerItem } from './Booker/Booker-Item'
 export { default as BookerDetail } from './Booker/Booker-Detail'
 export { default as BookerDetailBrowse } from './Booker/Booker-Detail-Browse'
 export { default as NewBookerForm } from './Booker/New-Booker-Form'
+export { default as BookerSideBar } from './Booker/Booker-Sidebar'
 
 export { default as DeejayMain } from './Deejay/Deejay-Main'
 export { default as DeejayList } from './Deejay/Deejay-List'

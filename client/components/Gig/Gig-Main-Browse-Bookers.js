@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from 'semantic-ui-react'
 import { FilterBookers } from '../index'
+require('../../../public/stylesheets/sidebar.css')
 
 // FOR DEEJAYS
 // BROWSE BOOKERS USING SEARCH/FILTER

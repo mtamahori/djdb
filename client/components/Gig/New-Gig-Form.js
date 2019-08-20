@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { createGig } from '../../store'
 import history from '../../history'
 import { Form, Message } from 'semantic-ui-react'
+require('../../../public/stylesheets/sidebar.css')
 
 // FOR BOOKERS
 // CREATE NEW GIG
