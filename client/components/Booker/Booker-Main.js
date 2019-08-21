@@ -25,10 +25,11 @@ class BookerMain extends Component {
     super(props);
 
     this.state = {
-      viewIncomingApplications: false
+      viewIncomingApplications: false,
+      viewOutgoingInvites: false
     }
 
-    this.viewIncomingApplications = this.viewIncomingApplications.bind(this);
+    this.toggleView = this.toggleView.bind(this);
   }
 
   componentDidMount() {
@@ -49,15 +50,16 @@ class BookerMain extends Component {
             <div className="gig-list-container">
               <BookerSideBar
               className="sidebar"
-              currentBooker={currentBooker}
-              gigs={gigs}
-              deejays={deejays}
-              viewIncomingApplications={this.viewIncomingApplications}
+              toggleView={this.toggleView}
               />
               <div className="gig-list">
               {
                 this.state.viewIncomingApplications &&
                 this.renderIncomingApplications()
+              }
+              {
+                this.state.viewOutgoingInvites &&
+                this.renderOutgoingInvites()
               }
               </div>
             </div>
@@ -67,10 +69,20 @@ class BookerMain extends Component {
     )
   }
 
-  viewIncomingApplications() {
-    this.state.viewIncomingApplications === false ?
-    this.setState({ viewIncomingApplications: true }) :
-    this.setState({ viewIncomingApplications: false })
+  toggleView(listType) {
+    let view = (type) => {
+      let stateObj = {}
+      stateObj[type] = true;
+      return stateObj;
+    }
+    let hide = (type) => {
+      let stateObj = {}
+      stateObj[type] = false;
+      return stateObj
+    }
+    this.state[listType] === false ?
+    this.setState(view(listType)) :
+    this.setState(hide(listType))
   }
 
   renderIncomingApplications() {
@@ -101,6 +113,37 @@ class BookerMain extends Component {
         }
       </Grid> :
       <h3>You Have No Booking Requests Right Now</h3>
+    )
+  }
+
+  renderOutgoingInvites() {
+    const { currentBooker, gigs } = this.props;
+
+    const gigPendingInvites = gigs.filter(gig => {
+      return (
+        gig.deejayId === null &&
+        gig.bookerId === currentBooker.id &&
+        gig.deejayInvites.length &&
+        this.futureDateCheck(gig)
+      )
+    })
+
+    return (
+      gigPendingInvites.length ?
+      <Grid
+        className="gig-list"
+        gigs={gigPendingInvites}
+        columns='equal'
+        textAlign='center'
+        relaxed
+        stackable>
+        {
+          gigPendingInvites.map(gig => (
+            <GigItem gig={gig} key={gig.id} currentBooker={currentBooker} />
+          ))
+        }
+      </Grid> :
+      <h3>You Have Not Sent Any Booking Requests</h3>
     )
   }
 

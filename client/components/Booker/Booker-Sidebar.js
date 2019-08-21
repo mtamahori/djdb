@@ -20,23 +20,26 @@ require('../../../public/stylesheets/bookerMain.css')
 // need to make a view/hide button for CALENDAR
 
 const BookerSidebar = (props) => {
-  const { gigs, deejays, currentBooker } = props;
-  const { viewIncomingApplications } = props;
+  const { toggleView } = props;
 
   return (
     <div className="sidebar-container">
 
       <IncomingApplications
       className="sidebar-button"
-      viewIncomingApplications={viewIncomingApplications}
+      toggleView={toggleView}
       />
 
-      <OutgoingInvitations className="sidebar-button" gigs={gigs} currentBooker={currentBooker} />
-      <OpenGigList className="sidebar-button" gigs={gigs} currentBooker={currentBooker} />
-      <UpcomingGigList className="sidebar-button" gigs={gigs} currentBooker={currentBooker} />
-      <PastGigList className="sidebar-button" gigs={gigs} currentBooker={currentBooker} />
-      <BrowseDeejayList className="sidebar-button" deejays={deejays} currentBooker={currentBooker} />
-      <NewGig currentBooker={currentBooker} />
+      <OutgoingInvitations
+      className="sidebar-button"
+      toggleView={toggleView}
+      />
+
+      <OpenGigList className="sidebar-button" />
+      <UpcomingGigList className="sidebar-button" />
+      <PastGigList className="sidebar-button" />
+      <BrowseDeejayList className="sidebar-button" />
+      <NewGig className="sidebar-button" />
     </div>
   )
 }

@@ -6,11 +6,11 @@ require('../../../public/stylesheets/bookerMain.css')
 // BUTTON FOR VIEWING INCOMING BOOKING APPLICATION REQUESTS FROM DEEJAYS
 
 const IncomingApplications = (props) => {
-    const { viewIncomingApplications } = props;
+  const { toggleView } = props;
   return (
     <div>
       <Button
-        onClick={() => {viewIncomingApplications()}}
+        onClick={() => {toggleView('viewIncomingApplications')}}
         size="massive">
         Incoming Booking Requests
       </Button>
