@@ -1,7 +1,4 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { Button } from 'semantic-ui-react'
+import React from 'react'
 import {
   IncomingApplications,
   OutgoingInvitations,
@@ -20,26 +17,39 @@ require('../../../public/stylesheets/bookerMain.css')
 // need to make a view/hide button for CALENDAR
 
 const BookerSidebar = (props) => {
-  const { toggleView } = props;
+  const { toggleView, toggleCalendar } = props;
 
   return (
     <div className="sidebar-container">
-
       <IncomingApplications
       className="sidebar-button"
       toggleView={toggleView}
       />
-
       <OutgoingInvitations
       className="sidebar-button"
       toggleView={toggleView}
       />
-
-      <OpenGigList className="sidebar-button" />
-      <UpcomingGigList className="sidebar-button" />
-      <PastGigList className="sidebar-button" />
-      <BrowseDeejayList className="sidebar-button" />
-      <NewGig className="sidebar-button" />
+      <OpenGigList
+      className="sidebar-button"
+      toggleView={toggleView}
+      toggleCalendar={toggleCalendar}
+      />
+      <UpcomingGigList
+      className="sidebar-button"
+      toggleView={toggleView}
+      />
+      <PastGigList
+      className="sidebar-button"
+      toggleView={toggleView}
+      />
+      <BrowseDeejayList
+      className="sidebar-button"
+      toggleView={toggleView}
+      />
+      <NewGig
+      className="sidebar-button"
+      toggleView={toggleView}
+      />
     </div>
   )
 }
