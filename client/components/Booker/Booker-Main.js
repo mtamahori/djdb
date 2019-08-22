@@ -13,8 +13,6 @@ import dateFns from 'date-fns'
 // MAIN BOOKER PORTAL
 // CONTAINS ALL RELEVANT GIG LISTS, BROWSE DEEJAYS, CALENDAR, AND NEW BOOKER FORM
 
-// current: need to make sure only one list is viewed at any given time, or at least label them, as it might be nice to see multiple lists concurrently. also, try and make setCalendarGigs a little cleaner
-
 class BookerMain extends Component {
   constructor(props) {
     super(props);
@@ -34,8 +32,10 @@ class BookerMain extends Component {
     clearCalendar();
   }
 
+  // MAIN RENDER
+
   render() {
-    const { currentBooker, gigs, deejays } = this.props;
+    const { currentBooker } = this.props;
     return (
       <div>
       {
@@ -71,10 +71,19 @@ class BookerMain extends Component {
     )
   }
 
+  // ONCLICK TOGGLE FUNCTIONS (VIEW GIGS / CALENDAR)
+
   toggleView(listType) {
     let view = (type) => {
-      let stateObj = {}
-      stateObj[type] = true;
+      let stateObj = this.state;
+      for (let key in stateObj) {
+        if (key !== type) {
+          stateObj[key] = false;
+        }
+        else {
+          stateObj[type] = true;
+        }
+      }
       return stateObj;
     }
     let hide = (type) => {
@@ -88,7 +97,20 @@ class BookerMain extends Component {
   }
 
   toggleCalendar(listType) {
-    const { gigs, currentBooker, setCalendarGigs } = this.props;
+    const { setCalendarGigs } = this.props;
+    const openGigs = this.getOpenGigs();
+
+    if (listType === 'openGigs') {
+      openGigs.length &&
+      this.state.viewOpenBookings === true &&
+      setCalendarGigs(openGigs);
+    }
+  }
+
+  // HELPER FUNCTIONS FOR GETTING THE RIGHT GIG LISTS OFF OF PROPS
+
+  getOpenGigs() {
+    const { gigs, currentBooker } = this.props;
     const openGigs = gigs.filter(gig => {
       return (
         gig.bookerId === currentBooker.id &&
@@ -96,18 +118,11 @@ class BookerMain extends Component {
         this.futureDateCheck(gig)
       )
     })
-
-    if (listType === 'openGigs') {
-      openGigs.length &&
-      this.state.viewOpenBookings === false &&
-      setCalendarGigs(openGigs);
-    }
-
+    return openGigs;
   }
 
-  renderIncomingApplications() {
-    const { currentBooker, gigs } = this.props;
-
+  getGigApplications() {
+    const { gigs, currentBooker } = this.props;
     const gigApplications = gigs.filter(gig => {
       return (
         gig.deejayId === null &&
@@ -116,7 +131,27 @@ class BookerMain extends Component {
         this.futureDateCheck(gig)
       )
     })
+    return gigApplications;
+  }
 
+  getGigPendingInvites() {
+    const { gigs, currentBooker } = this.props;
+    const gigPendingInvites = gigs.filter(gig => {
+      return (
+        gig.deejayId === null &&
+        gig.bookerId === currentBooker.id &&
+        gig.deejayInvites.length &&
+        this.futureDateCheck(gig)
+      )
+    })
+    return gigPendingInvites;
+  }
+
+  // RENDER FUNCTIONS FOR SEPARATE GIG LISTS
+
+  renderIncomingApplications() {
+    const { currentBooker } = this.props;
+    const gigApplications = this.getGigApplications();
     return (
       gigApplications.length ?
       <Grid
@@ -137,17 +172,8 @@ class BookerMain extends Component {
   }
 
   renderOutgoingInvites() {
-    const { currentBooker, gigs } = this.props;
-
-    const gigPendingInvites = gigs.filter(gig => {
-      return (
-        gig.deejayId === null &&
-        gig.bookerId === currentBooker.id &&
-        gig.deejayInvites.length &&
-        this.futureDateCheck(gig)
-      )
-    })
-
+    const { currentBooker } = this.props;
+    const gigPendingInvites = this.getGigPendingInvites();
     return (
       gigPendingInvites.length ?
       <Grid
@@ -167,35 +193,27 @@ class BookerMain extends Component {
     )
   }
 
-      renderOpenBookings() {
-        const { currentBooker, gigs } = this.props;
-
-        const openGigs = gigs.filter(gig => {
-          return (
-            gig.bookerId === currentBooker.id &&
-            gig.deejayId === null &&
-            this.futureDateCheck(gig)
-          )
-        })
-
-        return (
-          openGigs.length ?
-          <Grid
-            className="gig-list"
-            gigs={openGigs}
-            columns='equal'
-            textAlign='center'
-            relaxed
-            stackable>
-            {
-              openGigs.map(gig => (
-              <GigItem gig={gig} key={gig.id} currentBooker={currentBooker} />
-              ))
-            }
-          </Grid> :
-          <h3>You Have No Open Bookings Right Now</h3>
-        )
-      }
+  renderOpenBookings() {
+    const { currentBooker } = this.props;
+    const openGigs = this.getOpenGigs();
+    return (
+      openGigs.length ?
+      <Grid
+        className="gig-list"
+        gigs={openGigs}
+        columns='equal'
+        textAlign='center'
+        relaxed
+        stackable>
+        {
+          openGigs.map(gig => (
+          <GigItem gig={gig} key={gig.id} currentBooker={currentBooker} />
+          ))
+        }
+      </Grid> :
+      <h3>You Have No Open Bookings Right Now</h3>
+    )
+  }
 
   futureDateCheck(gig) {
     let gigDateArr = gig.date.split('/')
