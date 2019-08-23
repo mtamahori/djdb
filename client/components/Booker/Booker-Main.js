@@ -116,24 +116,27 @@ class BookerMain extends Component {
     const upcomingGigs = this.getUpcomingGigs();
     const pastGigs = this.getPastGigs();
 
+    let typeCheck = (type) => {
+      if (type.length &&
+      (this.state['view' + type.slice(0)[0].toUpperCase() + `${type.slice(1)}`] === true)) {
+        return true;
+      }
+    }
+
     if (listType === 'openGigs') {
-      openGigs.length &&
-      this.state.viewOpenGigs === true &&
+      typeCheck('openGigs') &&
       setCalendarGigs(openGigs);
     }
 
     if (listType === 'upcomingGigs') {
-      upcomingGigs.length &&
-      this.state.viewUpcomingGigs === true &&
+      typeCheck('upcomingGigs') &&
       setCalendarGigs(upcomingGigs)
     }
 
     if (listType === 'pastGigs') {
-      pastGigs.length &&
-      this.state.viewPastGigs === true &&
+      typeCheck('pastGigs') &&
       setCalendarGigs(pastGigs)
     }
-
   }
 
   // HELPER FUNCTIONS FOR GETTING THE RIGHT GIG LISTS OFF OF PROPS
