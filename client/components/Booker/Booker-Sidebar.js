@@ -37,10 +37,12 @@ const BookerSidebar = (props) => {
       <UpcomingGigList
       className="sidebar-button"
       toggleView={toggleView}
+      toggleCalendar={toggleCalendar}
       />
       <PastGigList
       className="sidebar-button"
       toggleView={toggleView}
+      toggleCalendar={toggleCalendar}
       />
       <BrowseDeejayList
       className="sidebar-button"

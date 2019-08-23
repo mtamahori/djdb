@@ -20,7 +20,8 @@ class BookerMain extends Component {
     this.state = {
       viewIncomingApplications: false,
       viewOutgoingInvites: false,
-      viewOpenBookings: false
+      viewOpenGigs: false,
+      viewUpcomingGigs: false
     }
 
     this.toggleView = this.toggleView.bind(this);
@@ -64,8 +65,12 @@ class BookerMain extends Component {
                 this.renderOutgoingInvites()
               }
               {
-                this.state.viewOpenBookings &&
+                this.state.viewOpenGigs &&
                 this.renderOpenBookings()
+              }
+              {
+                this.state.viewUpcomingGigs &&
+                this.renderUpcomingGigs()
               }
               </div>
             </div>
@@ -103,27 +108,22 @@ class BookerMain extends Component {
   toggleCalendar(listType) {
     const { setCalendarGigs } = this.props;
     const openGigs = this.getOpenGigs();
+    const upcomingGigs = this.getUpcomingGigs();
 
     if (listType === 'openGigs') {
       openGigs.length &&
-      this.state.viewOpenBookings === true &&
+      this.state.viewOpenGigs === true &&
       setCalendarGigs(openGigs);
+    }
+
+    if (listType === 'upcomingGigs') {
+      upcomingGigs.length &&
+      this.state.viewUpcomingGigs === true &&
+      setCalendarGigs(upcomingGigs)
     }
   }
 
   // HELPER FUNCTIONS FOR GETTING THE RIGHT GIG LISTS OFF OF PROPS
-
-  getOpenGigs() {
-    const { gigs, currentBooker } = this.props;
-    const openGigs = gigs.filter(gig => {
-      return (
-        gig.bookerId === currentBooker.id &&
-        gig.deejayId === null &&
-        this.futureDateCheck(gig)
-      )
-    })
-    return openGigs;
-  }
 
   getGigApplications() {
     const { gigs, currentBooker } = this.props;
@@ -149,6 +149,30 @@ class BookerMain extends Component {
       )
     })
     return gigPendingInvites;
+  }
+
+  getOpenGigs() {
+    const { gigs, currentBooker } = this.props;
+    const openGigs = gigs.filter(gig => {
+      return (
+        gig.bookerId === currentBooker.id &&
+        gig.deejayId === null &&
+        this.futureDateCheck(gig)
+      )
+    })
+    return openGigs;
+  }
+
+  getUpcomingGigs() {
+    const { gigs, currentBooker } = this.props;
+    const upcomingGigs = gigs.filter(gig => {
+      return (
+      gig.bookerId === currentBooker.id &&
+      gig.deejayId !== null &&
+      this.futureDateCheck(gig)
+      )
+    })
+    return upcomingGigs;
   }
 
   // RENDER FUNCTIONS FOR SEPARATE GIG LISTS
@@ -216,6 +240,28 @@ class BookerMain extends Component {
         }
       </Grid> :
       <h3>You Have No Open Bookings Right Now</h3>
+    )
+  }
+
+  renderUpcomingGigs() {
+    const { currentBooker } = this.props;
+    const upcomingGigs = this.getUpcomingGigs();
+    return (
+      upcomingGigs.length ?
+      <Grid
+        className="gig-list"
+        gigs={upcomingGigs}
+        columns='equal'
+        textAlign='center'
+        relaxed
+        stackable>
+        {
+          upcomingGigs.map(gig => (
+          <GigItem gig={gig} key={gig.id} currentBooker={currentBooker} />
+          ))
+        }
+      </Grid> :
+      <h3>You Have No Upcoming Bookings Right Now</h3>
     )
   }
 

@@ -3,7 +3,6 @@ const express = require('express')
 const morgan = require('morgan')
 const session = require('express-session')
 const passport = require('passport')
-// @ts-ignore
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const db = require('./db')
 const sessionStore = new SequelizeStore({db})

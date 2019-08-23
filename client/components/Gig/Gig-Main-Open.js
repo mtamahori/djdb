@@ -10,7 +10,7 @@ const OpenGigList = (props) => {
     <div>
       <Button
         onClick={() => {
-          toggleView('viewOpenBookings')
+          toggleView('viewOpenGigs')
           toggleCalendar('openGigs')
         }}
         size="massive">
