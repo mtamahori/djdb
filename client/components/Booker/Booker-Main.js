@@ -21,7 +21,8 @@ class BookerMain extends Component {
       viewIncomingApplications: false,
       viewOutgoingInvites: false,
       viewOpenGigs: false,
-      viewUpcomingGigs: false
+      viewUpcomingGigs: false,
+      viewPastGigs: false
     }
 
     this.toggleView = this.toggleView.bind(this);
@@ -72,6 +73,10 @@ class BookerMain extends Component {
                 this.state.viewUpcomingGigs &&
                 this.renderUpcomingGigs()
               }
+              {
+                this.state.viewPastGigs &&
+                this.renderPastGigs()
+              }
               </div>
             </div>
           </div>
@@ -109,6 +114,7 @@ class BookerMain extends Component {
     const { setCalendarGigs } = this.props;
     const openGigs = this.getOpenGigs();
     const upcomingGigs = this.getUpcomingGigs();
+    const pastGigs = this.getPastGigs();
 
     if (listType === 'openGigs') {
       openGigs.length &&
@@ -121,6 +127,13 @@ class BookerMain extends Component {
       this.state.viewUpcomingGigs === true &&
       setCalendarGigs(upcomingGigs)
     }
+
+    if (listType === 'pastGigs') {
+      pastGigs.length &&
+      this.state.viewPastGigs === true &&
+      setCalendarGigs(pastGigs)
+    }
+
   }
 
   // HELPER FUNCTIONS FOR GETTING THE RIGHT GIG LISTS OFF OF PROPS
@@ -167,12 +180,23 @@ class BookerMain extends Component {
     const { gigs, currentBooker } = this.props;
     const upcomingGigs = gigs.filter(gig => {
       return (
-      gig.bookerId === currentBooker.id &&
-      gig.deejayId !== null &&
-      this.futureDateCheck(gig)
+        gig.bookerId === currentBooker.id &&
+        gig.deejayId !== null &&
+        this.futureDateCheck(gig)
       )
     })
     return upcomingGigs;
+  }
+
+  getPastGigs() {
+    const { gigs, currentBooker } = this.props;
+    const pastGigs = gigs.filter(gig => {
+      return (
+        gig.bookerId === currentBooker.id &&
+        this.pastDateCheck(gig)
+      )
+    })
+    return pastGigs;
   }
 
   // RENDER FUNCTIONS FOR SEPARATE GIG LISTS
@@ -265,12 +289,42 @@ class BookerMain extends Component {
     )
   }
 
+  renderPastGigs() {
+    const { currentBooker } = this.props;
+    const pastGigs = this.getPastGigs();
+    return (
+      pastGigs.length ?
+      <Grid
+        className="gig-list"
+        gigs={pastGigs}
+        columns='equal'
+        textAlign='center'
+        relaxed
+        stackable>
+        {
+          pastGigs.map(gig => (
+          <GigItem gig={gig} key={gig.id} currentBooker={currentBooker} />
+          ))
+        }
+      </Grid> :
+      <h3>You Have No Past Bookings</h3>
+    )
+  }
+
   futureDateCheck(gig) {
     let gigDateArr = gig.date.split('/')
     let gigYear = gigDateArr[0]
     let gigMonth = gigDateArr[1]
     let gigDate = gigDateArr[2]
     return dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
+  }
+
+  pastDateCheck(gig) {
+    let gigDateArr = gig.date.split('/')
+    let gigYear = gigDateArr[0]
+    let gigMonth = gigDateArr[1]
+    let gigDate = gigDateArr[2]
+    return dateFns.isBefore(new Date(gigYear, gigMonth, gigDate), Date.now())
   }
 }
 
