@@ -43,13 +43,17 @@ class BookerMain extends Component {
         <NewBookerForm /> :
 
           <div className="booker-main-container">
+
             <CalendarMain currentBooker={currentBooker} />
+
             <div className="gig-list-container">
+
               <BookerSideBar
               className="sidebar"
               toggleView={this.toggleView}
               toggleCalendar={this.toggleCalendar}
               />
+
               <div className="gig-list">
               {
                 this.state.viewIncomingApplications &&
