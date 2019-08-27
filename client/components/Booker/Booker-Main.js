@@ -6,7 +6,8 @@ import {
   NewBookerForm,
   CalendarMain,
   BookerSideBar,
-  GigItem
+  GigItem,
+  FilterDeejays
 } from '../index'
 import dateFns from 'date-fns'
 
@@ -22,7 +23,8 @@ class BookerMain extends Component {
       viewOutgoingInvites: false,
       viewOpenGigs: false,
       viewUpcomingGigs: false,
-      viewPastGigs: false
+      viewPastGigs: false,
+      viewBrowseDeejays: false,
     }
 
     this.toggleView = this.toggleView.bind(this);
@@ -48,7 +50,7 @@ class BookerMain extends Component {
 
             <CalendarMain currentBooker={currentBooker} />
 
-            <div className="gig-list-container">
+            <div className="list-container">
 
               <BookerSideBar
               className="sidebar"
@@ -76,6 +78,13 @@ class BookerMain extends Component {
               {
                 this.state.viewPastGigs &&
                 this.renderPastGigs()
+              }
+              </div>
+
+              <div className="deejay-list">
+              {
+                this.state.viewBrowseDeejays &&
+                this.renderBrowseDeejays()
               }
               </div>
             </div>
@@ -234,8 +243,8 @@ class BookerMain extends Component {
       <Grid
         className="gig-list"
         gigs={gigPendingInvites}
-        columns='equal'
-        textAlign='center'
+        columns="equal"
+        textAlign="center"
         relaxed
         stackable>
         {
@@ -256,8 +265,8 @@ class BookerMain extends Component {
       <Grid
         className="gig-list"
         gigs={openGigs}
-        columns='equal'
-        textAlign='center'
+        columns="equal"
+        textAlign="center"
         relaxed
         stackable>
         {
@@ -278,8 +287,8 @@ class BookerMain extends Component {
       <Grid
         className="gig-list"
         gigs={upcomingGigs}
-        columns='equal'
-        textAlign='center'
+        columns="equal"
+        textAlign="center"
         relaxed
         stackable>
         {
@@ -312,6 +321,13 @@ class BookerMain extends Component {
       </Grid> :
       <h3>You Have No Past Bookings</h3>
     )
+  }
+
+  renderBrowseDeejays() {
+    const { currentBooker, deejays } = this.props;
+    return (
+        <FilterDeejays deejays={deejays} currentBooker={currentBooker} />
+      )
   }
 
   futureDateCheck(gig) {

@@ -11,7 +11,8 @@ const IncomingApplications = (props) => {
     <div>
       <Button
         onClick={() => {toggleView('viewIncomingApplications')}}
-        size="massive">
+        size="massive"
+        className="sidebar-button">
         Incoming Booking Requests
       </Button>
     </div>

@@ -12,6 +12,7 @@ const UpcomingGigList = (props) => {
             toggleView('viewUpcomingGigs')
             toggleCalendar('upcomingGigs')
           }}
+          className="sidebar-button"
           size="massive"
         >Upcoming Bookings
         </Button>

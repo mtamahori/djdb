@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import DeejayItem from './Deejay-Item'
-require('../../../public/stylesheets/deejayList.css')
+import { Grid } from 'semantic-ui-react'
+// require('../../../public/stylesheets/deejayList.css')
 
 // FOR BOOKERS
 // SEARCH/FILTER COMPONENT FOR BROWSING DEEJAYS
@@ -40,11 +41,19 @@ class FilterDeejays extends Component {
         <form onChange={this.handleInput} >
           <input name="filter" type="text" placeholder="Search by Name / Style" />
         </form>
+        <Grid
+          className="gig-list"
+          deejays={deejays}
+          columns="equal"
+          textAlign="center"
+          relaxed
+          stackable>
           {
             renderDeejaysByMatch.map(deejay => (
               <DeejayItem deejay={deejay} key={deejay.id} currentBooker={currentBooker} />
             ))
           }
+        </Grid>
       </div>
     )
   }
