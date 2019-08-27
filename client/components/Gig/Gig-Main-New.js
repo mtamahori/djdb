@@ -1,42 +1,23 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Button } from 'semantic-ui-react'
-import { NewGigForm } from '../index'
 
 // FOR BOOKERS
 // VIEW CREATE NEW GIG
 
-class NewGig extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      view: false
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        <Button
-          onClick={() => this.setState(state => ({
-            view: !state.view
-          }))}
-          size="massive"
-        >+ New Booking
-        </Button>
-        {
-          this.state.view && this.renderNewGigForm()
+const NewGig = (props) => {
+  const { toggleView } = props;
+  return (
+    <div>
+      <Button
+        onClick={() =>
+          toggleView('viewNewGigForm')
         }
-      </div>
-    )
-  }
-
-  renderNewGigForm() {
-    const { currentBooker } = this.props;
-    return (
-      <NewGigForm currentBooker={currentBooker} key={currentBooker.id} />
-    )
-  }
+        size="massive"
+        className="sidebar-button"
+      >Create New Booking
+      </Button>
+    </div>
+  )
 }
 
 export default NewGig

@@ -43,7 +43,6 @@ class FilterDeejays extends Component {
         </form>
         <Grid
           className="gig-list"
-          deejays={deejays}
           columns="equal"
           textAlign="center"
           relaxed

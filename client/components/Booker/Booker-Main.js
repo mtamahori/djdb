@@ -7,7 +7,8 @@ import {
   CalendarMain,
   BookerSideBar,
   GigItem,
-  FilterDeejays
+  FilterDeejays,
+  NewGigForm
 } from '../index'
 import dateFns from 'date-fns'
 
@@ -25,6 +26,7 @@ class BookerMain extends Component {
       viewUpcomingGigs: false,
       viewPastGigs: false,
       viewBrowseDeejays: false,
+      viewNewGigForm: false
     }
 
     this.toggleView = this.toggleView.bind(this);
@@ -53,9 +55,9 @@ class BookerMain extends Component {
             <div className="list-container">
 
               <BookerSideBar
-              className="sidebar"
-              toggleView={this.toggleView}
-              toggleCalendar={this.toggleCalendar}
+                className="sidebar"
+                toggleView={this.toggleView}
+                toggleCalendar={this.toggleCalendar}
               />
 
               <div className="gig-list">
@@ -85,6 +87,13 @@ class BookerMain extends Component {
               {
                 this.state.viewBrowseDeejays &&
                 this.renderBrowseDeejays()
+              }
+              </div>
+
+              <div className="new-gig-form">
+              {
+                this.state.viewNewGigForm &&
+                this.renderNewGigForm()
               }
               </div>
             </div>
@@ -309,8 +318,8 @@ class BookerMain extends Component {
       <Grid
         className="gig-list"
         gigs={pastGigs}
-        columns='equal'
-        textAlign='center'
+        columns="equal"
+        textAlign="center"
         relaxed
         stackable>
         {
@@ -325,9 +334,12 @@ class BookerMain extends Component {
 
   renderBrowseDeejays() {
     const { currentBooker, deejays } = this.props;
-    return (
-        <FilterDeejays deejays={deejays} currentBooker={currentBooker} />
-      )
+    return <FilterDeejays deejays={deejays} currentBooker={currentBooker} />
+  }
+
+  renderNewGigForm() {
+    const { currentBooker } = this.props;
+    return <NewGigForm currentBooker={currentBooker} key={currentBooker.id} />
   }
 
   futureDateCheck(gig) {
