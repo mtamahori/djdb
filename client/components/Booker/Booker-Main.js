@@ -220,116 +220,63 @@ class BookerMain extends Component {
     return pastGigs;
   }
 
-  // RENDER FUNCTIONS FOR SEPARATE GIG LISTS
+  // HELPER RENDER FUNCTION FOR GIG LISTS
 
-  renderIncomingApplications() {
-    const { currentBooker } = this.props;
-    const gigApplications = this.getGigApplications();
+  renderGrid(currentBooker, listType, nullMessage) {
     return (
-      gigApplications.length ?
+      listType.length ?
       <Grid
         className="gig-list"
-        gigs={gigApplications}
+        gigs={listType}
         columns="equal"
         text-align="center"
         relaxed
         stackable>
         {
-          gigApplications.map(gig => (
+          listType.map(gig => (
             <GigItem gig={gig} key={gig.id} currentBooker={currentBooker} />
           ))
         }
       </Grid> :
-      <h3>You Have No Booking Requests Right Now</h3>
+      <h3>{`${nullMessage}`}</h3>
     )
+  }
+
+  // RENDER FUNCTIONS FOR SEPARATE GIG LISTS
+
+  renderIncomingApplications() {
+    const { currentBooker } = this.props;
+    const gigApplications = this.getGigApplications();
+    const nullMessage = 'You Have No Incoming Booking Requests';
+    return this.renderGrid(currentBooker, gigApplications, nullMessage);
   }
 
   renderOutgoingInvites() {
     const { currentBooker } = this.props;
     const gigPendingInvites = this.getGigPendingInvites();
-    return (
-      gigPendingInvites.length ?
-      <Grid
-        className="gig-list"
-        gigs={gigPendingInvites}
-        columns="equal"
-        textAlign="center"
-        relaxed
-        stackable>
-        {
-          gigPendingInvites.map(gig => (
-            <GigItem gig={gig} key={gig.id} currentBooker={currentBooker} />
-          ))
-        }
-      </Grid> :
-      <h3>You Have Not Sent Any Booking Requests</h3>
-    )
+    const nullMessage = 'You Have Not Sent Any Booking Requests';
+    return this.renderGrid(currentBooker, gigPendingInvites, nullMessage);
   }
 
   renderOpenBookings() {
     const { currentBooker } = this.props;
     const openGigs = this.getOpenGigs();
-    return (
-      openGigs.length ?
-      <Grid
-        className="gig-list"
-        gigs={openGigs}
-        columns="equal"
-        textAlign="center"
-        relaxed
-        stackable>
-        {
-          openGigs.map(gig => (
-          <GigItem gig={gig} key={gig.id} currentBooker={currentBooker} />
-          ))
-        }
-      </Grid> :
-      <h3>You Have No Open Bookings Right Now</h3>
-    )
+    const nullMessage = 'You Have No Open Bookings';
+    return this.renderGrid(currentBooker, openGigs, nullMessage);
   }
 
   renderUpcomingGigs() {
     const { currentBooker } = this.props;
     const upcomingGigs = this.getUpcomingGigs();
-    return (
-      upcomingGigs.length ?
-      <Grid
-        className="gig-list"
-        gigs={upcomingGigs}
-        columns="equal"
-        textAlign="center"
-        relaxed
-        stackable>
-        {
-          upcomingGigs.map(gig => (
-          <GigItem gig={gig} key={gig.id} currentBooker={currentBooker} />
-          ))
-        }
-      </Grid> :
-      <h3>You Have No Upcoming Bookings Right Now</h3>
-    )
+    const nullMessage = 'You Have No Upcoming Bookings';
+    return this.renderGrid(currentBooker, upcomingGigs, nullMessage);
   }
 
   renderPastGigs() {
     const { currentBooker } = this.props;
     const pastGigs = this.getPastGigs();
-    return (
-      pastGigs.length ?
-      <Grid
-        className="gig-list"
-        gigs={pastGigs}
-        columns="equal"
-        textAlign="center"
-        relaxed
-        stackable>
-        {
-          pastGigs.map(gig => (
-          <GigItem gig={gig} key={gig.id} currentBooker={currentBooker} />
-          ))
-        }
-      </Grid> :
-      <h3>You Have No Past Bookings</h3>
-    )
+    const nullMessage = 'You Have No Past Bookings'
+    return this.renderGrid(currentBooker, pastGigs, nullMessage);
   }
 
   renderBrowseDeejays() {
