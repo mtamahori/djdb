@@ -64,6 +64,10 @@ class DeejayMain extends Component {
                   this.state.viewIncomingInvitations &&
                   this.renderIncomingInvitations()
                 }
+                {
+                  this.state.viewOutgoingApplications &&
+                  this.renderOutgoingApplications()
+                }
               </div>
 
             </div>
@@ -137,11 +141,18 @@ class DeejayMain extends Component {
     return gigInvitations;
   }
 
-  renderIncomingInvitations() {
-    const { currentDeejay } = this.props;
-    const gigInvitations = this.getGigInvitations();
-    const nullMessage = 'You Have No Booking Requests Right Now';
-    return this.renderGrid(currentDeejay, gigInvitations, nullMessage);
+  getGigApplications() {
+    const { gigs, currentDeejay } = this.props;
+    const gigPendingApplications = gigs.filter(gig => {
+      return (
+        !gig.deejayId &&
+        gig.deejayApplicants.indexOf(currentDeejay.id) !== -1 &&
+        gig.declinedApps.indexOf(currentDeejay.id) === -1 &&
+        gig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
+        this.futureDateCheck(gig)
+      )
+    })
+    return gigPendingApplications;
   }
 
   // HELPER FUNCTION FOR RENDERING GIG LISTS
@@ -168,6 +179,19 @@ class DeejayMain extends Component {
 
   // RENDER FUNCTIONS FOR SEPARATE GIG LISTS
 
+  renderIncomingInvitations() {
+    const { currentDeejay } = this.props;
+    const gigInvitations = this.getGigInvitations();
+    const nullMessage = 'You Have No Booking Requests Right Now';
+    return this.renderGrid(currentDeejay, gigInvitations, nullMessage);
+  }
+
+  renderOutgoingApplications() {
+    const { currentDeejay } = this.props;
+    const gigPendingApplications = this.getGigApplications();
+    const nullMessage = 'You Have Not Sent Any Booking Applications';
+    return this.renderGrid(currentDeejay, gigPendingApplications, nullMessage)
+  }
 
   // DATE CHECKERS
 
