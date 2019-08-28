@@ -14,8 +14,6 @@ require('../../../public/stylesheets/bookerMain.css')
 // Renders appropriate buttons that display appropriate gig lists.
 // Rendered in BookerMain
 
-// need to make a view/hide button for CALENDAR
-
 const BookerSidebar = (props) => {
   const { toggleView, toggleCalendar } = props;
 

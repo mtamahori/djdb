@@ -5,12 +5,10 @@ import { Grid } from 'semantic-ui-react'
 import {
   NewDeejayForm,
   CalendarMain,
-  IncomingInvitations,
-  OutgoingApplications,
-  PastGigList,
-  UpcomingGigList,
-  BrowseGigList,
-  BrowseBookerList
+  DeejaySidebar,
+  GigItem,
+  FilterGigs,
+  FilterBookers
 } from '../index'
 
 // MAIN DEEJAY PORTAL
@@ -19,12 +17,26 @@ import {
 class DeejayMain extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      viewIncomingInvitations: false,
+      viewOutgoingApplications: false,
+      viewUpcomingGigs: false,
+      viewPastGigs: false,
+      viewBrowseGigs: false,
+      viewBrowseBookers:false,
+    }
+
+    this.toggleView = this.toggleView.bind(this);
+    this.toggleCalendar = this.toggleCalendar.bind(this);
   }
 
   componentDidMount() {
     const { clearCalendar } = this.props;
     clearCalendar();
   }
+
+  // MAIN RENDER
 
   render() {
     const { currentDeejay, gigs, bookers } = this.props;
@@ -34,48 +46,118 @@ class DeejayMain extends Component {
           currentDeejay === undefined ?
           <NewDeejayForm /> :
 
-          <div>
+          <div className="deejay-main-container">
+
             <CalendarMain currentDeejay={currentDeejay} />
 
-            <br />
-            <br />
+            <div className="list-container">
 
-            <Grid>
-              <Grid.Row columns={2} textAlign="center">
-                <Grid.Column>
-                  <IncomingInvitations gigs={gigs} currentDeejay={currentDeejay} />
-                </Grid.Column>
-                <Grid.Column>
-                  <OutgoingApplications gigs={gigs} currentDeejay={currentDeejay} />
-                </Grid.Column>
-              </Grid.Row>
+              <DeejaySidebar
+                className="sidebar"
+                toggleView={this.toggleView}
+                toggleCalenda={this.toggleCalendar}
+              />
 
-              <Grid.Row columns={1} textAlign="center">
-                <Grid.Column>
-                  <BrowseGigList gigs={gigs} currentDeejay={currentDeejay} />
-                </Grid.Column>
-              </Grid.Row>
+            </div>
 
-              <Grid.Row columns={2} textAlign="center">
-                <Grid.Column>
-                  <PastGigList gigs={gigs} currentDeejay={currentDeejay} />
-                </Grid.Column>
-                <Grid.Column>
-                  <UpcomingGigList gigs={gigs} currentDeejay={currentDeejay} />
-                </Grid.Column>
-              </Grid.Row>
-
-              <Grid.Row columns={1} textAlign="center">
-                <Grid.Column>
-                  <BrowseBookerList bookers={bookers} currentDeejay={currentDeejay} />
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
           </div>
         }
       </div>
     )
   }
+
+  // ONCLICK TOGGLE FUNCTIONS (VIEW GIGS / CALENDAR)
+
+  toggleView(listType) {
+    let view = (type) => {
+      let stateObj = this.state;
+      for (let key in stateObj) {
+        if (key !== type) {
+          stateObj[key] = false;
+        }
+        else {
+          stateObj[type] = true;
+        }
+      }
+      return stateObj;
+    }
+    let hide = (type) => {
+      let stateObj = {}
+      stateObj[type] = false;
+      return stateObj
+    }
+    this.state[listType] === false ?
+    this.setState(view(listType)) :
+    this.setState(hide(listType))
+  }
+
+  toggleCalendar(listType) {
+    const { setCalendarGigs } = this.props;
+    const upcomingGigs = this.getUpcomingGigs();
+    const pastGigs = this.getPastGigs();
+
+    let typeCheck = (type) => {
+      if (type.length &&
+      (this.state['view' + type.slice(0)[0].toUpperCase() + `${type.slice(1)}`] === true)) {
+        return true;
+      }
+    }
+
+    if (listType === 'upcomingGigs') {
+      typeCheck('upcomingGigs') &&
+      setCalendarGigs(upcomingGigs)
+    }
+
+    if (listType === 'pastGigs') {
+      typeCheck('pastGigs') &&
+      setCalendarGigs(pastGigs)
+    }
+  }
+
+  // HELPER FUNCTIONS FOR GETTING THE RIGHT GIG LISTS OFF OF PROPS
+
+  // HELPER FUNCTION FOR RENDERING GIG LISTS
+
+    renderGrid(currentDeejay, listType, nullMessage) {
+      return (
+        listType.length ?
+        <Grid
+          className="gig-list"
+          gigs={listType}
+          columns="equal"
+          text-align="center"
+          relaxed
+          stackable>
+          {
+            listType.map(gig => (
+              <GigItem gig={gig} key={gig.id} currentDeejay={currentDeejay} />
+            ))
+          }
+        </Grid> :
+        <h3>{`${nullMessage}`}</h3>
+      )
+    }
+
+  // RENDER FUNCTIONS FOR SEPARATE GIG LISTS
+
+
+  // DATE CHECKERS
+
+    futureDateCheck(gig) {
+      let gigDateArr = gig.date.split('/')
+      let gigYear = gigDateArr[0]
+      let gigMonth = gigDateArr[1]
+      let gigDate = gigDateArr[2]
+      return dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
+    }
+
+    pastDateCheck(gig) {
+      let gigDateArr = gig.date.split('/')
+      let gigYear = gigDateArr[0]
+      let gigMonth = gigDateArr[1]
+      let gigDate = gigDateArr[2]
+      return dateFns.isBefore(new Date(gigYear, gigMonth, gigDate), Date.now())
+    }
 }
 
 const mapState = ({ user, gigs, deejays, bookers }) => {

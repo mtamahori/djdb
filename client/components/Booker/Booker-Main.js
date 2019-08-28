@@ -5,7 +5,7 @@ import { Grid } from 'semantic-ui-react'
 import {
   NewBookerForm,
   CalendarMain,
-  BookerSideBar,
+  BookerSidebar,
   GigItem,
   FilterDeejays,
   NewGigForm
@@ -54,7 +54,7 @@ class BookerMain extends Component {
 
             <div className="list-container">
 
-              <BookerSideBar
+              <BookerSidebar
                 className="sidebar"
                 toggleView={this.toggleView}
                 toggleCalendar={this.toggleCalendar}
@@ -220,7 +220,7 @@ class BookerMain extends Component {
     return pastGigs;
   }
 
-  // HELPER RENDER FUNCTION FOR GIG LISTS
+  // HELPER FUNCTION FOR RENDERING GIG LISTS
 
   renderGrid(currentBooker, listType, nullMessage) {
     return (
@@ -288,6 +288,8 @@ class BookerMain extends Component {
     const { currentBooker } = this.props;
     return <NewGigForm currentBooker={currentBooker} key={currentBooker.id} />
   }
+
+  // DATE CHECKERS
 
   futureDateCheck(gig) {
     let gigDateArr = gig.date.split('/')
