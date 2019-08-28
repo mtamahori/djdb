@@ -10,6 +10,7 @@ import {
   FilterGigs,
   FilterBookers
 } from '../index'
+import dateFns from 'date-fns'
 
 // MAIN DEEJAY PORTAL
 // CONTAINS ALL RELEVANT GIG LISTS, BROWSE BOOKERS, CALENDAR, AND NEW DEEJAY FORM
@@ -24,7 +25,7 @@ class DeejayMain extends Component {
       viewUpcomingGigs: false,
       viewPastGigs: false,
       viewBrowseGigs: false,
-      viewBrowseBookers:false,
+      viewBrowseBookers: false,
     }
 
     this.toggleView = this.toggleView.bind(this);
@@ -57,6 +58,13 @@ class DeejayMain extends Component {
                 toggleView={this.toggleView}
                 toggleCalenda={this.toggleCalendar}
               />
+
+              <div className="gig-list">
+                {
+                  this.state.viewIncomingInvitations &&
+                  this.renderIncomingInvitations()
+                }
+              </div>
 
             </div>
 
@@ -115,6 +123,26 @@ class DeejayMain extends Component {
   }
 
   // HELPER FUNCTIONS FOR GETTING THE RIGHT GIG LISTS OFF OF PROPS
+  getGigInvitations() {
+    const { gigs, currentDeejay } = this.props;
+    const gigInvitations = gigs.filter(gig => {
+      return (
+        !gig.deejayId &&
+        gig.deejayInvites.indexOf(currentDeejay.id) !== -1 &&
+        gig.declinedApps.indexOf(currentDeejay.id) === -1 &&
+        gig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
+        this.futureDateCheck(gig)
+      )
+    })
+    return gigInvitations;
+  }
+
+  renderIncomingInvitations() {
+    const { currentDeejay } = this.props;
+    const gigInvitations = this.getGigInvitations();
+    const nullMessage = 'You Have No Booking Requests Right Now';
+    return this.renderGrid(currentDeejay, gigInvitations, nullMessage);
+  }
 
   // HELPER FUNCTION FOR RENDERING GIG LISTS
 
