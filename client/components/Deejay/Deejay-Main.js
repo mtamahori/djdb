@@ -68,6 +68,14 @@ class DeejayMain extends Component {
                   this.state.viewOutgoingApplications &&
                   this.renderOutgoingApplications()
                 }
+                {
+                  this.state.viewUpcomingGigs &&
+                  this.renderUpcomingGigs()
+                }
+                {
+                  this.state.viewPastGigs &&
+                  this.renderPastGigs()
+                }
               </div>
 
             </div>
@@ -155,6 +163,29 @@ class DeejayMain extends Component {
     return gigPendingApplications;
   }
 
+  getUpcomingGigs() {
+    const { gigs, currentDeejay } = this.props;
+    const upcomingGigs = gigs.filter(gig => {
+      return (
+        gig.bookerId === currentDeejay.id &&
+        gig.deejayId !== null &&
+        this.futureDateCheck(gig)
+      )
+    })
+    return upcomingGigs;
+  }
+
+  getPastGigs() {
+    const { gigs, currentDeejay } = this.props;
+    const pastGigs = gigs.filter(gig => {
+      return (
+        gig.bookerId === currentDeejay.id &&
+        this.pastDateCheck(gig)
+      )
+    })
+    return pastGigs;
+  }
+
   // HELPER FUNCTION FOR RENDERING GIG LISTS
 
     renderGrid(currentDeejay, listType, nullMessage) {
@@ -191,6 +222,21 @@ class DeejayMain extends Component {
     const gigPendingApplications = this.getGigApplications();
     const nullMessage = 'You Have Not Sent Any Booking Applications';
     return this.renderGrid(currentDeejay, gigPendingApplications, nullMessage)
+  }
+
+  renderUpcomingGigs() {
+    const { currentDeejay } = this.props;
+    const upcomingGigs = this.getUpcomingGigs();
+    const nullMessage = 'You Have No Upcoming Bookings';
+    return this.renderGrid(currentDeejay, upcomingGigs, nullMessage);
+  }
+
+  renderPastGigs() {
+    const { currentDeejay } = this.props;
+    const pastGigs = this.getPastGigs();
+    const nullMessage = 'You Have No Past Bookings';
+    return this.renderGrid(currentDeejay, pastGigs, nullMessage)
+
   }
 
   // DATE CHECKERS

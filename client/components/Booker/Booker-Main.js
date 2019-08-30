@@ -275,7 +275,7 @@ class BookerMain extends Component {
   renderPastGigs() {
     const { currentBooker } = this.props;
     const pastGigs = this.getPastGigs();
-    const nullMessage = 'You Have No Past Bookings'
+    const nullMessage = 'You Have No Past Bookings';
     return this.renderGrid(currentBooker, pastGigs, nullMessage);
   }
 
