@@ -1,44 +1,23 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Button } from 'semantic-ui-react'
-import { FilterBookers } from '../index'
 require('../../../public/stylesheets/sidebar.css')
 
 // FOR DEEJAYS
 // BROWSE BOOKERS USING SEARCH/FILTER
 // RENDERED IN DeejayMain
 
-class BrowseBookerList extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      view: false
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        <Button
-          onClick={() => this.setState(state => ({
-            view: !state.view
-          }))}
-          size="massive"
-        >Browse Bookers
-        </Button>
-        {
-          this.state.view && this.renderBrowseBookers()
-        }
-      </div>
-    )
-  }
-
-  renderBrowseBookers() {
-    const { bookers, currentDeejay } = this.props
-    return (
-      <FilterBookers bookers={bookers} currentDeejay={currentDeejay} />
-    )
-  }
+const BrowseBookerList = (props) => {
+  const { toggleView } = props;
+  return (
+    <div>
+      <Button
+        onClick={() => toggleView('viewBrowseBookers')}
+        className="sidebar-button"
+        size="massive"
+      >Browse Bookers
+      </Button>
+    </div>
+  )
 }
 
 export default BrowseBookerList

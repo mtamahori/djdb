@@ -1,7 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Button } from 'semantic-ui-react'
-import { FilterGigs } from '../index'
-import dateFns from 'date-fns'
 require('../../../public/stylesheets/sidebar.css')
 
 // FOR DEEJAYS

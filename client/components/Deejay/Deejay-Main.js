@@ -82,6 +82,13 @@ class DeejayMain extends Component {
                 }
               </div>
 
+              <div className="booker-list">
+                {
+                  this.state.viewBrowseBookers &&
+                  this.renderBrowseBookers()
+                }
+              </div>
+
             </div>
 
           </div>
@@ -258,6 +265,11 @@ class DeejayMain extends Component {
     const { currentDeejay } = this.props;
     const openGigs = this.getOpenGigs();
     return <FilterGigs openGigs={openGigs} currentDeejay={currentDeejay} />
+  }
+
+  renderBrowseBookers() {
+    const { currentDeejay, bookers } = this.props;
+    return <FilterBookers bookers={bookers} currentDeejay={currentDeejay} />
   }
 
   // DATE CHECKERS
