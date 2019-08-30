@@ -76,6 +76,10 @@ class DeejayMain extends Component {
                   this.state.viewPastGigs &&
                   this.renderPastGigs()
                 }
+                {
+                  this.state.viewBrowseGigs &&
+                  this.renderBrowseGigs()
+                }
               </div>
 
             </div>
@@ -186,6 +190,18 @@ class DeejayMain extends Component {
     return pastGigs;
   }
 
+  getOpenGigs() {
+    const { gigs } = this.props;
+    const openGigs = gigs.filter(gig => {
+      return (
+        gig.deejayId === null &&
+        this.futureDateCheck(gig)
+      )
+    })
+    return openGigs;
+  }
+
+
   // HELPER FUNCTION FOR RENDERING GIG LISTS
 
     renderGrid(currentDeejay, listType, nullMessage) {
@@ -236,7 +252,12 @@ class DeejayMain extends Component {
     const pastGigs = this.getPastGigs();
     const nullMessage = 'You Have No Past Bookings';
     return this.renderGrid(currentDeejay, pastGigs, nullMessage)
+  }
 
+  renderBrowseGigs() {
+    const { currentDeejay } = this.props;
+    const openGigs = this.getOpenGigs();
+    return <FilterGigs openGigs={openGigs} currentDeejay={currentDeejay} />
   }
 
   // DATE CHECKERS

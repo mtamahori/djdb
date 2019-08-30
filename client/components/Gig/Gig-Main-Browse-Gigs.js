@@ -8,58 +8,18 @@ require('../../../public/stylesheets/sidebar.css')
 // BROWSE OPEN GIGS
 // RENDERED IN DeejayMain
 
-class BrowseGigList extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      view: false
-    }
-  }
-
-  render() {
-    return (
-      <div>
+const BrowseGigList = (props) => {
+  const { toggleView } = props;
+  return (
+    <div>
         <Button
-          onClick={() => this.setState(state => ({
-            view: !state.view
-          }))}
+          onClick={() => toggleView('viewBrowseGigs')}
+          className="sidebar-button"
           size="massive"
         >Browse Gigs
         </Button>
-        {
-          this.state.view && this.renderBrowseGigs()
-        }
-      </div>
-    )
-  }
-
-  renderBrowseGigs() {
-    const { gigs, currentDeejay } = this.props;
-
-    let openGigs = gigs.filter(gig => {
-      return (
-        gig.deejayId === null &&
-        gig.deejayInvites.indexOf(currentDeejay.id) === -1 &&
-        gig.deejayApplicants.indexOf(currentDeejay.id) === -1 &&
-        gig.declinedApps.indexOf(currentDeejay.id) === -1 &&
-        gig.declinedInvs.indexOf(currentDeejay.id) === -1 &&
-        this.futureDateCheck(gig)
-      )
-    })
-
-    return (
-      <FilterGigs gigs={openGigs} currentDeejay={currentDeejay} />
-    )
-  }
-
-  futureDateCheck(gig) {
-    let gigDateArr = gig.date.split('/')
-    let gigYear = gigDateArr[0]
-    let gigMonth = gigDateArr[1]
-    let gigDate = gigDateArr[2]
-    return dateFns.isAfter(new Date(gigYear, gigMonth, gigDate), Date.now())
-  }
+    </div>
+  )
 }
 
-export default BrowseGigList
+export default BrowseGigList;

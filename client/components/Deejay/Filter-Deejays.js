@@ -42,7 +42,7 @@ class FilterDeejays extends Component {
           <input name="filter" type="text" placeholder="Search by Name / Style" />
         </form>
         <Grid
-          className="gig-list"
+          className="deejay-list"
           columns="equal"
           textAlign="center"
           relaxed

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import GigItem from './Gig-Item'
+import { Grid } from 'semantic-ui-react'
 
 // FOR DEEJAYS
 // SEARCH/FILTER FOR BROWSING GIGS
@@ -24,9 +25,9 @@ class FilterGigs extends Component {
   }
 
   renderTextMatch() {
-    const { gigs, currentDeejay } = this.props;
+    const { openGigs, currentDeejay } = this.props;
 
-    const renderGigsByMatch = gigs.filter(gig => {
+    const renderGigsByMatch = openGigs.filter(gig => {
         let tags = gig.styleTags.join(',');
       return (
         gig.name.match(this.state.inputValue) ||
@@ -40,11 +41,19 @@ class FilterGigs extends Component {
         <form onChange={this.handleInput} >
           <input name="filter" type="text" placeholder="Search by Name / Location / Style" />
         </form>
+        <br />
+        <Grid
+          className="gig-list"
+          columns="equal"
+          textAlign="center"
+          relaxed
+          stackable>
           {
             renderGigsByMatch.map(gig => (
               <GigItem gig={gig} key={gig.id} currentDeejay={currentDeejay} />
             ))
           }
+        </Grid>
       </div>
     )
   }
