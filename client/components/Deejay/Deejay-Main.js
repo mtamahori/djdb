@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { clearCalendar } from '../../store'
+import { clearCalendar, setCalendarGigs } from '../../store'
 import { Grid } from 'semantic-ui-react'
 import {
   NewDeejayForm,
@@ -56,7 +56,7 @@ class DeejayMain extends Component {
               <DeejaySidebar
                 className="sidebar"
                 toggleView={this.toggleView}
-                toggleCalenda={this.toggleCalendar}
+                toggleCalendar={this.toggleCalendar}
               />
 
               <div className="gig-list">
@@ -300,6 +300,6 @@ const mapState = ({ user, gigs, deejays, bookers }) => {
     currentDeejay: deejays.filter(deejay => deejay.userId === user.id)[0]
   }
 };
-const mapDispatch = ({ clearCalendar });
+const mapDispatch = ({ clearCalendar, setCalendarGigs });
 
 export default connect(mapState, mapDispatch)(DeejayMain)
