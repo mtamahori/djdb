@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from  'prop-types'
 import { auth } from '../store'
-import { Form, Button, Message } from 'semantic-ui-react'
+import { Form, Message } from 'semantic-ui-react'
 require('../../public/stylesheets/authForm.css')
 
 const AuthForm = ({ name, displayName, handleSubmit, error }) => {
@@ -24,10 +24,6 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
             />
         }
       </Form>
-      <br />
-          <Button href="/auth/soundcloud">
-            Use Soundcloud Credentials
-          </Button>
     </div>
   )
 }

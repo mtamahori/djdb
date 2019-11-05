@@ -1,5 +1,6 @@
 // package no longer works due to some TypeScript issue (?)
-// replacing with Soundcloud instead
+// soundcloud API registration is closed, so cannot obtain clientID and clientSecret
+// consider implementing Google OAuth, though this does not have any real use in the way that Mixcloud or Soundcloud could
 
 const passport = require('passport')
 const router = require('express').Router()
