@@ -22,18 +22,6 @@ class UserProfile extends Component {
     const { currentUser, currentBooker, currentDeejay } = this.props
     return (
       <Grid>
-        <Grid.Row columns={1} textAlign="center">
-          <Grid.Column className="profile-container">
-            <div className="profile-current">
-              <h3>Current Username: {currentUser.username}</h3>
-            </div>
-            <br />
-            <br />
-            <div className="profile-update">
-              {this.renderUpdateUser()}
-            </div>
-          </Grid.Column>
-        </Grid.Row>
         <Grid.Row columns={2} textAlign="center">
           <Grid.Column>
             <BookerDetail currentBooker={currentBooker} />
@@ -45,6 +33,19 @@ class UserProfile extends Component {
       </Grid>
     )
   }
+
+  // <Grid.Row columns={1} textAlign="center">
+  //   <Grid.Column className="profile-container">
+  //     <div className="profile-current">
+  //       <h3>Current Username: {currentUser.username}</h3>
+  //     </div>
+  //     <br />
+  //     <br />
+  //     <div className="profile-update">
+  //       {this.renderUpdateUser()}
+  //     </div>
+  //   </Grid.Column>
+  // </Grid.Row>
 
   renderUpdateUser() {
     return (

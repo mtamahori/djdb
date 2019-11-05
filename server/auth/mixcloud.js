@@ -1,3 +1,6 @@
+// package no longer works due to some TypeScript issue (?)
+// replacing with Soundcloud instead
+
 const passport = require('passport')
 const router = require('express').Router()
 const MixCloudStrategy = require('passport-mixcloud').Strategy

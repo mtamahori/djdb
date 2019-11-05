@@ -29,6 +29,7 @@
     "passport": "^0.4.0",
     "passport-google-oauth": "^1.0.0",
     "passport-mixcloud": "0.0.2",
+    "passport-soundcloud": "^0.2.0",
     "pg": "^7.5.0",
     "pg-hstore": "^2.3.2",
     "prop-types": "^15.6.2",

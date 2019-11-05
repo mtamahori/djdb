@@ -25,8 +25,8 @@ const AuthForm = ({ name, displayName, handleSubmit, error }) => {
         }
       </Form>
       <br />
-          <Button href="/auth/mixcloud">
-            Use Mixcloud Credentials!
+          <Button href="/auth/soundcloud">
+            Use Soundcloud Credentials
           </Button>
     </div>
   )
